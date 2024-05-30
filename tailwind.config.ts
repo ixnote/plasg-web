@@ -18,15 +18,15 @@ const config: Config = {
         geistsans: ["var(--font-geist-sans)"],
         geistmono: ["var(--font-geist-mono)"],
       },
-    },
 
-    colors: {
-      brand: {
-        dark: "#000000",
-        white: "#FFFFFF",
-        main: "#0E3E40",
-        secondary: "#B1D362",
-        lightYellow: "#FCFF45",
+      colors: {
+        brand: {
+          dark: "#000000",
+          white: "#FFFFFF",
+          main: "#0E3E40",
+          secondary: "#B1D362",
+          lightYellow: "#FCFF45",
+        },
       },
     },
   },

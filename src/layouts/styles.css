@@ -1,0 +1,7 @@
+.header-container {
+  @apply w-full max-w-full p-3;
+}
+
+.header {
+  @apply h-[76px] w-full bg-brand-main rounded-lg px-10 py-4;
+}
