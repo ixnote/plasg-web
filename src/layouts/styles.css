@@ -57,3 +57,13 @@
 .left-constainer {
   @apply flex gap-7;
 }
+
+/* misc styles */
+.glass-fx {
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  background-color: #ffffff40;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 15px -6px #424242;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  /* border-color: rgb(255 255 255 / 0.2); */
+}

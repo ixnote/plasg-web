@@ -50,7 +50,10 @@ const Header = () => {
   };
 
   return (
-    <div className="header-container" onMouseLeave={handleMouseLeave}>
+    <div
+      className="header-container fixed top-0 left-0 w-full z-50"
+      onMouseLeave={handleMouseLeave}
+    >
       <div
         className={`header-drop transition-all duration-300 ${
           hoveredMenuData ? "h-[464px]" : "h-auto"
