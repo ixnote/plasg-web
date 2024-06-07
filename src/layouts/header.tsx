@@ -62,7 +62,6 @@ const Header = () => {
         <div className="header">
           <div className="header-content">
             <Image src={logomark} alt="LOGO" />
-
             <div className="manue-container">
               <ul className="menue-ul">
                 {menueList.map((menu) => (

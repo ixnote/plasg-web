@@ -3,6 +3,10 @@ import Hero from "./Hero";
 import FromTheGovernor from "./FromTheGovernor";
 import Image from "next/image";
 import bg from '../../../public/landing/bg.jpg'
+import QuickStats from "./QuickStats";
+import SectionDividerDark from "@/components/SectionDividerDark";
+import Explore from "./Explore";
+import QuickActions from "./QuickActions";
 
 const Landing = () => {
   return (
@@ -15,9 +19,14 @@ const Landing = () => {
       />
       {/* sections */}
       <div className="relative z-10">
-        {/* hero */}
         <Hero />
         <FromTheGovernor />
+        <SectionDividerDark />
+        <QuickStats />
+        <SectionDividerDark />
+        <Explore />
+        <QuickActions />
+
         <div className="h-screen flex items-center justify-center">
           <p className="text-white text-xl">
             This is more content with parallax scrolling
