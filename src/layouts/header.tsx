@@ -8,6 +8,9 @@ import Image from "next/image";
 import Link from "next/link";
 import HoverTags from "./hoverTags";
 import { libraryData, governmentData } from "./ListData";
+import SearchComponent from "./Search/SearchComponent";
+import { Modal } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
 
 const menueList = [
   {
@@ -49,11 +52,23 @@ const Header = () => {
     setHoveredMenuData(null);
   };
 
+  const [opened, { open, close }] = useDisclosure(false);
+
   return (
     <div
       className="header-container fixed top-0 left-0 w-full z-50"
       onMouseLeave={handleMouseLeave}
     >
+      <Modal
+        fullScreen
+        bg={"#0E3E40"}
+        className="bg-brand-main"
+        opened={opened}
+        onClose={close}
+        withCloseButton={false}
+      >
+        <SearchComponent close={close} />
+      </Modal>
       <div
         className={`header-drop transition-all duration-300 ${
           hoveredMenuData ? "h-[464px]" : "h-auto"
@@ -94,13 +109,9 @@ const Header = () => {
                   </li>
                 </ul>
 
-                <div className="header-search">
+                <div className="header-search" onClick={open}>
                   <Image src={search_icon} alt="" />
-                  <input
-                    type="text"
-                    placeholder="Search"
-                    className="search-input"
-                  />
+                  <p className="text-white">Search</p>
                 </div>
               </div>
             </div>
