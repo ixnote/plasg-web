@@ -1,12 +1,18 @@
 import React from "react";
+import Image from "next/image";
+
+// Pages
 import Hero from "./Hero";
 import FromTheGovernor from "./FromTheGovernor";
-import Image from "next/image";
-import bg from '../../../public/landing/bg.jpg'
 import QuickStats from "./QuickStats";
-import SectionDividerDark from "@/components/SectionDividerDark";
 import Explore from "./Explore";
 import QuickActions from "./QuickActions";
+import Visit from "./Visit";
+
+// Components
+import bg from "../../../public/landing/bg.jpg";
+import SectionDividerDark from "@/components/SectionDividerDark";
+import SectionDividerLight from "@/components/SectionDividerLight";
 
 const Landing = () => {
   return (
@@ -26,6 +32,8 @@ const Landing = () => {
         <SectionDividerDark />
         <Explore />
         <QuickActions />
+        <SectionDividerLight />
+        <Visit />
 
         <div className="h-screen flex items-center justify-center">
           <p className="text-white text-xl">

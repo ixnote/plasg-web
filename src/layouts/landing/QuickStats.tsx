@@ -1,3 +1,4 @@
+import ButtonDark from "@/components/ButtonDark";
 import React from "react";
 
 const QuickStats = () => {
@@ -28,7 +29,7 @@ const QuickStats = () => {
               {/* top */}
               <div className="flex flex-row gap-4 items-center justify-center flex-wrap w-[1017px]">
                 {/* items */}
-                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-white/40 p-8 px-16 font-geistsans min-w-[30%]">
+                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-white/40 p-8 px-16 font-geistsans min-w-[30%] w-[30%]">
                   <span className="flex items-center justify-start gap-4 text-white font-normal text-base w-full">
                     <svg
                       width="53"
@@ -53,7 +54,7 @@ const QuickStats = () => {
                   </span>
                   <span className="font-medium text-5xl text-white">1976</span>
                 </div>
-                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-white/40 p-8 px-16 font-geistsans min-w-[30%]">
+                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-white/40 p-8 px-16 font-geistsans min-w-[30%] w-[30%]">
                   <span className="flex items-center justify-start gap-4 text-white font-normal text-base w-full">
                     <svg
                       width="53"
@@ -80,7 +81,7 @@ const QuickStats = () => {
                   </span>
                   <span className="font-medium text-5xl text-white">≈27K</span>
                 </div>
-                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-white/40 p-8 px-16 font-geistsans min-w-[30%]">
+                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-white/40 p-8 px-16 font-geistsans min-w-[30%] w-[30%]">
                   <span className="flex items-center justify-start gap-4 text-white font-normal text-base w-full">
                     <svg
                       width="53"
@@ -107,7 +108,7 @@ const QuickStats = () => {
                   </span>
                   <span className="font-medium text-5xl text-white">3M</span>
                 </div>
-                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-white/40 p-8 px-16 font-geistsans min-w-[30%]">
+                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-white/40 p-8 px-16 font-geistsans min-w-[30%] w-[30%]">
                   <span className="flex items-center justify-start gap-4 text-white font-normal text-base w-full">
                     <svg
                       width="53"
@@ -132,7 +133,7 @@ const QuickStats = () => {
                   </span>
                   <span className="font-medium text-5xl text-white">17</span>
                 </div>
-                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-white/40 p-8 px-16 font-geistsans min-w-[30%]">
+                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-white/40 p-8 px-16 font-geistsans min-w-[30%] w-[30%]">
                   <span className="flex items-center justify-start gap-4 text-white font-normal text-base w-full">
                     <svg
                       width="53"
@@ -160,7 +161,7 @@ const QuickStats = () => {
                   </span>
                   <span className="font-medium text-5xl text-white">1.50</span>
                 </div>
-                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-white/40 p-8 px-16 font-geistsans min-w-[30%]">
+                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-white/40 p-8 px-16 font-geistsans min-w-[30%] w-[30%]">
                   <span className="flex items-center justify-start gap-4 text-white font-normal text-base w-full">
                     <svg
                       width="53"
@@ -195,22 +196,7 @@ const QuickStats = () => {
                   Gain deeper insights into Plateau State's financial landscape
                   through the financial reports by the Auditor General
                 </span>
-                <button className="glass-fx flex items-center justify-center gap-4 p-4 px-6 rounded-lg font-normal text-base font-geistsans text-white/50 hover:bg-[#FCFF45] hover:text-black focus:border-none focus:outline-none  duration-300 ease-in-out">
-                  Access Financial Reports{" "}
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 18 18"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      className="svg-path"
-                      d="M0 10.1364L0 7.86364H13.6364L7.38636 1.61364L9 0L18 9L9 18L7.38636 16.3864L13.6364 10.1364H0Z"
-                      fill="#D1D5DB"
-                    />
-                  </svg>
-                </button>
+                <ButtonDark text={"Access Financial Reports"} />
               </div>
             </div>
           </div>
