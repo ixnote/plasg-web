@@ -21,7 +21,7 @@ function Essentials() {
   }, []);
 
   return (
-    <div className="py-12">
+    <div className="py-12 bg-white">
       <span className="max-w-[1200px] mx-auto flex flex-col">
         <span className="flex flex-col gap-8 mb-10">
           <span className="text-[#00000080] opacity-80 font-light flex items-center gap-2 text-[14px]">

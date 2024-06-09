@@ -2,12 +2,24 @@
 import React from "react";
 import Essentials from "./Essentials";
 import Faqs from "./Faqs";
+import Hero from "./Hero";
+import Image from "next/image";
+import bg from "../../../public/landing/bg.jpg";
 
 function ViewMdaWidget() {
   return (
-    <div className="pt-[200px]">
-      <Essentials />
-      <Faqs />
+    <div className="relative min-h-screen overflow-hidden">
+      {/* bg */}
+      <Image
+        src={bg}
+        alt="LOGO"
+        className="fixed top-0 left-0 w-full h-full bg-cover bg-center bg-no-repeat"
+      />
+      <div className="relative z-10">
+        <Hero />
+        <Essentials />
+        <Faqs />
+      </div>
     </div>
   );
 }
