@@ -36,7 +36,7 @@ function PaginationComponent({ totalPages, currentPage, onPageChange }: any) {
 
   const pageNumbers = getPageNumbers();
   return (
-    <span className="flex justify-end ">
+    <span className="flex  w-full justify-end max-w-[1200px] mx-auto">
       {currentPage !== 1 && (
         <span
           className={cn(

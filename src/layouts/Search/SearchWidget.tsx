@@ -2,8 +2,6 @@
 import ArticleCard from "@/components/ArticleCard";
 import ButtonComponent from "@/components/Button";
 import PaginationComponent from "@/components/Pagination";
-import { cn } from "@/utils";
-import { Pagination } from "@mantine/core";
 import React, { useState } from "react";
 
 function SearchWidget() {
@@ -21,7 +19,7 @@ function SearchWidget() {
           <ArticleCard key={index} />
         ))}
       </span>
-      <span className="flex justify-end max-w-[1200px] mx-auto">
+      <span className=" ">
         <PaginationComponent
           totalPages={totalPages}
           currentPage={currentPage}
