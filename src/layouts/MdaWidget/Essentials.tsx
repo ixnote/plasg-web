@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import ArticleImage from "@/assets/imgs/img.png";
 import PlaceCard from "@/components/PlaceCard";
 import { cn } from "@/utils";
+import { Divider } from "@mantine/core";
 
 function Essentials() {
   const article = {
@@ -58,6 +59,7 @@ function Essentials() {
             <PlaceCard data={article} key={index} />
           ))}
         </span>
+        <Divider />
       </span>
     </div>
   );
