@@ -2,7 +2,12 @@ import { cn } from "@/utils";
 import React from "react";
 import { GoChevronLeft, GoChevronRight } from "react-icons/go";
 
-function PaginationComponent({ totalPages, currentPage, onPageChange }: any) {
+function PaginationComponent({
+  totalPages,
+  currentPage,
+  onPageChange,
+  lightMode = false,
+}: any) {
   const getPageNumbers = () => {
     const pageNumbers = [];
     const totalNumbers = 5; // Total page numbers to show (including 1 and last page)
@@ -42,7 +47,8 @@ function PaginationComponent({ totalPages, currentPage, onPageChange }: any) {
           className={cn(
             "w-10 h-10 flex justify-center items-center rounded-md",
             { "bg-none": currentPage === 1 },
-            { "cursor-pointer bg-none text-white": currentPage !== 1 }
+            { "cursor-pointer bg-none text-white": currentPage !== 1 },
+            { "text-brand-main": lightMode }
           )}
           onClick={() => currentPage > 1 && onPageChange(currentPage - 1)}
         >
@@ -58,7 +64,8 @@ function PaginationComponent({ totalPages, currentPage, onPageChange }: any) {
               "bg-brand-lightYellow text-brand-main": page === currentPage,
               "bg-none text-white": page !== currentPage && page !== "...",
               "bg-none text-white cursor-default": page === "...",
-            }
+            },
+            { "text-brand-main": lightMode }
           )}
           onClick={() => page !== "..." && onPageChange(page)}
         >
@@ -72,7 +79,8 @@ function PaginationComponent({ totalPages, currentPage, onPageChange }: any) {
             { "bg-none": currentPage === totalPages },
             {
               "cursor-pointer bg-none text-white": currentPage !== totalPages,
-            }
+            },
+            { "text-brand-main": lightMode }
           )}
           onClick={() =>
             currentPage < totalPages && onPageChange(currentPage + 1)

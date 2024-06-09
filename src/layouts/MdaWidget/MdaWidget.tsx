@@ -1,16 +1,17 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { GoHome } from "react-icons/go";
-import ArticleImage from "@/assets/imgs/img.png";
 import { IoIosArrowRoundDown } from "react-icons/io";
-import LegislatureCard from "@/components/LegislatureCard";
 import { Divider } from "@mantine/core";
 import { FiSearch } from "react-icons/fi";
+import PaginationComponent from "@/components/Pagination";
 
 function MdaWidget() {
-  const article = {
-    image: ArticleImage,
-    name: "Hon. Gabriel Dewan",
-    position: "Speaker ",
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = 12;
+
+  const handlePageChange = (page: any) => {
+    setCurrentPage(page);
   };
   return (
     <div className="pt-[200px]">
@@ -69,6 +70,12 @@ function MdaWidget() {
               </span>
             ))}
           </span>
+          <PaginationComponent
+            lightMode={true}
+            totalPages={totalPages}
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+          />
         </span>
       </span>
     </div>
