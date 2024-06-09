@@ -4,6 +4,7 @@ import Image from "next/image";
 import { RiOrganizationChart } from "react-icons/ri";
 import ButtonComponent from "../Button";
 import { IoArrowForwardOutline } from "react-icons/io5";
+import Link from "next/link";
 
 function ArticleCard() {
   return (
@@ -36,7 +37,9 @@ function ArticleCard() {
       </span>
       <span className="flex justify-between items-center">
         <span className="flex gap-2">
-          <ButtonComponent> View</ButtonComponent>
+          <Link href={`/search/dabdgbadg`}>
+            <ButtonComponent> View</ButtonComponent>
+          </Link>
           <ButtonComponent className="text-brand-main border-none">
             Download
           </ButtonComponent>
