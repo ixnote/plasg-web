@@ -2,7 +2,7 @@ import React from "react";
 import { FiSearch } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
 
-function SearchComponent({ close }) {
+function SearchComponent({ close }: any) {
   const products = [
     "2023 Financial Report",
     "Driver's License",
