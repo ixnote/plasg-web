@@ -1,11 +1,11 @@
 import { Header } from "@/layouts";
-import Legislative from "@/layouts/Legislative/Legislative";
+import MdaWidget from "@/layouts/MdaWidget/MdaWidget";
 
-export default function LegislativePage() {
+export default function Mda() {
   return (
     <main>
       <Header />
-      <Legislative />
+      <MdaWidget />
       <p className="text-3xl font-bold min-h-screen p-4">
         Barr. Caleb Mutfwang
       </p>

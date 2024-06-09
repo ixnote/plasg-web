@@ -1,12 +1,10 @@
 import React from "react";
 import { GoHome } from "react-icons/go";
-import { articleData } from "@/utils/mockArticle";
 import ArticleImage from "@/assets/imgs/img.png";
 import { IoIosArrowRoundDown } from "react-icons/io";
 import LegislatureCard from "@/components/LegislatureCard";
 
 function Legislative() {
-  const data = articleData;
   const article = {
     image: ArticleImage,
     name: "Hon. Gabriel Dewan",
@@ -21,7 +19,7 @@ function Legislative() {
           </span>
           <span className="grid lg:grid-cols-5 grid-cols-2 gap-8">
             <p className="text-[52px] text-brand-main font-medium max-w-[800px] leading-[56px] lg:col-span-3 col-span-2 lg:border-r-[1px] lg:border-r-gray-200">
-              {data?.title}
+              Plateau State House of Assembly Members
             </p>
             <span className="col-span-2 flex flex-col gap-6">
               <p className="text-[18px] font-normal text-brand-main m-0 lg:col-span-4 col-span-1 max-w-[800px]">
