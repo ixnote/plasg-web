@@ -45,7 +45,7 @@ function MdaWidget() {
                 Name of MDA
               </p>
             </span>
-            <span className="flex border-b-[1px] border-b-[#ffffff70] col-span-2">
+            <span className="flex border-b-[1px] border-b-gray-300 col-span-2">
               <input
                 type="text"
                 placeholder="Find MDA..."
@@ -57,6 +57,18 @@ function MdaWidget() {
             </span>
           </span>
           <Divider />
+          <span className="flex flex-col">
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((item, index) => (
+              <span
+                key={index}
+                className="border-b-[1px] border-b-gray-300 cursor-pointer"
+              >
+                <p className="text-[40px] text-gray-400 font-medium max-w-[800px] py-12 ">
+                  Adult & Non-Formal Education Directorate
+                </p>
+              </span>
+            ))}
+          </span>
         </span>
       </span>
     </div>
