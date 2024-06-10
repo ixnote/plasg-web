@@ -111,3 +111,7 @@
 .visit-hover-fx:hover::after {
   transform: scaleX(1);
 }
+
+.mantine-Modal-content {
+  @apply bg-brand-main p-5;
+}
