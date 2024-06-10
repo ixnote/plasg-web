@@ -72,11 +72,11 @@ const AssetCardLight = ({
         }
       >
         <div className="flex w-full items-center justify-start gap-4">
-          <div className="border-[1px] border-[#9CA3AF] p-[10px] rounded-lg w-[134px] flex items-center justify-center text-brand-main font-normal text-sm bg-transparent font-geistsans cursor-pointer transition-fx hover:bg-brand-dark hover:text-brand-white ">
+          <div className="border-[1px] border-brand-grayish p-[10px] rounded-lg w-[134px] flex items-center justify-center text-brand-main font-normal text-sm bg-transparent font-geistsans cursor-pointer transition-fx hover:bg-brand-dark hover:text-brand-white hover:border-brand-dark">
             {button1text}
           </div>
           {button2text && (
-            <div className="border-[1px] border-[#9CA3AF] p-[10px] rounded-lg w-[134px] flex items-center justify-center text-brand-main font-normal text-sm bg-transparent font-geistsans cursor-pointer transition-fx hover:bg-brand-dark hover:text-brand-white ">
+            <div className="border-[1px] border-brand-grayish p-[10px] rounded-lg w-[134px] flex items-center justify-center text-brand-main font-normal text-sm bg-transparent font-geistsans cursor-pointer transition-fx hover:bg-brand-dark hover:text-brand-white hover:border-brand-dark">
               {button2text}
             </div>
           )}

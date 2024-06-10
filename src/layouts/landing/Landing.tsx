@@ -13,6 +13,7 @@ import Visit from "./Visit";
 import bg from "../../../public/landing/bg.jpg";
 import SectionDividerDark from "@/components/SectionDividerDark";
 import SectionDividerLight from "@/components/SectionDividerLight";
+import Newsletter from "./Newsletter";
 
 const Landing = () => {
   return (
@@ -34,12 +35,8 @@ const Landing = () => {
         <QuickActions />
         <SectionDividerLight />
         <Visit />
-
-        <div className="h-screen flex items-center justify-center">
-          <p className="text-white text-xl">
-            This is more content with parallax scrolling
-          </p>
-        </div>
+        <Newsletter />
+        <SectionDividerDark />
       </div>
     </div>
   );
