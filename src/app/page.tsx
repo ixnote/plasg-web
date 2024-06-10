@@ -7,6 +7,7 @@ export default function Home() {
       <Header />
       <Landing />
       <p className="text-3xl font-bold min-h-screen p-4">Barr. Caleb Mutfwang</p>
+
     </main>
   );
 }
