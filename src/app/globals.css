@@ -33,6 +33,12 @@ body {
 .hidden-element {
   display: none;
 }
+.image_overlay {
+  display: none;
+}
 .main-container:hover .hidden-element {
+  display: flex;
+}
+.main-container:hover + .image_overlay {
   display: flex;
 }

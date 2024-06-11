@@ -5,6 +5,7 @@ import Faqs from "./Faqs";
 import Hero from "./Hero";
 import Image from "next/image";
 import bg from "../../../public/landing/bg.jpg";
+import Discover from "./Discover";
 
 function ViewMdaWidget() {
   return (
@@ -17,6 +18,7 @@ function ViewMdaWidget() {
       />
       <div className="relative z-10">
         <Hero />
+        <Discover />
         <Essentials />
         <Faqs />
       </div>
