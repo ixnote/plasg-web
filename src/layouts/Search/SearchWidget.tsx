@@ -2,9 +2,11 @@
 import ArticleCard from "@/components/ArticleCard";
 import ButtonComponent from "@/components/Button";
 import PaginationComponent from "@/components/Pagination";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 function SearchWidget() {
+  const router = useRouter();
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 12;
 
@@ -13,10 +15,13 @@ function SearchWidget() {
   };
 
   return (
-    <div className="py-[100px] bg-brand-main flex gap-8 flex-col">
+    <div className="py-[100px] bg-brand-main flex gap-8 flex-col p-5">
       <span className="grid gap-5 lg:grid-cols-2 grid-cols-1 max-w-[1200px] mx-auto">
         {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item, index) => (
-          <ArticleCard key={index} />
+          <ArticleCard
+            key={index}
+            onclick={() => router.push(`search/${item}`)}
+          />
         ))}
       </span>
       <span className=" ">

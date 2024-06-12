@@ -5,6 +5,7 @@ import { IoIosArrowRoundDown } from "react-icons/io";
 import { Divider } from "@mantine/core";
 import { FiSearch } from "react-icons/fi";
 import PaginationComponent from "@/components/Pagination";
+import { handleScrollDown } from "@/utils/handleScrollDown";
 
 function MdaWidget() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -13,11 +14,12 @@ function MdaWidget() {
   const handlePageChange = (page: any) => {
     setCurrentPage(page);
   };
+
   return (
-    <div className="pt-[200px]">
+    <div className="pt-[200px] p-5">
       <span className="max-w-[1200px] mx-auto flex flex-col">
         <span className="flex flex-col gap-8 mb-10">
-          <span className="uppercase text-[#00000080] opacity-80 font-light flex items-center gap-2 text-[14px]">
+          <span className="uppercase text-[#00000080] opacity-80 font-light flex items-center gap-2 text-[14px] flex-wrap">
             <GoHome size={18} />/<p>GOVERNMENT</p>/
             <p>MINISTRIES, DEPARTMENTS & AGENCIES</p>
           </span>
@@ -33,7 +35,10 @@ function MdaWidget() {
                 essential public services, strategic initiatives, and innovative
                 solutions aimed at enhancing your well-being and prosperity
               </p>
-              <button className="h-10 px-8 rounded-sm bg-white border w-fit border-gray-300 flex items-center justify-center gap-2">
+              <button
+                onClick={handleScrollDown}
+                className="h-10 px-8 rounded-sm bg-white border w-fit border-gray-300 flex items-center justify-center gap-2"
+              >
                 Scroll down <IoIosArrowRoundDown />
               </button>
             </span>
@@ -64,7 +69,7 @@ function MdaWidget() {
                 key={index}
                 className="border-b-[1px] border-b-gray-300 cursor-pointer"
               >
-                <p className="text-[40px] text-gray-400 font-medium max-w-[800px] py-12 ">
+                <p className="lg:text-[40px] text-[24px] text-gray-400 font-medium max-w-[800px] py-12 ">
                   Adult & Non-Formal Education Directorate
                 </p>
               </span>
