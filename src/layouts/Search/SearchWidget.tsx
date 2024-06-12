@@ -1,9 +1,11 @@
 "use client";
+import { searchResources } from "@/api/mda/searchResources";
 import ArticleCard from "@/components/ArticleCard";
 import ButtonComponent from "@/components/Button";
 import PaginationComponent from "@/components/Pagination";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { useQuery } from "react-query";
 
 function SearchWidget() {
   const router = useRouter();
@@ -14,6 +16,10 @@ function SearchWidget() {
     setCurrentPage(page);
   };
 
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["searchResources"],
+    queryFn: searchResources,
+  });
   return (
     <div className="py-[100px] bg-brand-main flex gap-8 flex-col p-5">
       <span className="grid gap-5 lg:grid-cols-2 grid-cols-1 max-w-[1200px] mx-auto">
