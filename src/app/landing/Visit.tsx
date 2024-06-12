@@ -26,14 +26,14 @@ const Visit = () => {
 
   return (
     <>
-      <div className="min-h-screen flex items-center justify-center py-24 bg-white">
+      <div className="min-h-screen flex items-center justify-center py-24 bg-brand-white">
         {/* content */}
         <div className="flex flex-col items-between justify-between gap-20 w-[92%] h-[70%]">
           <div className="max-h-[204px] h-[20%] flex flex-col gap-4 w-[65%]">
             <span className="font-light text-sm text-black font-geistmono">
               VISIT
             </span>
-            <span className="font-medium text-4xl font-geistsans text-[#0E3E40]">
+            <span className="font-medium text-4xl font-geistsans text-brand-main">
               Visiting The Beautiful Plateau State?{" "}
             </span>
             <span className="font-normal text-base text-[rgba(14, 62, 64, 0.8)] font-geistsans w-[75%]">
@@ -100,7 +100,7 @@ const Visit = () => {
                 <Image
                   src={images[active]}
                   alt="visit"
-                  className="w-[1360px] h-full object-cover rounded-xl"
+                  className="w-[1360px] h-full object-cover rounded-xl xl:w-full"
                   loading="lazy"
                 />
               </div>

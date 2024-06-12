@@ -16,7 +16,7 @@ const AssetCardLight = ({
 
   return (
     <div
-      className="h-[540px] w-[49%] bg-[#E5E7EB] p-8 mb-2 rounded-2xl flex flex-col items-start justify-start gap-8 transition-fx cursor-pointer hover:bg-brand-lightYellow"
+      className="w-full bg-[#E5E7EB] p-8 mb-2 rounded-2xl flex flex-col items-start justify-start gap-8 transition-fx cursor-pointer hover:bg-brand-lightYellow lg:w-[49%] lg:h-[540px]"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -36,7 +36,7 @@ const AssetCardLight = ({
         </div>
         {/* title part */}
         <div className="flex flex-col gap-8">
-          <div className="font-geistsans font-medium text-3xl text-brand-main flex flex-col gap-2 h-[60px]">
+          <div className="font-geistsans font-medium text-2xl text-brand-main flex flex-col gap-2 md:text-3xl lg:h-[60px]">
             {title}
             {byText && (
               <span className="flex items-center justify-start gap-4 text-brand-grayish font-normal text-sm font-geistsans">
@@ -58,7 +58,7 @@ const AssetCardLight = ({
               </span>
             )}
           </div>
-          <div className="font-geistsans font-normal text-lg text-brand-main h-[170px]">
+          <div className="font-geistsans font-normal text-base text-brand-main md:text-lg lg:h-[170px]">
             {description}
           </div>
         </div>

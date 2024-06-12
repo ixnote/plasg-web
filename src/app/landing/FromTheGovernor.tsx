@@ -6,36 +6,36 @@ import ButtonDark from "@/components/ButtonDark";
 const FromTheGovernor = () => {
   return (
     <>
-      <div className="min-h-screen flex items-center justify-center py-24  bg-[#0E3E40]">
+      <div className="min-h-screen flex items-center justify-center py-24  bg-brand-main">
         {/* content */}
-        <div className="flex items-center justify-between gap-4 w-[92%]">
+        <div className="flex items-center justify-between flex-col gap-8 w-[92%] md:justi-start lg:flex-row lg:gap-4 lg:items-center">
           {/* left */}
-          <div className="w-[50%] relative">
+          <div className="w-full relative lg:w-[50%]">
             <Image
               src={governor}
               alt="His excellency"
-              className="w-[680px] rounded-xl"
+              className="w-[680px] rounded-xl mx-auto"
             />
-            <div className="glass-fx  w-[75%] absolute bottom-6 left-6 flex flex-col gap-4 p-8 text-left">
-              <span className="font-medium text-4xl font-geistsans text-white">
+            <div className="glass-fx w-[340px] absolute bottom-6 left-6 flex flex-col gap-1 p-4 text-left md:w-[476px] md:gap-4 md:p-8 lg:w-[75%]">
+              <span className="font-medium text-[24px] font-geistsans text-brand-white lg:text-4xl">
                 Barr. Caleb Mutfwang
               </span>
-              <span className="font-normal text-base font-geistsans text-white">
+              <span className="font-normal text-base font-geistsans text-brand-white">
                 Executive Governor, Plateau State
               </span>
             </div>
           </div>
           {/* right */}
-          <div className="w-[45%] flex flex-col items-start gap-24">
-            <div className="flex flex-col gap-8 w-[80%]">
-              <span className="font-normal text-base text-white font-geistmono">
+          <div className="w-full flex flex-col items-center gap-24 lg:w-[45%] lg:items-start">
+            <div className="flex flex-col items-center gap-8 w-full lg:w-[80%] lg:items-start">
+              <span className="font-normal text-base text-brand-white font-geistmono">
                 FROM THE GOVERNOR
               </span>
-              <span className="font-medium text-4xl font-geistsans text-white">
+              <span className="font-medium text-4xl text-center font-geistsans text-brand-white lg:text-left">
                 "No matter your origin or language, if you reside on or cherish
                 the Plateau, you're family to me."
               </span>
-              <span className="font-normal text-base text-white font-geistsans">
+              <span className="font-normal text-base text-center text-brand-white font-geistsans  w-[90%] lg:w-full lg:text-left">
                 Plateau State's values are not just a badge of honor; they are
                 the cornerstone of our history and our journey ahead. We stand
                 at the forefront of progress, championing bold reforms that echo

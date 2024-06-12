@@ -4,33 +4,32 @@ import React from "react";
 const QuickStats = () => {
   return (
     <>
-      <div className="min-h-screen flex items-center justify-center py-24 bg-[#0E3E40]">
+      <div className="min-h-screen flex items-center justify-center py-24 bg-brand-main">
         {/* content */}
         <div className="flex flex-col items-between justify-between gap-20 w-[92%] h-[70%]">
-          <div className="max-h-[204px] h-[20%] flex flex-col gap-4 w-[65%]">
-            <span className="font-light text-sm text-white font-geistmono">
+          {/* top */}
+          <div className="w-full flex flex-col gap-4 lg:w-[65%]">
+            <span className="font-light text-[10px] text-brand-white font-geistmono md:text-xs lg:text-sm">
               QUICK STATS
             </span>
-            <span className="font-medium text-4xl font-geistsans text-white">
+            <span className="font-medium text-[28px] font-geistsans text-brand-white md:text-4xl">
               Plateau State by the Numbers: Unveiling Key Statistics for
               Informed Decision-Making
             </span>
-            <span className="font-normal text-base text-white font-geistsans w-[75%]">
+            <span className="w-full font-normal text-[14px] text-brand-white font-geistsans md:text-base lg:w-[75%]">
               Plateau State is a diverse and vibrant region in Nigeria, known
               for its stunning natural landscapes and rich cultural heritage.
             </span>
           </div>
-          <div
-            className="border-[1px] border-[#B1D362
-            ] rounded-2xl p-32"
-          >
+          {/* bottom */}
+          <div className="border-[1px] border-brand-secondary rounded-2xl p-16 flex items-center justify-center lg:p-32">
             {/* content */}
-            <div className="flex flex-col items-center justify-center gap-40 w-[70%] m-auto">
+            <div className="flex flex-col items-center justify-center gap-40 w-full mx-auto">
               {/* top */}
-              <div className="flex flex-row gap-4 items-center justify-center flex-wrap w-[1017px]">
+              <div className="flex flex-col gap-8 items-center justify-center flex-wrap w-full lg:gap-4 lg:flex-row">
                 {/* items */}
-                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-white/40 p-8 px-16 font-geistsans min-w-[30%] w-[30%]">
-                  <span className="flex items-center justify-start gap-4 text-white font-normal text-base w-full">
+                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-brand-white/40 p-8 px-16 font-geistsans min-w-[30%] w-[100%] mx-auto md:w-[480px] lg:w-[30%]">
+                  <span className="flex items-center justify-start gap-4 text-brand-white font-normal text-base w-full">
                     <svg
                       width="53"
                       height="52"
@@ -52,10 +51,12 @@ const QuickStats = () => {
                     </svg>
                     Created
                   </span>
-                  <span className="font-medium text-5xl text-white">1976</span>
+                  <span className="font-medium text-5xl text-brand-white">
+                    1976
+                  </span>
                 </div>
-                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-white/40 p-8 px-16 font-geistsans min-w-[30%] w-[30%]">
-                  <span className="flex items-center justify-start gap-4 text-white font-normal text-base w-full">
+                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-brand-white/40 p-8 px-16 font-geistsans min-w-[30%] w-[100%] mx-auto md:w-[480px] lg:w-[30%]">
+                  <span className="flex items-center justify-start gap-4 text-brand-white font-normal text-base w-full">
                     <svg
                       width="53"
                       height="52"
@@ -79,10 +80,12 @@ const QuickStats = () => {
                     </svg>
                     Land Area (m2)
                   </span>
-                  <span className="font-medium text-5xl text-white">≈27K</span>
+                  <span className="font-medium text-5xl text-brand-white">
+                    ≈27K
+                  </span>
                 </div>
-                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-white/40 p-8 px-16 font-geistsans min-w-[30%] w-[30%]">
-                  <span className="flex items-center justify-start gap-4 text-white font-normal text-base w-full">
+                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-brand-white/40 p-8 px-16 font-geistsans min-w-[30%] w-[100%] mx-auto md:w-[480px] lg:w-[30%]">
+                  <span className="flex items-center justify-start gap-4 text-brand-white font-normal text-base w-full">
                     <svg
                       width="53"
                       height="52"
@@ -106,10 +109,12 @@ const QuickStats = () => {
                     </svg>
                     Est Population
                   </span>
-                  <span className="font-medium text-5xl text-white">3M</span>
+                  <span className="font-medium text-5xl text-brand-white">
+                    3M
+                  </span>
                 </div>
-                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-white/40 p-8 px-16 font-geistsans min-w-[30%] w-[30%]">
-                  <span className="flex items-center justify-start gap-4 text-white font-normal text-base w-full">
+                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-brand-white/40 p-8 px-16 font-geistsans min-w-[30%] w-[100%] mx-auto md:w-[480px] lg:w-[30%]">
+                  <span className="flex items-center justify-start gap-4 text-brand-white font-normal text-base w-full">
                     <svg
                       width="53"
                       height="52"
@@ -131,9 +136,11 @@ const QuickStats = () => {
                     </svg>
                     LGAs
                   </span>
-                  <span className="font-medium text-5xl text-white">17</span>
+                  <span className="font-medium text-5xl text-brand-white">
+                    17
+                  </span>
                 </div>
-                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-white/40 p-8 px-16 font-geistsans min-w-[30%] w-[30%]">
+                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-brand-white/40 p-8 px-16 font-geistsans min-w-[30%] w-[100%] mx-auto md:w-[480px] lg:w-[30%]">
                   <span className="flex items-center justify-start gap-4 text-white font-normal text-base w-full">
                     <svg
                       width="53"
@@ -161,7 +168,7 @@ const QuickStats = () => {
                   </span>
                   <span className="font-medium text-5xl text-white">1.50</span>
                 </div>
-                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-white/40 p-8 px-16 font-geistsans min-w-[30%] w-[30%]">
+                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-brand-white/40 p-8 px-16 font-geistsans min-w-[30%] w-[100%] mx-auto md:w-[480px] lg:w-[30%]">
                   <span className="flex items-center justify-start gap-4 text-white font-normal text-base w-full">
                     <svg
                       width="53"
@@ -188,11 +195,11 @@ const QuickStats = () => {
                 </div>
               </div>
               {/* bottom */}
-              <div className="flex flex-col justify-center items-center gap-8 text-center w-[650px]">
-                <span className="font-medium text-4xl font-geistsans text-white">
+              <div className="flex flex-col justify-center items-center gap-8 text-center w-[350px] md:w-[650px]">
+                <span className="font-medium text-2xl font-geistsans text-white md:text-4xl">
                   Go further, access our financial reports
                 </span>
-                <span className="font-normal text-base text-white font-geistsans w-[85%]">
+                <span className="font-normal text-base text-white font-geistsans w-full md:w-[85%]">
                   Gain deeper insights into Plateau State's financial landscape
                   through the financial reports by the Auditor General
                 </span>
