@@ -4,6 +4,7 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import "@mantine/core/styles.css";
 import { MantineProvider } from "@mantine/core";
+import Providers from "@/utils/Provider";
 
 import { Header } from "@/layouts";
 import Footer from "@/layouts/Footer";
@@ -21,11 +22,13 @@ export default function RootLayout({
   return (
     <html className={`${GeistSans.variable} ${GeistMono.variable}`} lang="en">
       <body>
-        <MantineProvider>
-          <Header />
-          {children}
-          <Footer />
-        </MantineProvider>
+        <Providers>
+          <MantineProvider>
+            <Header />
+            {children}
+            <Footer />
+          </MantineProvider>
+        </Providers>
       </body>
     </html>
   );

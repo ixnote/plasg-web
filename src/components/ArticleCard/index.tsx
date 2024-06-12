@@ -6,9 +6,12 @@ import ButtonComponent from "../Button";
 import { IoArrowForwardOutline } from "react-icons/io5";
 import Link from "next/link";
 
-function ArticleCard() {
+function ArticleCard({ onclick }: any) {
   return (
-    <div className="col-span-1 bg-[#E5E7EB] p-8 rounded-2xl flex flex-col gap-4 justify-between h-[540px] hover:bg-brand-lightYellow">
+    <div
+      onClick={onclick}
+      className="col-span-1 bg-[#E5E7EB] lg:p-8 p-5 rounded-2xl flex flex-col gap-4 justify-between h-[540px] hover:bg-brand-lightYellow"
+    >
       <span className="flex flex-col gap-[64px]">
         <span className="flex justify-between">
           <span className="flex flex-col gap-2">

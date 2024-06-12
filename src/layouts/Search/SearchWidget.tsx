@@ -1,22 +1,36 @@
 "use client";
+import { searchResources } from "@/api/mda/searchResources";
 import ArticleCard from "@/components/ArticleCard";
 import ButtonComponent from "@/components/Button";
 import PaginationComponent from "@/components/Pagination";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { useQuery } from "react-query";
+import { useGeneralContext } from "../../../context/GenralContext";
 
 function SearchWidget() {
+  const router = useRouter();
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 12;
 
   const handlePageChange = (page: any) => {
     setCurrentPage(page);
   };
+  const { name, setName }: any = useGeneralContext();
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["searchResources", name],
+    queryFn: searchResources,
+  });
 
+  console.log("data :>> ", data);
   return (
-    <div className="py-[100px] bg-brand-main flex gap-8 flex-col">
+    <div className="py-[100px] bg-brand-main flex gap-8 flex-col p-5">
       <span className="grid gap-5 lg:grid-cols-2 grid-cols-1 max-w-[1200px] mx-auto">
         {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item, index) => (
-          <ArticleCard key={index} />
+          <ArticleCard
+            key={index}
+            onclick={() => router.push(`search/${item}`)}
+          />
         ))}
       </span>
       <span className=" ">

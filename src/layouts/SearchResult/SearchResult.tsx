@@ -16,10 +16,10 @@ function SearchResult() {
     text: "Learn the steps, required documents, fees, and timelines renewing your vehicle registration in Plateau State. Simplify he process with our comprehensive guide.",
   };
   return (
-    <div className="pt-[200px]">
+    <div className="pt-[200px] p-5">
       <span className="max-w-[1200px] mx-auto flex flex-col">
         <span className="flex flex-col gap-8">
-          <span className="uppercase text-[#00000080] opacity-80 font-light flex items-center gap-2 text-[14px]">
+          <span className="uppercase text-[#00000080] opacity-80 font-light flex items-center gap-2 text-[14px] flex-wrap">
             <GoHome size={18} />/<p>Search</p>/<p>SEARCH RESULTS</p>/
             <p>ARTICLES</p>
           </span>
@@ -29,7 +29,7 @@ function SearchResult() {
           <p className="text-[52px] text-brand-main font-medium max-w-[800px] leading-[56px]">
             {data?.title}
           </p>
-          <span className="text-[#00000080] opacity-80 font-medium flex items-center gap-4 text-[14px]">
+          <span className="text-[#00000080] opacity-80 font-medium flex items-center gap-4 text-[14px] flex-wrap">
             <p>{data?.reference}</p>/<p>{data?.date}</p>/<p>{data?.min}</p>
           </span>
         </span>
