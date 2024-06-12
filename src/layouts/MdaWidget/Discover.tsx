@@ -8,6 +8,7 @@ import { IoArrowForwardOutline } from "react-icons/io5";
 import { BsArrowRight } from "react-icons/bs";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { cn } from "@/utils";
+import { useMediaQuery } from "@mantine/hooks";
 
 function Discover() {
   const article = {
@@ -73,6 +74,8 @@ function Discover() {
     setActiveTab(data[0]);
   }, []);
 
+  const matches = useMediaQuery("(max-width: 768px)");
+
   return (
     <div className="py-12 bg-white">
       <span className="lg:pl-[100px] pl-5 mx-auto flex flex-col">
@@ -129,7 +132,11 @@ function Discover() {
               <span className="carousel flex w-full flex-col gap-4">
                 <div
                   className="carousel-track flex w-full gap-6"
-                  style={{ transform: `translateX(-${currentIndex * 70.67}%)` }}
+                  style={{
+                    transform: `translateX(-${
+                      currentIndex * (matches ? 101 : 70.67)
+                    }%)`,
+                  }}
                 >
                   {images.map((item, index) => (
                     <span

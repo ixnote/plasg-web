@@ -88,3 +88,11 @@ body {
 .next {
   right: 10px;
 }
+
+@media only screen and (max-width: 768px) {
+  .carousel-image {
+    width: 95%; /* Show 1.5 images at a time */
+    flex-shrink: 0;
+    object-fit: cover;
+  }
+}
