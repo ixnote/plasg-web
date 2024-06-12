@@ -6,6 +6,8 @@ import { Divider } from "@mantine/core";
 import { FiSearch } from "react-icons/fi";
 import PaginationComponent from "@/components/Pagination";
 import { handleScrollDown } from "@/utils/handleScrollDown";
+import { useQuery } from "react-query";
+import { getMdas } from "@/api/mda/getMdas";
 
 function MdaWidget() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -14,6 +16,17 @@ function MdaWidget() {
   const handlePageChange = (page: any) => {
     setCurrentPage(page);
   };
+
+  const {
+    data: mda,
+    isLoading: mdaIsLoading,
+    error,
+  } = useQuery({
+    queryKey: ["getMdas"],
+    queryFn: getMdas,
+  });
+
+  console.log("mda :>> ", mda);
 
   return (
     <div className="pt-[200px] p-5">
