@@ -1,4 +1,4 @@
-const BASE_URL = process.env.NEXT_PUBLIC_JOT_EXCHANGE_API;
+const BASE_URL = process.env.NEXT_PUBLIC_API_URI;
 
 const CORE_APP = {
   plsg: {
