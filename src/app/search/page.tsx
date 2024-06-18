@@ -1,6 +1,8 @@
 import { Header } from "@/layouts";
 import SearchHero from "@/layouts/Search/SearchHero";
 import SearchWidget from "@/layouts/Search/SearchWidget";
+import Newsletter from "../landing/Newsletter";
+import SectionDividerDark from "@/components/SectionDividerDark";
 
 export default function Search() {
   return (
@@ -8,9 +10,8 @@ export default function Search() {
       <Header />
       <SearchHero />
       <SearchWidget />
-      <p className="text-3xl font-bold min-h-screen p-4">
-        Barr. Caleb Mutfwang
-      </p>
+      <Newsletter />
+      <SectionDividerDark />
     </main>
   );
 }

@@ -47,9 +47,9 @@ function ArticleCard({ onclick }: any) {
             Download
           </ButtonComponent>
         </span>
-        <ButtonComponent className="text-brand-main border-none hover:bg-none px-0">
+        <button className="text-brand-main border-none hover:bg-none px-0">
           <IoArrowForwardOutline size={28} />
-        </ButtonComponent>
+        </button>
       </span>
     </div>
   );
