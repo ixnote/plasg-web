@@ -1,5 +1,6 @@
+import Newsletter from "@/app/landing/Newsletter";
+import SectionDividerDark from "@/components/SectionDividerDark";
 import { Header } from "@/layouts";
-import SearchWidget from "@/layouts/Search/SearchWidget";
 import SearchResult from "@/layouts/SearchResult/SearchResult";
 
 export default function Search() {
@@ -7,9 +8,8 @@ export default function Search() {
     <main>
       <Header />
       <SearchResult />
-      <p className="text-3xl font-bold min-h-screen p-4">
-        Barr. Caleb Mutfwang
-      </p>
+      <Newsletter />
+      <SectionDividerDark />
     </main>
   );
 }
