@@ -1,7 +1,7 @@
 import { Header } from "@/layouts";
 import SearchHero from "@/layouts/Search/SearchHero";
 import SearchWidget from "@/layouts/Search/SearchWidget";
-import Newsletter from "../landing/Newsletter";
+import Newsletter from "../home/Newsletter";
 import SectionDividerDark from "@/components/SectionDividerDark";
 
 export default function Search() {
@@ -10,8 +10,8 @@ export default function Search() {
       <Header />
       <SearchHero />
       <SearchWidget />
-      <Newsletter />
-      <SectionDividerDark />
+      {/* <Newsletter />
+      <SectionDividerDark /> */}
     </main>
   );
 }

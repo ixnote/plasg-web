@@ -1,6 +1,6 @@
 import { Header } from "@/layouts";
 import MdaWidget from "@/layouts/MdaWidget/MdaWidget";
-import Newsletter from "../landing/Newsletter";
+import Newsletter from "../home/Newsletter";
 import SectionDividerDark from "@/components/SectionDividerDark";
 
 export default function Mda() {
@@ -8,8 +8,8 @@ export default function Mda() {
     <main>
       <Header />
       <MdaWidget />
-      <Newsletter />
-      <SectionDividerDark />
+      {/* <Newsletter /> */}
+      {/* <SectionDividerDark /> */}
     </main>
   );
 }
