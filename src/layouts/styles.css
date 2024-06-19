@@ -77,9 +77,9 @@
 
 /* misc styles */
 .glass-fx {
-  -webkit-backdrop-filter: blur(10px); /* Safari support */
-  background-color: #ffffff40;
-  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(0.5px); /* Safari support */
+  background-color: #ffffff20;
+  backdrop-filter: blur(0.5px);
   /* box-shadow: 0 0 15px -6px #424242; */
   border: 1px solid rgba(255, 255, 255, 0.2);
   /* border-color: rgb(255 255 255 / 0.2); */

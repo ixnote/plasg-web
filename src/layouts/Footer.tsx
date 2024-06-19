@@ -5,10 +5,14 @@ import React from "react";
 import top from "../../public/footer/footer_top.svg";
 import left from "../../public/footer/footer_left.svg";
 import right from "../../public/footer/footer_right.svg";
+import Newsletter from "@/app/home/Newsletter";
+import SectionDividerDark from "@/components/SectionDividerDark";
 
 const Footer = () => {
   return (
     <>
+      <Newsletter />
+      <SectionDividerDark />
       <div className="min-h-screen flex flex-col items-center justify-center py-24 bg-brand-main">
         {/* content */}
         <div className="flex flex-col items-between justify-between gap-16 w-[92%] h-[70%]">
