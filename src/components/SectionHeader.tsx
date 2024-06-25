@@ -1,15 +1,59 @@
+"use client";
+
 import Image from "next/image";
 import React from "react";
 import { GoHome } from "react-icons/go";
 import { IoIosArrowRoundDown } from "react-icons/io";
+import { useRouter } from "next/navigation";
 
-const SectionHeader = ({ title, description, image }: any) => {
+const SectionHeader = ({
+  title,
+  description,
+  image,
+  baseText,
+  baseURL,
+  linkText,
+  linkURL,
+}: any) => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push(`/government/${linkURL}`);
+  };
+
+  const goHome = () => {
+    router.push(`/`);
+  };
+
+  const gotoBase = () => {
+    router.push(`/${baseURL}`);
+  };
+
   return (
     <>
       <div className="flex flex-col py-24 pt-[180px] gap-4 lg:gap-16">
         <span className="flex flex-col gap-8 mb-10">
           <span className="uppercase text-brand-dark opacity-80 font-light flex items-center gap-2 text-[14px] flex-wrap">
-            <GoHome size={18} />/<p>GOVERNMENT</p>
+            <GoHome
+              size={18}
+              onClick={goHome}
+              className="transition-fx cursor-pointer hover:text-brand-main"
+            />
+            /
+            <p
+              onClick={gotoBase}
+              className="transition-fx cursor-pointer hover:text-brand-main"
+            >
+              {baseText}
+            </p>
+            {linkText && (
+              <p
+                onClick={handleClick}
+                className="transition-fx cursor-pointer hover:text-brand-main"
+              >
+                / {linkText}
+              </p>
+            )}
           </span>
           <span className="grid lg:grid-cols-5 grid-cols-2 gap-8">
             <p className="text-[52px] text-brand-main font-medium font-geistsans max-w-[800px] leading-[56px] lg:col-span-3 col-span-2 lg:border-r-[1px] lg:border-r-gray-200">

@@ -1,6 +1,7 @@
 import Newsletter from "@/app/home/Newsletter";
 import SectionDividerDark from "@/components/SectionDividerDark";
 import { Header } from "@/layouts";
+import Footer from "@/layouts/Footer";
 import ViewMdaWidget from "@/layouts/MdaWidget/ViewMdaWidget";
 
 export default function Mda() {
@@ -10,6 +11,7 @@ export default function Mda() {
       <ViewMdaWidget />
       {/* <Newsletter />
       <SectionDividerDark /> */}
+      <Footer />
     </main>
   );
 }

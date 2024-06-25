@@ -14,10 +14,13 @@ import bg from "../../../public/landing/bg.jpg";
 import SectionDividerDark from "@/components/SectionDividerDark";
 import SectionDividerLight from "@/components/SectionDividerLight";
 import Newsletter from "./Newsletter";
+import { Header } from "@/layouts";
+import Footer from "@/layouts/Footer";
 
 const Landing = () => {
   return (
     <>
+      <Header />
       <div className="relative min-h-screen max-w-[2040px] w-full mx-auto">
         {/* bg */}
         {/* <Image
@@ -43,6 +46,7 @@ const Landing = () => {
         <SectionDividerDark /> */}
         {/* </div> */}
       </div>
+      <Footer />
     </>
   );
 };

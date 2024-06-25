@@ -36,7 +36,7 @@ const Legislative = () => {
           />
         </div>
         <div className="w-[220px] mx-auto">
-          <ButtonLight text={"See Members"} />
+          <ButtonLight text={"See Members"} url={"legislative"} />
         </div>
       </div>
     </>

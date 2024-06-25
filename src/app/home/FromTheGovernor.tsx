@@ -44,7 +44,9 @@ const FromTheGovernor = () => {
                 beacon of growth and opportunity.
               </span>
             </div>
-            <ButtonDark text={"Learn More About the Governor"} />
+            <div className="">
+              <ButtonDark text={"Learn More About the Governor"} />
+            </div>
           </div>
         </div>
       </div>

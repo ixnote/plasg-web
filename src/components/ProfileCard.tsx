@@ -1,9 +1,33 @@
+"use client";
+
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 
-const ProfileCard = ({ name, position, action, image, executive }: any) => {
+const ProfileCard = ({
+  name,
+  position,
+  action,
+  image,
+  executive,
+  link,
+  email,
+}: any) => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    if (action === "page") {
+      router.push(`/government/${link}`);
+    } else if (action === "mail") {
+      window.location.href = `mailto:${email}`;
+    }
+  };
+
   return (
-    <div className="flex flex-col items-start gap-2 w-full py-4">
+    <div
+      className="flex flex-col items-start gap-2 w-full py-4"
+      onClick={handleClick}
+    >
       {/* top part */}
       <div className="relative h-[463px] w-full group cursor-pointer">
         {/* image */}
@@ -12,13 +36,12 @@ const ProfileCard = ({ name, position, action, image, executive }: any) => {
             src={image}
             alt="profile"
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-            // loading="lazy"
           />
         </div>
         {/* overlay */}
         <div className="absolute inset-0 bg-[#588065]/20 opacity-0 group-hover:opacity-50 transition-opacity duration-300 rounded-xl"></div>
         {/* hover icon */}
-        <div className="absolute top-4 right-4 p-4 bg-[#FCFF5B] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer">
+        <div className="absolute top-4 right-4 p-4 bg-brand-lightYellow rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer">
           {action === "mail" && (
             <svg
               width="23"
@@ -59,7 +82,7 @@ const ProfileCard = ({ name, position, action, image, executive }: any) => {
       </div>
       {/* bottom part */}
       {executive ? (
-        <span className="font-medium text-4xl text-brand-dark font-geistsans">
+        <span className="font-medium text-2xl text-brand-dark font-geistsans lg:text-4xl">
           {name}
         </span>
       ) : (

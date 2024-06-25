@@ -20,7 +20,7 @@ const Hero = () => {
           <div className="w-full flex flex-col gap-4 justify-between lg:w-[50%]">
             <div className="flex flex-col gap-4">
               {/* left top */}
-              <div className="glass-fx h-[296px] flex flex-col gap-10 text-left p-8">
+              <div className="home-glass-fx h-[296px] flex flex-col gap-10 text-left p-8">
                 <div className="text-left flex flex-col gap-2">
                   <span className="font-medium text-3xl font-geistsans text-brand-white outline-2 md:text-5xl">
                     Welcome to{" "}
@@ -146,7 +146,7 @@ const Hero = () => {
                   className={
                     showSearchResult
                       ? "h-[74px] flex flex-row items-center justify-between p-4 rounded-lg duration-300 ease-in-out bg-brand-lightYellow shadow-none rounded-t-none"
-                      : "glass-fx h-[74px] flex flex-row items-center justify-between p-4 rounded-lg duration-300 ease-in-out hover:bg-brand-lightYellow hover:shadow-none focus:bg-brand-lightYellow focus:rounded-t-none"
+                      : "home-glass-fx h-[74px] flex flex-row items-center justify-between p-4 rounded-lg duration-300 ease-in-out hover:bg-brand-lightYellow hover:shadow-none focus:bg-brand-lightYellow focus:rounded-t-none"
                   }
                 >
                   <input

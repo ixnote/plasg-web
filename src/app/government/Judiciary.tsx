@@ -35,9 +35,9 @@ const Judiciary = () => {
             position={"Member House of Assembly."}
           />
         </div>
-        <div className="w-[220px] mx-auto">
+        {/* <div className="w-[220px] mx-auto">
           <ButtonLight text={"See Members"} />
-        </div>
+        </div> */}
       </div>
     </>
   );

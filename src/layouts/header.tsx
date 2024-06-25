@@ -76,7 +76,9 @@ const Header = () => {
       >
         <div className="header">
           <div className="header-content">
-            <Image src={logomark} alt="LOGO" />
+            <Link href="/">
+              <Image src={logomark} alt="LOGO" />
+            </Link>
             <div className="manue-container">
               <ul className="menue-ul">
                 {menueList.map((menu) => (
