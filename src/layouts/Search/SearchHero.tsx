@@ -10,7 +10,7 @@ function SearchHero() {
             <GoHome size={18} />/<p>Search</p>/<p>SEARCH RESULTS</p>
           </span>
           <p className="lg:text-[52px] text-[40px] text-white font-medium max-w-[800px] lg:leading-[56px] leading-[44px]">
-            Results Found for "Driver's License"
+            Results Found for &quot;Driver&apos;s License&quot;
           </p>
         </span>
         <span className="flex justify-between w-full gap-5 flex-wrap">

@@ -200,8 +200,8 @@ const QuickStats = () => {
                   Go further, access our financial reports
                 </span>
                 <span className="font-normal text-base text-white font-geistsans w-full md:w-[85%]">
-                  Gain deeper insights into Plateau State's financial landscape
-                  through the financial reports by the Auditor General
+                  Gain deeper insights into Plateau State&apos;s financial
+                  landscape through the financial reports by the Auditor General
                 </span>
                 <ButtonDark text={"Access Financial Reports"} />
               </div>

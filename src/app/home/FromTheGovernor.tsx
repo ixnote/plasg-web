@@ -32,16 +32,16 @@ const FromTheGovernor = () => {
                 FROM THE GOVERNOR
               </span>
               <span className="font-medium text-4xl text-center font-geistsans text-brand-white lg:text-left">
-                "No matter your origin or language, if you reside on or cherish
-                the Plateau, you're family to me."
+                &quot;No matter your origin or language, if you reside on or
+                cherish the Plateau, you&apos;re family to me.&quot;
               </span>
               <span className="font-normal text-base text-center text-brand-white font-geistsans  w-[90%] lg:w-full lg:text-left">
-                Plateau State's values are not just a badge of honor; they are
-                the cornerstone of our history and our journey ahead. We stand
-                at the forefront of progress, championing bold reforms that echo
-                our deeply-held principles. It's this spirit of innovation that
-                fuels our diversity, propels our economy, and positions us as a
-                beacon of growth and opportunity.
+                Plateau State&apos;s values are not just a badge of honor; they
+                are the cornerstone of our history and our journey ahead. We
+                stand at the forefront of progress, championing bold reforms
+                that echo our deeply-held principles. It&apos;s this spirit of
+                innovation that fuels our diversity, propels our economy, and
+                positions us as a beacon of growth and opportunity.
               </span>
             </div>
             <div className="">

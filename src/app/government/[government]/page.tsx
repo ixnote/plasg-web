@@ -67,7 +67,7 @@ const Page = () => {
       setLinkText("THE SECRETARY OF STATE");
       setLinkURL("secretary");
     }
-  }, []);
+  }, [type]);
 
   return (
     <>

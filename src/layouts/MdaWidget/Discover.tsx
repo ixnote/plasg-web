@@ -20,17 +20,17 @@ function Discover() {
     {
       question: "Where to Stay",
       answer:
-        "Plateau State's Ministries, Departments, and Agencies (MDAs) are the driving force behind our community's progress. Discover the array of dedicated entities committed to serving                  you. Explore essential public services, strategic initiatives, and innovative solutions aimed at enhancing your well-being and prosperity",
+        "Plateau State&apos;s Ministries, Departments, and Agencies (MDAs) are the driving force behind our community&apos;s progress. Discover the array of dedicated entities committed to serving you. Explore essential public services, strategic initiatives, and innovative solutions aimed at enhancing your well-being and prosperity",
     },
     {
       question: "When is the cheapest time to visit Jos?",
       answer:
-        "Plateau State's Ministries, Departments, and Agencies (MDAs) are the driving force behind our community's progress. Discover the array of dedicated entities committed to serving                  you. Explore essential public services, strategic initiatives, and innovative solutions aimed at enhancing your well-being and prosperity",
+        "Plateau State&apos;s Ministries, Departments, and Agencies (MDAs) are the driving force behind our community&apos;s progress. Discover the array of dedicated entities committed to serving you. Explore essential public services, strategic initiatives, and innovative solutions aimed at enhancing your well-being and prosperity",
     },
     {
       question: "Where should I stay in Jos?",
       answer:
-        "Plateau State's Ministries, Departments, and Agencies (MDAs) are the driving force behind our community's progress. Discover the array of dedicated entities committed to serving                  you. Explore essential public services, strategic initiatives, and innovative solutions aimed at enhancing your well-being and prosperity",
+        "Plateau State&apos;s Ministries, Departments, and Agencies (MDAs) are the driving force behind our community&apos;s progress. Discover the array of dedicated entities committed to serving you. Explore essential public services, strategic initiatives, and innovative solutions aimed at enhancing your well-being and prosperity",
     },
   ];
   const [active, setActive] = useState<any>(null);
@@ -122,9 +122,9 @@ function Discover() {
                   Jos Wildlife Park
                 </p>
                 <p className="text-[18px] font-normal text-brand-main m-0 lg:col-span-4  max-w-[700px]">
-                  Spanning 8 square kilometers, it’s one of Nigeria’s largest
-                  zoological parks, offering a captivating experience of nature
-                  and wildlife.
+                  Spanning 8 square kilometers, it&apos;s one of Nigeria&apos;s
+                  largest zoological parks, offering a captivating experience of
+                  nature and wildlife.
                 </p>
               </span>
             </span>

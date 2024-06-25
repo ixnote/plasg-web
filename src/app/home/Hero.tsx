@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-// import bg from "../../../public/landing/bg.jpg";
 import bg from "../../../public/landing/background.png";
 import Image from "next/image";
 
@@ -31,8 +30,9 @@ const Hero = () => {
                 </div>
                 <span className="font-normal text-base text-brand-white font-geistsans w-full lg:w-[94%]">
                   Plateau.gov.ng is the official website of Plateau State. Here,
-                  you'll find access to online services, valuable resources, and
-                  essential information about our beautiful state.
+                  you&apos;ll find access to online services, valuable
+                  resources, and essential information about our beautiful
+                  state.
                 </span>
               </div>
               {/* bottom left */}

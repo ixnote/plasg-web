@@ -109,7 +109,10 @@ function SearchResult() {
           <span className="col-span-1"></span>
           <span className="flex gap-3 flex-wrap lg:col-span-4 col-span-1 ">
             {data?.tags?.map((item: any, index: any) => (
-              <button className="h-10 px-8 rounded-full bg-gray-200 border w-fit border-gray-400">
+              <button
+                key={index}
+                className="h-10 px-8 rounded-full bg-gray-200 border w-fit border-gray-400"
+              >
                 {item}
               </button>
             ))}

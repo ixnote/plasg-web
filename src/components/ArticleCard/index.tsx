@@ -23,7 +23,7 @@ function ArticleCard({ onclick }: any) {
         <span className="flex flex-col gap-8">
           <span className="flex flex-col gap-2">
             <p className="text-[32px] text-brand-main">
-              Driver's License Application Status Check
+              Driver&apos;s License Application Status Check
             </p>
             <span className="flex gap-1 text-brand-grayish items-center">
               <RiOrganizationChart className="text-[16px]" />
@@ -33,7 +33,7 @@ function ArticleCard({ onclick }: any) {
             </span>
           </span>
           <p className="text-[18px] font-normal text-brand-main m-0">
-            Online portal for checking the status of a driver's license
+            Online portal for checking the status of a driver&apos;s license
             application, including updates on processing and approval.
           </p>
         </span>
