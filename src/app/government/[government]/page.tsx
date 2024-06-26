@@ -17,18 +17,15 @@ const Page = () => {
   const type = Array.isArray(government) ? government[0] : government; // Ensure type is a string
 
   const titles = {
-    governor: "The Executive Governor of Plateau State",
-    deputy: "The Deputy Governor of Plateau State",
-    secretary: "The Secretary to the State Government of Plateau State",
+    governor: `The Executive Governor of Plateau State`,
+    deputy: `The Deputy Governor of Plateau State`,
+    secretary: `The Secretary to the State Government of Plateau State`,
   };
 
   const descriptions = {
-    governor:
-      "We are aware of the expectations of the people, and we have been working tirelessly from Day One, on ensuring that we deliver trustworthy Leadership to the people of Plateau State.",
-    deputy:
-      "The Deputy Governor is committed to supporting the Governor in delivering effective governance and ensuring the well-being of the people of Plateau State.",
-    secretary:
-      "The Secretary to the State Government ensures the smooth operation of the government, coordinating various activities to support the Governor and Deputy Governor.",
+    governor: `We are aware of the expectations of the people, and we have been working tirelessly from Day One, on ensuring that we deliver trustworthy Leadership to the people of Plateau State.`,
+    deputy: `The Deputy Governor is committed to supporting the Governor in delivering effective governance and ensuring the well-being of the people of Plateau State.`,
+    secretary: `The Secretary to the State Government ensures the smooth operation of the government, coordinating various activities to support the Governor and Deputy Governor.`,
   };
 
   const images = {
