@@ -16,7 +16,7 @@ const AssetCardLight = ({
 
   return (
     <div
-      className="w-full bg-[#E5E7EB] p-8 mb-2 rounded-2xl flex flex-col items-start justify-start gap-8 transition-fx cursor-pointer hover:bg-brand-lightYellow lg:w-[49%] lg:h-[540px]"
+      className="w-full bg-[#E5E7EB] p-8 mb-2 rounded-2xl flex flex-col items-start justify-start gap-8 transition-fx cursor-pointer hover:bg-brand-lightYellow lg:w-[49%] lg:pt-10 lg:h-[540px]"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >

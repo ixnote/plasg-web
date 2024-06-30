@@ -56,10 +56,10 @@ const SectionHeader = ({
             )}
           </span>
           <span className="grid lg:grid-cols-5 grid-cols-2 gap-8">
-            <p className="text-[52px] text-brand-main font-medium font-geistsans max-w-[800px] leading-[56px] lg:col-span-3 col-span-2 lg:border-r-[1px] lg:border-r-gray-200">
+            <p className="text-[52px] text-brand-main font-medium font-geistsans max-w-[800px] leading-[56px] lg:col-span-3 col-span-2">
               {title}
             </p>
-            <span className="col-span-2 flex flex-col gap-6">
+            <span className="col-span-2 flex flex-col gap-6 lg:border-l-[1px] lg:border-l-gray-200 lg:pl-8">
               <p className="text-[18px] font-normal text-brand-main m-0 lg:col-span-4 col-span-1 max-w-[800px] font-geistsans">
                 {description}
               </p>

@@ -33,7 +33,10 @@ const Newsletter = () => {
               />
             </div>
             <div className="flex flex-col items-start justify-center gap-3">
-              <ButtonDark text={"Subscribe to our newsletter"} />
+              <ButtonDark
+                text={"Subscribe to our newsletter"}
+                width={"1422px"}
+              />
               <span className="flex items-center justify-center gap-1 font-normal text-xs text-brand-grayish font-geistsans">
                 By subscribing you agree to with our{" "}
                 <a href="#" className="text-brand-secondary ">
