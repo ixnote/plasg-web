@@ -8,6 +8,7 @@ import PaginationComponent from "@/components/Pagination";
 import { handleScrollDown } from "@/utils/handleScrollDown";
 import { useQuery } from "react-query";
 import { getMdas } from "@/api/mda/getMdas";
+import Link from "next/link";
 
 function MdaWidget() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -82,9 +83,11 @@ function MdaWidget() {
                 key={index}
                 className="border-b-[1px] border-b-gray-300 cursor-pointer"
               >
-                <p className="lg:text-[40px] text-[24px] text-gray-400 font-medium max-w-[800px] py-12 ">
-                  Adult & Non-Formal Education Directorate
-                </p>
+                <Link href={`/mda/${item}`}>
+                  <p className="lg:text-[40px] text-[24px] text-gray-400 font-medium max-w-[800px] py-12 ">
+                    Adult & Non-Formal Education Directorate
+                  </p>
+                </Link>
               </span>
             ))}
           </span>
