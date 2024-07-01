@@ -33,11 +33,6 @@ body {
 .hidden-element {
   display: none;
 }
-<<<<<<< HEAD
-.main-container:hover .hidden-element {
-  display: flex;
-}
-=======
 .image_overlay {
   display: none;
 }
@@ -101,4 +96,3 @@ body {
     object-fit: cover;
   }
 }
->>>>>>> 9b787f6d9b8c54f6c01b0bff7c89703390fa2c9e
