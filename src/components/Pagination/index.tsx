@@ -10,7 +10,7 @@ function PaginationComponent({
 }: any) {
   const getPageNumbers = () => {
     const pageNumbers = [];
-    const totalNumbers = 5; // Total page numbers to show (including 1 and last page)
+    const totalNumbers = 3; // Total page numbers to show (including 1 and last page)
     const halfTotalNumbers = Math.floor(totalNumbers / 2);
 
     let startPage = Math.max(2, currentPage - halfTotalNumbers);
@@ -45,7 +45,7 @@ function PaginationComponent({
       {currentPage !== 1 && (
         <span
           className={cn(
-            "w-12 h-12 flex justify-center items-center rounded-md",
+            "w-10 h-10 flex justify-center items-center rounded-md",
             { "bg-none": currentPage === 1 },
             { "cursor-pointer bg-none text-white": currentPage !== 1 },
             { "text-brand-main": lightMode }
@@ -59,7 +59,7 @@ function PaginationComponent({
         <span
           key={index}
           className={cn(
-            "w-12 h-12 flex justify-center items-center rounded-md mx-1 cursor-pointer",
+            "w-10 h-10 flex justify-center items-center rounded-md mx-1 cursor-pointer",
             {
               "bg-brand-lightYellow text-brand-main ": page === currentPage,
               "bg-none text-white border":
@@ -81,7 +81,7 @@ function PaginationComponent({
       {currentPage !== totalPages && (
         <span
           className={cn(
-            "w-12 h-12 flex justify-center items-center rounded-md",
+            "w-10 h-10 flex justify-center items-center rounded-md",
             { "bg-none": currentPage === totalPages },
             {
               "cursor-pointer bg-none text-white": currentPage !== totalPages,
