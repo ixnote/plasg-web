@@ -12,3 +12,27 @@ body {
 
   box-sizing: border-box;
 }
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.zoom-out-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease;
+}
+
+.image-container:hover .zoom-out-image {
+  transform: scale(1.1); /* Adjust scale value as needed */
+}
+.hidden-element {
+  display: none;
+}
+.main-container:hover .hidden-element {
+  display: flex;
+}

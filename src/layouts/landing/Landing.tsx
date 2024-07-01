@@ -1,8 +1,19 @@
 import React from "react";
+import Image from "next/image";
+
+// Pages
 import Hero from "./Hero";
 import FromTheGovernor from "./FromTheGovernor";
-import Image from "next/image";
-import bg from '../../../public/landing/bg.jpg'
+import QuickStats from "./QuickStats";
+import Explore from "./Explore";
+import QuickActions from "./QuickActions";
+import Visit from "./Visit";
+
+// Components
+import bg from "../../../public/landing/bg.jpg";
+import SectionDividerDark from "@/components/SectionDividerDark";
+import SectionDividerLight from "@/components/SectionDividerLight";
+import Newsletter from "./Newsletter";
 
 const Landing = () => {
   return (
@@ -15,14 +26,17 @@ const Landing = () => {
       />
       {/* sections */}
       <div className="relative z-10">
-        {/* hero */}
         <Hero />
         <FromTheGovernor />
-        <div className="h-screen flex items-center justify-center">
-          <p className="text-white text-xl">
-            This is more content with parallax scrolling
-          </p>
-        </div>
+        <SectionDividerDark />
+        <QuickStats />
+        <SectionDividerDark />
+        <Explore />
+        <QuickActions />
+        <SectionDividerLight />
+        <Visit />
+        <Newsletter />
+        <SectionDividerDark />
       </div>
     </div>
   );

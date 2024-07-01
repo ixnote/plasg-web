@@ -1,37 +1,34 @@
 "use client";
 import React, { useState } from "react";
-import "./styles.css";
-import logomark from "@/assets/imgs/layouts/logomark.svg";
+import "./style.css";
+import logo from "@/assets/imgs/layouts/PICDA.svg";
+import searchIcon from "@/assets/icons/layouts/searchIcon.svg";
 import dropdown_icon from "@/assets/icons/layouts/dropdown_icon.svg";
-import search_icon from "@/assets/icons/layouts/search_icon.svg";
 import Image from "next/image";
 import Link from "next/link";
-import HoverTags from "./hoverTags";
-import { libraryData, governmentData } from "./ListData";
-import SearchComponent from "./Search/SearchComponent";
+import HoverTags from "@/layouts/hoverTags";
+import SearchComponent from "@/layouts/Search/SearchComponent";
 import { Modal } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 
 const menueList = [
   {
-    name: "Government",
+    name: "About",
     drop: true,
     path: "",
-    data: governmentData,
   },
   {
     name: "Library",
     drop: true,
     path: "",
-    data: libraryData,
   },
   {
-    name: "Tourism",
+    name: "Contact",
     drop: false,
     path: "",
   },
   {
-    name: "News",
+    name: "Accessibility",
     drop: false,
     path: "",
   },
@@ -56,13 +53,11 @@ const Header = () => {
 
   return (
     <div
-      className="header-container fixed top-0 left-0 w-full z-50"
+      className="header-container fixed w-full  rounded-t-2xl"
       onMouseLeave={handleMouseLeave}
     >
       <Modal
         fullScreen
-        bg={"#0E3E40"}
-        className="bg-brand-main"
         opened={opened}
         onClose={close}
         withCloseButton={false}
@@ -70,13 +65,21 @@ const Header = () => {
         <SearchComponent close={close} />
       </Modal>
       <div
-        className={`header-drop transition-all duration-300  rounded-t-xl bg-green-300 ${
+        className={`header-drop transition-all duration-300  w-full
+         ${
           hoveredMenuData ? "h-[464px]" : "h-auto"
         }`}
       >
-        <div className="header">
-          <div className="header-content">
-            <Image src={logomark} alt="LOGO" />
+        <div className="header w-full flex justify-around rounded-t-xl ">
+          <div className="header-content ">
+            <div className=" flex justify-between items-center  w-[149px] h-[40px] ">
+              <div className="w-[39px] h-[40px] pr-1" >
+              <Image src={logo} alt="LOGO" />
+              </div>
+              <div className="w-[100px] h-[]36px p-2 font-semibold text-[#0E3E40]">
+                <p className="text-[28px] leading-[36px] font-[geist]">PICTDA</p>
+              </div>
+            </div>
             <div className="manue-container">
               <ul className="menue-ul">
                 {menueList.map((menu) => (
@@ -91,7 +94,7 @@ const Header = () => {
                         <Image
                           src={dropdown_icon}
                           alt="DROP DOWN ICON"
-                          className="ml-2"
+                          className=""
                         />
                       )}
                     </div>
@@ -99,22 +102,19 @@ const Header = () => {
                   </li>
                 ))}
               </ul>
-
-              <div className="left-constainer">
+            </div>
+            <div className="left-constainer">
                 <ul className="menue-ul">
-                  <li className="menu-item">
-                    <div className="menu-hover">
-                      <Link href="">Accessibility</Link>
+                  <li className="menu-item w-[148px] h-[38px] flex justify-center rounded-md items-center gap-3">
+                    <div className="">
+                      <Image src={searchIcon} alt="SearchIcon" className=" h-[18px] w-[18px]" />
+                    </div>
+                    <div className="menu-hover">            
+                     <p className="text-black">Search</p>
                     </div>
                   </li>
                 </ul>
-
-                <div className="header-search" onClick={open}>
-                  <Image src={search_icon} alt="" />
-                  <p className="text-white">Search</p>
-                </div>
               </div>
-            </div>
           </div>
         </div>
         {hoveredMenuData && <HoverTags data={hoveredMenuData} />}

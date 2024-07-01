@@ -27,6 +27,7 @@ const config: Config = {
           main: "#0E3E40",
           secondary: "#B1D362",
           lightYellow: "#FCFF45",
+          grayish: "#9CA3AF",
         },
       },
     },
