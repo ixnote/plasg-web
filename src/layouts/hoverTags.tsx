@@ -2,14 +2,55 @@
 import React, { useState } from "react";
 import TagList from "./tagList";
 
+// type SubItemType = {
+//   _id: string;
+//   title: string;
+//   forwardArrow: boolean;
+//   subMenu?: SubItemType[];
+// };
+
 const HoverTags = ({ data }: any) => {
-  const [subItems, setSubItems] = useState([]);
+  // const [subItems, setSubItems] = useState([]);
   const [isSubMenuActive, setIsSubMenuActive] = useState(false);
-  const [currentItem, setCurrentItem] = useState({
+  // const [currentItem, setCurrentItem] = useState({
+  //   paragraph: "",
+  //   subTitle: "",
+  //   backgroundImage: "",
+  // });
+
+  //  const [currentItem, setCurrentItem] = useState<SubItemType>({
+  //    _id: "",
+  //    title: "",
+  //    forwardArrow: false,
+  //    subMenu: [],
+  //    paragraph: "",
+  //    subTitle: "",
+  //    backgroundImage: "",
+  //  });
+
+  type ItemType = {
+    paragraph: string;
+    subTitle: string;
+    backgroundImage: string;
+  };
+
+  type SubItemType = {
+    _id: any;
+    title: string;
+    forwardArrow: boolean;
+    paragraph: string;
+    subTitle: string;
+    backgroundImage: string;
+    subMenu?: SubItemType[];
+  };
+
+  const [currentItem, setCurrentItem] = useState<ItemType>({
     paragraph: "",
     subTitle: "",
     backgroundImage: "",
   });
+
+  const [subItems, setSubItems] = useState<SubItemType[]>([]);
 
   const handleMouseEnter = (item: any) => {
     if (item.forwardArrow && Array.isArray(item.subMenu)) {

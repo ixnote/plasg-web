@@ -4,6 +4,13 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import "@mantine/core/styles.css";
 import { MantineProvider } from "@mantine/core";
+<<<<<<< HEAD
+=======
+import Providers from "@/utils/Provider";
+
+import { Header } from "@/layouts";
+import Footer from "@/layouts/Footer";
+>>>>>>> 9b787f6d9b8c54f6c01b0bff7c89703390fa2c9e
 
 export const metadata: Metadata = {
   title: "PLSG",
@@ -18,7 +25,17 @@ export default function RootLayout({
   return (
     <html className={`${GeistSans.variable} ${GeistMono.variable}`} lang="en">
       <body>
+<<<<<<< HEAD
         <MantineProvider>{children}</MantineProvider>
+=======
+        <Providers>
+          <MantineProvider>
+            {/* <Header /> */}
+            {children}
+            {/* <Footer /> */}
+          </MantineProvider>
+        </Providers>
+>>>>>>> 9b787f6d9b8c54f6c01b0bff7c89703390fa2c9e
       </body>
     </html>
   );

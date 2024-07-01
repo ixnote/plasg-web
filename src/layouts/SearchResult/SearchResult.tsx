@@ -16,10 +16,17 @@ function SearchResult() {
     text: "Learn the steps, required documents, fees, and timelines renewing your vehicle registration in Plateau State. Simplify he process with our comprehensive guide.",
   };
   return (
+<<<<<<< HEAD
     <div className="pt-[200px]">
       <span className="max-w-[1200px] mx-auto flex flex-col">
         <span className="flex flex-col gap-8">
           <span className="uppercase text-[#00000080] opacity-80 font-light flex items-center gap-2 text-[14px]">
+=======
+    <div className="pt-[200px] p-5">
+      <span className="max-w-[1200px] mx-auto flex flex-col">
+        <span className="flex flex-col gap-8">
+          <span className="uppercase text-[#00000080] opacity-80 font-light flex items-center gap-2 text-[14px] flex-wrap">
+>>>>>>> 9b787f6d9b8c54f6c01b0bff7c89703390fa2c9e
             <GoHome size={18} />/<p>Search</p>/<p>SEARCH RESULTS</p>/
             <p>ARTICLES</p>
           </span>
@@ -29,7 +36,11 @@ function SearchResult() {
           <p className="text-[52px] text-brand-main font-medium max-w-[800px] leading-[56px]">
             {data?.title}
           </p>
+<<<<<<< HEAD
           <span className="text-[#00000080] opacity-80 font-medium flex items-center gap-4 text-[14px]">
+=======
+          <span className="text-[#00000080] opacity-80 font-medium flex items-center gap-4 text-[14px] flex-wrap">
+>>>>>>> 9b787f6d9b8c54f6c01b0bff7c89703390fa2c9e
             <p>{data?.reference}</p>/<p>{data?.date}</p>/<p>{data?.min}</p>
           </span>
         </span>
@@ -109,7 +120,14 @@ function SearchResult() {
           <span className="col-span-1"></span>
           <span className="flex gap-3 flex-wrap lg:col-span-4 col-span-1 ">
             {data?.tags?.map((item: any, index: any) => (
+<<<<<<< HEAD
               <button className="h-10 px-8 rounded-full bg-gray-200 border w-fit border-gray-400">
+=======
+              <button
+                key={index}
+                className="h-10 px-8 rounded-full bg-gray-200 border w-fit border-gray-400"
+              >
+>>>>>>> 9b787f6d9b8c54f6c01b0bff7c89703390fa2c9e
                 {item}
               </button>
             ))}

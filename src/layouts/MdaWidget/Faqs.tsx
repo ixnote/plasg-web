@@ -33,7 +33,11 @@ function Faqs() {
   };
 
   return (
+<<<<<<< HEAD
     <div className="py-12 bg-white">
+=======
+    <div className="py-12 bg-white px-4">
+>>>>>>> 9b787f6d9b8c54f6c01b0bff7c89703390fa2c9e
       <span className="max-w-[1200px] mx-auto flex flex-col">
         <span className="flex flex-col gap-8 mb-10">
           <span className="text-[#00000080] opacity-80 font-light flex items-center gap-2 text-[14px]">

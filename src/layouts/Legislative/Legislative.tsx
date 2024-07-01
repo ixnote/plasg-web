@@ -1,8 +1,16 @@
+<<<<<<< HEAD
+=======
+"use client";
+>>>>>>> 9b787f6d9b8c54f6c01b0bff7c89703390fa2c9e
 import React from "react";
 import { GoHome } from "react-icons/go";
 import ArticleImage from "@/assets/imgs/img.png";
 import { IoIosArrowRoundDown } from "react-icons/io";
 import LegislatureCard from "@/components/LegislatureCard";
+<<<<<<< HEAD
+=======
+import { handleScrollDown } from "@/utils/handleScrollDown";
+>>>>>>> 9b787f6d9b8c54f6c01b0bff7c89703390fa2c9e
 
 function Legislative() {
   const article = {
@@ -11,7 +19,11 @@ function Legislative() {
     position: "Speaker ",
   };
   return (
+<<<<<<< HEAD
     <div className="pt-[200px]">
+=======
+    <div className="pt-[200px] p-5">
+>>>>>>> 9b787f6d9b8c54f6c01b0bff7c89703390fa2c9e
       <span className="max-w-[1200px] mx-auto flex flex-col">
         <span className="flex flex-col gap-8 mb-10">
           <span className="uppercase text-[#00000080] opacity-80 font-light flex items-center gap-2 text-[14px]">
@@ -26,7 +38,14 @@ function Legislative() {
                 Meet the esteemed legislators who champion the interests of our
                 community, shaping policies and laws that impact our lives.
               </p>
+<<<<<<< HEAD
               <button className="h-10 px-8 rounded-sm bg-white border w-fit border-gray-300 flex items-center justify-center gap-2">
+=======
+              <button
+                onClick={handleScrollDown}
+                className="h-10 px-8 rounded-sm bg-white border w-fit border-gray-300 flex items-center justify-center gap-2"
+              >
+>>>>>>> 9b787f6d9b8c54f6c01b0bff7c89703390fa2c9e
                 Scroll down <IoIosArrowRoundDown />
               </button>
             </span>

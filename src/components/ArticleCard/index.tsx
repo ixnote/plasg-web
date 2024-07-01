@@ -1,5 +1,5 @@
 import React from "react";
-import SettingIcon from "@/assets/icons/settings.svg?url";
+import SettingIcon from "@/assets/icons/settings.svg";
 import Image from "next/image";
 import { RiOrganizationChart } from "react-icons/ri";
 import ButtonComponent from "../Button";
