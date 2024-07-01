@@ -45,7 +45,7 @@ function PaginationComponent({
       {currentPage !== 1 && (
         <span
           className={cn(
-            "w-10 h-10 flex justify-center items-center rounded-md",
+            "w-12 h-12 flex justify-center items-center rounded-md",
             { "bg-none": currentPage === 1 },
             { "cursor-pointer bg-none text-white": currentPage !== 1 },
             { "text-brand-main": lightMode }
@@ -59,13 +59,19 @@ function PaginationComponent({
         <span
           key={index}
           className={cn(
-            "w-10 h-10 flex justify-center items-center rounded-md mx-1 cursor-pointer",
+            "w-12 h-12 flex justify-center items-center rounded-md mx-1 cursor-pointer",
             {
-              "bg-brand-lightYellow text-brand-main": page === currentPage,
-              "bg-none text-white": page !== currentPage && page !== "...",
+              "bg-brand-lightYellow text-brand-main ": page === currentPage,
+              "bg-none text-white border":
+                page !== currentPage && page !== "...",
               "bg-none text-white cursor-default": page === "...",
             },
-            { "text-brand-main": lightMode }
+            {
+              "text-brand-main": lightMode,
+              "bg-brand-main text-white": page === currentPage && lightMode,
+              "border-none":
+                lightMode && page !== currentPage && page !== "...",
+            }
           )}
           onClick={() => page !== "..." && onPageChange(page)}
         >
@@ -75,7 +81,7 @@ function PaginationComponent({
       {currentPage !== totalPages && (
         <span
           className={cn(
-            "w-10 h-10 flex justify-center items-center rounded-md",
+            "w-12 h-12 flex justify-center items-center rounded-md",
             { "bg-none": currentPage === totalPages },
             {
               "cursor-pointer bg-none text-white": currentPage !== totalPages,

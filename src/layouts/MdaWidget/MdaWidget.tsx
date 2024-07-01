@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { GoHome } from "react-icons/go";
-import { IoIosArrowRoundDown } from "react-icons/io";
 import { Divider } from "@mantine/core";
 import { FiSearch } from "react-icons/fi";
 import PaginationComponent from "@/components/Pagination";
@@ -9,6 +8,7 @@ import { handleScrollDown } from "@/utils/handleScrollDown";
 import { useQuery } from "react-query";
 import { getMdas } from "@/api/mda/getMdas";
 import Link from "next/link";
+import { IoArrowDownOutline } from "react-icons/io5";
 
 function MdaWidget() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -51,9 +51,9 @@ function MdaWidget() {
               </p>
               <button
                 onClick={handleScrollDown}
-                className="h-10 px-8 rounded-sm bg-white border w-fit border-gray-300 flex items-center justify-center gap-2"
+                className="h-10 px-0 rounded-sm bg-white  w-fit flex items-center justify-center gap-2"
               >
-                Scroll down <IoIosArrowRoundDown />
+                <IoArrowDownOutline size={32} />
               </button>
             </span>
           </span>
@@ -62,16 +62,16 @@ function MdaWidget() {
           <span className="grid lg:grid-cols-5 grid-cols-2 gap-8">
             <span className="lg:col-span-3 col-span-2">
               <p className="text-[40px] text-brand-main font-medium max-w-[800px] leading-[48px]">
-                Name of MDA
+                List of MDAs
               </p>
             </span>
             <span className="flex border-b-[1px] border-b-gray-300 col-span-2">
               <input
                 type="text"
                 placeholder="Find MDA..."
-                className="w-full flex-grow-0 bg-transparent py-2 text-[28px] outline-none"
+                className="w-full flex-grow-0 bg-transparent py-2 text-[28px] outline-none placeholder:text-[#D1D5DB]"
               />
-              <button className="border border-gray-200 bg-brand-lightYellow text-brand-main w-12 h-12 rounded flex justify-center items-center">
+              <button className="flex justify-center items-center bg-brand-lightYellow text-brand-main w-[48px] h-[48px] p-0 m-0 rounded ">
                 <FiSearch size={24} />
               </button>
             </span>
