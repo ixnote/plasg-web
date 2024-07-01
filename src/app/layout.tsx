@@ -7,7 +7,7 @@ import { MantineProvider } from "@mantine/core";
 import Providers from "@/utils/Provider";
 
 import { Header } from "@/layouts";
-import Footer from "@/layouts/Footer";
+// import Footer from "@/layouts/Footer";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 
 export const metadata: Metadata = {

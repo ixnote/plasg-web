@@ -1,4 +1,5 @@
 import { Header } from "@/layouts";
+import Footer from "@/layouts/Footer";
 import Landing from "@/layouts/landing/Landing";
 
 export default function Home() {
@@ -6,8 +7,8 @@ export default function Home() {
     <main>
       <Header />
       <Landing />
-      <p className="text-3xl font-bold min-h-screen p-4">Barr. Caleb Mutfwang</p>
-
+      <Footer />
+      {/* <p className="text-3xl font-bold min-h-screen p-4">Barr. Caleb Mutfwang</p> */}
     </main>
   );
 }
