@@ -11,6 +11,20 @@ import Image from "next/image";
 
 
 const Mdas = () => {
+    const itemList = [
+        {
+
+         icon:,
+         
+
+        },
+        {
+
+        },
+        {
+
+        },
+    ]
 
     return (
         <div className="first relative bg-white">
@@ -72,7 +86,9 @@ const Mdas = () => {
                 <p className="w-[800px] h-[150px] flex justify-start items-center text-[#0E3E40] font-[geist] text-5xl size-11 font-medium leading-[48px] mb-10">Easily Access Essential Information on Topics of Interest</p>
                 <p className="text-[#00000080] w-[750px]">Find key information quickly on a variety of important topics right here on the Plateau Government website.</p>
                 </div>
-                <div></div>
+                <div>
+
+                </div>
                 <div></div>
             </div>
         </div>
