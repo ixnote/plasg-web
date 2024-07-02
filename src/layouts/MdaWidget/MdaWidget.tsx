@@ -79,17 +79,17 @@ function MdaWidget() {
           </span>
           <Divider />
           <span className="flex flex-col">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((item, index) => (
+            {mda?.data?.data?.map((item: any, index: any) => (
               <span
-                key={index}
+                key={item?.id}
                 className="border-b-[1px] border-b-gray-300 cursor-pointer flex w-full"
               >
                 <Link
-                  href={`/mda/${item}`}
+                  href={`/mda/${item?.id}`}
                   className="w-full flex items-center justify-between"
                 >
                   <p className="lg:text-[40px] text-[24px] lg:text-gray-400 text-gray-600 font-medium  py-12 whitespace-nowrap overflow-hidden text-ellipsis flex-grow max-w-[85%]">
-                    Adult & Non-Formal Education Directorate
+                    {item?.name}
                   </p>
                   <button className="text-gray-300 border-none hover:bg-none px-0 block lg:hidden">
                     <MdOutlineArrowOutward size={28} />
