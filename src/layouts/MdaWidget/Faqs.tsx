@@ -36,7 +36,7 @@ function Faqs() {
   return (
     <>
       <div className="py-12 bg-white px-4 pb-4">
-        <span className="max-w-[1200px] mx-auto flex flex-col">
+        <span className="max-w-[1520px] mx-auto flex flex-col">
           <span className="flex flex-col gap-8 mb-10">
             <span className="text-[#00000080] opacity-80 font-light flex items-center gap-2 text-[14px]">
               <p>FAQ</p>
@@ -89,7 +89,9 @@ function Faqs() {
           <Divider />
         </span>
         <span className="p-0  bg-white overflow-hidden rounded-xl mt-20 flex">
-          <Footer />
+          <span>
+            <Footer />
+          </span>
         </span>
       </div>
     </>

@@ -5,6 +5,7 @@ import ArticleImage from "@/assets/imgs/img.png";
 import { IoIosArrowRoundDown } from "react-icons/io";
 import LegislatureCard from "@/components/LegislatureCard";
 import { handleScrollDown } from "@/utils/handleScrollDown";
+import { IoArrowDownOutline } from "react-icons/io5";
 
 function Legislative() {
   const article = {
@@ -16,7 +17,7 @@ function Legislative() {
     <div className="pt-[200px] p-5">
       <span className="max-w-[1200px] mx-auto flex flex-col">
         <span className="flex flex-col gap-8 mb-10">
-          <span className="uppercase text-[#00000080] opacity-80 font-light flex items-center gap-2 text-[14px]">
+          <span className="uppercase text-[#0000000] opacity-80 font-light flex items-center gap-2 text-[14px]">
             <GoHome size={18} />/<p>GOVERNMENT</p>/<p>LEGISLATIVE</p>
           </span>
           <span className="grid lg:grid-cols-5 grid-cols-2 gap-8">
@@ -30,9 +31,9 @@ function Legislative() {
               </p>
               <button
                 onClick={handleScrollDown}
-                className="h-10 px-8 rounded-sm bg-white border w-fit border-gray-300 flex items-center justify-center gap-2"
+                className="h-10 px-0 rounded-sm bg-white  w-fit flex items-center justify-center gap-2"
               >
-                Scroll down <IoIosArrowRoundDown />
+                <IoArrowDownOutline size={32} />
               </button>
             </span>
           </span>

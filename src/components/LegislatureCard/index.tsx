@@ -5,10 +5,10 @@ import { AiOutlineMail } from "react-icons/ai";
 function LegislatureCard({ data, onclick }: any) {
   return (
     <span
-      className="col-span-1 flex flex-col gap-6 cursor-pointer main-container"
+      className="col-span-1 flex flex-col gap-6 cursor-pointer main-container relative"
       onClick={onclick}
     >
-      <span className="w-full h-auto rounded-2xl aspect-[5/7] object-cover bg-[#588065] image-container">
+      <span className="w-full h-auto rounded-2xl aspect-[5/7] object-cover bg-[#588065] image-container ">
         <Image
           src={data?.image}
           alt=""
@@ -29,10 +29,10 @@ function LegislatureCard({ data, onclick }: any) {
           </p>
           <p className="text-[18px] text-[#00000070] m-0 ">{data?.position}</p>
         </span>
-        <button className=" bg-brand-lightYellow text-brand-main w-12 h-12 rounded flex justify-center items-center hidden-element">
-          <AiOutlineMail size={28} />
-        </button>
       </span>
+      <button className=" bg-brand-lightYellow text-brand-main w-14 h-14 rounded-full absolute top-6 right-6 z-20 flex justify-center items-center hidden-element">
+        <AiOutlineMail size={24} />
+      </button>
     </span>
   );
 }

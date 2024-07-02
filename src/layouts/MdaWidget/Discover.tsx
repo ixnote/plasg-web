@@ -68,9 +68,10 @@ function Discover() {
     { name: "Parks", value: "eat" },
     { name: "Gallery", value: "food" },
   ];
-  const [activeTab, setActiveTab] = useState<any>([data[0]]);
+  const [activeTab, setActiveTab] = useState<any>([tabs[0]]);
   useEffect(() => {
-    setActiveTab(data[0]);
+    tabs;
+    setActiveTab(tabs[0]);
   }, []);
 
   const matches = useMediaQuery("(max-width: 768px)");
@@ -101,7 +102,7 @@ function Discover() {
                   className={cn(
                     "pb-3 whitespace-nowrap text-[32px] text-gray-400",
                     {
-                      "border-b-[3px] border-b-brand-main text-brand-main":
+                      "border-b-[3px] border-b-brand-main text-brand-main w-fit":
                         activeTab?.value === item?.value,
                     }
                   )}
