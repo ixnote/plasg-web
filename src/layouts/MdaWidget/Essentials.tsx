@@ -22,7 +22,7 @@ function Essentials() {
 
   return (
     <div className="py-12 bg-white px-4">
-      <span className="max-w-[1200px] mx-auto flex flex-col">
+      <span className="max-w-[1520px] mx-auto flex flex-col">
         <span className="flex flex-col gap-8 mb-10">
           <span className="text-[#0000000] opacity-80 font-light flex items-center gap-2 text-[14px] uppercase">
             <p>Essentials</p>
