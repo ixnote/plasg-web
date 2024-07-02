@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import ArticleImage from "@/assets/imgs/img.png";
+import NewsCard from "@/components/NewsCard";
 
 function News() {
   const links = [
@@ -42,7 +43,7 @@ function News() {
           </span>
         </span>
         <span className="flex-grow grid lg:grid-cols-4 gap-5 grid-cols-1 w-full">
-          <span className="col-span-3 flex w-full  items-start bg-white border border-gray-200 row-start-1 row-end-2 h-[350px]">
+          <span className="col-span-3 flex w-full  items-start bg-white border border-gray-200 h-[350px]">
             <span className="w-full h-full max-w-[500px] aspect-[11/7] object-cover bg-[#588065] image-container ">
               <Image
                 src={news[0].image}
@@ -53,7 +54,7 @@ function News() {
               />
             </span>
             <span className="p-5 flex flex-col justify-between h-full flex-grow max-w-[40%]">
-              <p className="text-[20px] text-brand-main font-medium max-w-[800px] leading-[32px] lg:col-span-3 col-span-2 ">
+              <p className="text-[20px] text-brand-main font-medium max-w-[800px] leading-[28px] lg:col-span-3 col-span-2 ">
                 {news[0].title}
               </p>
               <span className="flex gap-5">
@@ -64,7 +65,9 @@ function News() {
               </span>
             </span>
           </span>
-          <span></span>
+          {[1, 2, 3, 4, 5].map((item, index) => (
+            <NewsCard key={index} data={news[0]} />
+          ))}
         </span>
       </span>
     </div>
