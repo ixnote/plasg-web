@@ -1,7 +1,10 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import ArticleImage from "@/assets/imgs/img.png";
 import NewsCard from "@/components/NewsCard";
+import { useQuery } from "react-query";
+import { getNews } from "@/api/news/getNews";
 
 function News() {
   const links = [
@@ -29,6 +32,15 @@ function News() {
       category: "Welfare ",
     },
   ];
+
+  const [page, setPage] = useState(1);
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["getNews", page, 20, "", "", "", "", ""],
+    queryFn: getNews,
+  });
+
+  console.log("data :>> ", data);
+
   return (
     <div className="pt-[200px] p-5">
       <span className="max-w-[1360px] mx-auto flex gap-5">

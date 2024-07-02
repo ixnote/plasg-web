@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { GoHome } from "react-icons/go";
-import { Divider } from "@mantine/core";
+import { Divider, Loader } from "@mantine/core";
 import { FiSearch } from "react-icons/fi";
 import PaginationComponent from "@/components/Pagination";
 import { handleScrollDown } from "@/utils/handleScrollDown";
@@ -79,6 +79,16 @@ function MdaWidget() {
           </span>
           <Divider />
           <span className="flex flex-col">
+            {mdaIsLoading && (
+              <span className="flex items-center justify-center w-full py-8 px-5">
+                <Loader color="black" />
+              </span>
+            )}
+            {error && (
+              <span className="flex items-center justify-center w-full py-8 px-5">
+                <p>Unable to fetch MDAs</p>
+              </span>
+            )}
             {mda?.data?.data?.map((item: any, index: any) => (
               <span
                 key={item?.id}
