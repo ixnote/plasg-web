@@ -1,8 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import { Divider } from "@mantine/core";
-import { GoPlus } from "react-icons/go";
 import { AiOutlineMinus } from "react-icons/ai";
+import { FiChevronDown, FiChevronUp } from "react-icons/fi";
+import Footer from "../Footer";
 
 function Faqs() {
   const data = [
@@ -33,54 +34,65 @@ function Faqs() {
   };
 
   return (
-    <div className="py-12 bg-white px-4">
-      <span className="max-w-[1200px] mx-auto flex flex-col">
-        <span className="flex flex-col gap-8 mb-10">
-          <span className="text-[#00000080] opacity-80 font-light flex items-center gap-2 text-[14px]">
-            <p>FAQ</p>
+    <>
+      <div className="py-12 bg-white px-4 pb-4">
+        <span className="max-w-[1200px] mx-auto flex flex-col">
+          <span className="flex flex-col gap-8 mb-10">
+            <span className="text-[#00000080] opacity-80 font-light flex items-center gap-2 text-[14px]">
+              <p>FAQ</p>
+            </span>
+            <span className="grid lg:grid-cols-5 grid-cols-2 gap-8">
+              <p className="text-[52px] text-brand-main font-medium max-w-[800px] leading-[56px] lg:col-span-4 col-span-2 ">
+                Frequently Asked Questions about Visiting Plateau State
+              </p>
+              <p className="text-[18px] font-normal text-brand-main m-0 lg:col-span-4 col-span-1 max-w-[700px]">
+                Find answers to common questions about visiting and enjoying
+                Plateau State.
+              </p>
+            </span>
           </span>
-          <span className="grid lg:grid-cols-5 grid-cols-2 gap-8">
-            <p className="text-[52px] text-brand-main font-medium max-w-[800px] leading-[56px] lg:col-span-4 col-span-2 ">
-              Frequently Asked Questions about Visiting Plateau State
-            </p>
-            <p className="text-[18px] font-normal text-brand-main m-0 lg:col-span-4 col-span-1 max-w-[700px]">
-              Find answers to common questions about visiting and enjoying
-              Plateau State.
-            </p>
-          </span>
-        </span>
-        <span>
-          {data.map((item, index) => (
-            <span
-              key={index}
-              className="border-b-[1px] border-b-gray-300 flex flex-col gap-8 py-12"
-              onClick={() => handleOpen(index)}
-            >
-              <span className="flex justify-between gap-4 items-center cursor-pointer ">
-                <p className="text-[40px] text-gray-700 font-medium max-w-[800px] py-0 ">
-                  {item.question}
-                </p>
+          <span>
+            {data.map((item, index) => (
+              <span
+                key={index}
+                className="border-b-[1px] border-b-gray-300 flex flex-col gap-8  group"
+                onClick={() => handleOpen(index)}
+              >
+                <span className="flex justify-between gap-4 items-center cursor-pointer py-6 px-0 group-hover:px-8  group-hover:bg-brand-lightYellow group-hover:border-none group-hover:rounded-lg">
+                  <p className="text-[40px] text-gray-700 font-medium max-w-[800px] py-0 ">
+                    {item.question}
+                  </p>
+                  {active === index ? (
+                    <FiChevronUp
+                      size={40}
+                      className="text-gray-300 group-hover:text-gray-700"
+                    />
+                  ) : (
+                    <FiChevronDown
+                      size={40}
+                      className="text-gray-300 group-hover:text-gray-700"
+                    />
+                  )}
+                </span>
                 {active === index ? (
-                  <AiOutlineMinus size={40} className="text-gray-700" />
+                  <span>
+                    <p className="text-[18px] font-normal text-brand-main m-0 lg:col-span-4 col-span-1 max-w-[800px] px-8 pb-12">
+                      {item.answer}
+                    </p>
+                  </span>
                 ) : (
-                  <GoPlus size={40} className="text-gray-700" />
+                  ""
                 )}
               </span>
-              {active === index ? (
-                <span>
-                  <p className="text-[18px] font-normal text-brand-main m-0 lg:col-span-4 col-span-1 max-w-[800px]">
-                    {item.answer}
-                  </p>
-                </span>
-              ) : (
-                ""
-              )}
-            </span>
-          ))}
+            ))}
+          </span>
+          <Divider />
         </span>
-        <Divider />
-      </span>
-    </div>
+        <span className="p-0  bg-white overflow-hidden rounded-xl mt-20 flex">
+          <Footer />
+        </span>
+      </div>
+    </>
   );
 }
 

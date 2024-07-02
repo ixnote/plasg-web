@@ -7,7 +7,9 @@ export default function Mda() {
     <main>
       <Header />
       <ViewMdaWidget />
-      <Footer />
+      {/* <span className="p-5 overflow-hidden bg-white z-20 relative mt-[-50px] min-h-screen">
+        <Footer />
+      </span> */}
     </main>
   );
 }
