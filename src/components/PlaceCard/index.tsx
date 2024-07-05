@@ -1,11 +1,11 @@
 import Image from "next/image";
 import React from "react";
-import { IoArrowForwardOutline } from "react-icons/io5";
+import { MdOutlineArrowOutward } from "react-icons/md";
 
 function PlaceCard({ data, onclick }: any) {
   return (
     <span
-      className="col-span-1 flex flex-col gap-6 cursor-pointer main-container"
+      className="col-span-1 flex flex-col gap-6 cursor-pointer main-container group relative"
       onClick={onclick}
     >
       <span className="w-full h-auto rounded-2xl aspect-[9/8] object-cover bg-[#588065] image-container">
@@ -26,10 +26,10 @@ function PlaceCard({ data, onclick }: any) {
         <p className="text-[24px] leading-[24px] font-medium  m-0 lg:col-span-4 col-span-1 h-10">
           {data?.name}
         </p>
-        <button className=" bg-brand-lightYellow text-brand-main w-12 h-12 rounded flex justify-center items-center hidden-element">
-          <IoArrowForwardOutline size={28} />
-        </button>
       </span>
+      <button className="rounded-full bg-brand-lightYellow text-brand-main w-14 h-14  group-hover:flex hidden absolute top-6 right-6 justify-center items-center hidden-element">
+        <MdOutlineArrowOutward size={28} />
+      </button>
     </span>
   );
 }

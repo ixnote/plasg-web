@@ -22,13 +22,13 @@ function Essentials() {
 
   return (
     <div className="py-12 bg-white px-4">
-      <span className="max-w-[1200px] mx-auto flex flex-col">
+      <span className="max-w-[1520px] mx-auto flex flex-col">
         <span className="flex flex-col gap-8 mb-10">
-          <span className="text-[#00000080] opacity-80 font-light flex items-center gap-2 text-[14px]">
+          <span className="text-[#0000000] opacity-80 font-light flex items-center gap-2 text-[14px] uppercase">
             <p>Essentials</p>
           </span>
           <span className="grid lg:grid-cols-5 grid-cols-2 gap-8">
-            <p className="text-[52px] text-brand-main font-medium max-w-[800px] leading-[56px] lg:col-span-4 col-span-2 ">
+            <p className="text-[52px] text-brand-main font-medium max-w-[1000px] leading-[56px] lg:col-span-4 col-span-2 ">
               Where to Stay, Where to Eat in Plateau State
             </p>
             <p className="text-[18px] font-normal text-brand-main m-0 lg:col-span-4 col-span-1 max-w-[800px]">

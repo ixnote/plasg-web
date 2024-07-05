@@ -40,7 +40,7 @@ function SearchWidget() {
           onPageChange={handlePageChange}
         />
       </span>
-      <span className="bg-brand-secondary max-w-[1200px] mx-auto w-full p-6 rounded-2xl flex justify-between flex-wrap gap-4 items-center">
+      {/* <span className="bg-brand-secondary max-w-[1200px] mx-auto w-full p-6 rounded-2xl flex justify-between flex-wrap gap-4 items-center">
         <p className="text-[18px] font-medium text-brand-main m-0">
           Did you find what you were looking for?
         </p>
@@ -48,7 +48,7 @@ function SearchWidget() {
           <ButtonComponent className={"border-gray-600"}>Yes</ButtonComponent>
           <ButtonComponent className={"border-gray-600"}>No</ButtonComponent>
         </span>
-      </span>
+      </span> */}
     </div>
   );
 }

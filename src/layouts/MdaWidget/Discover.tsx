@@ -4,11 +4,10 @@ import { Divider } from "@mantine/core";
 import { GoPlus } from "react-icons/go";
 import ArticleImage from "@/assets/imgs/img.png";
 import Image from "next/image";
-import { IoArrowForwardOutline } from "react-icons/io5";
-import { BsArrowRight } from "react-icons/bs";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { cn } from "@/utils";
 import { useMediaQuery } from "@mantine/hooks";
+import { MdOutlineArrowOutward } from "react-icons/md";
 
 function Discover() {
   const article = {
@@ -69,16 +68,17 @@ function Discover() {
     { name: "Parks", value: "eat" },
     { name: "Gallery", value: "food" },
   ];
-  const [activeTab, setActiveTab] = useState<any>([data[0]]);
+  const [activeTab, setActiveTab] = useState<any>([tabs[0]]);
   useEffect(() => {
-    setActiveTab(data[0]);
+    tabs;
+    setActiveTab(tabs[0]);
   }, []);
 
   const matches = useMediaQuery("(max-width: 768px)");
 
   return (
     <div className="py-12 bg-white">
-      <span className="lg:pl-[100px] pl-5 mx-auto flex flex-col">
+      <span className="lg:pl-[80px] pl-5 mx-auto flex flex-col">
         <div className="grid lg:grid-cols-7 grid-cols-1 gap-6 pr-5">
           <span className="flex flex-col gap-8 mb-10 lg:col-span-6 col-span-1">
             <span className="text-[#00000080] opacity-80 font-light flex items-center gap-2 text-[14px]">
@@ -94,7 +94,7 @@ function Discover() {
               </p>
             </span>
           </span>
-          <span className="col-span-1">
+          <span className="col-span-3">
             <span className="flex flex-col gap-4 cursor-pointer mt-12 pb-10">
               {tabs.map((item: any, index: number) => (
                 <span
@@ -102,7 +102,7 @@ function Discover() {
                   className={cn(
                     "pb-3 whitespace-nowrap text-[32px] text-gray-400",
                     {
-                      "border-b-[3px] border-b-brand-main text-brand-main":
+                      "border-b-[3px] border-b-brand-main text-brand-main w-fit":
                         activeTab?.value === item?.value,
                     }
                   )}
@@ -134,14 +134,14 @@ function Discover() {
                   className="carousel-track flex w-full gap-6"
                   style={{
                     transform: `translateX(-${
-                      currentIndex * (matches ? 101 : 70.67)
+                      currentIndex * (matches ? 101 : 72.67)
                     }%)`,
                   }}
                 >
                   {images.map((item, index) => (
                     <span
                       key={index}
-                      className="w-full h-auto rounded-2xl aspect-[9/7] object-cover bg-[#588065] image-container relative carousel-image"
+                      className="w-full h-auto rounded-2xl aspect-[9/7] object-cover bg-[#588065] image-container relative carousel-image relative"
                       onMouseEnter={() => setShow(true)}
                       onMouseLeave={() => setShow(false)}
                     >
@@ -158,8 +158,8 @@ function Discover() {
                             <h1 className="text-[28px] text-white font-semibold">
                               More Details
                             </h1>
-                            <button className="bg-brand-lightYellow text-brand-main w-12 h-12 rounded flex justify-center items-center">
-                              <IoArrowForwardOutline size={28} />
+                            <button className="bg-brand-lightYellow text-brand-main w-16 h-16 flex justify-center items-center absolute top-6 right-6 rounded-full">
+                              <MdOutlineArrowOutward size={28} />
                             </button>
                           </span>
                         </span>
@@ -167,7 +167,7 @@ function Discover() {
                     </span>
                   ))}
                 </div>
-                <span className="flex gap-4 justify-end w-full">
+                <span className="flex gap-4 justify-end w-full lg:pr-[60px] pr-0">
                   <button
                     className="hover:border border-gray-200 hover:bg-gray-100 text-brand-main w-12 h-12 rounded flex justify-center items-center"
                     onClick={prevSlide}
@@ -186,7 +186,7 @@ function Discover() {
           </span>
         </span>
       </span>
-      <Divider className="max-w-[1200px] mx-auto my-10" />
+      <Divider className="max-w-[1520px] mx-auto my-10" />
     </div>
   );
 }

@@ -1,5 +1,4 @@
 import { Header } from "@/layouts";
-import Footer from "@/layouts/Footer";
 import ViewMdaWidget from "@/layouts/MdaWidget/ViewMdaWidget";
 
 export default function Mda() {
@@ -7,7 +6,6 @@ export default function Mda() {
     <main>
       <Header />
       <ViewMdaWidget />
-      <Footer />
     </main>
   );
 }

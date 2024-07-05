@@ -7,7 +7,9 @@ export default function Mda() {
     <main>
       <Header />
       <MdaWidget />
-      <Footer />
+      <div className="p-2 rounded-xl overflow-hidden">
+        <Footer />
+      </div>
     </main>
   );
 }
