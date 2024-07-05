@@ -28,7 +28,7 @@ const QuickStats = () => {
               {/* top */}
               <div className="flex flex-col gap-8 items-center justify-center flex-wrap w-full lg:gap-4 lg:flex-row">
                 {/* items */}
-                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-brand-white/40 p-8 px-16 font-geistsans min-w-[30%] w-[100%] mx-auto md:w-[480px] lg:w-[30%]">
+                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-brand-white/40 p-8 px-16 mb-8 font-geistsans min-w-[30%] w-[100%] mx-auto md:w-[480px] lg:w-[30%]">
                   <span className="flex items-center justify-start gap-4 text-brand-white font-normal text-base w-full">
                     <svg
                       width="53"
@@ -55,7 +55,7 @@ const QuickStats = () => {
                     1976
                   </span>
                 </div>
-                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-brand-white/40 p-8 px-16 font-geistsans min-w-[30%] w-[100%] mx-auto md:w-[480px] lg:w-[30%]">
+                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-brand-white/40 p-8 px-16 mb-8 font-geistsans min-w-[30%] w-[100%] mx-auto md:w-[480px] lg:w-[30%]">
                   <span className="flex items-center justify-start gap-4 text-brand-white font-normal text-base w-full">
                     <svg
                       width="53"
@@ -84,7 +84,7 @@ const QuickStats = () => {
                     ≈27K
                   </span>
                 </div>
-                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-brand-white/40 p-8 px-16 font-geistsans min-w-[30%] w-[100%] mx-auto md:w-[480px] lg:w-[30%]">
+                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-brand-white/40 p-8 px-16 mb-8 font-geistsans min-w-[30%] w-[100%] mx-auto md:w-[480px] lg:w-[30%]">
                   <span className="flex items-center justify-start gap-4 text-brand-white font-normal text-base w-full">
                     <svg
                       width="53"
@@ -113,7 +113,7 @@ const QuickStats = () => {
                     3M
                   </span>
                 </div>
-                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-brand-white/40 p-8 px-16 font-geistsans min-w-[30%] w-[100%] mx-auto md:w-[480px] lg:w-[30%]">
+                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-brand-white/40 p-8 px-16 mb-8 font-geistsans min-w-[30%] w-[100%] mx-auto md:w-[480px] lg:w-[30%]">
                   <span className="flex items-center justify-start gap-4 text-brand-white font-normal text-base w-full">
                     <svg
                       width="53"
@@ -140,7 +140,7 @@ const QuickStats = () => {
                     17
                   </span>
                 </div>
-                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-brand-white/40 p-8 px-16 font-geistsans min-w-[30%] w-[100%] mx-auto md:w-[480px] lg:w-[30%]">
+                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-brand-white/40 p-8 px-16 mb-8 font-geistsans min-w-[30%] w-[100%] mx-auto md:w-[480px] lg:w-[30%]">
                   <span className="flex items-center justify-start gap-4 text-white font-normal text-base w-full">
                     <svg
                       width="53"
@@ -168,7 +168,7 @@ const QuickStats = () => {
                   </span>
                   <span className="font-medium text-5xl text-white">1.50</span>
                 </div>
-                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-brand-white/40 p-8 px-16 font-geistsans min-w-[30%] w-[100%] mx-auto md:w-[480px] lg:w-[30%]">
+                <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-brand-white/40 p-8 px-16 mb-8 font-geistsans min-w-[30%] w-[100%] mx-auto md:w-[480px] lg:w-[30%]">
                   <span className="flex items-center justify-start gap-4 text-white font-normal text-base w-full">
                     <svg
                       width="53"

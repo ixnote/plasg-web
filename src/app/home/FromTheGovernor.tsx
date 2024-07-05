@@ -16,8 +16,8 @@ const FromTheGovernor = () => {
               alt="His excellency"
               className="w-[680px] rounded-xl mx-auto"
             />
-            <div className="glass-fx w-[340px] absolute bottom-6 left-6 flex flex-col gap-1 p-4 text-left md:w-[476px] md:gap-4 md:p-8 md:bottom-10 md:left-10 lg:w-[75%]">
-              <span className="font-medium text-[24px] font-geistsans text-brand-white lg:text-4xl">
+            <div className="glass-fx w-[340px] absolute bottom-6 left-6 flex flex-col gap-1 p-4 text-left md:w-[476px] md:gap-4 md:p-6 md:bottom-10 md:left-[3.4rem] lg:left-[2.9rem] lg:w-[75%]">
+              <span className="font-medium text-[24px] font-geistsans text-brand-white md:text-4xl">
                 Barr. Caleb Mutfwang
               </span>
               <span className="font-normal text-base font-geistsans text-brand-white">
@@ -44,11 +44,18 @@ const FromTheGovernor = () => {
                 positions us as a beacon of growth and opportunity.
               </span>
             </div>
+            {/* <ButtonDark
+              text={"Learn More About the Governor"}
+              url={"government/governor"}
+            /> */}
             <div className="w-full flex items-center justify-start">
-              <div className="w-[60%] flex items-center">
-                <ButtonDark text={"Learn More About the Governor"} />
+              <div className="w-full flex items-center justify-center lg:w-[334px]">
+                <ButtonDark
+                  text={"Learn More About the Governor"}
+                  url={"government/governor"}
+                />
               </div>
-              <div className="w-[40%]"></div>
+              <div className="hidden lg:w-[40%] lg:block"></div>
             </div>
           </div>
         </div>

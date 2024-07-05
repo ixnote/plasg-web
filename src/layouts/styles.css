@@ -112,6 +112,11 @@ body {
   transition: transform 0.1s ease-out;
 }
 
+.stroke-fx {
+  -webkit-text-stroke: 2px white;
+  color: transparent; /* If you want the stroke effect only */
+}
+
 .hide-scrollbar {
 }
 
