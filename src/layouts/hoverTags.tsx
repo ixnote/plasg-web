@@ -37,6 +37,7 @@ const HoverTags = ({ data }: any) => {
   type SubItemType = {
     _id: any;
     title: string;
+    path: string;
     forwardArrow: boolean;
     paragraph: string;
     subTitle: string;
@@ -85,6 +86,7 @@ const HoverTags = ({ data }: any) => {
               <TagList
                 id={item._id}
                 title={item.title}
+                path={item.path}
                 forwardArrow={item.forwardArrow}
               />
             </div>
@@ -105,6 +107,7 @@ const HoverTags = ({ data }: any) => {
                   <TagList
                     id={subItem._id}
                     title={subItem.title}
+                    path={subItem.path}
                     forwardArrow={false}
                   />
                 </div>

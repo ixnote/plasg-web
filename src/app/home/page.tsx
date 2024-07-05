@@ -36,15 +36,14 @@ const Landing = () => {
         <SectionDividerDark />
         <QuickStats />
         <SectionDividerDark />
-        <Explore />
+        <div className="hidden lg:block">
+          <Explore />
+        </div>
         <QuickActions />
         <SectionDividerLight />
         <div className="hidden md:block">
           <Visit />
         </div>
-        {/* <Newsletter />
-        <SectionDividerDark /> */}
-        {/* </div> */}
       </div>
       <Footer />
     </>

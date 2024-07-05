@@ -6,6 +6,7 @@ import secretary from "../../../public/government/judiciary/judiciary2.jpg";
 import ButtonLight from "@/components/ButtonLight";
 import SubsectionHeader from "@/components/SubsectionHeader";
 import ProfileCard from "@/components/ProfileCard";
+import ArticleImage from "@/assets/imgs/img.png";
 
 const Judiciary = () => {
   return (
@@ -17,19 +18,22 @@ const Judiciary = () => {
         />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <ProfileCard
-            image={governor}
+            // image={governor}
+            image={ArticleImage}
             action={"mail"}
             name={"Hannatu Joel"}
             position={"Member House of Assembly."}
           />
           <ProfileCard
-            image={deputy}
+            // image={deputy}
+            image={ArticleImage}
             action={"mail"}
             name={"Dasbak Rifkatu"}
             position={"Member House of Assembly."}
           />
           <ProfileCard
-            image={secretary}
+            // image={secretary}
+            image={ArticleImage}
             action={"mail"}
             name={"Josephine Gali"}
             position={"Member House of Assembly."}

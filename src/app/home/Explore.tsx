@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 
 import map from "../../../public/landing/map.svg";
+import Map from "@/components/Map/page";
 
 const Explore = () => {
   return (
@@ -25,13 +26,11 @@ const Explore = () => {
             </span>
           </div>
           {/* content */}
-          <div className="flex flex-col items-center justify-center gap-40 w-[70%] m-auto">
+          <div className="flex flex-col items-center justify-center gap-40 w-full m-auto">
             {/* top */}
-            <div className="flex flex-row gap-4 items-center justify-center flex-wrap lg:w-[1017px]">
+            <div className="flex flex-row gap-4 items-center justify-center flex-wrap w-full">
               {/* Map */}
-              <div className="flex items-center justify-center p-4">
-                <Image src={map} alt="top footer" className="w-full h-full" />
-              </div>
+              <Map />
             </div>
             {/* bottom */}
             <div className="flex flex-col justify-center items-center gap-8 text-center w-[350px] md:w-[650px]">
@@ -43,7 +42,7 @@ const Explore = () => {
                 tourism, and tech. Join us in driving economic growth and
                 securing a prosperous future.
               </span>
-              <ButtonDark text={"View Opportunities"} />
+              <ButtonDark text={"View Opportunities"} url={"business"} />
             </div>
           </div>
         </div>

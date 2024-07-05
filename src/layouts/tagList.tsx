@@ -6,18 +6,16 @@ import Link from "next/link";
 type Item = {
   id: number;
   title: string;
+  path: string;
   forwardArrow: boolean;
 };
 
-const TagList = ({ id, title, forwardArrow }: Item) => {
+const TagList = ({ id, title, path, forwardArrow }: Item) => {
   return (
     <div className="relative w-[376px] h-[68px] border-b-[0.5px] border-[#325B5D] cursor-pointer overflow-hidden group">
       <div className="absolute inset-0 h-full w-full flex items-center justify-center transition-opacity duration-300 ease-in-out opacity-100 group-hover:opacity-0">
         <div className="w-full flex justify-between">
-          <Link
-            href={title.toLowerCase()}
-            className="w-full flex items-center gap-8"
-          >
+          <Link href={path} className="w-full flex items-center gap-8">
             <p className="font-geistmono font-light leading-6 text-brand-white">
               {id}
             </p>
@@ -36,10 +34,7 @@ const TagList = ({ id, title, forwardArrow }: Item) => {
 
       <div className="absolute inset-0 h-full w-full flex items-center justify-center bg-brand-lightYellow transition-transform duration-300 ease-in-out transform translate-y-full group-hover:translate-y-0">
         <div className="w-full flex justify-between">
-          <Link
-            href={title.toLowerCase()}
-            className="w-full flex items-center gap-8"
-          >
+          <Link href={path} className="w-full flex items-center gap-8">
             <p className="font-geistmono font-light leading-6 text-brand-dark transition-transform duration-300 ease-in-out transform group-hover:translate-x-4">
               {id}
             </p>

@@ -6,6 +6,7 @@ import governor from "../../../public/government/legislative/legislative.jpg";
 import deputy from "../../../public/government/legislative/legislative5.jpg";
 import secretary from "../../../public/government/legislative/legislative3.jpg";
 import ButtonLight from "@/components/ButtonLight";
+import ArticleImage from "@/assets/imgs/img.png";
 
 const Legislative = () => {
   return (
@@ -17,19 +18,22 @@ const Legislative = () => {
         />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <ProfileCard
-            image={governor}
+            // image={governor}
+            image={ArticleImage}
             action={"mail"}
             name={"Kyale Isaac Kwallu"}
             position={"Member House of Representatives."}
           />
           <ProfileCard
-            image={deputy}
+            // image={deputy}
+            image={ArticleImage}
             action={"mail"}
             name={"Sadiya Yusuf"}
             position={"Member House of Representatives."}
           />
           <ProfileCard
-            image={secretary}
+            // image={secretary}
+            image={ArticleImage}
             action={"mail"}
             name={"David Ishaya Lalu"}
             position={"Member House of Representatives."}

@@ -33,11 +33,17 @@ const Newsletter = () => {
               />
             </div>
             <div className="flex flex-col items-start justify-center gap-3">
-              <ButtonDark
-                text={"Subscribe to our newsletter"}
-                width={"1422px"}
-              />
-              <span className="flex items-center justify-center gap-1 font-normal text-xs text-brand-grayish font-geistsans">
+              {/* <ButtonDark text={"Subscribe to our newsletter"} /> */}
+              <div className="w-full flex items-center justify-start">
+                <div className="w-full flex items-center justify-center lg:w-[430px]">
+                  <ButtonDark
+                    text={"Subscribe to our newsletter"}
+                    url={"government/governor"}
+                  />
+                </div>
+                <div className="hidden lg:w-[40%] lg:block"></div>
+              </div>
+              <span className="flex items-center justify-center gap-1 font-normal text-xs text-brand-grayish font-geistsans lg:pl-1">
                 By subscribing you agree to with our{" "}
                 <a href="#" className="text-brand-secondary ">
                   Privacy Policy
