@@ -4,14 +4,7 @@ import React, { useEffect, useState } from "react";
 import ProfileCard from "@/components/ProfileCard";
 import SubsectionHeader from "@/components/SubsectionHeader";
 
-// dependencies
-// import { Swiper, SwiperSlide } from "swiper/react";
-// import { Navigation, Pagination } from "swiper/modules";
-// import "swiper/css";
-// import "swiper/css/navigation";
-// import "swiper/css/pagination";
-
-import member from "../../../../public/government/judiciary/judiciary.jpg";
+import ArticleImage from "@/assets/imgs/img.png";
 
 const Cabinet = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -19,31 +12,31 @@ const Cabinet = () => {
 
   const profiles = [
     {
-      image: member,
+      image: ArticleImage,
       name: "Hannatu Joel",
       position: "Member House of Assembly.",
       action: "mail",
     },
     {
-      image: member,
+      image: ArticleImage,
       name: "Dasbak Rifkatu",
       position: "Member House of Assembly.",
       action: "mail",
     },
     {
-      image: member,
+      image: ArticleImage,
       name: "Josephine Gali",
       position: "Member House of Assembly.",
       action: "mail",
     },
     {
-      image: member,
+      image: ArticleImage,
       name: "Josephine Gali",
       position: "Member House of Assembly.",
       action: "mail",
     },
     {
-      image: member,
+      image: ArticleImage,
       name: "Josephine Gali",
       position: "Member House of Assembly.",
       action: "mail",
@@ -152,18 +145,6 @@ const Cabinet = () => {
                 />
               </svg>
             </span>
-            {/* <button
-              className="px-4 py-2 mr-2 bg-gray-300 rounded"
-              onClick={prevSlide}
-            >
-              Prev
-            </button>
-            <button
-              className="px-4 py-2 bg-gray-300 rounded"
-              onClick={nextSlide}
-            >
-              Next
-            </button> */}
           </div>
         </div>
       </div>
