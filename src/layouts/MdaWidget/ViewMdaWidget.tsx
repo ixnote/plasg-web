@@ -4,7 +4,7 @@ import Essentials from "./Essentials";
 import Faqs from "./Faqs";
 import Hero from "./Hero";
 import Image from "next/image";
-import bg from "../../../public/landing/bg.jpg";
+import bg from "../../../public/image 3.png";
 import Discover from "./Discover";
 
 function ViewMdaWidget() {
