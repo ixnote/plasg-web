@@ -1,9 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 
 const AssetCardLight = ({
   logo,
+  icon,
   logoText,
   title,
   byText,
@@ -16,27 +18,30 @@ const AssetCardLight = ({
 
   return (
     <div
-      className="h-[540px] w-[49%] bg-[#E5E7EB] p-8 mb-2 rounded-2xl flex flex-col items-start justify-start gap-8 transition-fx cursor-pointer hover:bg-brand-lightYellow"
+      className="h-[476px] w-[49%] bg-[#E5E7EB] p-8 mb-2 rounded-2xl flex flex-col items-start justify-start gap-7 transition-fx cursor-pointer hover:bg-brand-lightYellow"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
       {/* top */}
-      <div className="flex flex-col gap-16">
+      <div className=" w-full flex flex-col gap-9 ">
         {/* logo part */}
         <div className="flex w-full items-center justify-between">
           <div className="flex flex-col gap-2 text-[#588065]">
-            {logo}
+            {logo && logo}
+            {icon && (
+              <Image src={icon  } alt="" />
+            )}
             <span>{logoText}</span>
           </div>
           {updated && (
-            <span className="font-geistmono text-brand-grayish font-light text-sm">
-              {logoText}
+            <span className="font-geistmono flex justify-end w-[100%] text-brand-grayish font-light text-sm">
+              {updated}
             </span>
           )}
         </div>
         {/* title part */}
         <div className="flex flex-col gap-8">
-          <div className="font-geistsans font-medium text-3xl text-brand-main flex flex-col gap-2 h-[60px]">
+          <div className="font-geistsans font-medium text-3xl text-brand-main flex flex-col gap-2 h-[55px]">
             {title}
             {byText && (
               <span className="flex items-center justify-start gap-4 text-brand-grayish font-normal text-sm font-geistsans">
@@ -71,7 +76,7 @@ const AssetCardLight = ({
             : "transition-fx flex items-center justify-between w-[90%]"
         }
       >
-        <div className="flex w-full items-center justify-start gap-4">
+        <div className="flex w-full items-center justify-start gap-4 ">
           <div className="border-[1px] border-brand-grayish p-[10px] rounded-lg w-[134px] flex items-center justify-center text-brand-main font-normal text-sm bg-transparent font-geistsans cursor-pointer transition-fx hover:bg-brand-dark hover:text-brand-white hover:border-brand-dark">
             {button1text}
           </div>
