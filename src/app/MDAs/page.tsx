@@ -5,30 +5,21 @@ import Arrow from "@/assets/icons/layouts/arrow.svg"
 import Hero_image from "@/assets/imgs/hero_img.svg"
 import arrow from "@/assets/icons/layouts/right_arrow.svg"
 import dg_image from "@/assets/imgs/dg.svg"
+import AssetCardLight from "@/components/AssetCardLight";
+import { itemList } from "./data";
+import { newsList } from "./data";
+import arrowIcon from "@/assets/icons/layouts/right_arrow.svg"
+import Cards from "./cards"
+
 
 import Image from "next/image";
 
-
-
 const Mdas = () => {
-    const itemList = [
-        {
 
-         icon:,
-         
-
-        },
-        {
-
-        },
-        {
-
-        },
-    ]
-
+   
     return (
-        <div className="first relative bg-white">
-            <div className="h-[40px] w-full bg-[#0E3E40] text-white flex justify-end items-center pb-0 mb-0 ">
+        <div className="first relative  h-full bg-white">
+            <div className="h-[50px] w-full  bg-[#0E3E40] flex justify-end items-center pb-0 mb-0 ">
               <p><a href="plateaustate.gov.ng ">go to plateaustate.gov.ng </a></p>
             </div>
             <div>
@@ -55,9 +46,9 @@ const Mdas = () => {
                 </div>
             </div>
 
-            <div className="w-full px-10 pb-[120px]">
+            <div className="w-full px-10 pb-[100px] h-[830px] ">
                <hr className="mb-[150px]  border-[1px] border-[#D4D4D4]" />
-               <div className=" w-full  h-[690px] flex justify-center ">
+               <div className=" w-full   flex justify-center  ">
                  <div className="p-6">
                     <div >
                      <header className="w-[100px] h-[40px] flex justify-center items-center border-[#0E3E40] border-2 text-[#0E3E40] font-normal leading-3 size-3 font-[geist] rounded-md mb-6">Director</header>
@@ -79,18 +70,64 @@ const Mdas = () => {
                 <Image src={dg_image} alt="" className="p-6 p"/>        
               </div>
             </div>
-            <div className="w-full h-[1780px] px-10 pb-[120px]">
+          <div className="w-full h-[1780px] px-10 pb-[120px] ">
             <hr className=" mb-[150px] border-[1px] border-[#D4D4D4]" />
-                <div>
-                <header className="w-[100px] h-[40px] flex justify-center items-center border-[#0E3E40] border-2 text-[#0E3E40] font-normal leading-3 size-3 font-[geist] rounded-md mb-6">Quick access</header>
-                <p className="w-[800px] h-[150px] flex justify-start items-center text-[#0E3E40] font-[geist] text-5xl size-11 font-medium leading-[48px] mb-10">Easily Access Essential Information on Topics of Interest</p>
-                <p className="text-[#00000080] w-[750px]">Find key information quickly on a variety of important topics right here on the Plateau Government website.</p>
+                <div className="pb-[80px]  pt-[20px]">
+                 <header className="w-[100px] h-[40px] flex justify-center items-center border-[#0E3E40] border-2 text-[#0E3E40] font-normal leading-3 size-3 font-[geist] rounded-md mb-6">Quick access</header>
+                 <p className="w-[800px] h-[150px] flex justify-start items-center text-[#0E3E40] font-[geist] text-5xl size-11 font-medium leading-[48px] mb-10">Easily Access Essential Information on Topics of Interest</p>
+                 <p className="text-[#00000080] w-[750px]">Find key information quickly on a variety of important topics right here on the Plateau Government website.</p>
+                </div>              
+                <div className="flex justify-center h-[1100px] ">
+                 <div className="flex items-center justify-between flex-wrap gap-4 w-full m-auto my-4">
+                        {itemList.map((item) => (
+                            <AssetCardLight
+                                key={item.id}
+                                icon={item.icon}
+                                logoText={item.logoText}
+                                updated={item.updated}
+                                description={item.description}
+                                button1text={item.button1text}
+                            />
+                        ))}
+                    </div>
                 </div>
-                <div>
-
-                </div>
-                <div></div>
+                <div className="w-full h-[118px] flex justify-center pb-28" >
+                    <button className="w-[237px] h-[54px] rounded-lg py-[10px] mb-32 px-[40px] border-[1px] border-[#9CA3AF] flex justify-center items-center ">
+                        <p className="w-[400px] h-[24px]">See all Services</p>
+                        <Image src={arrowIcon} alt="" className=" w-[18px] font-[Geist] h-[18px]"/>
+                    </button>
+                </div> 
             </div>
+
+            <div className="w-full h-[1800px]  px-[40px] pt-[0px] pb-[120px] ">
+             <hr className="  border-[1px] border-[#D4D4D4]" />
+                    <div className="  h-[254px] pb-[80px] bg-white  ">
+                     <div className="  gap-4">
+                      <header className="w-[100px] h-[32px] flex justify-center items-center border-[#0E3E40] border-2 text-[#0E3E40] font-normal leading-3 size-3 font-[geist] rounded-md mb-6">News</header>
+                      <p className="w-[800px] h-[48px] flex justify-start items-center text-[#0E3E40] font-[geist] text-5xl size-11 font-medium leading-[48px] mb-10">News Updates</p>
+                      <p className="text-[#00000080] w-[750px]">Stay connected with the latest from the Plateau State ICT Development Agency. Get brief updates on new projects, collaborations, and tech innovations shaping our state.</p>
+                     </div>  
+                    </div>
+                    <div className="w-full flex flex-col items-center h-[1150px]">
+                        {newsList.map((item) => (
+                                    <Cards
+                                        key={item.id}
+                                        newsDate={item.date}
+                                        image={item.image}
+                                        topic={item.topic}
+                                        text={item.text}
+                                    />
+                            ))}
+                    </div>
+                    <div className="w-full h-[70px] flex justify-center" >
+                      <button className="w-[237px] h-[54px] rounded-lg py-[10px] mb-32 px-[40px] border-[1px] border-[#9CA3AF] flex justify-center items-center ">
+                       <p className="w-[400px] h-[24px]">See all Services</p>
+                       <Image src={arrowIcon} alt="" className=" w-[18px] font-[Geist] h-[18px]"/>
+                      </button>
+                    </div>
+    
+                
+            </div> 
         </div>
     );
 

@@ -7,7 +7,7 @@
   }
   
   .header {
-    @apply h-[76px] w-full text-black rounded-lg px-10 py-4 flex items-center;
+    @apply h-[70px] w-full text-black rounded-lg px-10 py-4 flex items-center sticky top-0;
   }
   
   .header-content {
@@ -15,7 +15,7 @@
   }
   
   .manue-container {
-    @apply ml-10 flex items-center justify-around w-full;
+    @apply ml-10 flex items-center justify-around w-full ;
   }
   
   .menue-ul {
