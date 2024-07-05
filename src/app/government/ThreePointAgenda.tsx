@@ -4,12 +4,9 @@ import SubsectionHeader from "@/components/SubsectionHeader";
 import Image from "next/image";
 import React, { useState, useEffect, useRef } from "react";
 
-import economy from "../../../public/government/harvest.jpg";
-import infrastructure from "../../../public/government/infrastructure.jpg";
-import governance from "../../../public/government/hands.jpg";
-// import governance from "../../../public/landing/visit/jos.jpg";
-// import infrastructure from "../../../public/landing/visit/kurang.jpg";
-// import economy from "../../../public/landing/visit/kurra.jpg";
+import governance from "../../../public/government/three-points/governance.jpg";
+import infrastructure from "../../../public/government/three-points/infrastructure.jpg";
+import economy from "../../../public/government/three-points/image 20.png";
 
 const ThreePointAgenda = () => {
   const [active, setActive] = useState("governance");
@@ -90,6 +87,28 @@ const ThreePointAgenda = () => {
           <div className="w-full text-brand-main font-medium text-[40px] flex items-start font-geistsans leading-[48px] mt-[-5px] lg:w-[80%]">
             <div className="w-full hidden flex-col gap-4 lg:gap-8 lg:flex">
               {active === "governance" && (
+                // <div className="relative h-[463px] w-full">
+                //   <Image
+                //     src={governance}
+                //     alt="governance"
+                //     className="w-[1360px] h-full object-cover rounded-xl xl:w-full"
+                //     loading="lazy"
+                //   />
+                //   <div className="absolute top-5 left-5 flex items-center gap-12">
+                //     <div className="glass-fx p-2 text-brand-white font-normal text-sm font-geistmono">
+                //       01
+                //     </div>
+                //     <span className="font-medium text-2xl text-brand-white font-geistsans px-2">
+                //       Peace, Security and Good Governance{" "}
+                //     </span>
+                //   </div>
+                //   <div className="glass-fx absolute bottom-5 left-4  w-[92%] text-brand-white font-normal text-base font-geistsans p-4 lg:left-[104px] lg:w-[500px]">
+                //     This prioritizes strategic investments in promoting peace,
+                //     security, and good governance on the Plateau, aiming to
+                //     ensure stability, prosperity, and enhanced well-being for
+                //     all residents.
+                //   </div>
+                // </div>
                 <div className="relative h-[463px] w-full">
                   <Image
                     src={governance}
@@ -97,6 +116,8 @@ const ThreePointAgenda = () => {
                     className="w-[1360px] h-full object-cover rounded-xl xl:w-full"
                     loading="lazy"
                   />
+                  <div className="absolute inset-0 bg-gray-800 bg-opacity-40 rounded-xl"></div>{" "}
+                  {/* Gray overlay */}
                   <div className="absolute top-5 left-5 flex items-center gap-12">
                     <div className="glass-fx p-2 text-brand-white font-normal text-sm font-geistmono">
                       01
@@ -105,7 +126,7 @@ const ThreePointAgenda = () => {
                       Peace, Security and Good Governance{" "}
                     </span>
                   </div>
-                  <div className="glass-fx absolute bottom-5 left-4  w-[92%] text-brand-white font-normal text-base font-geistsans p-4 lg:left-[104px] lg:w-[500px]">
+                  <div className="glass-fx absolute bottom-5 left-4 w-[92%] text-brand-white font-normal text-base font-geistsans p-4 lg:left-[104px] lg:w-[500px]">
                     This prioritizes strategic investments in promoting peace,
                     security, and good governance on the Plateau, aiming to
                     ensure stability, prosperity, and enhanced well-being for
@@ -114,22 +135,46 @@ const ThreePointAgenda = () => {
                 </div>
               )}
               {active === "infrastructure" && (
-                <div className="relative h-[463px] w-full">
+                // <div className="relative h-[463px] w-full">
+                //   <Image
+                //     src={infrastructure}
+                //     alt="infrastructure"
+                //     className="w-[1360px] h-full object-cover rounded-xl xl:w-full"
+                //     loading="lazy"
+                //   />
+                //   <div className="absolute top-5 left-5 flex items-center gap-12">
+                //     <div className="glass-fx p-2 text-brand-white font-normal text-sm font-geistmono">
+                //       02
+                //     </div>
+                //     <span className=" font-medium text-2xl text-brand-white font-geistsans px-2">
+                //       Physical Infrastructural Development{" "}
+                //     </span>
+                //   </div>
+                //   <div className="glass-fx absolute bottom-5 left-4  w-[92%] text-brand-white font-normal text-base font-geistsans p-4 lg:left-[104px] lg:w-[500px]">
+                //     This prioritizes strategic investments in public
+                //     infrastructure on the Plateau with aim to drive economic
+                //     progress, foster social cohesion, and improve residents'
+                //     overall quality of life through improved infrastructure.
+                //   </div>
+                // </div>
+                <div className="relative h-[463px] w-full mt-8">
                   <Image
                     src={infrastructure}
                     alt="infrastructure"
                     className="w-[1360px] h-full object-cover rounded-xl xl:w-full"
                     loading="lazy"
                   />
+                  <div className="absolute inset-0 bg-gray-800 bg-opacity-40 rounded-xl"></div>{" "}
+                  {/* Gray overlay */}
                   <div className="absolute top-5 left-5 flex items-center gap-12">
                     <div className="glass-fx p-2 text-brand-white font-normal text-sm font-geistmono">
                       02
                     </div>
-                    <span className=" font-medium text-2xl text-brand-white font-geistsans px-2">
+                    <span className="font-medium text-2xl text-brand-white font-geistsans px-2">
                       Physical Infrastructural Development{" "}
                     </span>
                   </div>
-                  <div className="glass-fx absolute bottom-5 left-4  w-[92%] text-brand-white font-normal text-base font-geistsans p-4 lg:left-[104px] lg:w-[500px]">
+                  <div className="glass-fx absolute bottom-5 left-4 w-[92%] text-brand-white font-normal text-base font-geistsans p-4 lg:left-[104px] lg:w-[500px]">
                     This prioritizes strategic investments in public
                     infrastructure on the Plateau with aim to drive economic
                     progress, foster social cohesion, and improve residents'
@@ -138,6 +183,28 @@ const ThreePointAgenda = () => {
                 </div>
               )}
               {active === "economy" && (
+                // <div className="relative h-[463px] w-full">
+                //   <Image
+                //     src={economy}
+                //     alt="economy"
+                //     className="w-[1360px] h-full object-cover rounded-xl xl:w-full"
+                //     loading="lazy"
+                //   />
+                //   <div className="absolute top-5 left-5 flex items-center gap-12">
+                //     <div className="glass-fx p-2 text-brand-white font-normal text-sm font-geistmono">
+                //       03
+                //     </div>
+                //     <span className=" font-medium text-2xl text-brand-white font-geistsans px-2">
+                //       Sustainable Economic Rebirth{" "}
+                //     </span>
+                //   </div>
+                //   <div className="glass-fx absolute bottom-5 left-4  w-[92%] text-brand-white font-normal text-base font-geistsans p-4 lg:left-[104px] lg:w-[500px]">
+                //     The "Sustainable Economic Rebirth" initiative focuses on
+                //     strategic investments in public infrastructure across
+                //     Plateau State. Its aim is to propel economic growth, promote
+                //     sustainable economic practices
+                //   </div>
+                // </div>
                 <div className="relative h-[463px] w-full">
                   <Image
                     src={economy}
@@ -145,15 +212,17 @@ const ThreePointAgenda = () => {
                     className="w-[1360px] h-full object-cover rounded-xl xl:w-full"
                     loading="lazy"
                   />
+                  <div className="absolute inset-0 bg-gray-800 bg-opacity-40 rounded-xl"></div>{" "}
+                  {/* Gray overlay */}
                   <div className="absolute top-5 left-5 flex items-center gap-12">
                     <div className="glass-fx p-2 text-brand-white font-normal text-sm font-geistmono">
                       03
                     </div>
-                    <span className=" font-medium text-2xl text-brand-white font-geistsans px-2">
+                    <span className="font-medium text-2xl text-brand-white font-geistsans px-2">
                       Sustainable Economic Rebirth{" "}
                     </span>
                   </div>
-                  <div className="glass-fx absolute bottom-5 left-4  w-[92%] text-brand-white font-normal text-base font-geistsans p-4 lg:left-[104px] lg:w-[500px]">
+                  <div className="glass-fx absolute bottom-5 left-4 w-[92%] text-brand-white font-normal text-base font-geistsans p-4 lg:left-[104px] lg:w-[500px]">
                     The "Sustainable Economic Rebirth" initiative focuses on
                     strategic investments in public infrastructure across
                     Plateau State. Its aim is to propel economic growth, promote
@@ -164,6 +233,81 @@ const ThreePointAgenda = () => {
             </div>
             {/* mobile stuff */}
             <div className="w-full flex flex-col gap-4 lg:gap-8 lg:hidden">
+              <div className="relative h-[463px] w-full">
+                <Image
+                  src={governance}
+                  alt="governance"
+                  className="w-[1360px] h-full object-cover rounded-xl xl:w-full"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gray-800 bg-opacity-40 rounded-xl"></div>{" "}
+                {/* Gray overlay */}
+                <div className="absolute top-5 left-5 flex items-center gap-12">
+                  <div className="glass-fx p-2 text-brand-white font-normal text-sm font-geistmono">
+                    01
+                  </div>
+                  <span className="font-medium text-2xl text-brand-white font-geistsans px-2">
+                    Peace, Security and Good Governance{" "}
+                  </span>
+                </div>
+                <div className="glass-fx absolute bottom-5 left-4 w-[92%] text-brand-white font-normal text-base font-geistsans p-4 lg:left-[104px] lg:w-[500px]">
+                  This prioritizes strategic investments in promoting peace,
+                  security, and good governance on the Plateau, aiming to ensure
+                  stability, prosperity, and enhanced well-being for all
+                  residents.
+                </div>
+              </div>
+              <div className="relative h-[463px] w-full">
+                <Image
+                  src={infrastructure}
+                  alt="infrastructure"
+                  className="w-[1360px] h-full object-cover rounded-xl xl:w-full"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gray-800 bg-opacity-40 rounded-xl"></div>{" "}
+                {/* Gray overlay */}
+                <div className="absolute top-5 left-5 flex items-center gap-12">
+                  <div className="glass-fx p-2 text-brand-white font-normal text-sm font-geistmono">
+                    02
+                  </div>
+                  <span className="font-medium text-2xl text-brand-white font-geistsans px-2">
+                    Physical Infrastructural Development{" "}
+                  </span>
+                </div>
+                <div className="glass-fx absolute bottom-5 left-4 w-[92%] text-brand-white font-normal text-base font-geistsans p-4 lg:left-[104px] lg:w-[500px]">
+                  This prioritizes strategic investments in public
+                  infrastructure on the Plateau with aim to drive economic
+                  progress, foster social cohesion, and improve residents'
+                  overall quality of life through improved infrastructure.
+                </div>
+              </div>
+              <div className="relative h-[463px] w-full">
+                <Image
+                  src={economy}
+                  alt="economy"
+                  className="w-[1360px] h-full object-cover rounded-xl xl:w-full"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gray-800 bg-opacity-40 rounded-xl"></div>{" "}
+                {/* Gray overlay */}
+                <div className="absolute top-5 left-5 flex items-center gap-12">
+                  <div className="glass-fx p-2 text-brand-white font-normal text-sm font-geistmono">
+                    03
+                  </div>
+                  <span className="font-medium text-2xl text-brand-white font-geistsans px-2">
+                    Sustainable Economic Rebirth{" "}
+                  </span>
+                </div>
+                <div className="glass-fx absolute bottom-5 left-4 w-[92%] text-brand-white font-normal text-base font-geistsans p-4 lg:left-[104px] lg:w-[500px]">
+                  The "Sustainable Economic Rebirth" initiative focuses on
+                  strategic investments in public infrastructure across Plateau
+                  State. Its aim is to propel economic growth, promote
+                  sustainable economic practices
+                </div>
+              </div>
+            </div>
+
+            {/* <div className="w-full flex flex-col gap-4 lg:gap-8 lg:hidden">
               <div className="relative h-[463px] w-full">
                 <Image
                   src={governance}
@@ -230,7 +374,7 @@ const ThreePointAgenda = () => {
                   sustainable economic practices
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
         {/* ************ */}
