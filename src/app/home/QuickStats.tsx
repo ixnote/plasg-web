@@ -203,7 +203,10 @@ const QuickStats = () => {
                   Gain deeper insights into Plateau State&apos;s financial
                   landscape through the financial reports by the Auditor General
                 </span>
-                <ButtonDark text={"Access Financial Reports"} />
+                <ButtonDark
+                  text={"Access Financial Reports"}
+                  url="mda/ministry-of-finance"
+                />
               </div>
             </div>
           </div>

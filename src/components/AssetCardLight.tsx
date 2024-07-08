@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const AssetCardLight = ({
   logo,
@@ -13,14 +14,22 @@ const AssetCardLight = ({
   updated,
   button1text,
   button2text,
+  url,
 }: any) => {
   const [hovered, setHovered] = useState(false);
+  const router = useRouter();
+
+  const handleClick = () => {
+    url && router.push(`/${url}`);
+    return;
+  };
 
   return (
     <div
       className="w-full bg-[#E5E7EB] p-8 mb-2 rounded-2xl flex flex-col items-start justify-between gap-8 transition-fx cursor-pointer hover:bg-brand-lightYellow lg:w-[49%] lg:pt-8 lg:h-[540px]"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onClick={handleClick}
     >
       {/* top */}
       <div className="flex flex-col gap-16">
