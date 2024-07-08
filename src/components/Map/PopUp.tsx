@@ -1,11 +1,27 @@
 import React from "react";
+import { MapData } from "./MapData";
 
-const PopUp = ({ showPopUp, setShowPopUp, mapId }: any) => {
+const PopUp = ({
+  showPopUp,
+  setShowPopUp,
+  mapId,
+  setZoom,
+  selectedID,
+  setSelectedID,
+}: any) => {
+  const closePopUp = () => {
+    setZoom(0);
+    setShowPopUp(false);
+    setSelectedID("");
+  };
+
+  console.log("🚀 ~ PopUp MapData: ", MapData[selectedID].name);
+
   return (
     <>
       {/* <div className="absolute left-0 top-12 grow shrink basis-0 justify-start items-end gap-2.5 inline-flex">
         <div className="w-[393px] h-px pb-0.5 justify-center items-end gap-2.5 flex"> */}
-      <div className="absolute top-16 left-14 w-[393px] h-[530px] bg-white rounded-2xl flex-col justify-start items-start gap-2.5 inline-flex">
+      <div className="absolute top-6 left-6 w-[393px] h-[530px] bg-white rounded-2xl flex-col justify-start items-start gap-2.5 inline-flex z-10">
         <div className="p-10 flex-col justify-start items-start gap-4 flex">
           <div className="self-stretch h-12 flex-col justify-center items-end gap-2.5 flex">
             <svg
@@ -15,7 +31,7 @@ const PopUp = ({ showPopUp, setShowPopUp, mapId }: any) => {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               className="cursor-pointer"
-              onClick={() => setShowPopUp(false)}
+              onClick={closePopUp}
             >
               <g filter="url(#filter0_b_1030_16294)">
                 <rect
@@ -76,15 +92,15 @@ const PopUp = ({ showPopUp, setShowPopUp, mapId }: any) => {
               </defs>
             </svg>
           </div>
-          <div className="w-[313px] text-cyan-950 text-2xl font-medium font-['Geist'] leading-loose">
-            Wase {mapId}
+          <div className="w-[313px] text-cyan-950 text-2xl font-medium font-geistsans leading-loose">
+            {MapData[selectedID]?.lga
+              ? MapData[selectedID]?.lga
+              : "Please Select LGA"}
           </div>
-          <div className="w-[313px] text-black/opacity-70 text-base font-medium font-['Geist'] leading-normal">
-            Wase is a town and Local Government Area (LGA) of Plateau State,
-            Nigeria. Situated some 216 km south east of Jos, the Plateau State
-            capital, Wase State is a traditional state founded in the area in
-            1820; this became part of the British Royal Niger Company
-            protectorate (later Northern Nigeria) in 1898.
+          <div className="w-[313px] text-black/opacity-70 text-base font-medium font-geistsans leading-normal">
+            {MapData[selectedID]?.description
+              ? MapData[selectedID]?.description
+              : "Description goes here."}
           </div>
         </div>
         <div className="self-stretch h-[136px] px-10 pb-10 flex-col justify-start items-start gap-2 flex">
@@ -105,17 +121,20 @@ const PopUp = ({ showPopUp, setShowPopUp, mapId }: any) => {
               />
             </svg>
             <div className="justify-start items-center flex">
-              <div className="text-cyan-950 text-lg font-medium font-['Geist'] leading-7">
-                1,750
+              <div className="text-cyan-950 text-lg font-medium font-geistsans">
+                {MapData[selectedID]?.area
+                  ? MapData[selectedID]?.area
+                  : " - - "}{" "}
+                km
+                <span className="[vertical-align:super] [font-size:0.75em]">
+                  2
+                </span>
               </div>
-              <div className="text-cyan-950 text-lg font-medium font-['Geist'] leading-7">
-                (km2)
+              <div className="py-0.5 justify-start items-end gap-1 flex pt-2">
+                <div className="text-cyan-950 mx-2 text-xs font-normal font-geistsans">
+                  approx
+                </div>
               </div>
-              {/* <div className="py-0.5 justify-start items-end gap-1 flex"> */}
-              <div className="text-cyan-950 mx-2 text-xs font-normal font-['Geist'] leading-tight">
-                approx
-              </div>
-              {/* </div> */}
             </div>
           </div>
           <div className="justify-start items-center gap-4 inline-flex">
@@ -132,14 +151,15 @@ const PopUp = ({ showPopUp, setShowPopUp, mapId }: any) => {
                 fill="#0E3E40"
               />
             </svg>
-            <div className="justify-start items-end gap-2 flex">
-              <div className="justify-start items-center gap-1 flex">
-                <div className="text-cyan-950 text-lg font-medium font-['Geist'] leading-7">
-                  125,000+
-                </div>
+            <div className="justify-start items-center flex">
+              <div className="text-cyan-950 text-lg font-medium font-geistsans">
+                {MapData[selectedID]?.population
+                  ? MapData[selectedID]?.population
+                  : " - - "}{" "}
+                +
               </div>
-              <div className="py-0.5 justify-start items-center gap-1 flex">
-                <div className="text-cyan-950 text-xs font-normal font-['Geist'] leading-tight">
+              <div className="py-0.5 justify-start items-end gap-1 flex pt-2">
+                <div className="text-cyan-950 mx-2 text-xs font-normal font-geistsans">
                   (2003 census data)
                 </div>
               </div>

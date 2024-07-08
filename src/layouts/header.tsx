@@ -16,24 +16,24 @@ const menueList = [
   {
     name: "Government",
     drop: true,
-    path: "",
+    path: "#",
     data: governmentData,
   },
   {
     name: "Library",
     drop: true,
-    path: "",
+    path: "#",
     data: libraryData,
   },
   {
     name: "Tourism",
     drop: false,
-    path: "",
+    path: "#",
   },
   {
     name: "News",
     drop: false,
-    path: "",
+    path: "/news",
   },
 ];
 

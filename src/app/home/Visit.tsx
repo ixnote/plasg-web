@@ -105,7 +105,7 @@ const Visit = () => {
                 />
               </div>
             </div>
-            <ButtonLight text={"Visit Plateau"} />
+            <ButtonLight text={"Visit Plateau"} url={"tourism"} />
           </div>
         </div>
       </div>

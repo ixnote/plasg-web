@@ -53,6 +53,7 @@ const QuickActions = () => {
                     </defs>
                   </svg>
                 }
+                url={"search/search-stuff"}
                 logoText={"Health"}
                 title={"Health Services and Information"}
                 description={
@@ -77,6 +78,7 @@ const QuickActions = () => {
                     />
                   </svg>
                 }
+                url={"search/search-stuff"}
                 logoText={"Governance"}
                 title={"Governance and Public Administration"}
                 description={
@@ -101,6 +103,7 @@ const QuickActions = () => {
                     />
                   </svg>
                 }
+                url={"search/search-stuff"}
                 logoText={"Business"}
                 title={"Business and Economic Development"}
                 description={
@@ -131,6 +134,7 @@ const QuickActions = () => {
                     />
                   </svg>
                 }
+                url={"search/search-stuff"}
                 logoText={"Welfare"}
                 title={"Community Welfare and Support"}
                 description={
@@ -139,7 +143,7 @@ const QuickActions = () => {
                 button1text={"View Topic"}
               />
             </div>
-            <ButtonLight text={"See All Topics"} />
+            <ButtonLight text={"See All Topics"} url={"search"} />
           </div>
         </div>
       </div>

@@ -26,7 +26,7 @@ const Explore = () => {
             </span>
           </div>
           {/* content */}
-          <div className="flex flex-col items-center justify-center gap-40 w-full m-auto">
+          <div className="flex flex-col items-center justify-center gap-36 w-full m-auto">
             {/* top */}
             <div className="flex flex-row gap-4 items-center justify-center flex-wrap w-full">
               {/* Map */}
