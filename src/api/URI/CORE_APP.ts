@@ -7,6 +7,7 @@ const CORE_APP = {
     news: `${BASE_URL}news`,
     resources: `${BASE_URL}resource`,
     users: `${BASE_URL}user`,
+    legislatives: `${BASE_URL}statics/legislatives`,
   },
 };
 export default CORE_APP;

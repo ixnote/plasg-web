@@ -13,7 +13,6 @@ import { MdOutlineArrowOutward } from "react-icons/md";
 
 function MdaWidget() {
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 12;
 
   const handlePageChange = (page: any) => {
     setCurrentPage(page);
