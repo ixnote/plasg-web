@@ -2,19 +2,20 @@ import axios from "axios";
 import CORE_APP from "../URI/CORE_APP";
 
 const handleParams = (paramsPayload: any) => {
-  if (!paramsPayload.name) {
-    delete paramsPayload.name;
+  if (!paramsPayload.page) {
+    delete paramsPayload.page;
   }
   return paramsPayload;
 };
 
 export const searchResources = async ({ queryKey }: any) => {
-  const [_, name] = queryKey;
+  const [_, name, page, pageSize] = queryKey;
   const params = {
-    name: name,
+    page: page,
+    pageSize: pageSize,
   };
   const response = await axios.get(
-    `${CORE_APP.plsg.resources}?${new URLSearchParams(
+    `${CORE_APP.plsg.resources}/search/${name}?${new URLSearchParams(
       handleParams(params)
     ).toString()}`
   );

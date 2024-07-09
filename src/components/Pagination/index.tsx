@@ -10,6 +10,15 @@ function PaginationComponent({
 }: any) {
   const getPageNumbers = () => {
     const pageNumbers = [];
+
+    if (totalPages === 1) {
+      return [1];
+    }
+
+    if (totalPages === 2) {
+      return [1, 2];
+    }
+
     const totalNumbers = 3; // Total page numbers to show (including 1 and last page)
     const halfTotalNumbers = Math.floor(totalNumbers / 2);
 
@@ -40,8 +49,9 @@ function PaginationComponent({
   };
 
   const pageNumbers = getPageNumbers();
+
   return (
-    <span className="flex  w-full justify-end max-w-[1200px] mx-auto">
+    <span className="flex w-full justify-end max-w-[1200px] mx-auto">
       {currentPage !== 1 && (
         <span
           className={cn(
