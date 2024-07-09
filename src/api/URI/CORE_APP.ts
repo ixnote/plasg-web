@@ -6,6 +6,7 @@ const CORE_APP = {
     mda: `${BASE_URL}mda`,
     news: `${BASE_URL}news`,
     resources: `${BASE_URL}resource`,
+    users: `${BASE_URL}user`,
   },
 };
 export default CORE_APP;

@@ -153,3 +153,7 @@ body {
 .mantine-Modal-content {
   @apply bg-brand-main p-5;
 }
+
+.text-force:hover {
+  color: white !important;
+}

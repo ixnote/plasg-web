@@ -2,6 +2,7 @@ import React from "react";
 import { FiSearch } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
 import { useGeneralContext } from "../../../context/GenralContext";
+import Link from "next/link";
 
 function SearchComponent({ close }: any) {
   const products = [
@@ -31,9 +32,11 @@ function SearchComponent({ close }: any) {
             placeholder="Looking for something? Start typing..."
             className="w-full flex-grow-0 bg-transparent lg:py-3 py-2 lg:text-[52px] text-[24px] text-white"
           />
-          <button className="border border-gray-200 bg-brand-lightYellow text-brand-main lg:w-16 w-12 lg:h-16 h-11 rounded flex justify-center items-center">
-            <FiSearch size={32} className="lg:ext-[32px] text-[24px]" />
-          </button>
+          <Link href={`/search?name=${name}`} onClick={close}>
+            <button className="border border-gray-200 bg-brand-lightYellow text-brand-main lg:w-16 w-12 lg:h-16 h-11 rounded flex justify-center items-center">
+              <FiSearch size={32} className="lg:ext-[32px] text-[24px]" />
+            </button>
+          </Link>
         </span>
         <span className="flex items-center lg:gap-20 gap-6 flex-wrap">
           <span className="uppercase text-white opacity-80 font-light flex items-center gap-2 text-[14px]">

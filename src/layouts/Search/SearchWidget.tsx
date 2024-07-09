@@ -18,24 +18,28 @@ function SearchWidget() {
   };
   const { name, setName }: any = useGeneralContext();
   const { data, isLoading, error } = useQuery({
-    queryKey: ["searchResources", name],
+    queryKey: ["searchResources", name, currentPage, 1],
     queryFn: searchResources,
+    onSuccess: (result: any) => {
+      setCurrentPage(result?.data?.data?.pagination?.currentPage);
+    },
   });
 
-  console.log("data :>> ", data);
+  // console.log("data :>> ", data);
   return (
     <div className="py-[100px] bg-brand-main flex gap-8 flex-col p-5">
       <span className="grid gap-5 lg:grid-cols-2 grid-cols-1 max-w-[1200px] mx-auto">
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item, index) => (
+        {data?.data?.data?.resources?.map((item: any) => (
           <ArticleCard
-            key={index}
-            onclick={() => router.push(`search/${item}`)}
+            key={item?.id}
+            data={item}
+            onclick={() => router.push(`search/${item?.id}`)}
           />
         ))}
       </span>
       <span className=" ">
         <PaginationComponent
-          totalPages={totalPages}
+          totalPages={data?.data?.data?.pagination?.totalPages}
           currentPage={currentPage}
           onPageChange={handlePageChange}
         />
