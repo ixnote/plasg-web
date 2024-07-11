@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 
-const Hero = () => {
+const Hero = ({ data }: any) => {
   return (
     <>
       <div className="h-screen flex items-center justify-center">
@@ -17,7 +17,7 @@ const Hero = () => {
                     Visit the{" "}
                   </span>
                   <span className="font-medium text-5xl font-geistsans text-white outline-2">
-                    Beautiful Plateau State
+                    {data?.name}
                   </span>
                 </div>
                 <span className="font-normal text-base text-white font-geistsans w-[94%]">

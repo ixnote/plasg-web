@@ -1,7 +1,11 @@
+"use client";
 import React from "react";
 import { GoHome } from "react-icons/go";
+import { useGeneralContext } from "../../../context/GenralContext";
 
 function SearchHero() {
+  const { name, setName }: any = useGeneralContext();
+
   return (
     <div className="pt-[200px] bg-brand-main p-5">
       <span className="max-w-[1200px] mx-auto flex flex-col gap-20">
@@ -10,7 +14,7 @@ function SearchHero() {
             <GoHome size={18} />/<p>Search</p>/<p>SEARCH RESULTS</p>
           </span>
           <p className="lg:text-[52px] text-[40px] text-white font-medium max-w-[800px] lg:leading-[56px] leading-[44px]">
-            Results Found for &quot;Driver&apos;s License&quot;
+            Results Found for "{name}"
           </p>
         </span>
         <span className="flex justify-between w-full gap-5 flex-wrap">

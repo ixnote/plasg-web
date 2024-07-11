@@ -6,6 +6,8 @@ import { IoIosArrowRoundDown } from "react-icons/io";
 import LegislatureCard from "@/components/LegislatureCard";
 import { handleScrollDown } from "@/utils/handleScrollDown";
 import { IoArrowDownOutline } from "react-icons/io5";
+import { useQuery } from "react-query";
+import { getUsers } from "@/api/mda/getUsers";
 
 function Legislative() {
   const article = {
@@ -13,6 +15,16 @@ function Legislative() {
     name: "Hon. Gabriel Dewan",
     position: "Speaker ",
   };
+  const {
+    data: users,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["getUsers"],
+    queryFn: getUsers,
+  });
+
+  console.log("users :>> ", users);
   return (
     <div className="pt-[200px] p-5">
       <span className="max-w-[1200px] mx-auto flex flex-col">
