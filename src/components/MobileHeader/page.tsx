@@ -105,7 +105,7 @@ const MobileNav = () => {
           {/* Government Item */}
           <>
             <div
-              className={`group transition-fx flex items-center justify-between cursor-pointer py-2 w-full font-geistsans font-medium text-2xl ${
+              className={`group transition-fx flex items-center justify-between cursor-pointer py-4 w-full font-geistsans font-medium text-2xl ${
                 activeDropdown === "government"
                   ? "bg-brand-lightYellow px-4 rounded-lg text-brand-dark"
                   : "text-brand-white border-b-[0.1px] border-b-brand-grayish/10 hover:bg-brand-lightYellow hover:px-4 hover:rounded-lg hover:text-brand-dark"
@@ -210,7 +210,7 @@ const MobileNav = () => {
           {/* Library Item */}
           <>
             <div
-              className={`group transition-fx flex items-center justify-between cursor-pointer py-2 w-full font-geistsans font-medium text-2xl ${
+              className={`group transition-fx flex items-center justify-between cursor-pointer py-4 w-full font-geistsans font-medium text-2xl ${
                 activeDropdown === "library"
                   ? "bg-brand-lightYellow px-4 rounded-lg text-brand-dark"
                   : "text-brand-white border-b-[0.1px] border-b-brand-grayish/10 hover:bg-brand-lightYellow hover:px-4 hover:rounded-lg hover:text-brand-dark"
@@ -338,13 +338,13 @@ const MobileNav = () => {
           </>
           <Link
             href="#"
-            className="transition-fx cursor-pointer py-2 w-full font-geistsans font-medium text-2xl text-brand-white border-b-[0.1px] border-b-brand-grayish/10 hover:bg-brand-lightYellow hover:px-4 hover:rounded-lg hover:text-brand-dark"
+            className="transition-fx cursor-pointer py-4 w-full font-geistsans font-medium text-2xl text-brand-white border-b-[0.1px] border-b-brand-grayish/10 hover:bg-brand-lightYellow hover:px-4 hover:rounded-lg hover:text-brand-dark"
           >
             Tourism <span className="text-xs">(coming soon)</span>
           </Link>
           <Link
             href="/news"
-            className="transition-fx cursor-pointer py-2 w-full font-geistsans font-medium text-2xl text-brand-white border-b-[0.1px] border-b-brand-grayish/10 hover:bg-brand-lightYellow hover:px-4 hover:rounded-lg hover:text-brand-dark"
+            className="transition-fx cursor-pointer py-4 w-full font-geistsans font-medium text-2xl text-brand-white border-b-[0.1px] border-b-brand-grayish/10 hover:bg-brand-lightYellow hover:px-4 hover:rounded-lg hover:text-brand-dark"
           >
             News
           </Link>
