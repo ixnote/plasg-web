@@ -11,6 +11,7 @@ import { libraryData, governmentData } from "./ListData";
 import SearchComponent from "./Search/SearchComponent";
 import { Modal } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import MobileNav from "@/components/MobileHeader/page";
 
 const menueList = [
   {
@@ -70,9 +71,9 @@ const Header = () => {
         <SearchComponent close={close} />
       </Modal>
       <div
-        className={`header-drop transition-all duration-300 ${
+        className={`hidden header-drop transition-all duration-300 ${
           hoveredMenuData ? "h-[464px]" : "h-auto"
-        }`}
+        } lg:block`}
       >
         <div className="header">
           <div className="header-content">
@@ -120,6 +121,11 @@ const Header = () => {
           </div>
         </div>
         {hoveredMenuData && <HoverTags data={hoveredMenuData} />}
+      </div>
+
+      {/* MOBILE MENU */}
+      <div className="flex lg:hidden">
+        <MobileNav />
       </div>
     </div>
   );
