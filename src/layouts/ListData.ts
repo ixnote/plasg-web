@@ -24,7 +24,7 @@ export const governmentData = [
   {
     _id: 0o4,
     title: "MDAs",
-    path: "/mda",
+    path: "/mdas",
   },
   {
     _id: 0o5,
