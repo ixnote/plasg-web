@@ -115,7 +115,7 @@ export const libraryData = [
   },
   {
     _id: 0o5,
-    title: "People",
+    title: "Tourism",
     subTitle: "Our People, Our Heritage",
     path: "#",
     paragraph:
