@@ -83,12 +83,12 @@ const SectionHeaderDark = ({
         {video && (
           <>
             <div
-              className="relative w-full overflow-hidden h-[240px] md:h-[480px] lg:h-[640px]"
+              className="relative w-full overflow-hidden h-[240px] md:h-[480px] lg:h-[620px]"
               // style={{ paddingTop: "37.42%" }}
             >
               <video
                 src={video}
-                className="absolute top-0 left-0 w-full h-full object-cover"
+                className="absolute top-0 left-0 w-full h-full object-cover rounded-lg"
                 controls
                 autoPlay
                 muted
