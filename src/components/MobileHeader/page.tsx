@@ -333,14 +333,38 @@ const MobileNav = () => {
                     />
                   </svg>
                 </Link>
+                <Link
+                  href="#"
+                  className="group transition-fx flex items-center text-brand-white py-4 bg-brand-main/70 hover:pl-4 hover:bg-[#284f51]"
+                >
+                  <span className="mr-6 font-geistmono font-light text-base text-[#cfd8d9]">
+                    05
+                  </span>
+                  <span className="w-3/4 font-geistsans font-medium text-2xl">
+                    Tourism <span className="text-xs">(coming soon)</span>
+                  </span>
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="transition-fx hidden group-hover:block"
+                  >
+                    <path
+                      d="M0 10.1364L0 7.86364H13.6364L7.38636 1.61364L9 0L18 9L9 18L7.38636 16.3864L13.6364 10.1364H0Z"
+                      fill="white"
+                    />
+                  </svg>
+                </Link>
               </div>
             )}
           </>
           <Link
-            href="#"
+            href="/people"
             className="transition-fx cursor-pointer py-4 w-full font-geistsans font-medium text-2xl text-brand-white border-b-[0.1px] border-b-brand-grayish/10 hover:bg-brand-lightYellow hover:px-4 hover:rounded-lg hover:text-brand-dark"
           >
-            Tourism <span className="text-xs">(coming soon)</span>
+            People
           </Link>
           <Link
             href="/news"

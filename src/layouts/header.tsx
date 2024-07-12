@@ -27,9 +27,9 @@ const menueList = [
     data: libraryData,
   },
   {
-    name: "Tourism",
+    name: "People",
     drop: false,
-    path: "#",
+    path: "/people",
   },
   {
     name: "News",
