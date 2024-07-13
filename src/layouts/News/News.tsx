@@ -5,9 +5,11 @@ import ArticleImage from "@/assets/imgs/img.png";
 import NewsCard from "@/components/NewsCard";
 import { useQuery } from "react-query";
 import { getNews } from "@/api/news/getNews";
+import { cn } from "@/utils";
 
 function News() {
   const links = [
+    { name: "General", id: "fbdfbssf" },
     { name: "National", id: "adcasdkj" },
     { name: "International", id: "nkwjwns" },
     { name: "Politics", id: "sjsksns" },
@@ -23,6 +25,8 @@ function News() {
     { name: "Entertainment", id: "sksowjejs" },
     { name: "Finance", id: "hksnskwns" },
   ];
+
+  const [active, setActive] = useState(links[0]);
 
   const news = [
     {
@@ -42,27 +46,37 @@ function News() {
   console.log("data :>> ", data);
 
   return (
-    <div className="pt-[200px] p-5">
-      <span className="max-w-[1360px] mx-auto flex gap-5">
-        <span className="w-[300px] flex flex-col gap-6 bg-white p-7 rounded-xl">
-          <p className="text-[28px] text-brand-main font-medium max-w-[800px] leading-[32px] lg:col-span-3 col-span-2 lg:border-r-[1px] lg:border-r-gray-200">
-            Categories
-          </p>
-          <span className="flex flex-col gap-4">
-            {links.map((item) => (
-              <p key={item.id}>{item.name}</p>
+    <div className="pt-[120px] p-5">
+      <span className="max-w-[1360px] mx-auto flex flex-col gap-5">
+        <span className="w-full flex gap-6 bg-white  rounded-xl">
+          <span className="flex gap-4 border justify-between w-full rounded-xl">
+            {links.slice(0, 9).map((item, index) => (
+              <p
+                className={cn("px-4 py-2 uppercase border-r cursor-pointer", {
+                  "bg-brand-main text-white": active?.id === item.id,
+                  "rounded-l-xl": index === 0,
+                })}
+                onClick={() => setActive(item)}
+                key={item.id}
+              >
+                {item.name}
+              </p>
             ))}
+            <p className="px-4 py-2 pr-6 uppercase cursor-pointer">sell all</p>
           </span>
         </span>
+        <p className="text-[32px] text-brand-main font-medium">
+          Today’s Headlines
+        </p>
         <span className="flex-grow grid lg:grid-cols-4 gap-5 grid-cols-1 w-full">
           <span className="col-span-3 flex w-full  items-start bg-white border border-gray-200 h-[350px]">
-            <span className="w-full h-full max-w-[500px] aspect-[11/7] object-cover bg-[#588065] image-container ">
+            <span className="w-full h-full max-w-[650px] aspect-[11/7] object-cover bg-[#588065] image-container ">
               <Image
                 src={news[0].image}
                 alt=""
                 width={500}
                 height={300}
-                className="w-full h-full max-w-[500px] aspect-[11/7] object-cover bg-[#588065] zoom-out-image"
+                className="w-full h-full max-w-[650px] aspect-[11/7] object-cover bg-[#588065] zoom-out-image"
               />
             </span>
             <span className="p-5 flex flex-col justify-between h-full flex-grow max-w-[40%]">
