@@ -51,7 +51,7 @@ function News() {
   const dialogRef = useRef(null);
   const [show, setShow] = useState(false);
 
-  const globalListener = (e) => {
+  const globalListener = (e: any) => {
     if (dialogRef && dialogRef?.current?.contains(e.target)) return;
     setShow(false);
   };
