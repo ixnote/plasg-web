@@ -49,7 +49,7 @@ function News() {
     <div className="pt-[120px] p-5">
       <span className="max-w-[1360px] mx-auto flex flex-col gap-5">
         <span className="w-full flex gap-6 bg-white  rounded-xl">
-          <span className="flex gap-4 border justify-between w-full rounded-xl">
+          <span className="flex gap-4 border justify-between w-full rounded-xl relative">
             {links.slice(0, 9).map((item, index) => (
               <p
                 className={cn("px-4 py-2 uppercase border-r cursor-pointer", {
@@ -62,7 +62,37 @@ function News() {
                 {item.name}
               </p>
             ))}
-            <p className="px-4 py-2 pr-6 uppercase cursor-pointer">sell all</p>
+
+            <p className="px-4 py-2 pr-6 uppercase cursor-pointer group">
+              sell all
+              <div className="group-hover:block hidden absolute w-full left-0 pt-4 z-40">
+                <div className="w-full bg-brand-main p-8 rounded-3xl ">
+                  <p className="text-[32px] text-white font-medium capitalize mb-6">
+                    Categories
+                  </p>
+                  <span className="grid lg:grid-cols-4 grid-cols-1 gap-5">
+                    {[1, 2, 3, 4].map((item, index) => (
+                      <span key={index} className="flex flex-col gap-4">
+                        <p className="text-[24px] text-white font-medium capitalize">
+                          Governance
+                        </p>
+                        {links.slice(0, 6).map((item) => (
+                          <p
+                            className={cn(
+                              "capitalize text-[18px] cursor-pointer text-white"
+                            )}
+                            onClick={() => setActive(item)}
+                            key={item.id}
+                          >
+                            {item.name}
+                          </p>
+                        ))}
+                      </span>
+                    ))}
+                  </span>
+                </div>
+              </div>
+            </p>
           </span>
         </span>
         <p className="text-[32px] text-brand-main font-medium">
