@@ -9,25 +9,25 @@ export const governmentData = [
   {
     _id: 0o1,
     title: " Overview",
-    path: "#",
+    path: "/government",
   },
+  // {
+  //   _id: 0o2,
+  //   title: " Overview",
+  //   path: "#",
+  // },
   {
     _id: 0o2,
-    title: " Overview",
-    path: "#",
-  },
-  {
-    _id: 0o3,
     title: " Legislative",
     path: "/legislative",
   },
   {
-    _id: 0o4,
+    _id: 0o3,
     title: "MDAs",
     path: "/mdas",
   },
   {
-    _id: 0o5,
+    _id: 0o4,
     title: "Projects",
     path: "#",
   },

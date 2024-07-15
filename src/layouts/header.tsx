@@ -72,8 +72,8 @@ const Header = () => {
       </Modal>
       <div
         className={`hidden header-drop transition-all duration-300 ${
-          hoveredMenuData ? "h-[464px]" : "h-auto"
-        } lg:block`}
+          hoveredMenuData ? "pb-20" : "h-auto"
+        } lg:block`} //h-[464px]
       >
         <div className="header">
           <div className="header-content">
