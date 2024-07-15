@@ -21,7 +21,7 @@ const menueList = [
     data: governmentData,
   },
   {
-    name: "Library",
+    name: "Resources",
     drop: true,
     path: "#",
     data: libraryData,

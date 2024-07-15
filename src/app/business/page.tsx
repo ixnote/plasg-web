@@ -4,7 +4,13 @@ import Filter from "./Filter";
 import { Header } from "@/layouts";
 import Footer from "@/layouts/Footer";
 
-const page = () => {
+import { allResources } from "@/server/actions/resources";
+
+const page = async () => {
+  // console.log("🚀 ~ allResources :", await allResources());
+  const resources = await allResources();
+  console.log("🚀 ~ page ~ resources:", resources);
+
   return (
     <>
       <Header />

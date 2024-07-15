@@ -133,11 +133,35 @@ const MobileNav = () => {
             {activeDropdown === "government" && (
               <div className="py-6 pl-12 w-full">
                 <Link
-                  href="/legislative"
+                  href="/government"
                   className="group transition-fx flex items-center text-brand-white py-4 bg-brand-main/70 hover:pl-4 hover:bg-[#284f51]"
                 >
                   <span className="mr-6 font-geistmono font-light text-base text-[#cfd8d9]">
                     01
+                  </span>
+                  <span className="w-3/4 font-geistsans font-medium text-2xl">
+                    Overview
+                  </span>
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="transition-fx hidden group-hover:block"
+                  >
+                    <path
+                      d="M0 10.1364L0 7.86364H13.6364L7.38636 1.61364L9 0L18 9L9 18L7.38636 16.3864L13.6364 10.1364H0Z"
+                      fill="white"
+                    />
+                  </svg>
+                </Link>
+                <Link
+                  href="/legislative"
+                  className="group transition-fx flex items-center text-brand-white py-4 bg-brand-main/70 hover:pl-4 hover:bg-[#284f51]"
+                >
+                  <span className="mr-6 font-geistmono font-light text-base text-[#cfd8d9]">
+                    02
                   </span>
                   <span className="w-3/4 font-geistsans font-medium text-2xl">
                     Legislative
@@ -161,7 +185,7 @@ const MobileNav = () => {
                   className="group transition-fx flex items-center text-brand-white py-4 bg-brand-main/70 hover:pl-4 hover:bg-[#284f51]"
                 >
                   <span className="mr-6 font-geistmono font-light text-base text-[#cfd8d9]">
-                    02
+                    03
                   </span>
                   <span className="w-3/4 font-geistsans font-medium text-2xl">
                     MDAs
@@ -185,7 +209,7 @@ const MobileNav = () => {
                   className="group transition-fx flex items-center text-brand-white py-4 bg-brand-main/70 hover:pl-4 hover:bg-[#284f51]"
                 >
                   <span className="mr-6 font-geistmono font-light text-base text-[#cfd8d9]">
-                    03
+                    04
                   </span>
                   <span className="w-3/4 font-geistsans font-medium text-2xl">
                     Projects <span className="text-xs">(coming soon)</span>
@@ -217,7 +241,7 @@ const MobileNav = () => {
               }`}
               onClick={() => handleDropdownToggle("library")}
             >
-              <span className="group-hover:text-brand-dark">Library</span>
+              <span className="group-hover:text-brand-dark">Resources</span>
               <svg
                 width="14"
                 height="14"
@@ -238,7 +262,7 @@ const MobileNav = () => {
             {activeDropdown === "library" && (
               <div className="py-6 pl-12 w-full">
                 <Link
-                  href="/government"
+                  href="/business"
                   className="group transition-fx flex items-center text-brand-white py-4 bg-brand-main/70 hover:pl-4 hover:bg-[#284f51]"
                 >
                   <span className="mr-6 font-geistmono font-light text-base text-[#cfd8d9]">
