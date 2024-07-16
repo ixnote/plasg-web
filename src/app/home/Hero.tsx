@@ -258,11 +258,11 @@ const Hero = () => {
         </div>
         {/* <span
           className="glass-fx absolute bottom-5 right-10 flex items-center justify-center gap-4 border-[2px] border-brand-white/20 px-[16px] py-[8px] font-geistsans text-base font-normal text-[#CDE399]"
-          onClick={handleScrollDown}
+          onClick={() => handleScrollDown}
         >
           Scroll Down
           <button
-            onClick={handleScrollDown}
+            onClick={() => handleScrollDown}
             className="h-10 px-0 rounded-sm  w-fit flex items-center justify-center gap-2 animate-bounce"
           >
             <IoArrowDownOutline size={32} />
