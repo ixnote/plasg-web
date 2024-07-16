@@ -38,7 +38,7 @@ export const libraryData = [
     _id: 0o1,
     title: "Governance",
     subTitle: "Governance",
-    path: "/business?name=governance",
+    path: "/resource?name=governance",
     paragraph:
       "Explore investment opportunities on the Plateau State. Whether you're looking to invest in infrastructure, agriculture, tourism, or other sectors, find valuable information and guidance to make informed decisions and drive positive change in our community.",
     forwardArrow: false,
@@ -47,7 +47,7 @@ export const libraryData = [
     _id: 0o2,
     title: "Business",
     subTitle: "Doing Business",
-    path: "/business?name=business",
+    path: "/resource?name=business",
     paragraph:
       "Explore our collection of business-related information and reports. Stay informed with market insights, economic data, and regulatory updates about Plateau State. Discover how the government is supporting businesses and stay updated on the latest opportunities and developments.",
     forwardArrow: true,
@@ -99,7 +99,7 @@ export const libraryData = [
     _id: 0o3,
     title: "Health",
     subTitle: "Your Health",
-    path: "#",
+    path: "/resource?name=health",
     paragraph:
       "Explore our health-related information and reports. Access valuable insights on healthcare initiatives in Plateau State. Find public health updates, annual reports, and resources to stay informed about efforts to improve community health.",
     forwardArrow: false,
@@ -108,14 +108,14 @@ export const libraryData = [
     _id: 0o4,
     title: "Welfare",
     subTitle: "Your Welfare",
-    path: "#",
+    path: "/resource?name=welfare",
     paragraph:
       "Discover welfare-related information and reports. Access updates on topics like: education and housing and on on social programs and community support in Plateau State, and stay informed about initiatives to improve residents' well-being",
     forwardArrow: false,
   },
   {
     _id: 0o5,
-    title: "Tourism",
+    title: "Tourism (coming soon)",
     subTitle: "Our People, Our Heritage",
     path: "#",
     paragraph:
