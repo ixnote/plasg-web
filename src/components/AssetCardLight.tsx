@@ -19,8 +19,15 @@ const AssetCardLight = ({
   const [hovered, setHovered] = useState(false);
   const router = useRouter();
 
+  // const handleClick = () => {
+  //   url && router.push(`/${url}`);
+  //   return;
+  // };
+
   const handleClick = () => {
-    url && router.push(`/${url}`);
+    if (url) {
+      window.open(url, "_blank");
+    }
     return;
   };
 

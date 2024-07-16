@@ -4,12 +4,16 @@ import Filter from "./Filter";
 import { Header } from "@/layouts";
 import Footer from "@/layouts/Footer";
 
-import { allResources } from "@/server/actions/resources";
+// import { allResources } from "@/server/actions/resources";
+// import { allTags } from "@/server/actions/tags";
 
 const page = async () => {
-  // console.log("🚀 ~ allResources :", await allResources());
-  const resources = await allResources();
-  console.log("🚀 ~ page ~ resources:", resources);
+  // const result = await Promise.all([allResources(), allTags()]);
+
+  // const data = {
+  //   resources: result[0],
+  //   tags: result[1],
+  // };
 
   return (
     <>
@@ -24,6 +28,7 @@ const page = async () => {
             baseURL={"business"}
             baseText={"BUSINESS"}
           />
+          {/* <Filter data={data} /> */}
           <Filter />
         </div>
       </div>

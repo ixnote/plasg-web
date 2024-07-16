@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import bg from "../../../public/landing/background.png";
 import Image from "next/image";
+import { IoArrowDownOutline } from "react-icons/io5";
+import { handleScrollDown } from "@/utils/handleScrollDown";
 
 const Hero = () => {
   const [showSearchResult, setShowSearchResult] = useState(false);
@@ -246,21 +248,39 @@ const Hero = () => {
           {/* right */}
           <div className="w-[50%]"></div>
         </div>
-        <span className="glass-fx absolute bottom-5 right-10 flex items-center justify-center gap-4 border-[2px] border-brand-white/20 px-[16px] py-[8px] font-geistsans text-base font-normal text-[#CDE399]">
+        <div className="absolute bottom-5 right-10 flex items-center justify-center gap-4 px-[16px] py-[8px] font-geistsans text-base font-normal text-[#CDE399]">
+          <button
+            onClick={() => handleScrollDown(true)}
+            className="h-10 px-0 rounded-sm w-fit flex items-center justify-center gap-2 animate-bounce"
+          >
+            <IoArrowDownOutline size={32} />
+          </button>
+        </div>
+        {/* <span
+          className="glass-fx absolute bottom-5 right-10 flex items-center justify-center gap-4 border-[2px] border-brand-white/20 px-[16px] py-[8px] font-geistsans text-base font-normal text-[#CDE399]"
+          onClick={handleScrollDown}
+        >
           Scroll Down
+          <button
+            onClick={handleScrollDown}
+            className="h-10 px-0 rounded-sm  w-fit flex items-center justify-center gap-2 animate-bounce"
+          >
+            <IoArrowDownOutline size={32} />
+          </button>
           <svg
             width="8"
             height="8"
             viewBox="0 0 8 8"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            className="animate-bounce"
           >
             <path
               d="M3.49495 0H4.50505V6.06061L7.28283 3.28283L8 4L4 8L0 4L0.717172 3.28283L3.49495 6.06061V0Z"
               fill="#CDE399"
             />
           </svg>
-        </span>
+        </span> */}
       </div>
     </>
   );
