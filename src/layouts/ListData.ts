@@ -38,7 +38,7 @@ export const libraryData = [
     _id: 0o1,
     title: "Governance",
     subTitle: "Governance",
-    path: "/business",
+    path: "/business?name=governance",
     paragraph:
       "Explore investment opportunities on the Plateau State. Whether you're looking to invest in infrastructure, agriculture, tourism, or other sectors, find valuable information and guidance to make informed decisions and drive positive change in our community.",
     forwardArrow: false,
@@ -47,7 +47,7 @@ export const libraryData = [
     _id: 0o2,
     title: "Business",
     subTitle: "Doing Business",
-    path: "/business",
+    path: "/business?name=business",
     paragraph:
       "Explore our collection of business-related information and reports. Stay informed with market insights, economic data, and regulatory updates about Plateau State. Discover how the government is supporting businesses and stay updated on the latest opportunities and developments.",
     forwardArrow: true,
