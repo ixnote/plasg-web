@@ -53,7 +53,7 @@ function MdaWidget() {
                 solutions aimed at enhancing your well-being and prosperity
               </p>
               <button
-                onClick={() => handleScrollDown}
+                onClick={() => handleScrollDown()}
                 className="h-10 px-0 rounded-sm bg-white  w-fit flex items-center justify-center gap-2"
               >
                 <IoArrowDownOutline size={32} />

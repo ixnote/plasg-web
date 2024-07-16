@@ -1,17 +1,18 @@
-export const handleScrollDown = (scrollOneScreenHeight = false) => {
-  const scrollAmount = scrollOneScreenHeight
-    ? window.innerHeight
-    : document.body.scrollHeight;
-
+export const handleScrollDown = () => {
   window.scrollTo({
-    top: scrollAmount,
+    // top: document.body.scrollHeight,
+    top: window.innerHeight,
     behavior: "smooth",
   });
 };
 
-// export const handleScrollDown = () => {
+// export const handleScrollDown = (scrollOneScreenHeight = false) => {
+//   const scrollAmount = scrollOneScreenHeight
+//     ? window.innerHeight
+//     : document.body.scrollHeight;
+
 //   window.scrollTo({
-//     top: document.body.scrollHeight,
+//     top: scrollAmount,
 //     behavior: "smooth",
 //   });
 // };

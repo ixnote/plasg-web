@@ -248,9 +248,9 @@ const Hero = () => {
           {/* right */}
           <div className="w-[50%]"></div>
         </div>
-        <div className="absolute bottom-5 right-0 flex items-center justify-center gap-4 px-[16px] py-[8px] font-geistsans text-base font-normal text-[#CDE399] md:right-10">
+        <div className="absolute bottom-5 right-0 flex items-center justify-center gap-4 px-[16px] py-[8px] font-geistsans text-base font-normal text-[#CDE399] lg:right-10">
           <button
-            onClick={() => handleScrollDown(true)}
+            onClick={() => handleScrollDown()}
             className="h-10 px-0 rounded-sm w-fit flex items-center justify-center gap-2 animate-bounce"
           >
             <IoArrowDownOutline size={32} />
