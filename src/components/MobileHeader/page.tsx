@@ -262,7 +262,7 @@ const MobileNav = () => {
             {activeDropdown === "library" && (
               <div className="py-6 pl-12 w-full">
                 <Link
-                  href="/business"
+                  href="/resource?name=governance"
                   className="group transition-fx flex items-center text-brand-white py-4 bg-brand-main/70 hover:pl-4 hover:bg-[#284f51]"
                 >
                   <span className="mr-6 font-geistmono font-light text-base text-[#cfd8d9]">
@@ -286,7 +286,7 @@ const MobileNav = () => {
                   </svg>
                 </Link>
                 <Link
-                  href="/business"
+                  href="/resource?name=business"
                   className="group transition-fx flex items-center text-brand-white py-4 bg-brand-main/70 hover:pl-4 hover:bg-[#284f51]"
                 >
                   <span className="mr-6 font-geistmono font-light text-base text-[#cfd8d9]">
@@ -310,7 +310,7 @@ const MobileNav = () => {
                   </svg>
                 </Link>
                 <Link
-                  href="#"
+                  href="/resource?name=health"
                   className="group transition-fx flex items-center text-brand-white py-4 bg-brand-main/70 hover:pl-4 hover:bg-[#284f51]"
                 >
                   <span className="mr-6 font-geistmono font-light text-base text-[#cfd8d9]">
@@ -334,7 +334,7 @@ const MobileNav = () => {
                   </svg>
                 </Link>
                 <Link
-                  href="#"
+                  href="/resource?name=welfare"
                   className="group transition-fx flex items-center text-brand-white py-4 bg-brand-main/70 hover:pl-4 hover:bg-[#284f51]"
                 >
                   <span className="mr-6 font-geistmono font-light text-base text-[#cfd8d9]">
