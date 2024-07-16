@@ -66,7 +66,7 @@ const SectionHeader = ({
                 {description}
               </p>
               <button
-                onClick={() => handleScrollDown}
+                onClick={() => handleScrollDown()}
                 className="h-10 px-0 rounded-sm bg-white  w-fit flex items-center justify-center gap-2 animate-bounce"
               >
                 <IoArrowDownOutline size={32} />

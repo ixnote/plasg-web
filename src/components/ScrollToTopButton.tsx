@@ -23,7 +23,7 @@ const ScrollToTopButton = () => {
 
   return (
     <>
-      <div className="fixed bottom-5 right-0 flex items-center justify-center gap-4 px-[16px] py-[8px] font-geistsans text-base font-normal text-[#CDE399] md:right-5">
+      <div className="fixed bottom-5 right-0 flex items-center justify-center gap-4 px-[16px] py-[8px] font-geistsans text-base font-normal text-[#CDE399] lg:right-5">
         <button
           onClick={handleScrollToTop}
           className="h-10 p-2 rounded-lg w-fit flex items-center justify-center gap-2 animate-bounce bg-brand-main"
