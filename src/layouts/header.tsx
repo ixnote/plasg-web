@@ -40,8 +40,8 @@ import { useGeneralContext } from "../../context/GenralContext";
 // ];
 
 const Header = (data: any) => {
-  const { topicTagData }: any = useGeneralContext();
-  // console.log("🚀 ~ Header ~ topicTagData:", topicTagData);
+  const { topicTags }: any = useGeneralContext();
+  // console.log("🚀 ~ Header ~ topicTags:", topicTags);
   // console.log("🚀 ~ Header ~ data:", data);
   const [hoveredMenuData, setHoveredMenuData] = useState(null);
 
@@ -72,7 +72,7 @@ const Header = (data: any) => {
       path: "#",
       // data: libraryData,
       // data: data.data,
-      data: topicTagData,
+      data: topicTags,
     },
     {
       name: "People",

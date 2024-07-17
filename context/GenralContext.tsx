@@ -11,7 +11,8 @@ const GeneralProvider = (props: any) => {
   const [typeTags, setTypeTags] = useState([]);
   const [typeTagId, setTypeTagId] = useState("");
   const [tagTopicName, setTagTopicName] = useState("");
-  const [topicTagData, setTopicTagData] = useState();
+  const [topicTags, setTopicTags] = useState();
+  const [oneTopicTag, setOneTopicTag] = useState();
   const [topicTagId, setTopicTagId] = useState("");
   const [topicSubTagId, setTopicSubTagId] = useState("");
 
@@ -60,8 +61,8 @@ const GeneralProvider = (props: any) => {
           timeout: 10000, // Set a timeout of 10 seconds
         }
       );
-      // console.log("🚀 ~ getTopicTags ~ response:", response.data.data);
-      return setTopicTagData(response.data.data);
+      console.log("🚀 ~ getTopicTags ~ response:", response.data.data);
+      return setTopicTags(response.data.data);
     } catch (error: any) {
       console.log("🚀 ~ allResources ~ error:", error.message);
       // throw new Error(error.message);
@@ -75,8 +76,8 @@ const GeneralProvider = (props: any) => {
   //*******/
   const allResources = async () => {
     try {
-      console.log("🚀 ~ allResources ~ topicTagId:", topicTagId);
-      console.log("🚀 ~ GeneralProvider ~ typeTagId:", typeTagId);
+      // console.log("🚀 ~ allResources ~ topicTagId:", topicTagId);
+      // console.log("🚀 ~ GeneralProvider ~ typeTagId:", typeTagId);
       // console.log("🚀 ~ GeneralProvider ~ resources:", resources);
 
       setLoadingResource(true);
@@ -94,7 +95,7 @@ const GeneralProvider = (props: any) => {
           timeout: 10000,
         }
       );
-      console.log("🚀 ~ allResources ~ response:", response.data.data);
+      // console.log("🚀 ~ allResources ~ response:", response.data.data);
       setLoadingResource(false);
       return setResources(response.data.data);
     } catch (error: any) {
@@ -199,8 +200,7 @@ const GeneralProvider = (props: any) => {
   };
 
   useEffect(() => {
-    console.log("Context Tag Switch.");
-
+    // console.log("Context Tag Switch.");
     if (typeTagId) allResources();
   }, [typeTagId]);
 
@@ -215,7 +215,7 @@ const GeneralProvider = (props: any) => {
   //*******/
 
   useEffect(() => {
-    console.log("Fetch everything");
+    console.log("__3d1k4N.init");
     allTypeTags();
     getTopicTags();
     getHomeResources();
@@ -233,18 +233,20 @@ const GeneralProvider = (props: any) => {
 
         // Tags
         typeTags,
-        topicTagId,
+        topicTags,
         typeTagId,
+        topicTagId,
+        oneTopicTag,
         tagTopicName,
-        topicTagData,
         topicSubTagId,
         allTypeTags,
         setTypeTags,
         getTopicTags,
-        setTopicTagId,
+        setTopicTags,
         setTypeTagId,
+        setTopicTagId,
+        setOneTopicTag,
         setTagTopicName,
-        setTopicTagData,
         setTopicSubTagId,
 
         // Resources
