@@ -3,34 +3,13 @@ import React, { useState } from "react";
 import TagList from "./tagList";
 import { useGeneralContext } from "../../context/GenralContext";
 
-// type SubItemType = {
-//   _id: string;
-//   title: string;
-//   forwardArrow: boolean;
-//   subMenu?: SubItemType[];
-// };
-
 const HoverTags = ({ data, setHoveredMenuData }: any) => {
   // console.log("🚀 ~ HoverTags ~ data:", data);
-  const { setTopicTagId, setTopicSubTagId }: any = useGeneralContext();
+  const { setTopicTagId, setTopicSubTagId, setOneTopicTag }: any =
+    useGeneralContext();
 
   // const [subItems, setSubItems] = useState([]);
   const [isSubMenuActive, setIsSubMenuActive] = useState(false);
-  // const [currentItem, setCurrentItem] = useState({
-  //   paragraph: "",
-  //   subTitle: "",
-  //   backgroundImage: "",
-  // });
-
-  //  const [currentItem, setCurrentItem] = useState<SubItemType>({
-  //    _id: "",
-  //    title: "",
-  //    forwardArrow: false,
-  //    subMenu: [],
-  //    paragraph: "",
-  //    subTitle: "",
-  //    backgroundImage: "",
-  //  });
 
   type ItemType = {
     id: string;
@@ -59,7 +38,6 @@ const HoverTags = ({ data, setHoveredMenuData }: any) => {
     backgroundImage: "",
   });
 
-  // console.log("🚀 ~ HoverTags ~ currentItem:", currentItem);
   const [subItems, setSubItems] = useState<SubItemType[]>([]);
 
   const handleMouseEnter = (item: any) => {
@@ -71,6 +49,7 @@ const HoverTags = ({ data, setHoveredMenuData }: any) => {
       setIsSubMenuActive(true);
     }
     setTopicTagId(item.id);
+    setOneTopicTag(item);
     setCurrentItem({
       id: item.id,
       paragraph: item.paragraph,
@@ -97,6 +76,7 @@ const HoverTags = ({ data, setHoveredMenuData }: any) => {
   };
 
   const handleMouseLeaveMain = () => {
+    setTopicSubTagId("");
     setIsSubMenuActive(false);
   };
 
@@ -140,7 +120,7 @@ const HoverTags = ({ data, setHoveredMenuData }: any) => {
                 <div key={i} onMouseEnter={() => handleMouseEnterSub(subItem)}>
                   <TagList
                     id={subItem._id}
-                    title={subItem.title || subItem?.name}
+                    title={subItem.name}
                     // path={subItem.path}
                     path={"#"}
                     forwardArrow={false}

@@ -14,7 +14,7 @@ export async function allResources() {
       }
     );
 
-    console.log("🚀 ~ allResources ~ response: ", response.data.data);
+    // console.log("🚀 ~ allResources ~ response: ", response.data.data);
     return response.data.data;
   } catch (error: any) {
     console.log("🚀 ~ allResources ~ error:", error.message);
@@ -35,7 +35,7 @@ export async function getResourceByType({ id }: any) {
       }
     );
 
-    console.log("🚀 ~ allResources ~ response: ", response.data.data);
+    // console.log("🚀 ~ allResources ~ response: ", response.data.data);
     return response.data.data;
   } catch (error: any) {
     console.log("🚀 ~ allResources ~ error:", error.message);

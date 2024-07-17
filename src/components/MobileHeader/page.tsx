@@ -4,7 +4,9 @@ import logomark from "@/assets/imgs/layouts/logomark.svg";
 import { useState, useRef, useEffect, MouseEvent } from "react";
 import SectionDividerDark from "../SectionDividerDark";
 
-const MobileNav = (data: any) => {
+const MobileNav = (topicTags: any) => {
+  console.log("🚀 ~ MobileNav ~ topicTags:", topicTags);
+
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isLibraryDropdownOpen, setIsLibraryDropdownOpen] =
     useState<boolean>(false);
