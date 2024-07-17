@@ -21,34 +21,20 @@ const Filter = ({ name }: any) => {
     setTypeTagId,
     setTagTopicName,
   }: any = useGeneralContext();
-  console.log("🚀 ~ Filter ~ typeTags:", typeTags);
-  console.log("🚀 ~ Filter ~ activeTag:", activeTag);
 
   const handleTabSwitch = async () => {
-    // console.log("🚀 ~ handleTabSwitch ~ tag:", tag);
-    if (!activeTag.id || !activeTag.name) {
-      console.log("NO TAG!");
+    if (activeTag.name === "feed") {
       setActive("feed");
-      setTypeTagId("");
+      setTypeTagId(null);
       await allResources();
       return;
     }
 
-    // console.log("🚀 ~ handleTabSwitch ~ tag:", tag?.id);
-    // console.log("🚀 ~ handleTabSwitch ~ tag.name :", tag?.name);
     setActive(activeTag.name);
     setTypeTagId(activeTag.id);
-    await allResources();
-    return;
-    // getResourceByType();
   };
 
-  // useEffect(() => {
-  //   setTagTopicName(name);
-  // }, [name]);
-
   useEffect(() => {
-    console.log("🚀 ~ Filter ~ activeTag:", activeTag);
     handleTabSwitch();
   }, [activeTag]);
 
@@ -63,8 +49,13 @@ const Filter = ({ name }: any) => {
                 ? "transition-fx relative flex items-center gap-2 py-2 px-4 rounded-lg border-[1px] border-brand-grayish cursor-pointer bg-brand-main text-brand-white"
                 : "transition-fx relative flex items-center gap-2 py-2 px-4 rounded-lg border-[1px] border-brand-grayish cursor-pointer hover:bg-brand-main hover:text-brand-white"
             }
-            // onClick={() => handleTabSwitch("feed")}
-            onClick={() => setActive("feed")}
+            // onClick={() => setActive("feed")}
+            onClick={() =>
+              setActiveTag({
+                id: "#",
+                name: "feed",
+              })
+            }
           >
             <div className="w-[40%]">
               <svg
