@@ -2,9 +2,9 @@ import SubsectionHeader from "@/components/SubsectionHeader";
 import Image from "next/image";
 import React from "react";
 
-import governor from "../../../public/government/executive/governor.png";
-import deputy from "../../../public/government/executive/deputy.png";
-import secretary from "../../../public/government/executive/secretary.png";
+import governor from "../../../../public/government/executive/governor.png";
+import deputy from "../../../../public/government/executive/deputy.png";
+import secretary from "../../../../public/government/executive/secretary.png";
 import LegislatureCard from "@/components/LegislatureCard";
 import ProfileCard from "@/components/ProfileCard";
 

@@ -8,27 +8,27 @@ export const defaultList = {
 export const governmentData = [
   {
     _id: 0o1,
-    title: " Overview",
+    name: " Overview",
     path: "/government",
   },
   // {
   //   _id: 0o2,
-  //   title: " Overview",
+  //   name: " Overview",
   //   path: "#",
   // },
   {
     _id: 0o2,
-    title: " Legislative",
+    name: " Legislative",
     path: "/legislative",
   },
   {
     _id: 0o3,
-    title: "MDAs",
+    name: "MDAs",
     path: "/mdas",
   },
   {
     _id: 0o4,
-    title: "Projects",
+    name: "Projects",
     path: "#",
   },
 ];

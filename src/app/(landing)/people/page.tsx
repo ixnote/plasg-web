@@ -8,7 +8,7 @@ import React from "react";
 const page = () => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <div className="min-h-screen max-w-[2040px] pb-[96px] relative flex items-center justify-center bg-cover bg-center bg-no-repeat bg-brand-main">
         <div className="m-auto w-[92%] flex justify-between flex-col gap-8 items-center">
           <SectionHeaderDark
@@ -40,7 +40,7 @@ const page = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

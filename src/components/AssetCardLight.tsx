@@ -77,8 +77,11 @@ const AssetCardLight = ({
               </span>
             )}
           </div>
-          <div className="font-geistsans font-normal text-base text-brand-main md:text-lg lg:h-[170px]">
-            {description}
+          <div className="font-geistsans font-normal text-base text-brand-main md:text-lg lg:h-[170px] lg:overflow-y-hidden">
+            {description.length > 400
+              ? description.substring(0, 400) + ". . ."
+              : description}
+            {/* {description} */}
           </div>
         </div>
       </div>

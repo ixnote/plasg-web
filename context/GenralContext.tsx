@@ -4,12 +4,24 @@ import { createContext, useContext, useEffect, useState } from "react";
 export const GeneralContext = createContext({});
 
 const GeneralProvider = (props: any) => {
+  // Misc
   const [name, setName] = useState<String>("Ministries");
+
+  // Tags
   const [typeTags, setTypeTags] = useState([]);
-  const [oneTypeTagId, setOneTypeTagId] = useState("");
-  console.log("🚀 ~ GeneralProvider ~ oneTypeTagId base: ", oneTypeTagId);
+  const [typeTagId, setTypeTagId] = useState("");
+  const [tagTopicName, setTagTopicName] = useState("");
+  const [topicTagData, setTopicTagData] = useState();
+  const [topicTagId, setTopicTagId] = useState("");
+  const [topicSubTagId, setTopicSubTagId] = useState("");
+
+  // Resources
   const [resources, setResources] = useState([]);
+  const [homeResources, setHomeResources] = useState([]);
   const [loadingResource, setLoadingResource] = useState(false);
+
+  // Static
+  const [legislatives, setLegislatives] = useState([]);
 
   //*******/
   //************/
@@ -37,6 +49,25 @@ const GeneralProvider = (props: any) => {
     }
   };
 
+  const getTopicTags = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/tag/topics`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          timeout: 10000, // Set a timeout of 10 seconds
+        }
+      );
+      // console.log("🚀 ~ getTopicTags ~ response:", response.data.data);
+      return setTopicTagData(response.data.data);
+    } catch (error: any) {
+      console.log("🚀 ~ allResources ~ error:", error.message);
+      // throw new Error(error.message);
+    }
+  };
+
   //*******/
   //************/
   // RESOURCES
@@ -44,9 +75,18 @@ const GeneralProvider = (props: any) => {
   //*******/
   const allResources = async () => {
     try {
+      console.log("🚀 ~ allResources ~ topicTagId:", topicTagId);
+      console.log("🚀 ~ GeneralProvider ~ typeTagId:", typeTagId);
+      // console.log("🚀 ~ GeneralProvider ~ resources:", resources);
+
       setLoadingResource(true);
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/resource/all?page=1&pageSize=10`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/resource/all?page=1&pageSize=10&${
+          topicTagId &&
+          `main_topic_tag=${topicTagId}&${
+            typeTagId && `main_type_tag=${typeTagId}`
+          }`
+        }`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -54,7 +94,7 @@ const GeneralProvider = (props: any) => {
           timeout: 10000,
         }
       );
-      // console.log("🚀 ~ allResources ~ response:", response.data.data);
+      console.log("🚀 ~ allResources ~ response:", response.data.data);
       setLoadingResource(false);
       return setResources(response.data.data);
     } catch (error: any) {
@@ -63,13 +103,10 @@ const GeneralProvider = (props: any) => {
     }
   };
 
-  const getResourceByType = async () => {
-    // Resource, Document, Service
+  const getHomeResources = async () => {
     try {
-      console.log("🚀 ~ GeneralProvider ~ oneTypeTagId Fetch: ", oneTypeTagId);
-      setLoadingResource(true);
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/resource/all?page=1&pageSize=10&main_type_tag=${oneTypeTagId}`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/resource/all?page=1&pageSize=10&`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -77,12 +114,35 @@ const GeneralProvider = (props: any) => {
           timeout: 10000,
         }
       );
-      console.log("🚀 ~ getResourceByType ~ response:", response.data.data);
+      // console.log("🚀 ~ getHomeResources ~ response:", response.data.data);
+      const firstFourResources = response.data.data.resources.slice(0, 4);
+      return setHomeResources(firstFourResources);
+    } catch (error: any) {
+      setLoadingResource(false);
+      console.log("🚀 ~ getHomeResources ~ error:", error.message);
+    }
+  };
+
+  const getResourceByType = async () => {
+    // Resource, Document, Service
+    try {
+      // console.log("🚀 ~ GeneralProvider ~ typeTagId Fetch: ", typeTagId);
+      setLoadingResource(true);
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/resource/all?page=1&pageSize=10&main_type_tag=${typeTagId}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          timeout: 10000,
+        }
+      );
+      // console.log("🚀 ~ getResourceByType ~ response:", response.data.data);
       setLoadingResource(false);
       return setResources(response.data.data);
     } catch (error: any) {
       setLoadingResource(false);
-      console.log("🚀 ~ allResources ~ error:", error.message);
+      console.log("🚀 ~ getResourceByType ~ error:", error.message);
     }
   };
 
@@ -100,21 +160,51 @@ const GeneralProvider = (props: any) => {
           timeout: 10000,
         }
       );
-      console.log(
-        "🚀 ~ getResourceByTagTopicName ~ response:",
-        response.data.data
-      );
+      // console.log(
+      //   "🚀 ~ getResourceByTagTopicName ~ response:",
+      //   response.data.data
+      // );
       setLoadingResource(false);
       return setResources(response.data.data);
     } catch (error: any) {
       setLoadingResource(false);
-      console.log("🚀 ~ allResources ~ error:", error.message);
+      console.log("🚀 ~ getResourceByTagTopicName ~ error:", error.message);
     }
   };
 
+  //*******/
+  //************/
+  // STATIC
+  //************/
+  //*******/
+  const allLegislatives = async () => {
+    try {
+      setLoadingResource(true);
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/statics/legislatives?page=1&pageSize=10`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          timeout: 10000,
+        }
+      );
+      // console.log("🚀 ~ allLegislatives ~ response:", response.data.data);
+      // setLoadingResource(false);
+      return setLegislatives(response.data.data);
+    } catch (error: any) {
+      setLoadingResource(false);
+      console.log("🚀 ~ allLegislatives ~ error:", error.message);
+    }
+  };
+
+  // useEffect(() => {
+  //   if (typeTagId) getResourceByType();
+  // }, [typeTagId]);
+
   useEffect(() => {
-    getResourceByType();
-  }, [oneTypeTagId]);
+    if (tagTopicName) getResourceByTagTopicName(tagTopicName);
+  }, [tagTopicName]);
 
   //*******/
   //************/
@@ -125,27 +215,48 @@ const GeneralProvider = (props: any) => {
   useEffect(() => {
     console.log("Fetch everything");
     allTypeTags();
-    allResources();
+    getTopicTags();
+    getHomeResources();
+    allLegislatives();
   }, []);
 
   return (
     <GeneralContext.Provider
       value={{
+        // Misc
         name,
-        typeTags,
-        resources,
-        oneTypeTagId,
         loadingResource,
-
         setName,
+        setLoadingResource,
+
+        // Tags
+        typeTags,
+        topicTagId,
+        typeTagId,
+        tagTopicName,
+        topicTagData,
+        topicSubTagId,
         allTypeTags,
         setTypeTags,
+        getTopicTags,
+        setTopicTagId,
+        setTypeTagId,
+        setTagTopicName,
+        setTopicTagData,
+        setTopicSubTagId,
+
+        // Resources
+        resources,
+        homeResources,
         allResources,
         setResources,
-        setOneTypeTagId,
         getResourceByType,
-        setLoadingResource,
         getResourceByTagTopicName,
+
+        // Static
+        legislatives,
+        allLegislatives,
+        setLegislatives,
       }}
     >
       {props.children}

@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import TagList from "./tagList";
+import { useGeneralContext } from "../../context/GenralContext";
 
 // type SubItemType = {
 //   _id: string;
@@ -9,7 +10,10 @@ import TagList from "./tagList";
 //   subMenu?: SubItemType[];
 // };
 
-const HoverTags = ({ data }: any) => {
+const HoverTags = ({ data, setHoveredMenuData }: any) => {
+  // console.log("🚀 ~ HoverTags ~ data:", data);
+  const { setTopicTagId, setTopicSubTagId }: any = useGeneralContext();
+
   // const [subItems, setSubItems] = useState([]);
   const [isSubMenuActive, setIsSubMenuActive] = useState(false);
   // const [currentItem, setCurrentItem] = useState({
@@ -29,6 +33,7 @@ const HoverTags = ({ data }: any) => {
   //  });
 
   type ItemType = {
+    id: string;
     paragraph: string;
     subTitle: string;
     backgroundImage: string;
@@ -37,7 +42,9 @@ const HoverTags = ({ data }: any) => {
   type SubItemType = {
     _id: any;
     title: string;
+    name: string;
     path: string;
+    id: string;
     forwardArrow: boolean;
     paragraph: string;
     subTitle: string;
@@ -46,19 +53,43 @@ const HoverTags = ({ data }: any) => {
   };
 
   const [currentItem, setCurrentItem] = useState<ItemType>({
+    id: "",
     paragraph: "",
     subTitle: "",
     backgroundImage: "",
   });
 
+  // console.log("🚀 ~ HoverTags ~ currentItem:", currentItem);
   const [subItems, setSubItems] = useState<SubItemType[]>([]);
 
   const handleMouseEnter = (item: any) => {
-    if (item.forwardArrow && Array.isArray(item.subMenu)) {
-      setSubItems(item.subMenu);
+    if (
+      (item.forwardArrow || item?.sub_tags?.length > 0) &&
+      (Array.isArray(item.subMenu) || Array.isArray(item?.sub_tags))
+    ) {
+      setSubItems(item?.subMenu || item?.sub_tags);
       setIsSubMenuActive(true);
     }
+    setTopicTagId(item.id);
     setCurrentItem({
+      id: item.id,
+      paragraph: item.paragraph,
+      subTitle: item.subTitle,
+      backgroundImage: item.backgroundImage,
+    });
+  };
+
+  const handleMouseEnterSub = (item: any) => {
+    if (
+      (item.forwardArrow || item?.sub_tags?.length > 0) &&
+      (Array.isArray(item.subMenu) || Array.isArray(item?.sub_tags))
+    ) {
+      setSubItems(item?.subMenu || item?.sub_tags);
+      setIsSubMenuActive(true);
+    }
+    setTopicSubTagId(item.id);
+    setCurrentItem({
+      id: item.id,
       paragraph: item.paragraph,
       subTitle: item.subTitle,
       backgroundImage: item.backgroundImage,
@@ -72,6 +103,7 @@ const HoverTags = ({ data }: any) => {
   const handleMouseLeaveSub = () => {
     setSubItems([]);
     setIsSubMenuActive(false);
+    setTopicSubTagId("");
   };
 
   return (
@@ -81,13 +113,18 @@ const HoverTags = ({ data }: any) => {
           className="w-full flex flex-col"
           onMouseLeave={handleMouseLeaveMain}
         >
-          {data.map((item: any) => (
-            <div key={item._id} onMouseEnter={() => handleMouseEnter(item)}>
+          {data.map((item: any, i: number) => (
+            <div key={i} onMouseEnter={() => handleMouseEnter(item)}>
               <TagList
-                id={item._id}
-                title={item.title}
-                path={item.path}
-                forwardArrow={item.forwardArrow}
+                // id={item._id}
+                key={i}
+                id={i + 1}
+                title={item.name}
+                path={item.path || "#"}
+                // path={"#"}
+                tagId={item.id}
+                forwardArrow={item.forwardArrow || item?.sub_tags?.length > 0}
+                setHoveredMenuData={setHoveredMenuData}
               />
             </div>
           ))}
@@ -99,16 +136,16 @@ const HoverTags = ({ data }: any) => {
               onMouseLeave={handleMouseLeaveSub}
               onMouseEnter={() => setIsSubMenuActive(true)}
             >
-              {subItems.map((subItem) => (
-                <div
-                  key={subItem._id}
-                  onMouseEnter={() => handleMouseEnter(subItem)}
-                >
+              {subItems.map((subItem, i) => (
+                <div key={i} onMouseEnter={() => handleMouseEnterSub(subItem)}>
                   <TagList
                     id={subItem._id}
-                    title={subItem.title}
-                    path={subItem.path}
+                    title={subItem.title || subItem?.name}
+                    // path={subItem.path}
+                    path={"#"}
                     forwardArrow={false}
+                    subTagId={subItem.id}
+                    setHoveredMenuData={setHoveredMenuData}
                   />
                 </div>
               ))}

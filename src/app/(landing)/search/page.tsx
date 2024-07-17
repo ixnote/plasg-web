@@ -6,10 +6,10 @@ import Footer from "@/layouts/Footer";
 export default function Search() {
   return (
     <main>
-      <Header />
+      {/* <Header /> */}
       <SearchHero />
       <SearchWidget />
-      <Footer />
+      {/* <Footer /> */}
     </main>
   );
 }

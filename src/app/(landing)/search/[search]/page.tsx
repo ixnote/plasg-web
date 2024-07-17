@@ -5,9 +5,9 @@ import SearchResult from "@/layouts/SearchResult/SearchResult";
 export default function Search() {
   return (
     <main>
-      <Header />
+      {/* <Header /> */}
       <SearchResult />
-      <Footer />
+      {/* <Footer /> */}
     </main>
   );
 }

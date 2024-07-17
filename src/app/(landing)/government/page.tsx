@@ -1,7 +1,7 @@
 import SectionHeader from "@/components/SectionHeader";
 import React from "react";
 
-import governmentHouse from "../../../public/government/government_house.png";
+import governmentHouse from "../../../../public/government/government_house.png";
 import ThreePointAgenda from "./ThreePointAgenda";
 import SectionDividerLight from "@/components/SectionDividerLight";
 import Executive from "./Executive";
@@ -13,7 +13,7 @@ import Footer from "@/layouts/Footer";
 const page = () => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <div className="min-h-screen max-w-[2040px] pb-[96px] relative flex items-center justify-center bg-cover bg-center bg-no-repeat">
         <div className="m-auto w-[92%] flex justify-between flex-col gap-8">
           <SectionHeader
@@ -34,7 +34,7 @@ const page = () => {
           <Judiciary />
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
