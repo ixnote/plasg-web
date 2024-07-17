@@ -13,7 +13,7 @@ export async function allTags() {
         timeout: 10000, // Set a timeout of 10 seconds
       }
     );
-    console.log("🚀 ~ allTags ~ response:", response.data.data);
+    // console.log("🚀 ~ allTags ~ response:", response.data.data);
     return response.data.data;
   } catch (error: any) {
     console.log("🚀 ~ allResources ~ error:", error.message);
@@ -32,7 +32,7 @@ export async function getTopicTags() {
         timeout: 10000, // Set a timeout of 10 seconds
       }
     );
-    console.log("🚀 ~ getTopicTags ~ response:", response.data.data);
+    // console.log("🚀 ~ getTopicTags ~ response:", response.data.data);
     return response.data.data;
   } catch (error: any) {
     console.log("🚀 ~ allResources ~ error:", error.message);
