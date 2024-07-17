@@ -1,14 +1,15 @@
 "use client";
 import React, { useState } from "react";
 import { GoHome } from "react-icons/go";
-import { IoIosArrowRoundDown } from "react-icons/io";
-import { Divider } from "@mantine/core";
+import { Divider, Loader } from "@mantine/core";
 import { FiSearch } from "react-icons/fi";
 import PaginationComponent from "@/components/Pagination";
 import { handleScrollDown } from "@/utils/handleScrollDown";
 import { useQuery } from "react-query";
 import { getMdas } from "@/api/mda/getMdas";
 import Link from "next/link";
+import { IoArrowDownOutline } from "react-icons/io5";
+import { MdOutlineArrowOutward } from "react-icons/md";
 
 function MdaWidget() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -23,8 +24,11 @@ function MdaWidget() {
     isLoading: mdaIsLoading,
     error,
   } = useQuery({
-    queryKey: ["getMdas"],
+    queryKey: ["getMdas", currentPage],
     queryFn: getMdas,
+    onSuccess: (result: any) => {
+      setCurrentPage(result?.data?.data?.pagination?.currentPage);
+    },
   });
 
   console.log("mda :>> ", mda);
@@ -50,10 +54,10 @@ function MdaWidget() {
                 solutions aimed at enhancing your well-being and prosperity
               </p>
               <button
-                onClick={handleScrollDown}
-                className="h-10 px-8 rounded-sm bg-white border w-fit border-gray-300 flex items-center justify-center gap-2"
+                onClick={() => handleScrollDown()}
+                className="h-10 px-0 rounded-sm bg-white  w-fit flex items-center justify-center gap-2"
               >
-                Scroll down <IoIosArrowRoundDown />
+                <IoArrowDownOutline size={32} />
               </button>
             </span>
           </span>
@@ -62,38 +66,60 @@ function MdaWidget() {
           <span className="grid lg:grid-cols-5 grid-cols-2 gap-8">
             <span className="lg:col-span-3 col-span-2">
               <p className="text-[40px] text-brand-main font-medium max-w-[800px] leading-[48px]">
-                Name of MDA
+                List of MDAs
               </p>
             </span>
             <span className="flex border-b-[1px] border-b-gray-300 col-span-2">
               <input
                 type="text"
                 placeholder="Find MDA..."
-                className="w-full flex-grow-0 bg-transparent py-2 text-[28px] outline-none"
+                className="w-full flex-grow-0 bg-transparent py-2 text-[28px] outline-none placeholder:text-[#D1D5DB]"
               />
-              <button className="border border-gray-200 bg-brand-lightYellow text-brand-main w-12 h-12 rounded flex justify-center items-center">
+              <button className="flex justify-center items-center bg-brand-lightYellow text-brand-main w-[48px] h-[48px] p-0 m-0 rounded ">
                 <FiSearch size={24} />
               </button>
             </span>
           </span>
           <Divider />
           <span className="flex flex-col">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((item, index) => (
-              <span
-                key={index}
-                className="border-b-[1px] border-b-gray-300 cursor-pointer"
-              >
-                <Link href={`/mda/${item}`}>
-                  <p className="lg:text-[40px] text-[24px] text-gray-400 font-medium max-w-[800px] py-12 ">
-                    Adult & Non-Formal Education Directorate
-                  </p>
-                </Link>
+            {mdaIsLoading && (
+              <span className="flex items-center justify-center w-full py-8 px-5">
+                <Loader color="black" />
               </span>
-            ))}
+            )}
+            <>
+              {error && (
+                <span className="flex items-center justify-center w-full py-8 px-5">
+                  <p>Unable to fetch MDAs</p>
+                </span>
+              )}
+            </>
+            {mda && (
+              <>
+                {mda?.data?.data?.mdas?.map((item: any) => (
+                  <span
+                    key={item?.id}
+                    className="border-b-[1px] border-b-gray-300 cursor-pointer flex w-full"
+                  >
+                    <Link
+                      href={`/mdas/${item?.id}`}
+                      className="w-full flex items-center justify-between"
+                    >
+                      <p className="lg:text-[40px] text-[24px] lg:text-gray-400 text-gray-600 font-medium  py-12 whitespace-nowrap overflow-hidden text-ellipsis flex-grow max-w-[85%]">
+                        {item?.name}
+                      </p>
+                      <button className="text-gray-300 border-none hover:bg-none px-0 block lg:hidden">
+                        <MdOutlineArrowOutward size={28} />
+                      </button>
+                    </Link>
+                  </span>
+                ))}
+              </>
+            )}
           </span>
           <PaginationComponent
             lightMode={true}
-            totalPages={totalPages}
+            totalPages={mda?.data?.data?.pagination?.totalPages}
             currentPage={currentPage}
             onPageChange={handlePageChange}
           />

@@ -10,7 +10,16 @@ function PaginationComponent({
 }: any) {
   const getPageNumbers = () => {
     const pageNumbers = [];
-    const totalNumbers = 5; // Total page numbers to show (including 1 and last page)
+
+    if (totalPages === 1) {
+      return [1];
+    }
+
+    if (totalPages === 2) {
+      return [1, 2];
+    }
+
+    const totalNumbers = 3; // Total page numbers to show (including 1 and last page)
     const halfTotalNumbers = Math.floor(totalNumbers / 2);
 
     let startPage = Math.max(2, currentPage - halfTotalNumbers);
@@ -40,8 +49,9 @@ function PaginationComponent({
   };
 
   const pageNumbers = getPageNumbers();
+
   return (
-    <span className="flex  w-full justify-end max-w-[1200px] mx-auto">
+    <span className="flex w-full justify-end max-w-[1200px] mx-auto">
       {currentPage !== 1 && (
         <span
           className={cn(
@@ -61,11 +71,17 @@ function PaginationComponent({
           className={cn(
             "w-10 h-10 flex justify-center items-center rounded-md mx-1 cursor-pointer",
             {
-              "bg-brand-lightYellow text-brand-main": page === currentPage,
-              "bg-none text-white": page !== currentPage && page !== "...",
+              "bg-brand-lightYellow text-brand-main ": page === currentPage,
+              "bg-none text-white border":
+                page !== currentPage && page !== "...",
               "bg-none text-white cursor-default": page === "...",
             },
-            { "text-brand-main": lightMode }
+            {
+              "text-brand-main": lightMode,
+              "bg-brand-main text-white": page === currentPage && lightMode,
+              "border-none":
+                lightMode && page !== currentPage && page !== "...",
+            }
           )}
           onClick={() => page !== "..." && onPageChange(page)}
         >

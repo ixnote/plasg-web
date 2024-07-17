@@ -53,7 +53,7 @@ const Header = () => {
 
   return (
     <div
-      className="header-container fixed w-full  rounded-t-2xl"
+      className="header-container w-full  rounded-t-2xl"
       onMouseLeave={handleMouseLeave}
     >
       <Modal
@@ -70,7 +70,7 @@ const Header = () => {
           hoveredMenuData ? "h-[464px]" : "h-auto"
         }`}
       >
-        <div className="header w-full flex justify-around rounded-t-xl ">
+        <div className="header w-full flex justify-around rounded-t-xl sticky top-0">
           <div className="header-content ">
             <div className=" flex justify-between items-center  w-[149px] h-[40px] ">
               <div className="w-[39px] h-[40px] pr-1" >

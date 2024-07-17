@@ -11,33 +11,38 @@ import { libraryData, governmentData } from "./ListData";
 import SearchComponent from "./Search/SearchComponent";
 import { Modal } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import MobileNav from "@/components/MobileHeader/page";
+import { useGeneralContext } from "../../context/GenralContext";
 
-const menueList = [
-  {
-    name: "Government",
-    drop: true,
-    path: "",
-    data: governmentData,
-  },
-  {
-    name: "Library",
-    drop: true,
-    path: "",
-    data: libraryData,
-  },
-  {
-    name: "Tourism",
-    drop: false,
-    path: "",
-  },
-  {
-    name: "News",
-    drop: false,
-    path: "",
-  },
-];
+// const menueList = [
+//   {
+//     name: "Government",
+//     drop: true,
+//     path: "#",
+//     data: governmentData,
+//   },
+//   {
+//     name: "Resources",
+//     drop: true,
+//     path: "#",
+//     data: libraryData,
+//   },
+//   {
+//     name: "People",
+//     drop: false,
+//     path: "/people",
+//   },
+//   {
+//     name: "News",
+//     drop: false,
+//     path: "/news",
+//   },
+// ];
 
-const Header = () => {
+const Header = (data: any) => {
+  const { topicTagData }: any = useGeneralContext();
+  // console.log("🚀 ~ Header ~ topicTagData:", topicTagData);
+  // console.log("🚀 ~ Header ~ data:", data);
   const [hoveredMenuData, setHoveredMenuData] = useState(null);
 
   const handleMouseEnter = (menu: any) => {
@@ -53,6 +58,33 @@ const Header = () => {
   };
 
   const [opened, { open, close }] = useDisclosure(false);
+
+  const menueList = [
+    {
+      name: "Government",
+      drop: true,
+      path: "#",
+      data: governmentData,
+    },
+    {
+      name: "Resources",
+      drop: true,
+      path: "#",
+      // data: libraryData,
+      // data: data.data,
+      data: topicTagData,
+    },
+    {
+      name: "People",
+      drop: false,
+      path: "/people",
+    },
+    {
+      name: "News",
+      drop: false,
+      path: "/news",
+    },
+  ];
 
   return (
     <div
@@ -70,9 +102,9 @@ const Header = () => {
         <SearchComponent close={close} />
       </Modal>
       <div
-        className={`header-drop transition-all duration-300  rounded-t-xl bg-green-300 ${
-          hoveredMenuData ? "h-[464px]" : "h-auto"
-        }`}
+        className={`hidden header-drop transition-all duration-300 ${
+          hoveredMenuData ? "pb-20" : "h-auto"
+        } lg:block`} //h-[464px]
       >
         <div className="header">
           <div className="header-content">
@@ -119,7 +151,17 @@ const Header = () => {
             </div>
           </div>
         </div>
-        {hoveredMenuData && <HoverTags data={hoveredMenuData} />}
+        {hoveredMenuData && (
+          <HoverTags
+            data={hoveredMenuData}
+            setHoveredMenuData={setHoveredMenuData}
+          />
+        )}
+      </div>
+
+      {/* MOBILE MENU */}
+      <div className="flex lg:hidden">
+        <MobileNav />
       </div>
     </div>
   );

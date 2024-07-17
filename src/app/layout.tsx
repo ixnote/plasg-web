@@ -8,6 +8,7 @@ import Providers from "@/utils/Provider";
 
 import { Header } from "@/layouts";
 import Footer from "@/layouts/Footer";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 
 export const metadata: Metadata = {
   title: "PLSG",
@@ -27,6 +28,7 @@ export default function RootLayout({
             {/* <Header /> */}
             {children}
             {/* <Footer /> */}
+            <ScrollToTopButton />
           </MantineProvider>
         </Providers>
       </body>

@@ -1,5 +1,4 @@
 import Header from "./header"
-import "./style.css";
 import logo from "@/assets/imgs/layouts/PICDA.svg"
 import Arrow from "@/assets/icons/layouts/arrow.svg"
 import Hero_image from "@/assets/imgs/hero_img.svg"
@@ -10,6 +9,8 @@ import { itemList } from "./data";
 import { newsList } from "./data";
 import arrowIcon from "@/assets/icons/layouts/right_arrow.svg"
 import Cards from "./cards"
+import Nav from "./nav";
+import Footer from "@/layouts/Footer"
 
 
 import Image from "next/image";
@@ -19,13 +20,7 @@ const Mdas = () => {
    
     return (
         <div className="first relative  h-full bg-white">
-            <div className="h-[50px] w-full  bg-[#0E3E40] flex justify-end items-center pb-0 mb-0 ">
-              <p><a href="plateaustate.gov.ng ">go to plateaustate.gov.ng </a></p>
-            </div>
-            <div>
-              <Header />
-            </div>
-
+            <Nav/>
             <div className="main-content">
                 <div className=" h-[450px] w-full mt-32  flex justify-between p-14">
                     <div className=" w-[50%]  h-[362px] flex flex-col justify-between">
@@ -70,7 +65,7 @@ const Mdas = () => {
                 <Image src={dg_image} alt="" className="p-6 p"/>        
               </div>
             </div>
-          <div className="w-full h-[1780px] px-10 pb-[120px] ">
+          <div className="w-full h-[1880px] px-10 pb-[120px] ">
             <hr className=" mb-[150px] border-[1px] border-[#D4D4D4]" />
                 <div className="pb-[80px]  pt-[20px]">
                  <header className="w-[100px] h-[40px] flex justify-center items-center border-[#0E3E40] border-2 text-[#0E3E40] font-normal leading-3 size-3 font-[geist] rounded-md mb-6">Quick access</header>
@@ -78,7 +73,7 @@ const Mdas = () => {
                  <p className="text-[#00000080] w-[750px]">Find key information quickly on a variety of important topics right here on the Plateau Government website.</p>
                 </div>              
                 <div className="flex justify-center h-[1100px] ">
-                 <div className="flex items-center justify-between flex-wrap gap-4 w-full m-auto my-4">
+                 <div className="flex items-center justify-between flex-wrap gap-4 w-full h-full m-auto my-4">
                         {itemList.map((item) => (
                             <AssetCardLight
                                 key={item.id}
@@ -91,7 +86,7 @@ const Mdas = () => {
                         ))}
                     </div>
                 </div>
-                <div className="w-full h-[118px] flex justify-center pb-28" >
+                <div className="w-full h-[118px] flex justify-center pb-28 mt-14" >
                     <button className="w-[237px] h-[54px] rounded-lg py-[10px] mb-32 px-[40px] border-[1px] border-[#9CA3AF] flex justify-center items-center ">
                         <p className="w-[400px] h-[24px]">See all Services</p>
                         <Image src={arrowIcon} alt="" className=" w-[18px] font-[Geist] h-[18px]"/>
@@ -100,8 +95,8 @@ const Mdas = () => {
             </div>
 
             <div className="w-full h-[1800px]  px-[40px] pt-[0px] pb-[120px] ">
-             <hr className="  border-[1px] border-[#D4D4D4]" />
-                    <div className="  h-[254px] pb-[80px] bg-white  ">
+             <hr className="  border-[1px] border-[#D4D4D4] mb-28" />
+                    <div className="  h-[254px] pb-[80px] bg-white ">
                      <div className="  gap-4">
                       <header className="w-[100px] h-[32px] flex justify-center items-center border-[#0E3E40] border-2 text-[#0E3E40] font-normal leading-3 size-3 font-[geist] rounded-md mb-6">News</header>
                       <p className="w-[800px] h-[48px] flex justify-start items-center text-[#0E3E40] font-[geist] text-5xl size-11 font-medium leading-[48px] mb-10">News Updates</p>
@@ -124,10 +119,10 @@ const Mdas = () => {
                        <p className="w-[400px] h-[24px]">See all Services</p>
                        <Image src={arrowIcon} alt="" className=" w-[18px] font-[Geist] h-[18px]"/>
                       </button>
-                    </div>
-    
-                
+                    </div>        
             </div> 
+            <Footer />
+            
         </div>
     );
 

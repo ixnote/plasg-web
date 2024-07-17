@@ -35,30 +35,34 @@ function SearchWidget() {
 =======
   const { name, setName }: any = useGeneralContext();
   const { data, isLoading, error } = useQuery({
-    queryKey: ["searchResources", name],
+    queryKey: ["searchResources", name, currentPage, 1],
     queryFn: searchResources,
+    onSuccess: (result: any) => {
+      setCurrentPage(result?.data?.data?.pagination?.currentPage);
+    },
   });
 
-  console.log("data :>> ", data);
+  // console.log("data :>> ", data);
   return (
     <div className="py-[100px] bg-brand-main flex gap-8 flex-col p-5">
       <span className="grid gap-5 lg:grid-cols-2 grid-cols-1 max-w-[1200px] mx-auto">
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item, index) => (
+        {data?.data?.data?.resources?.map((item: any) => (
           <ArticleCard
-            key={index}
-            onclick={() => router.push(`search/${item}`)}
+            key={item?.id}
+            data={item}
+            onclick={() => router.push(`search/${item?.id}`)}
           />
 >>>>>>> 9b787f6d9b8c54f6c01b0bff7c89703390fa2c9e
         ))}
       </span>
       <span className=" ">
         <PaginationComponent
-          totalPages={totalPages}
+          totalPages={data?.data?.data?.pagination?.totalPages}
           currentPage={currentPage}
           onPageChange={handlePageChange}
         />
       </span>
-      <span className="bg-brand-secondary max-w-[1200px] mx-auto w-full p-6 rounded-2xl flex justify-between flex-wrap gap-4 items-center">
+      {/* <span className="bg-brand-secondary max-w-[1200px] mx-auto w-full p-6 rounded-2xl flex justify-between flex-wrap gap-4 items-center">
         <p className="text-[18px] font-medium text-brand-main m-0">
           Did you find what you were looking for?
         </p>
@@ -66,7 +70,7 @@ function SearchWidget() {
           <ButtonComponent className={"border-gray-600"}>Yes</ButtonComponent>
           <ButtonComponent className={"border-gray-600"}>No</ButtonComponent>
         </span>
-      </span>
+      </span> */}
     </div>
   );
 }

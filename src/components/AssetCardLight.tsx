@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const AssetCardLight = ({
   logo,
@@ -13,14 +14,29 @@ const AssetCardLight = ({
   updated,
   button1text,
   button2text,
+  url,
 }: any) => {
   const [hovered, setHovered] = useState(false);
+  const router = useRouter();
+
+  // const handleClick = () => {
+  //   url && router.push(`/${url}`);
+  //   return;
+  // };
+
+  const handleClick = () => {
+    if (url) {
+      window.open(url, "_blank");
+    }
+    return;
+  };
 
   return (
     <div
-      className="h-[476px] w-[49%] bg-[#E5E7EB] p-8 mb-2 rounded-2xl flex flex-col items-start justify-start gap-7 transition-fx cursor-pointer hover:bg-brand-lightYellow"
+      className="w-full bg-[#E5E7EB] p-8 mb-2 rounded-2xl flex flex-col items-start justify-between gap-8 transition-fx cursor-pointer hover:bg-brand-lightYellow lg:w-[49%] lg:pt-8 lg:h-[540px]"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onClick={handleClick}
     >
       {/* top */}
       <div className=" w-full flex flex-col gap-9 ">
@@ -28,13 +44,11 @@ const AssetCardLight = ({
         <div className="flex w-full items-center justify-between">
           <div className="flex flex-col gap-2 text-[#588065]">
             {logo && logo}
-            {icon && (
-              <Image src={icon  } alt="" />
-            )}
+            {icon && <Image src={icon} alt="" />}
             <span>{logoText}</span>
           </div>
           {updated && (
-            <span className="font-geistmono flex justify-end w-[100%] text-brand-grayish font-light text-sm">
+            <span className="font-geistmono text-brand-grayish font-light text-sm">
               {updated}
             </span>
           )}
@@ -63,8 +77,11 @@ const AssetCardLight = ({
               </span>
             )}
           </div>
-          <div className="font-geistsans font-normal text-lg text-brand-main h-[170px]">
-            {description}
+          <div className="font-geistsans font-normal text-base text-brand-main md:text-lg lg:h-[170px] lg:overflow-y-hidden">
+            {description.length > 400
+              ? description.substring(0, 400) + ". . ."
+              : description}
+            {/* {description} */}
           </div>
         </div>
       </div>
@@ -76,12 +93,12 @@ const AssetCardLight = ({
             : "transition-fx flex items-center justify-between w-[90%]"
         }
       >
-        <div className="flex w-full items-center justify-start gap-4 ">
-          <div className="border-[1px] border-brand-grayish p-[10px] rounded-lg w-[134px] flex items-center justify-center text-brand-main font-normal text-sm bg-transparent font-geistsans cursor-pointer transition-fx hover:bg-brand-dark hover:text-brand-white hover:border-brand-dark">
+        <div className="flex w-full items-center justify-start gap-4">
+          <div className="transition-fx border-[1px] border-brand-grayish p-[10px] rounded-lg w-[134px] flex items-center justify-center text-brand-main font-normal text-sm bg-transparent font-geistsans cursor-pointer hover:bg-brand-dark hover:text-brand-white hover:border-brand-dark hover:px-6">
             {button1text}
           </div>
           {button2text && (
-            <div className="border-[1px] border-brand-grayish p-[10px] rounded-lg w-[134px] flex items-center justify-center text-brand-main font-normal text-sm bg-transparent font-geistsans cursor-pointer transition-fx hover:bg-brand-dark hover:text-brand-white hover:border-brand-dark">
+            <div className="transition-fx border-[1px] border-brand-grayish p-[10px] rounded-lg w-[134px] flex items-center justify-center text-brand-main font-normal text-sm bg-transparent font-geistsans cursor-pointer hover:bg-brand-dark hover:text-brand-white hover:border-brand-dark hover:px-6">
               {button2text}
             </div>
           )}
