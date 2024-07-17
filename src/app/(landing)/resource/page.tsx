@@ -28,22 +28,22 @@ const Page = () => {
           <SectionHeader
             title={
               resources?.resources?.[0]?.title ||
-              oneTopicTag.title ||
+              oneTopicTag?.title ||
               "Find Useful Resources"
             }
             description={
               resources?.resources?.[0]?.description ||
-              oneTopicTag.description ||
+              oneTopicTag?.description ||
               "This page helps you find and filter resources based on your preference. You can select a resource from the navigation menu to get started."
             }
             baseURL={
               resources?.resources?.[0]?.main_topic_tag?.name ||
-              oneTopicTag.name ||
+              oneTopicTag?.name ||
               "resource"
             }
             baseText={
               resources?.resources?.[0]?.main_topic_tag?.name ||
-              oneTopicTag.name ||
+              oneTopicTag?.name ||
               "resource"
             }
           />
