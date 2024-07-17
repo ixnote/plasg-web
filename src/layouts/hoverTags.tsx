@@ -97,6 +97,7 @@ const HoverTags = ({ data, setHoveredMenuData }: any) => {
   };
 
   const handleMouseLeaveMain = () => {
+    setTopicSubTagId("");
     setIsSubMenuActive(false);
   };
 
