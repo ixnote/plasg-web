@@ -198,9 +198,11 @@ const GeneralProvider = (props: any) => {
     }
   };
 
-  // useEffect(() => {
-  //   if (typeTagId) getResourceByType();
-  // }, [typeTagId]);
+  useEffect(() => {
+    console.log("Context Tag Switch.");
+
+    if (typeTagId) allResources();
+  }, [typeTagId]);
 
   useEffect(() => {
     if (tagTopicName) getResourceByTagTopicName(tagTopicName);

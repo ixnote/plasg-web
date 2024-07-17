@@ -140,7 +140,7 @@ const HoverTags = ({ data, setHoveredMenuData }: any) => {
                 <div key={i} onMouseEnter={() => handleMouseEnterSub(subItem)}>
                   <TagList
                     id={subItem._id}
-                    title={subItem.title || subItem?.name}
+                    title={subItem.name}
                     // path={subItem.path}
                     path={"#"}
                     forwardArrow={false}
