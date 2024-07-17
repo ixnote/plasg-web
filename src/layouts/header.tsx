@@ -161,7 +161,7 @@ const Header = (data: any) => {
 
       {/* MOBILE MENU */}
       <div className="flex lg:hidden">
-        <MobileNav />
+        <MobileNav topicTags={topicTags} />
       </div>
     </div>
   );
