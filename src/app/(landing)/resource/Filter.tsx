@@ -9,6 +9,10 @@ const Filter = ({ name }: any) => {
   // console.log("🚀 ~ Filter ~ name:", name);
   const [active, setActive] = useState("feed");
   const [activePage, setActivePage] = useState(1);
+  const [activeTag, setActiveTag] = useState({
+    name: "",
+    id: "",
+  });
   const {
     typeTags,
     resources,
@@ -18,10 +22,11 @@ const Filter = ({ name }: any) => {
     setTagTopicName,
   }: any = useGeneralContext();
   console.log("🚀 ~ Filter ~ typeTags:", typeTags);
+  console.log("🚀 ~ Filter ~ activeTag:", activeTag);
 
-  const handleTabSwitch = async ({ tag }: any) => {
-    console.log("🚀 ~ handleTabSwitch ~ tag:", tag);
-    if (!tag?.id || !tag?.name) {
+  const handleTabSwitch = async () => {
+    // console.log("🚀 ~ handleTabSwitch ~ tag:", tag);
+    if (!activeTag.id || !activeTag.name) {
       console.log("NO TAG!");
       setActive("feed");
       setTypeTagId("");
@@ -31,8 +36,8 @@ const Filter = ({ name }: any) => {
 
     // console.log("🚀 ~ handleTabSwitch ~ tag:", tag?.id);
     // console.log("🚀 ~ handleTabSwitch ~ tag.name :", tag?.name);
-    setActive(tag.name);
-    setTypeTagId(tag.id);
+    setActive(activeTag.name);
+    setTypeTagId(activeTag.id);
     await allResources();
     return;
     // getResourceByType();
@@ -41,6 +46,11 @@ const Filter = ({ name }: any) => {
   // useEffect(() => {
   //   setTagTopicName(name);
   // }, [name]);
+
+  useEffect(() => {
+    console.log("🚀 ~ Filter ~ activeTag:", activeTag);
+    handleTabSwitch();
+  }, [activeTag]);
 
   return (
     <div className="w-full flex flex-col gap-8 items-start -mt-12">
@@ -53,7 +63,8 @@ const Filter = ({ name }: any) => {
                 ? "transition-fx relative flex items-center gap-2 py-2 px-4 rounded-lg border-[1px] border-brand-grayish cursor-pointer bg-brand-main text-brand-white"
                 : "transition-fx relative flex items-center gap-2 py-2 px-4 rounded-lg border-[1px] border-brand-grayish cursor-pointer hover:bg-brand-main hover:text-brand-white"
             }
-            onClick={() => handleTabSwitch("feed")}
+            // onClick={() => handleTabSwitch("feed")}
+            onClick={() => setActive("feed")}
           >
             <div className="w-[40%]">
               <svg
@@ -93,8 +104,12 @@ const Filter = ({ name }: any) => {
                     : "transition-fx relative flex items-center gap-2 py-2 px-4 rounded-lg border-[1px] border-brand-grayish cursor-pointer hover:bg-brand-main hover:text-brand-white"
                 }
                 onClick={
-                  () => handleTabSwitch({ tag: { name: tag.name, id: tag.id } })
-                  // handleTabSwitch(tag)
+                  // () => handleTabSwitch({ tag: { name: tag.name, id: tag.id } })
+                  () =>
+                    setActiveTag({
+                      id: tag.id ? tag.id : "",
+                      name: tag.name ? tag.name : "",
+                    })
                 }
               >
                 <div className="w-[40%]">
@@ -113,7 +128,7 @@ const Filter = ({ name }: any) => {
                 </div>
                 <div className="w-[60%] flex items-center justify-end gap-1 mx-6 ">
                   <span className="flex flex-col h-[22px] uppercase items-center justify-center font-medium font-geistsans text-xs">
-                    {tag.name} {tag.id}
+                    {tag.name}
                   </span>
                 </div>
                 <span className="bg-brand-grayish p-[0.5px] h-[8px] absolute left-[29%] top-0"></span>
