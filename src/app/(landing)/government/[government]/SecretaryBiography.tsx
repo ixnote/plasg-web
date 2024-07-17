@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import SubsectionHeader from "@/components/SubsectionHeader";
 
-import signature from "../../../../public/government/signature.png";
+import signature from "../../../../../public/government/signature.png";
 
 const SecretaryBiography = () => {
   return (
