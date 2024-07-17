@@ -84,8 +84,8 @@ const GeneralProvider = (props: any) => {
         `${process.env.NEXT_PUBLIC_BASE_URL}/resource/all?page=1&pageSize=10&${
           topicTagId &&
           `main_topic_tag=${topicTagId}&${
-            typeTagId && `main_type_tag=${typeTagId}`
-          }`
+            topicSubTagId && `all_topic_tag=${topicSubTagId}`
+          }&${typeTagId && `main_type_tag=${typeTagId}`}`
         }`,
         {
           headers: {
