@@ -4,7 +4,7 @@ const SubsectionHeader = ({ left, right, body }: any) => {
   return (
     <>
       <div className="flex flex-col items-start justify-start gap-4 lg:flex-row lg:gap-0">
-        <div className="w-full font-geistmono flex items-start lg:w-[20%]">
+        <div className="w-full font-geistmono flex items-start text-brand-dark lg:w-[20%]">
           {left}
         </div>
         <div
