@@ -3,26 +3,13 @@
 import SectionHeader from "@/components/SectionHeader";
 import React from "react";
 import Filter from "./Filter";
-import { Header } from "@/layouts";
-import Footer from "@/layouts/Footer";
 import { useGeneralContext } from "../../../../context/GenralContext";
 
-// import { allResources } from "@/server/actions/resources";
-// import { allTags } from "@/server/actions/tags";
-
 const Page = () => {
-  // const result = await Promise.all([allResources(), allTags()]);
-
-  // const data = {
-  //   resources: result[0],
-  //   tags: result[1],
-  // };
-
   const { resources, oneTopicTag }: any = useGeneralContext();
 
   return (
     <>
-      {/* <Header /> */}
       <div className="min-h-screen max-w-[2040px] pb-[96px] relative flex items-center justify-center bg-brand-white">
         <div className="m-auto w-[92%] flex justify-between flex-col gap-8 -mt-12">
           <SectionHeader
@@ -47,11 +34,9 @@ const Page = () => {
               "resource"
             }
           />
-          {/* <Filter data={data} /> */}
           <Filter />
         </div>
       </div>
-      {/* <Footer /> */}
     </>
   );
 };

@@ -14,35 +14,8 @@ import { useDisclosure } from "@mantine/hooks";
 import MobileNav from "@/components/MobileHeader/page";
 import { useGeneralContext } from "../../context/GenralContext";
 
-// const menueList = [
-//   {
-//     name: "Government",
-//     drop: true,
-//     path: "#",
-//     data: governmentData,
-//   },
-//   {
-//     name: "Resources",
-//     drop: true,
-//     path: "#",
-//     data: libraryData,
-//   },
-//   {
-//     name: "People",
-//     drop: false,
-//     path: "/people",
-//   },
-//   {
-//     name: "News",
-//     drop: false,
-//     path: "/news",
-//   },
-// ];
-
 const Header = (data: any) => {
   const { topicTags }: any = useGeneralContext();
-  // console.log("🚀 ~ Header ~ topicTags:", topicTags);
-  // console.log("🚀 ~ Header ~ data:", data);
   const [hoveredMenuData, setHoveredMenuData] = useState(null);
 
   const handleMouseEnter = (menu: any) => {
@@ -71,7 +44,6 @@ const Header = (data: any) => {
       drop: true,
       path: "#",
       // data: libraryData,
-      // data: data.data,
       data: topicTags,
     },
     {
@@ -161,7 +133,7 @@ const Header = (data: any) => {
 
       {/* MOBILE MENU */}
       <div className="flex lg:hidden">
-        <MobileNav topicTags={topicTags} />
+        <MobileNav />
       </div>
     </div>
   );

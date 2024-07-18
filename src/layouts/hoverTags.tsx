@@ -50,6 +50,7 @@ const HoverTags = ({ data, setHoveredMenuData }: any) => {
     }
     setTopicTagId(item.id);
     setOneTopicTag(item);
+    setTopicSubTagId("");
     setCurrentItem({
       id: item.id,
       paragraph: item.paragraph,
