@@ -30,6 +30,7 @@ const TagList = ({
 
   const handleClick = async () => {
     if (path !== "#") {
+      setHoveredMenuData(null);
       router.push(`${path}`);
       return;
     }

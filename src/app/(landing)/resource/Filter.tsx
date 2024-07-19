@@ -203,6 +203,7 @@ const Filter = ({ name }: any) => {
                     title={resource.name}
                     description={resource.description}
                     url={resource.link}
+                    id={resource.id}
                     button1text={"View Topic"}
                   />
                 </>
