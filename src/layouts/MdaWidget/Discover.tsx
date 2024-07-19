@@ -9,7 +9,7 @@ import { cn } from "@/utils";
 import { useMediaQuery } from "@mantine/hooks";
 import { MdOutlineArrowOutward } from "react-icons/md";
 
-function Discover() {
+function Discover({ destinations }: any) {
   const article = {
     image: ArticleImage,
     name: "Hon. Gabriel Dewan",
@@ -64,9 +64,9 @@ function Discover() {
   };
 
   const tabs = [
-    { name: "Landmarks", value: "stay" },
-    { name: "Parks", value: "eat" },
-    { name: "Gallery", value: "food" },
+    { text: "landmark", name: "Landmarks", value: "stay" },
+    { text: "parks", name: "Parks", value: "eat" },
+    { text: "gallery", name: "Gallery", value: "food" },
   ];
   const [activeTab, setActiveTab] = useState<any>([tabs[0]]);
   useEffect(() => {
@@ -75,6 +75,12 @@ function Discover() {
   }, []);
 
   const matches = useMediaQuery("(max-width: 768px)");
+
+  const filterDestinations = (value: string) => {
+    console.log("value :>> ", value);
+    const newList = destinations.filter((item: any) => item.type === value);
+    return newList;
+  };
 
   return (
     <div className="py-12 bg-white">
@@ -117,16 +123,16 @@ function Discover() {
         <span>
           <span className="grid lg:grid-cols-10 grid-cols-3 gap-10">
             <span className="col-span-3 flex flex-col justify-end">
-              <span className="flex flex-col gap-8 pb-14">
-                <p className="text-[24px] text-brand-main font-medium max-w-[800px]">
-                  Jos Wildlife Park
-                </p>
-                <p className="text-[18px] font-normal text-brand-main m-0 lg:col-span-4  max-w-[700px]">
-                  Spanning 8 square kilometers, it&apos;s one of Nigeria&apos;s
-                  largest zoological parks, offering a captivating experience of
-                  nature and wildlife.
-                </p>
-              </span>
+              {destinations && (
+                <span className="flex flex-col gap-8 pb-14">
+                  <p className="text-[24px] text-brand-main font-medium max-w-[800px]">
+                    {filterDestinations(activeTab?.text)[0]?.name}
+                  </p>
+                  <p className="text-[18px] font-normal text-brand-main m-0 lg:col-span-4  max-w-[700px]">
+                    {destinations[0]?.description}
+                  </p>
+                </span>
+              )}
             </span>
             <span className="lg:col-span-7 col-span-3 flex">
               <span className="carousel flex w-full flex-col gap-4">

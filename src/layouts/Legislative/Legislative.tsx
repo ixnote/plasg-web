@@ -60,8 +60,8 @@ function Legislative() {
           </span>
         </span>
         <span className="grid lg:grid-cols-3 grid-cols-1 gap-5 gap-y-16 my-16">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 1].map((item, index) => (
-            <LegislatureCard data={article} key={index} />
+          {legislatives?.data?.data?.data?.map((item: any, index: number) => (
+            <LegislatureCard data={item} key={index} />
           ))}
         </span>
         <PaginationComponent

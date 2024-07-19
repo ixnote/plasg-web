@@ -8,15 +8,14 @@ const handleParams = (paramsPayload: any) => {
   return paramsPayload;
 };
 
-export const getResources = async ({ queryKey }: any) => {
-  const [_, name, page, pageSize] = queryKey;
+export const getTourism = async ({ queryKey }: any) => {
+  const [_, page, pageSize] = queryKey;
   const params = {
     page: page,
-    name: name,
     pageSize: pageSize,
   };
   const response = await axios.get(
-    `${CORE_APP.plsg.resources}/all?${new URLSearchParams(
+    `${CORE_APP.plsg.destinations}?${new URLSearchParams(
       handleParams(params)
     ).toString()}`
   );
