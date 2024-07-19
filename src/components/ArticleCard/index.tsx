@@ -14,8 +14,8 @@ function ArticleCard({ onclick, data }: any) {
         <span className="flex justify-between">
           <span className="flex flex-col gap-2">
             <Image src={SettingIcon} alt="" />
-            <p className="text-[18px] font-medium group-hover:text-black">
-              Service
+            <p className="text-[18px] font-medium group-hover:text-black capitalize">
+              {data?.main_type_tag?.name}
             </p>
           </span>
           <p className="text-[14px] font-light group-hover:text-[#6B7280]">
@@ -48,9 +48,19 @@ function ArticleCard({ onclick, data }: any) {
             Download
           </ButtonComponent> */}
         </span>
-        <button className="text-brand-main border-none hover:bg-none px-0 group-hover:block hidden">
-          <MdOutlineArrowOutward size={28} onClick={onclick} />
-        </button>
+        {data?.main_type_tag?.name === "resource" ? (
+          <Link href={`/search/${data?.id}`}>
+            <button className="text-brand-main border-none hover:bg-none px-0 group-hover:block hidden">
+              <MdOutlineArrowOutward size={28} onClick={onclick} />
+            </button>
+          </Link>
+        ) : (
+          <Link href={`/news/${data?.id}`}>
+            <button className="text-brand-main border-none hover:bg-none px-0 group-hover:block hidden">
+              <MdOutlineArrowOutward size={28} onClick={onclick} />
+            </button>
+          </Link>
+        )}
       </span>
     </div>
   );

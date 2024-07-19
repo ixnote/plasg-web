@@ -9,7 +9,7 @@ function NewsPage() {
       <Header />
       <News />
       <div className="p-2 rounded-xl overflow-hidden flex">
-        <span>
+        <span className="w-full">
           <Footer />
         </span>
       </div>

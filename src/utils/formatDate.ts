@@ -7,7 +7,7 @@ export function formatDate(inputDate: any) {
   const yesterday = new Date(today);
   yesterday.setDate(today.getDate() - 1);
 
-  const diffTime = date - today;
+  const diffTime = today - date;
   const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
   const formatToOrdinal = (n: any) => {

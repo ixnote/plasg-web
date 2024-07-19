@@ -162,7 +162,7 @@ function News() {
               <span className="col-span-3 flex w-full  items-start bg-white border border-gray-200 h-[350px]">
                 <span className="w-full h-full max-w-[650px] aspect-[11/7] object-cover bg-[#588065] image-container ">
                   <Image
-                    src={news[0].image}
+                    src={data?.data?.data?.news[0]?.image}
                     alt=""
                     width={500}
                     height={300}
@@ -181,8 +181,8 @@ function News() {
                   </span>
                 </span>
               </span>
-              {[1, 2, 3, 4, 5].map((item, index) => (
-                <NewsCard key={index} data={news[0]} />
+              {data?.data?.data?.news?.map((item: any, index: number) => (
+                <NewsCard key={index} data={news[0]} id={item.id} />
               ))}
             </>
           )}
