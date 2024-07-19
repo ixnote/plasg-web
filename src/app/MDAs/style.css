@@ -119,3 +119,10 @@
 .mantine-Modal-content {
   @apply bg-brand-main p-5;
 }
+
+
+.bg-custom {
+  background-image: url('/path/to/your/image.svg');
+  background-size: cover;
+  background-position: center;
+}

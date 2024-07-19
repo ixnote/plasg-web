@@ -1,3 +1,5 @@
+"use client"
+
 import Header from "./header"
 import logo from "@/assets/imgs/layouts/PICDA.svg"
 import Arrow from "@/assets/icons/layouts/arrow.svg"
@@ -41,15 +43,15 @@ const Mdas = () => {
                 </div>
             </div>
 
-            <div className="w-full px-10 pb-[100px] h-[830px] ">
-               <hr className="mb-[150px]  border-[1px] border-[#D4D4D4]" />
-               <div className=" w-full   flex justify-center  ">
-                 <div className="p-6">
-                    <div >
-                     <header className="w-[100px] h-[40px] flex justify-center items-center border-[#0E3E40] border-2 text-[#0E3E40] font-normal leading-3 size-3 font-[geist] rounded-md mb-6">Director</header>
-                     <p className=" w-[520px] h-[96px] flex justify-start items-center text-[#0E3E40] font-[geist] text-4xl size-10 font-medium leading-[48px] mb-10">From the Director General of PICTDA</p>
+            <div className="w-full h-[1150px]  pb-[100px]">
+               <hr className="border-[1px] border-[rgb(212,212,212)]" />
+               <div className="flex w-full justify-between px-16 mt-32 ">
+                 <div className=" w-[50%] h-[750px] px-32 pt-32  gap-20 ">
+                    <div className="h-[250px] w-[720px] mb-9">
+                     <header className="w-[100px] h-[40px] flex justify-center items-center border-[#0E3E40] border-2 text-[#0E3E40] font-normal leading-3 size-4 font-[geist] rounded-md mb-6">Director</header>
+                     <p className=" w-[520px] h-[150px] flex justify-start items-center text-[#0E3E40] font-[geist] text-4xl size-10 font-medium leading-[48px] mb-10">From the Director General of PICTDA</p>
                     </div>
-                    <div className="mb-10">
+                    <div className=" mb-32 ">
                         <p className="text-[#00000070]">
                         PICTDA will work closely with decision makers in other arms of <br /> 
                         Ministries, Departments and Agencies to improve G2G initiatives as <br />
@@ -57,15 +59,18 @@ const Mdas = () => {
                          technological solutions for all aspects of Plateau State Government's <br /> business activities and also coordinate ICT development in Plateau <br /> State.
                         </p>
                     </div>
-                    <div className="w-[185px] h-[56px] border-[2px] border-[#9CA3AF] flex justify-center items-center rounded-md ">
+                    <div className="w-[50%] h-[56px] border-[2px] border-[#9CA3AF] flex justify-center items-center rounded-md ">
                         <p className="text-[#0E3E40] pr-[5px]">About Us</p>
                         <Image src={arrow} alt="" className="pl-[5px]"/>
                     </div> 
                  </div>
-                <Image src={dg_image} alt="" className="p-6 p"/>        
+                <div className="w-[50%]">
+                    <Image src={dg_image} alt="" className="w-[100%]"/>
+                </div>       
               </div>
             </div>
-          <div className="w-full h-[1880px] px-10 pb-[120px] ">
+
+          <div className="w-full h-[1880px] px-10 pb-[120px]  ">
             <hr className=" mb-[150px] border-[1px] border-[#D4D4D4]" />
                 <div className="pb-[80px]  pt-[20px]">
                  <header className="w-[100px] h-[40px] flex justify-center items-center border-[#0E3E40] border-2 text-[#0E3E40] font-normal leading-3 size-3 font-[geist] rounded-md mb-6">Quick access</header>
@@ -80,7 +85,9 @@ const Mdas = () => {
                                 icon={item.icon}
                                 logoText={item.logoText}
                                 updated={item.updated}
+                                title={item.title}
                                 description={item.description}
+                                byText={item.byText}
                                 button1text={item.button1text}
                             />
                         ))}

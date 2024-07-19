@@ -27,7 +27,7 @@ const Nav: React.FC = () => {
   }, []);
 
   return (
-    <div className="app">
+    <div className="app w-full">
       <div className="topheader" ref={headerRef}>
         <div className="navs h-[40px] w-full bg-[#0E3E40] flex justify-end items-center py-2 px-[40px]">
           <p>
