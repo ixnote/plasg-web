@@ -5,14 +5,15 @@ import { useGeneralContext } from "../../../../context/GenralContext";
 import AssetCardLight from "@/components/AssetCardLight";
 import { Loader } from "@mantine/core";
 
-const Filter = ({ name }: any) => {
-  // console.log("🚀 ~ Filter ~ name:", name);
+const Filter = () => {
   const [active, setActive] = useState("feed");
-  const [activePage, setActivePage] = useState(1);
+  // const [activePage, setActivePage] = useState(1);
   const [activeTag, setActiveTag] = useState({
     name: "",
     id: "",
   });
+  const [showFilterCard, setShowFilterCard] = useState(false);
+
   const {
     typeTags,
     resources,
@@ -20,7 +21,12 @@ const Filter = ({ name }: any) => {
     loadingResource,
     setTypeTagId,
     setTagTopicName,
+    totalPages,
+    setTotalPages,
+    activePage,
+    setActivePage,
   }: any = useGeneralContext();
+  console.log("🚀 ~ Filter ~ resources:", resources);
 
   const handleTabSwitch = async () => {
     if (activeTag.name === "feed") {
@@ -38,8 +44,49 @@ const Filter = ({ name }: any) => {
     handleTabSwitch();
   }, [activeTag]);
 
+  useEffect(() => {
+    allResources(activePage);
+  }, [activePage]);
+
+  const handlePageChange = (page: number) => {
+    setActivePage(page);
+  };
+
+  const handleNextPage = () => {
+    if (activePage < totalPages) {
+      setActivePage(activePage + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (activePage > 1) {
+      setActivePage(activePage - 1);
+    }
+  };
+
+  // const toggleFilterCard = () => {
+  //   setShowFilterCard(!showFilterCard);
+  // };
+
+  // const closeFilterCard = () => {
+  //   setShowFilterCard(false);
+  // };
+
+  // useEffect(() => {
+  //   if (showFilterCard) {
+  //     document.body.classList.add("overflow-hidden");
+  //   } else {
+  //     document.body.classList.remove("overflow-hidden");
+  //   }
+
+  //   // Clean up the effect by removing the class when the component unmounts
+  //   return () => {
+  //     document.body.classList.remove("overflow-hidden");
+  //   };
+  // }, [showFilterCard]);
+
   return (
-    <div className="w-full flex flex-col gap-8 items-start -mt-12">
+    <div className="relative w-full flex flex-col gap-8 items-start -mt-12">
       {/* top */}
       <div className="flex justify-between items-center w-full">
         <div className="hidden lg:flex lg:gap-2 lg:items-center ">
@@ -129,10 +176,10 @@ const Filter = ({ name }: any) => {
             ))}
         </div>
         {/* right : FILTER */}
-        <div className="w-full flex justify-end">
+        {/* <div className="w-full flex justify-end">
           <div
-            className="transition-fx relative flex items-center gap-2 py-2 px-4 rounded-lg border-[1px] border-brand-grayish cursor-pointer bg-brand-main text-brand-white"
-            onClick={() => setActive("feed")}
+            className="transition-fx relative flex items-center gap-2 py-2 px-4 rounded-lg border-[1px] border-brand-grayish cursor-pointer bg-brand-main text-brand-white hover:bg-brand-lightYellow hover:text-brand-grayish"
+            onClick={() => setShowFilterCard(true)}
           >
             <div className="w-[40%]">
               <svg
@@ -153,11 +200,10 @@ const Filter = ({ name }: any) => {
                 FILTER
               </span>
             </div>
-            {/* divider */}
             <span className="bg-brand-grayish p-[0.5px] h-[8px] absolute left-[29%] top-0"></span>
             <span className="bg-brand-grayish p-[0.5px] h-[8px] absolute left-[29%] bottom-0"></span>
           </div>
-        </div>
+        </div> */}
       </div>
       {/* middle */}
       <div className="flex items-center justify-between flex-wrap gap-4 w-full m-auto my-4">
@@ -257,7 +303,12 @@ const Filter = ({ name }: any) => {
       <div className="w-full flex items-center justify-center lg:justify-end">
         <div className="flex items-center gap-4">
           {/* left arrow */}
-          <div className="cursor-pointer flex items-center">
+          <div
+            className={`cursor-pointer flex items-center ${
+              activePage === 1 ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+            onClick={handlePreviousPage}
+          >
             <svg
               width="10"
               height="18"
@@ -268,67 +319,35 @@ const Filter = ({ name }: any) => {
               <path
                 d="M9 17L5 13L1 9L9 1"
                 stroke="#0E3E40"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           </div>
           {/* numbers */}
           <div className="flex items-center gap-4">
-            <span
-              className={
-                activePage === 1
-                  ? "transition-fx cursor-pointer flex items-center justify-center p-2 w-[40px] h-[36px] rounded-lg text-white font-geistsans font-normal text-sm bg-brand-main"
-                  : "transition-fx cursor-pointer flex items-center justify-center p-2 w-[40px] h-[36px] rounded-lg text-brand-main font-geistsans font-normal text-sm hover:bg-brand-main hover:text-brand-white"
-              }
-              onClick={() => setActivePage(1)}
-            >
-              1
-            </span>
-            <span
-              className={
-                activePage === 2
-                  ? "transition-fx cursor-pointer flex items-center justify-center p-2 w-[40px] h-[36px] rounded-lg text-white font-geistsans font-normal text-sm bg-brand-main"
-                  : "transition-fx cursor-pointer flex items-center justify-center p-2 w-[40px] h-[36px] rounded-lg text-brand-main font-geistsans font-normal text-sm hover:bg-brand-main hover:text-brand-white"
-              }
-              onClick={() => setActivePage(2)}
-            >
-              2
-            </span>
-            <span
-              className={
-                activePage === 3
-                  ? "transition-fx cursor-pointer flex items-center justify-center p-2 w-[40px] h-[36px] rounded-lg text-white font-geistsans font-normal text-sm bg-brand-main"
-                  : "transition-fx cursor-pointer flex items-center justify-center p-2 w-[40px] h-[36px] rounded-lg text-brand-main font-geistsans font-normal text-sm hover:bg-brand-main hover:text-brand-white"
-              }
-              onClick={() => setActivePage(3)}
-            >
-              3
-            </span>
-            <span
-              className={
-                activePage === 4
-                  ? "transition-fx cursor-pointer flex items-center justify-center p-2 w-[40px] h-[36px] rounded-lg text-white font-geistsans font-normal text-sm bg-brand-main"
-                  : "transition-fx cursor-pointer flex items-center justify-center p-2 w-[40px] h-[36px] rounded-lg text-brand-main font-geistsans font-normal text-sm hover:bg-brand-main hover:text-brand-white"
-              }
-              onClick={() => setActivePage(4)}
-            >
-              4
-            </span>
-            <span
-              className={
-                activePage === 5
-                  ? "transition-fx cursor-pointer flex items-center justify-center p-2 w-[40px] h-[36px] rounded-lg text-white font-geistsans font-normal text-sm bg-brand-main"
-                  : "transition-fx cursor-pointer flex items-center justify-center p-2 w-[40px] h-[36px] rounded-lg text-brand-main font-geistsans font-normal text-sm hover:bg-brand-main hover:text-brand-white"
-              }
-              onClick={() => setActivePage(5)}
-            >
-              5
-            </span>
+            {[...Array(totalPages)].map((_, index) => (
+              <span
+                key={index}
+                className={
+                  activePage === index + 1
+                    ? "transition-fx cursor-pointer flex items-center justify-center p-2 w-[40px] h-[36px] rounded-lg text-white font-geistsans font-normal text-sm bg-brand-main"
+                    : "transition-fx cursor-pointer flex items-center justify-center p-2 w-[40px] h-[36px] rounded-lg text-brand-main font-geistsans font-normal text-sm hover:bg-brand-main hover:text-brand-white"
+                }
+                onClick={() => handlePageChange(index + 1)}
+              >
+                {index + 1}
+              </span>
+            ))}
           </div>
           {/* right arrow */}
-          <div className="cursor-pointer flex items-center">
+          <div
+            className={`cursor-pointer flex items-center ${
+              activePage === totalPages ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+            onClick={handleNextPage}
+          >
             <svg
               width="10"
               height="18"
@@ -339,14 +358,28 @@ const Filter = ({ name }: any) => {
               <path
                 d="M1 1L5 5L9 9L1 17"
                 stroke="#0E3E40"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           </div>
         </div>
       </div>
+      {/* {showFilterCard && (
+        <>
+          <div className="fixed flex items-center justify-end inset-0 bg-brand-dark/30 h-screen w-full z-50">
+            <div
+              className={`bg-brand-main text-brand-white p-8 w-96 rounded-lg mr-4 md:mr-8`}
+            >
+              Filter
+              <button className="ml-8 text-base" onClick={closeFilterCard}>
+                x
+              </button>
+            </div>
+          </div>
+        </>
+      )} */}
     </div>
   );
 };

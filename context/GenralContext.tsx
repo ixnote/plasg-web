@@ -20,6 +20,8 @@ const GeneralProvider = (props: any) => {
   const [resources, setResources] = useState([]);
   const [homeResources, setHomeResources] = useState([]);
   const [loadingResource, setLoadingResource] = useState(false);
+  const [activePage, setActivePage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
   // Static
   const [legislatives, setLegislatives] = useState([]);
@@ -61,7 +63,7 @@ const GeneralProvider = (props: any) => {
           timeout: 10000, // Set a timeout of 10 seconds
         }
       );
-      console.log("🚀 ~ getTopicTags ~ response:", response.data.data);
+      // console.log("🚀 ~ getTopicTags ~ response:", response.data.data);
       return setTopicTags(response.data.data);
     } catch (error: any) {
       console.log("🚀 ~ allResources ~ error:", error.message);
@@ -74,19 +76,46 @@ const GeneralProvider = (props: any) => {
   // RESOURCES
   //************/
   //*******/
-  const allResources = async () => {
-    try {
-      // console.log("🚀 ~ allResources ~ topicTagId:", topicTagId);
-      // console.log("🚀 ~ GeneralProvider ~ typeTagId:", typeTagId);
-      // console.log("🚀 ~ GeneralProvider ~ resources:", resources);
+  // const allResources = async () => {
+  //   try {
+  //     // console.log("🚀 ~ allResources ~ topicTagId:", topicTagId);
+  //     // console.log("🚀 ~ GeneralProvider ~ typeTagId:", typeTagId);
+  //     // console.log("🚀 ~ GeneralProvider ~ resources:", resources);
 
+  //     setLoadingResource(true);
+  //     const response = await axios.get(
+  //       `${process.env.NEXT_PUBLIC_BASE_URL}/resource/all?page=1&pageSize=10&${
+  //         topicTagId &&
+  //         `main_topic_tag=${topicTagId}&${
+  //           topicSubTagId && `all_topic_tag=${topicSubTagId}`
+  //         }&${typeTagId && `main_type_tag=${typeTagId}`}`
+  //       }`,
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         timeout: 10000,
+  //       }
+  //     );
+  //     // console.log("🚀 ~ allResources ~ response:", response.data.data);
+  //     setLoadingResource(false);
+  //     return setResources(response.data.data);
+  //   } catch (error: any) {
+  //     setLoadingResource(false);
+  //     console.log("🚀 ~ allResources ~ error:", error.message);
+  //   }
+  // };
+
+  const allResources = async (page = 1) => {
+    try {
       setLoadingResource(true);
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/resource/all?page=1&pageSize=10&${
-          topicTagId &&
-          `main_topic_tag=${topicTagId}&${
-            topicSubTagId && `all_topic_tag=${topicSubTagId}`
-          }&${typeTagId && `main_type_tag=${typeTagId}`}`
+        `${
+          process.env.NEXT_PUBLIC_BASE_URL
+        }/resource/all?page=${page}&pageSize=2${
+          topicTagId ? `&main_topic_tag=${topicTagId}` : ""
+        }${topicSubTagId ? `&all_topic_tag=${topicSubTagId}` : ""}${
+          typeTagId ? `&main_type_tag=${typeTagId}` : ""
         }`,
         {
           headers: {
@@ -95,9 +124,9 @@ const GeneralProvider = (props: any) => {
           timeout: 10000,
         }
       );
-      // console.log("🚀 ~ allResources ~ response:", response.data.data);
       setLoadingResource(false);
-      return setResources(response.data.data);
+      setResources(response.data.data);
+      setTotalPages(response.data.totalPages); // Assuming the API returns total pages
     } catch (error: any) {
       setLoadingResource(false);
       console.log("🚀 ~ allResources ~ error:", error.message);
@@ -251,9 +280,13 @@ const GeneralProvider = (props: any) => {
 
         // Resources
         resources,
+        activePage,
+        totalPages,
         homeResources,
         allResources,
         setResources,
+        setActivePage,
+        setTotalPages,
         getResourceByType,
         getResourceByTagTopicName,
 
