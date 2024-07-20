@@ -1,4 +1,3 @@
-import { Header } from "@/layouts";
 import Footer from "@/layouts/Footer";
 import News from "@/layouts/News/News";
 import React from "react";
@@ -9,7 +8,9 @@ function NewsPage() {
       {/* <Header /> */}
       <News />
       <div className="p-2 rounded-xl overflow-hidden flex">
-        <span>{/* <Footer /> */}</span>
+        <span className="w-full">
+          <Footer />
+        </span>
       </div>
     </main>
   );
