@@ -1,5 +1,5 @@
 import { Header } from "@/layouts";
-import Footer from "@/layouts/Footer";
+import SearchWidget from "@/layouts/Search/SearchWidget";
 import SearchResult from "@/layouts/SearchResult/SearchResult";
 
 export default function Search() {

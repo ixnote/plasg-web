@@ -7,6 +7,9 @@ export default function LegislativePage() {
     <main>
       <Header />
       <Legislative />
+      <p className="text-3xl font-bold min-h-screen p-4">
+        Barr. Caleb Mutfwang
+      </p>
       <Footer />
     </main>
   );

@@ -1,4 +1,12 @@
 "use client";
+<<<<<<< HEAD
+import ArticleCard from "@/components/ArticleCard";
+import ButtonComponent from "@/components/Button";
+import PaginationComponent from "@/components/Pagination";
+import React, { useState } from "react";
+
+function SearchWidget() {
+=======
 import { searchResources } from "@/api/mda/searchResources";
 import ArticleCard from "@/components/ArticleCard";
 import ButtonComponent from "@/components/Button";
@@ -10,12 +18,21 @@ import { useGeneralContext } from "../../../context/GenralContext";
 
 function SearchWidget() {
   const router = useRouter();
+>>>>>>> 9b787f6d9b8c54f6c01b0bff7c89703390fa2c9e
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 12;
 
   const handlePageChange = (page: any) => {
     setCurrentPage(page);
   };
+<<<<<<< HEAD
+
+  return (
+    <div className="py-[100px] bg-brand-main flex gap-8 flex-col">
+      <span className="grid gap-5 lg:grid-cols-2 grid-cols-1 max-w-[1200px] mx-auto">
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item, index) => (
+          <ArticleCard key={index} />
+=======
   const { name, setName }: any = useGeneralContext();
   const { data, isLoading, error } = useQuery({
     queryKey: ["searchResources", name, currentPage, 1],
@@ -35,6 +52,7 @@ function SearchWidget() {
             data={item}
             onclick={() => router.push(`search/${item?.id}`)}
           />
+>>>>>>> 9b787f6d9b8c54f6c01b0bff7c89703390fa2c9e
         ))}
       </span>
       <span className=" ">

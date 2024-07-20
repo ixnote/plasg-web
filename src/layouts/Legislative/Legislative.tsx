@@ -5,9 +5,6 @@ import ArticleImage from "@/assets/imgs/img.png";
 import { IoIosArrowRoundDown } from "react-icons/io";
 import LegislatureCard from "@/components/LegislatureCard";
 import { handleScrollDown } from "@/utils/handleScrollDown";
-import { IoArrowDownOutline } from "react-icons/io5";
-import { useQuery } from "react-query";
-import { getUsers } from "@/api/mda/getUsers";
 
 function Legislative() {
   const article = {
@@ -45,7 +42,7 @@ function Legislative() {
                 onClick={() => handleScrollDown()}
                 className="h-10 px-0 rounded-sm bg-white  w-fit flex items-center justify-center gap-2 animate-bounce"
               >
-                <IoArrowDownOutline size={32} />
+                Scroll down <IoIosArrowRoundDown />
               </button>
             </span>
           </span>

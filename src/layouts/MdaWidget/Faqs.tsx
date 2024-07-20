@@ -34,6 +34,17 @@ function Faqs() {
   };
 
   return (
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <div className="py-12 bg-white">
+=======
+    <div className="py-12 bg-white px-4">
+>>>>>>> 9b787f6d9b8c54f6c01b0bff7c89703390fa2c9e
+      <span className="max-w-[1200px] mx-auto flex flex-col">
+        <span className="flex flex-col gap-8 mb-10">
+          <span className="text-[#00000080] opacity-80 font-light flex items-center gap-2 text-[14px]">
+            <p>FAQ</p>
+=======
     <>
       <div className="py-12 bg-white px-4 pb-4">
         <span className="max-w-[1520px] mx-auto flex flex-col">
@@ -50,6 +61,7 @@ function Faqs() {
                 Plateau State.
               </p>
             </span>
+>>>>>>> c40e7f488a98f0df77b294e44de7be7f7130914f
           </span>
           <span>
             {data.map((item, index) => (

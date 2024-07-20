@@ -29,3 +29,4 @@ const page = async ({ params }: { params: { name: string } }) => {
 };
 
 export default page;
+

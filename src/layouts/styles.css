@@ -75,9 +75,6 @@
   border-radius: 10px;
 }
 
-body {
-  @apply bg-brand-white;
-}
 
 /* misc styles */
 .glass-fx {
