@@ -1,11 +1,12 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useGeneralContext } from "../../../context/GenralContext";
+import { useGeneralContext } from "../../../../context/GenralContext";
 import AssetCardLight from "@/components/AssetCardLight";
 import { Loader } from "@mantine/core";
 
-const Filter = ({ data }: any) => {
+const Filter = ({ name }: any) => {
+  // console.log("🚀 ~ Filter ~ name:", name);
   const [active, setActive] = useState("feed");
   const [activePage, setActivePage] = useState(1);
   const {
@@ -13,27 +14,33 @@ const Filter = ({ data }: any) => {
     resources,
     allResources,
     loadingResource,
-    setOneTypeTagId,
-    getResourceByType,
+    setTypeTagId,
+    setTagTopicName,
   }: any = useGeneralContext();
   console.log("🚀 ~ Filter ~ typeTags:", typeTags);
-  console.log("🚀 ~ Filter ~ resources:", resources);
 
-  // I want to fetch a query from the url, and then console.log the query. this is what the url looks like; localhost:3000/resource?name=governance. can you do that??
-
-  const handleTabSwitch = ({ tag }: any) => {
+  const handleTabSwitch = async ({ tag }: any) => {
+    console.log("🚀 ~ handleTabSwitch ~ tag:", tag);
     if (!tag?.id || !tag?.name) {
+      console.log("NO TAG!");
       setActive("feed");
-      allResources();
+      setTypeTagId("");
+      await allResources();
       return;
     }
 
     // console.log("🚀 ~ handleTabSwitch ~ tag:", tag?.id);
     // console.log("🚀 ~ handleTabSwitch ~ tag.name :", tag?.name);
-    setActive(tag?.name);
-    setOneTypeTagId(tag?.id);
+    setActive(tag.name);
+    setTypeTagId(tag.id);
+    await allResources();
+    return;
     // getResourceByType();
   };
+
+  // useEffect(() => {
+  //   setTagTopicName(name);
+  // }, [name]);
 
   return (
     <div className="w-full flex flex-col gap-8 items-start -mt-12">
@@ -85,8 +92,10 @@ const Filter = ({ data }: any) => {
                       ? "transition-fx relative flex items-center gap-2 py-2 px-4 rounded-lg border-[1px] border-brand-grayish cursor-pointer bg-brand-main text-brand-white"
                       : "transition-fx relative flex items-center gap-2 py-2 px-4 rounded-lg border-[1px] border-brand-grayish cursor-pointer hover:bg-brand-main hover:text-brand-white"
                   }
-                  onClick={() =>
-                    handleTabSwitch({ tag: { name: tag.name, id: tag.id } })
+                  onClick={
+                    () =>
+                      handleTabSwitch({ tag: { name: tag.name, id: tag.id } })
+                    // handleTabSwitch(tag)
                   }
                 >
                   <div className="w-[40%]">
@@ -197,7 +206,7 @@ const Filter = ({ data }: any) => {
           </>
         ) : (
           <>
-            <div className="mx-auto p-4 text-base font-semibold font-geistsans">
+            <div className="mx-auto p-4 bg-brand-secondary/40 rounded-lg text-base font-semibold font-geistsans">
               No available resource.
             </div>
           </>

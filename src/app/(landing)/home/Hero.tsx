@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import bg from "../../../public/landing/background.png";
+import bg from "../../../../public/landing/background.png";
 import Image from "next/image";
 import { IoArrowDownOutline } from "react-icons/io5";
 import { handleScrollDown } from "@/utils/handleScrollDown";

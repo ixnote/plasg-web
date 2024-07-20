@@ -1,5 +1,5 @@
 import React from "react";
-import governor from "../../../public/landing/BCM_homepage.webp";
+import governor from "../../../../public/landing/BCM_homepage.webp";
 import Image from "next/image";
 import ButtonDark from "@/components/ButtonDark";
 

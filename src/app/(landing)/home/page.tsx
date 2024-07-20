@@ -20,7 +20,7 @@ import Footer from "@/layouts/Footer";
 const Landing = () => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <div className="relative min-h-screen max-w-[2040px] w-full mx-auto">
         {/* bg */}
         {/* <Image
@@ -45,7 +45,7 @@ const Landing = () => {
           <Visit />
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

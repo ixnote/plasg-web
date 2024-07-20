@@ -12,33 +12,37 @@ import SearchComponent from "./Search/SearchComponent";
 import { Modal } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import MobileNav from "@/components/MobileHeader/page";
+import { useGeneralContext } from "../../context/GenralContext";
 
-const menueList = [
-  {
-    name: "Government",
-    drop: true,
-    path: "#",
-    data: governmentData,
-  },
-  {
-    name: "Resources",
-    drop: true,
-    path: "#",
-    data: libraryData,
-  },
-  {
-    name: "People",
-    drop: false,
-    path: "/people",
-  },
-  {
-    name: "News",
-    drop: false,
-    path: "/news",
-  },
-];
+// const menueList = [
+//   {
+//     name: "Government",
+//     drop: true,
+//     path: "#",
+//     data: governmentData,
+//   },
+//   {
+//     name: "Resources",
+//     drop: true,
+//     path: "#",
+//     data: libraryData,
+//   },
+//   {
+//     name: "People",
+//     drop: false,
+//     path: "/people",
+//   },
+//   {
+//     name: "News",
+//     drop: false,
+//     path: "/news",
+//   },
+// ];
 
-const Header = () => {
+const Header = (data: any) => {
+  const { topicTagData }: any = useGeneralContext();
+  // console.log("🚀 ~ Header ~ topicTagData:", topicTagData);
+  // console.log("🚀 ~ Header ~ data:", data);
   const [hoveredMenuData, setHoveredMenuData] = useState(null);
 
   const handleMouseEnter = (menu: any) => {
@@ -54,6 +58,33 @@ const Header = () => {
   };
 
   const [opened, { open, close }] = useDisclosure(false);
+
+  const menueList = [
+    {
+      name: "Government",
+      drop: true,
+      path: "#",
+      data: governmentData,
+    },
+    {
+      name: "Resources",
+      drop: true,
+      path: "#",
+      // data: libraryData,
+      // data: data.data,
+      data: topicTagData,
+    },
+    {
+      name: "People",
+      drop: false,
+      path: "/people",
+    },
+    {
+      name: "News",
+      drop: false,
+      path: "/news",
+    },
+  ];
 
   return (
     <div
@@ -120,7 +151,12 @@ const Header = () => {
             </div>
           </div>
         </div>
-        {hoveredMenuData && <HoverTags data={hoveredMenuData} />}
+        {hoveredMenuData && (
+          <HoverTags
+            data={hoveredMenuData}
+            setHoveredMenuData={setHoveredMenuData}
+          />
+        )}
       </div>
 
       {/* MOBILE MENU */}

@@ -3,10 +3,10 @@
 import React from "react";
 import AssetCardLight from "@/components/AssetCardLight";
 import ButtonLight from "@/components/ButtonLight";
-import { useGeneralContext } from "../../../context/GenralContext";
+import { useGeneralContext } from "../../../../context/GenralContext";
 
 const QuickActions = () => {
-  const { resources }: any = useGeneralContext();
+  const { homeResources }: any = useGeneralContext();
 
   return (
     <>
@@ -30,8 +30,8 @@ const QuickActions = () => {
             {/* content */}
             <div className="flex items-center justify-between flex-wrap gap-4 w-full m-auto">
               {/* Cards */}
-              {resources?.resources?.length > 0 ? (
-                resources.resources.map((resource: any, i: number) => (
+              {homeResources?.length > 0 ? (
+                homeResources.map((resource: any, i: number) => (
                   <>
                     <AssetCardLight
                       logo={
