@@ -8,7 +8,7 @@ const handleParams = (paramsPayload: any) => {
   return paramsPayload;
 };
 
-export const searchResources = async ({ queryKey }: any) => {
+export const getResources = async ({ queryKey }: any) => {
   const [_, name, page, pageSize] = queryKey;
   const params = {
     page: page,
@@ -16,7 +16,7 @@ export const searchResources = async ({ queryKey }: any) => {
     pageSize: pageSize,
   };
   const response = await axios.get(
-    `${CORE_APP.plsg.resources}/${name}?${new URLSearchParams(
+    `${CORE_APP.plsg.resources}/all?${new URLSearchParams(
       handleParams(params)
     ).toString()}`
   );
