@@ -13,8 +13,9 @@ import { getResource } from "@/api/mda/getResource";
 import { usePathname } from "next/navigation";
 import { formatDate } from "@/utils/formatDate";
 import Link from "next/link";
+import { getSingleNews } from "@/api/mda/getSingleNews";
 
-function SearchResult() {
+function NewsResult() {
   const pathname = usePathname();
   const pathSegments = pathname.split("/").filter((segment) => segment);
 
@@ -32,8 +33,8 @@ function SearchResult() {
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["getResource", id],
-    queryFn: getResource,
+    queryKey: ["getSingleNews", id],
+    queryFn: getSingleNews,
     enabled: !!id,
   });
 
@@ -57,13 +58,13 @@ function SearchResult() {
           <span className="text-[#00000080] opacity-80 font-medium flex items-center gap-4 text-[14px] flex-wrap">
             <p>{resource?.data?.data?.name}</p>/
             <p>{formatDate(resource?.data?.data?.updatedAt)}</p>/
-            <p>{data?.min}</p>
+            <p>{resource?.data?.data?.newsSections?.length} min read</p>
           </span>
         </span>
         <span className="my-8 flex flex-col gap-16">
-          {data?.content?.map((item: any, index: any) => (
+          {resource?.data?.data?.newsSections?.map((item: any, index: any) => (
             <span key={index}>
-              {item?.type === "image" && (
+              {item?.image && (
                 <Image
                   src={item?.image}
                   alt=""
@@ -72,23 +73,23 @@ function SearchResult() {
                   className="w-full h-auto rounded-2xl object-cover"
                 />
               )}
-              {item?.type === "text" && (
+              {item?.paragraph && (
                 <span className="grid lg:grid-cols-5 grid-cols-1 gap-5 items-start">
                   <span className="text-[#00000080] opacity-80 font-light flex items-center gap-4 text-[16px] uppercase col-span-1">
-                    <p>INTRODUCTION</p>
+                    <p>{}</p>
                   </span>
                   <p className="text-[18px] font-normal text-[#00000099] m-0 lg:col-span-4 col-span-1">
-                    {resource?.data?.data?.description}
+                    {item?.paragraph}
                   </p>
                 </span>
               )}
-              {item?.type === "heading1" && (
+              {item?.paragraph === "heading1" && (
                 <span className="grid lg:grid-cols-5 grid-cols-1 gap-5 items-start">
                   <span className="text-[#00000080] opacity-80 font-light flex items-center gap-4 text-[16px] uppercase col-span-1">
                     <p>{item?.title}</p>
                   </span>
                   <p className="text-[40px] leading-[40px] font-normal text-brand-main m-0 lg:col-span-4 col-span-1">
-                    {item?.text}
+                    {item?.paragraph}
                   </p>
                 </span>
               )}
@@ -135,12 +136,12 @@ function SearchResult() {
         <span className="grid lg:grid-cols-5 grid-cols-1 gap-5">
           <span className="col-span-1"></span>
           <span className="flex gap-3 flex-wrap lg:col-span-4 col-span-1 ">
-            {data?.tags?.map((item: any, index: any) => (
+            {resource?.data?.data?.tags?.map((item: any, index: any) => (
               <button
                 key={index}
                 className="h-10 px-8 rounded-full bg-gray-200 border w-fit border-gray-400"
               >
-                {item}
+                {item?.name}
               </button>
             ))}
           </span>
@@ -177,4 +178,4 @@ function SearchResult() {
   );
 }
 
-export default SearchResult;
+export default NewsResult;
