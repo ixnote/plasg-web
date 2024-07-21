@@ -26,7 +26,9 @@ const Filter = () => {
     activePage,
     setActivePage,
   }: any = useGeneralContext();
-  console.log("🚀 ~ Filter ~ resources:", resources);
+  // console.log("🚀 ~ Filter ~ activePage:", activePage);
+  // console.log("🚀 ~ Filter ~ totalPages:", totalPages);
+  // console.log("🚀 ~ Filter ~ resources:", resources);
 
   const handleTabSwitch = async () => {
     if (activeTag.name === "feed") {
@@ -53,6 +55,7 @@ const Filter = () => {
   };
 
   const handleNextPage = () => {
+    // setActivePage(activePage + 1);
     if (activePage < totalPages) {
       setActivePage(activePage + 1);
     }

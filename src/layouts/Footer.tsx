@@ -4,7 +4,7 @@ import React from "react";
 import top from "../../public/footer/footer_top.svg";
 import left from "../../public/footer/footer_left.svg";
 import right from "../../public/footer/footer_right.svg";
-import Newsletter from "@/app/(landing)/home/Newsletter";
+import Newsletter from "@/app/(main)/home/Newsletter";
 import SectionDividerDark from "@/components/SectionDividerDark";
 
 const Footer = () => {

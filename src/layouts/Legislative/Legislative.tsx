@@ -1,30 +1,39 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { GoHome } from "react-icons/go";
 import ArticleImage from "@/assets/imgs/img.png";
-import { IoIosArrowRoundDown } from "react-icons/io";
 import LegislatureCard from "@/components/LegislatureCard";
 import { handleScrollDown } from "@/utils/handleScrollDown";
 import { IoArrowDownOutline } from "react-icons/io5";
 import { useQuery } from "react-query";
-import { getUsers } from "@/api/mda/getUsers";
+import { getLegislatives } from "@/api/mda/getLegislatives";
+import PaginationComponent from "@/components/Pagination";
 
 function Legislative() {
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const handlePageChange = (page: any) => {
+    setCurrentPage(page);
+  };
+
   const article = {
     image: ArticleImage,
     name: "Hon. Gabriel Dewan",
     position: "Speaker ",
   };
   const {
-    data: users,
+    data: legislatives,
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["getUsers"],
-    queryFn: getUsers,
+    queryKey: ["getLegislatives"],
+    queryFn: getLegislatives,
+    onSuccess: (result: any) => {
+      setCurrentPage(result?.data?.data?.pagination?.currentPage);
+    },
   });
 
-  console.log("users :>> ", users);
+  console.log("users :>> ", legislatives);
   return (
     <div className="pt-[200px] p-5">
       <span className="max-w-[1200px] mx-auto flex flex-col">
@@ -51,10 +60,16 @@ function Legislative() {
           </span>
         </span>
         <span className="grid lg:grid-cols-3 grid-cols-1 gap-5 gap-y-16 my-16">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 1].map((item, index) => (
-            <LegislatureCard data={article} key={index} />
+          {legislatives?.data?.data?.data?.map((item: any, index: number) => (
+            <LegislatureCard data={item} key={index} />
           ))}
         </span>
+        <PaginationComponent
+          lightMode={true}
+          totalPages={legislatives?.data?.data?.pagination?.totalPages}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+        />
       </span>
     </div>
   );

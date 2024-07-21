@@ -1,7 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: true,
+  compiler: {
+    styledComponents: true,
+  },
   images: {
-    domains: ["s3-alpha-sig.figma.com"], // Add your image domain here
+    domains: ["res.cloudinary.com", "www.thecable.ng", "localhost"],
   },
   webpack: (config, { isServer }) => {
     config.module.rules.push({

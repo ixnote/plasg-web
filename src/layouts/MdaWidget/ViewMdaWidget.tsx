@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Essentials from "./Essentials";
 import Faqs from "./Faqs";
 import Hero from "./Hero";
@@ -9,21 +9,20 @@ import Discover from "./Discover";
 import { useQuery } from "react-query";
 import { getMda } from "@/api/mda/getMda";
 import { usePathname } from "next/navigation";
+import { getTourism } from "@/api/mda/getTourism";
 
 function ViewMdaWidget() {
-  const pathname = usePathname();
-  const pathSegments = pathname.split("/").filter((segment) => segment);
-
-  const id = pathSegments[pathSegments.length - 1];
+  const [currentPage, setCurrentPage] = useState(1);
 
   const { data, isLoading, error } = useQuery({
-    queryKey: ["getMda", id],
-    queryFn: getMda,
-    enabled: !!id,
+    queryKey: ["getTourism", currentPage, 1],
+    queryFn: getTourism,
+    onSuccess: (result: any) => {
+      setCurrentPage(result?.data?.data?.pagination?.currentPage);
+    },
   });
 
   console.log("data :>> ", data);
-
   return (
     <div className="relative min-h-screen overflow-hidden">
       {/* bg */}
@@ -34,7 +33,7 @@ function ViewMdaWidget() {
       />
       <div className="relative z-10">
         <Hero data={data?.data?.data} />
-        <Discover />
+        <Discover destinations={data?.data?.data?.destinations} />
         <Essentials />
         <Faqs />
       </div>
