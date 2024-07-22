@@ -67,7 +67,7 @@ function News() {
 
   return (
     <div className="pt-[120px] p-5">
-      <span className="max-w-[1360px] mx-auto flex flex-col gap-5">
+      <span className="max-w-[1500px] mx-auto flex flex-col gap-5">
         {matches ? (
           <span className="relative z-50">
             <span

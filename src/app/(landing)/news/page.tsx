@@ -1,4 +1,3 @@
-import Footer from "@/layouts/Footer";
 import News from "@/layouts/News/News";
 import React from "react";
 
