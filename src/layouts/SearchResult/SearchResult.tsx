@@ -13,8 +13,10 @@ import { getResource } from "@/api/mda/getResource";
 import { usePathname } from "next/navigation";
 import { formatDate } from "@/utils/formatDate";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 function SearchResult() {
+  const router = useRouter();
   const pathname = usePathname();
   const pathSegments = pathname.split("/").filter((segment) => segment);
 
@@ -39,27 +41,53 @@ function SearchResult() {
 
   console.log("resource :>> ", resource);
   return (
-    <div className="pt-[200px] p-5">
-      <span className="max-w-[1200px] mx-auto flex flex-col">
-        <span className="flex flex-col gap-8">
-          <span className="uppercase text-[#00000080] opacity-80 font-light flex items-center gap-2 text-[14px] flex-wrap">
-            <Link href={`/`}>
-              <GoHome size={18} />
-            </Link>
-            /<p>Search</p>/<p>SEARCH RESULTS</p>/<p>ARTICLES</p>
+    // <div className="pt-[200px] p-5">
+    //   <span className="max-w-[1200px] mx-auto flex flex-col">
+    //     <span className="flex flex-col gap-8">
+    //       <span className="uppercase text-[#00000080] opacity-80 font-light flex items-center gap-2 text-[14px] flex-wrap">
+    //         <Link href={`/`}>
+    //           <GoHome size={18} />
+    //         </Link>
+    //         /<p>Search</p>/<p>SEARCH RESULTS</p>/<p>ARTICLES</p>
+    //       </span>
+    <div className="min-h-screen  max-w-[2040px] pb-[96px] relative flex items-center justify-center bg-cover bg-center bg-no-repeat">
+      <span className="m-auto w-[92%] flex justify-between flex-col gap-8">
+        <div className="flex flex-col py-24 pt-[180px] gap-4 lg:gap-16">
+          <span className="flex flex-col gap-8 mb-10">
+            <span className="uppercase text-brand-dark opacity-80 font-medium flex items-center gap-2 text-[14px]">
+              <GoHome
+                size={18}
+                onClick={() => router.push(`/`)}
+                className="transition-fx cursor-pointer hover:text-brand-main"
+              />
+              /
+              <p
+                className="transition-fx cursor-pointer hover:text-brand-main"
+                onClick={() => router.push(`/search`)}
+              >
+                Search
+              </p>
+              /
+              <p
+                className="transition-fx cursor-pointer hover:text-brand-main"
+                onClick={() => router.push(`/search`)}
+              >
+                SEARCH RESULTS
+              </p>
+            </span>
+            <button className="h-10 px-8 rounded-full bg-gray-200 border w-fit border-gray-400">
+              Guideline
+            </button>
+            <p className="text-[52px] text-brand-main font-medium max-w-[800px] leading-[56px]">
+              {resource?.data?.data?.name}
+            </p>
+            <span className="text-[#00000080] opacity-80 font-medium flex items-center gap-4 text-[14px] flex-wrap">
+              <p>{resource?.data?.data?.name}</p>/
+              <p>{formatDate(resource?.data?.data?.updatedAt)}</p>/
+              <p>{data?.min}</p>
+            </span>
           </span>
-          <button className="h-10 px-8 rounded-full bg-gray-200 border w-fit border-gray-400">
-            Guideline
-          </button>
-          <p className="text-[52px] text-brand-main font-medium max-w-[800px] leading-[56px]">
-            {resource?.data?.data?.name}
-          </p>
-          <span className="text-[#00000080] opacity-80 font-medium flex items-center gap-4 text-[14px] flex-wrap">
-            <p>{resource?.data?.data?.name}</p>/
-            <p>{formatDate(resource?.data?.data?.updatedAt)}</p>/
-            <p>{data?.min}</p>
-          </span>
-        </span>
+        </div>
         <span className="my-8 flex flex-col gap-16">
           {data?.content?.map((item: any, index: any) => (
             <span key={index}>

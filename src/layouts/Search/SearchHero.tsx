@@ -2,16 +2,38 @@
 import React from "react";
 import { GoHome } from "react-icons/go";
 import { useGeneralContext } from "../../../context/GenralContext";
+import { useRouter } from "next/navigation";
 
 function SearchHero() {
   const { name, setName }: any = useGeneralContext();
+  const router = useRouter();
 
   return (
-    <div className="pt-[200px] bg-brand-main p-5">
-      <span className="max-w-[1500px] mx-auto flex flex-col gap-20">
+    // <div className="pt-[200px] bg-brand-main p-5">
+    //   <span className="max-w-[1500px] mx-auto flex flex-col gap-20">
+    <div className="min-h-screen bg-brand-main  max-w-[2040px] pb-[96px] relative flex items-center justify-center bg-cover bg-center bg-no-repeat">
+      <span className="m-auto w-[92%] flex justify-between flex-col gap-8">
         <span className="flex flex-col gap-8">
           <span className="uppercase text-white opacity-80 font-medium flex items-center gap-2 text-[14px]">
-            <GoHome size={18} />/<p>Search</p>/<p>SEARCH RESULTS</p>
+            <GoHome
+              size={18}
+              onClick={() => router.push(`/`)}
+              className="transition-fx cursor-pointer hover:text-brand-secondary"
+            />
+            /
+            <p
+              className="transition-fx cursor-pointer hover:text-brand-secondary"
+              onClick={() => router.push(`/search`)}
+            >
+              Search
+            </p>
+            {/* /
+            <p
+              className="transition-fx cursor-pointer hover:text-brand-secondary"
+              onClick={() => router.push(`/search`)}
+            >
+              SEARCH RESULTS
+            </p> */}
           </span>
           <p className="lg:text-[52px] text-[40px] text-white font-medium max-w-[800px] lg:leading-[56px] leading-[44px]">
             Results Found for "{name}"

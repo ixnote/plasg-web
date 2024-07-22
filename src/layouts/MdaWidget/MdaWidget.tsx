@@ -70,14 +70,16 @@ function MdaWidget() {
     <div className="min-h-screen max-w-[2040px] pb-[96px] relative flex items-center justify-center bg-cover bg-center bg-no-repeat">
       <span className="m-auto w-[92%] flex justify-between flex-col gap-8">
         <SectionHeader
-          title={"The Government of Plateau State"}
+          title={"Ministries, Departments & Agencies"}
           description={
-            "Our goal is to lead us in rebuilding a new Plateau, one that is secure, united, prosperous, and respected among Nigerian states. I aim to ensure that Plateau regains its pride of place and competitive edge, both nationally and internationally."
+            "Plateau State's Ministries, Departments, and Agencies (MDAs) are the driving force behind our community's progress. Discover the array of dedicated entities committed to serving you. Explore essential public services, strategic initiatives, and innovative solutions aimed at enhancing your well-being and prosperity"
           }
           baseURL={"government"}
           baseText={"GOVERNMENT"}
+          linkText={"MINISTRIES, DEPARTMENTS & AGENCIES"}
+          linkURL={"mdas"}
         />
-        <span className="flex flex-col gap-8 my-16">
+        <span className="flex flex-col gap-8 mb-16">
           <span className="grid lg:grid-cols-5 grid-cols-2 gap-8">
             <span className="lg:col-span-3 col-span-2">
               <p className="text-[40px] text-brand-main font-medium max-w-[800px] leading-[48px]">
