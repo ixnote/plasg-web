@@ -110,10 +110,18 @@ const Header = (data: any) => {
                 <ul className="menue-ul">
                   <li className="menu-item">
                     <div className="menu-hover">
-                      <Link href="">Accessibility</Link>
+                      <Link href="#">Topics</Link>
                     </div>
                   </li>
                 </ul>
+
+                {/* <ul className="menue-ul">
+                  <li className="menu-item">
+                    <div className="menu-hover">
+                      <Link href="">Accessibility</Link>
+                    </div>
+                  </li>
+                </ul> */}
 
                 <div className="header-search" onClick={open}>
                   <Image src={search_icon} alt="" />

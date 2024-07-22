@@ -50,7 +50,8 @@ function News() {
 
   console.log("data :>> ", data);
 
-  const dialogRef = useRef(null);
+  // const dialogRef = useRef(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
   const [show, setShow] = useState(false);
 
   const globalListener = (e: any) => {

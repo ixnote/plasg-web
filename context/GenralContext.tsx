@@ -22,6 +22,7 @@ const GeneralProvider = (props: any) => {
   const [loadingResource, setLoadingResource] = useState(false);
   const [activePage, setActivePage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  console.log("🚀 ~ GeneralProvider ~ totalPages:", totalPages);
 
   // Static
   const [legislatives, setLegislatives] = useState([]);
@@ -112,7 +113,7 @@ const GeneralProvider = (props: any) => {
       const response = await axios.get(
         `${
           process.env.NEXT_PUBLIC_BASE_URL
-        }/resource/all?page=${page}&pageSize=2${
+        }/resource/all?page=${page}&pageSize=10${
           topicTagId ? `&main_topic_tag=${topicTagId}` : ""
         }${topicSubTagId ? `&all_topic_tag=${topicSubTagId}` : ""}${
           typeTagId ? `&main_type_tag=${typeTagId}` : ""
@@ -124,9 +125,10 @@ const GeneralProvider = (props: any) => {
           timeout: 10000,
         }
       );
+      console.log("🚀 ~ allResources ~ response:", response);
       setLoadingResource(false);
       setResources(response.data.data);
-      setTotalPages(response.data.totalPages); // Assuming the API returns total pages
+      setTotalPages(response.data.data.pagination.totalPages); // Assuming the API returns total pages
     } catch (error: any) {
       setLoadingResource(false);
       console.log("🚀 ~ allResources ~ error:", error.message);

@@ -146,7 +146,7 @@ const HoverTags = ({ data, setHoveredMenuData }: any) => {
           <div className="w-full h-full bg-[#0E3E4073]">
             <div className="w-full h-full p-8">
               <p className="font-medium text-[28px] leading-10 text-brand-white">
-                {currentItem.subTitle || "Library: Find Information"}
+                {currentItem.subTitle || "Resources: Find Information"}
               </p>
 
               <p className="mt-[23px] text-[17px] text-brand-white">
