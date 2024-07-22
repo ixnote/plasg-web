@@ -84,7 +84,7 @@ function Discover({ destinations }: any) {
 
   return (
     <div className="py-12 bg-white">
-      <span className="lg:pl-[80px] pl-5 mx-auto flex flex-col">
+      <span className="lg:pl-[60px] pl-5 mx-auto flex flex-col">
         <div className="grid lg:grid-cols-7 grid-cols-1 gap-6 pr-5">
           <span className="flex flex-col gap-8 mb-10 lg:col-span-6 col-span-1">
             <span className="text-[#00000080] opacity-80 font-light flex items-center gap-2 text-[14px]">

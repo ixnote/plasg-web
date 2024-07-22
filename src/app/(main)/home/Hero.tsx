@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import bg from "../../../../public/landing/background.png";
+import bg from "@/assets/imgs/landing/background.png";
 import Image from "next/image";
 import { IoArrowDownOutline } from "react-icons/io5";
 import { handleScrollDown } from "@/utils/handleScrollDown";
@@ -23,7 +23,7 @@ const Hero = () => {
             <div className="flex flex-col gap-4">
               {/* left top */}
               {!showSearchResult && (
-                <div className="home-glass-fx h-[296px] flex flex-col gap-10 text-left p-8">
+                <div className="glass-fx1 h-[296px] flex flex-col gap-10 text-left p-8">
                   <div className="text-left flex flex-col gap-2">
                     <span className="stroke-fx font-medium text-3xl font-geistsans outline-2 md:text-5xl">
                       Welcome to{" "}
@@ -178,7 +178,7 @@ const Hero = () => {
                   className={
                     showSearchResult
                       ? "h-[74px] flex flex-row items-center justify-between p-4 rounded-lg bg-brand-lightYellow shadow-none rounded-t-none"
-                      : "home-glass-fx h-[74px] flex flex-row items-center justify-between p-4 rounded-lg duration-300 ease-in-out hover:bg-brand-lightYellow hover:shadow-none focus:bg-brand-lightYellow focus:rounded-t-none"
+                      : "glass-fx1 h-[74px] flex flex-row items-center justify-between p-4 rounded-lg duration-300 ease-in-out hover:bg-brand-lightYellow hover:shadow-none focus:bg-brand-lightYellow focus:rounded-t-none"
                   }
                   onMouseEnter={() => setHovered(true)}
                   onMouseLeave={() => setHovered(false)}

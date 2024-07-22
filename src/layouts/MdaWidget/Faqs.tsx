@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Divider } from "@mantine/core";
 import { AiOutlineMinus } from "react-icons/ai";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
-import Footer from "../Footer";
 
 function Faqs() {
   const data = [
@@ -35,8 +34,10 @@ function Faqs() {
 
   return (
     <>
-      <div className="py-12 bg-white px-4 pb-4">
-        <span className="max-w-[1520px] mx-auto flex flex-col">
+      {/* <div className="py-12 bg-white px-4 pb-4">
+        <span className="max-w-[1520px] mx-auto flex flex-col"> */}
+      <div className="min-h-screen bg-brand-white py-12 max-w-[2040px] pb-[96px] relative flex items-center justify-center">
+        <span className="m-auto w-[92%] flex justify-between flex-col gap-8">
           <span className="flex flex-col gap-8 mb-10">
             <span className="text-[#00000080] opacity-80 font-light flex items-center gap-2 text-[14px]">
               <p>FAQ</p>
@@ -87,11 +88,6 @@ function Faqs() {
             ))}
           </span>
           <Divider />
-        </span>
-        <span className="p-0  bg-white overflow-hidden rounded-xl mt-20 flex">
-          <span>
-            <Footer />
-          </span>
         </span>
       </div>
     </>

@@ -21,8 +21,10 @@ function Essentials() {
   }, []);
 
   return (
-    <div className="py-12 bg-white px-4">
-      <span className="max-w-[1520px] mx-auto flex flex-col">
+    // <div className="py-12 bg-white px-4">
+    //   <span className="max-w-[1520px] mx-auto flex flex-col">
+    <div className="min-h-screen bg-brand-white py-12 max-w-[2040px] pb-[96px] relative flex items-center justify-center">
+      <span className="m-auto w-[92%] flex justify-between flex-col gap-8">
         <span className="flex flex-col gap-8 mb-10">
           <span className="text-[#0000000] opacity-80 font-light flex items-center gap-2 text-[14px] uppercase">
             <p>Essentials</p>

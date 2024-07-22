@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-import top from "../../public/footer/footer_top.svg";
-import left from "../../public/footer/footer_left.svg";
-import right from "../../public/footer/footer_right.svg";
+import top from "@/assets/imgs/footer/footer_top.svg";
+import left from "@/assets/imgs/footer/footer_left.svg";
+import right from "@/assets/imgs/footer/footer_right.svg";
 import Newsletter from "@/app/(main)/home/Newsletter";
 import SectionDividerDark from "@/components/SectionDividerDark";
 

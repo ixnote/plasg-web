@@ -2,7 +2,7 @@ import ButtonDark from "@/components/ButtonDark";
 import Image from "next/image";
 import React from "react";
 
-import map from "../../../public/landing/map.svg";
+import map from "@/assets/imgs/landing/map.svg";
 import Map from "@/components/Map/page";
 
 const Explore = () => {

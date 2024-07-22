@@ -3,7 +3,7 @@ import SectionHeaderDark from "@/components/SectionHeaderDark";
 import { Header } from "@/layouts";
 import Footer from "@/layouts/Footer";
 import React from "react";
-// import people from "../../../public/people/people.mp4";
+// import people from "@/assets/imgs/people/people.mp4";
 
 const page = () => {
   return (

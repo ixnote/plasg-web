@@ -4,7 +4,7 @@ import Essentials from "./Essentials";
 import Faqs from "./Faqs";
 import Hero from "./Hero";
 import Image from "next/image";
-import bg from "../../../public/image 3.png";
+import bg from "@/assets/imgs/image 3.png";
 import Discover from "./Discover";
 import { useQuery } from "react-query";
 import { getMda } from "@/api/mda/getMda";

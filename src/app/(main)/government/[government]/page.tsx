@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import SectionHeader from "@/components/SectionHeader";
-import governor from "../../../../../public/government/governor.png";
+import governor from "@/assets/imgs/government/governor.png";
 import Cabinet from "./Cabinet";
 import GovernorBiography from "./GovernorBiography";
 import DeputyBiography from "./DeputyBiography";

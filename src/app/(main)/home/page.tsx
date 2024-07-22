@@ -10,7 +10,7 @@ import QuickActions from "./QuickActions";
 import Visit from "./Visit";
 
 // Components
-import bg from "../../../public/landing/bg.jpg";
+import bg from "@/assets/imgs/landing/bg.jpg";
 import SectionDividerDark from "@/components/SectionDividerDark";
 import SectionDividerLight from "@/components/SectionDividerLight";
 import Newsletter from "./Newsletter";

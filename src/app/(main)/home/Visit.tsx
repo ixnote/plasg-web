@@ -3,11 +3,11 @@
 import React, { useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import ButtonLight from "@/components/ButtonLight";
-import jos from "../../../../public/landing/visit/jos.jpg";
-import shere from "../../../../public/landing/visit/shere.jpg";
-import kurra from "../../../../public/landing/visit/kurra.jpg";
-import kurang from "../../../../public/landing/visit/kurang.jpg";
-import pandam from "../../../../public/landing/visit/pandam.jpg";
+import jos from "@/assets/imgs/landing/visit/jos.jpg";
+import shere from "@/assets/imgs/landing/visit/shere.jpg";
+import kurra from "@/assets/imgs/landing/visit/kurra.jpg";
+import kurang from "@/assets/imgs/landing/visit/kurang.jpg";
+import pandam from "@/assets/imgs/landing/visit/pandam.jpg";
 
 // Define a type for the location keys
 type LocationKeys = "jos" | "shere" | "kurra" | "kurang" | "pandam";
