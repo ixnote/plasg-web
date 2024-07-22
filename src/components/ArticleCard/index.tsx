@@ -9,7 +9,7 @@ import { formatDate } from "@/utils/formatDate";
 
 function ArticleCard({ onclick, data }: any) {
   return (
-    <div className="group col-span-1 bg-[#284F51] lg:p-8 p-5 rounded-2xl flex flex-col gap-4 justify-between h-[540px] hover:bg-brand-lightYellow text-white">
+    <div className="group col-span-1 bg-[#284F51] lg:p-8 p-5 rounded-2xl flex flex-col gap-4 justify-between h-[540px] hover:bg-brand-lightYellow text-white w-full">
       <span className="flex flex-col gap-[64px]">
         <span className="flex justify-between">
           <span className="flex flex-col gap-2">
@@ -41,21 +41,17 @@ function ArticleCard({ onclick, data }: any) {
       </span>
       <span className="flex justify-between items-center">
         <span className="flex gap-2">
-          <Link href={`${data?.link}`}>
-            <ButtonComponent> View Website</ButtonComponent>
-          </Link>
+          {data?.link && (
+            <Link href={`${data?.link}`}>
+              <ButtonComponent> View Website</ButtonComponent>
+            </Link>
+          )}
           {/* <ButtonComponent className="text-brand-main border-none">
             Download
           </ButtonComponent> */}
         </span>
-        {data?.main_type_tag?.name === "resource" ? (
+        {data?.main_type_tag?.name !== "resource" && (
           <Link href={`/search/${data?.id}`}>
-            <button className="text-brand-main border-none hover:bg-none px-0 group-hover:block hidden">
-              <MdOutlineArrowOutward size={28} onClick={onclick} />
-            </button>
-          </Link>
-        ) : (
-          <Link href={`/news/${data?.id}`}>
             <button className="text-brand-main border-none hover:bg-none px-0 group-hover:block hidden">
               <MdOutlineArrowOutward size={28} onClick={onclick} />
             </button>

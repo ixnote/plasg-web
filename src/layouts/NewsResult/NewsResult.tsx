@@ -53,7 +53,7 @@ function NewsResult() {
             Guideline
           </button>
           <p className="text-[52px] text-brand-main font-medium max-w-[800px] leading-[56px]">
-            {resource?.data?.data?.name}
+            {resource?.data?.data?.headline}
           </p>
           <span className="text-[#00000080] opacity-80 font-medium flex items-center gap-4 text-[14px] flex-wrap">
             <p>{resource?.data?.data?.name}</p>/
@@ -61,29 +61,27 @@ function NewsResult() {
             <p>{resource?.data?.data?.newsSections?.length} min read</p>
           </span>
         </span>
-        <span className="my-8 flex flex-col gap-16">
+        <span className="my-8 flex flex-col gap-10">
+          <Image
+            src={resource?.data?.data?.image}
+            alt=""
+            width={1200}
+            height={1200}
+            className="w-full h-auto rounded-2xl object-cover"
+          />
           {resource?.data?.data?.newsSections?.map((item: any, index: any) => (
             <span key={index}>
-              {item?.image && (
-                <Image
-                  src={item?.image}
-                  alt=""
-                  width={1200}
-                  height={1200}
-                  className="w-full h-auto rounded-2xl object-cover"
-                />
-              )}
-              {item?.paragraph && (
+              {item?.type === "paragraph" && (
                 <span className="grid lg:grid-cols-5 grid-cols-1 gap-5 items-start">
                   <span className="text-[#00000080] opacity-80 font-light flex items-center gap-4 text-[16px] uppercase col-span-1">
                     <p>{}</p>
                   </span>
                   <p className="text-[18px] font-normal text-[#00000099] m-0 lg:col-span-4 col-span-1">
-                    {item?.paragraph}
+                    {item?.value}
                   </p>
                 </span>
               )}
-              {item?.paragraph === "heading1" && (
+              {/* {item?.paragraph === "heading1" && (
                 <span className="grid lg:grid-cols-5 grid-cols-1 gap-5 items-start">
                   <span className="text-[#00000080] opacity-80 font-light flex items-center gap-4 text-[16px] uppercase col-span-1">
                     <p>{item?.title}</p>
@@ -92,10 +90,42 @@ function NewsResult() {
                     {item?.paragraph}
                   </p>
                 </span>
+              )} */}
+              {item?.type === "bullet" && (
+                <span className="grid lg:grid-cols-5 grid-cols-1 gap-5 items-start">
+                  <span className="text-[#00000080] opacity-80 font-light flex items-center gap-4 text-[16px] uppercase col-span-1">
+                    <p>{}</p>
+                  </span>
+                  <ul>
+                    {item?.value?.map((element: any, index: any) => (
+                      <li
+                        className="list-disc ml-8 pl-3 my-2 text-[#00000099]"
+                        key={index}
+                      >
+                        {element}
+                      </li>
+                    ))}
+                  </ul>
+                </span>
+              )}
+              {item?.type === "image" && (
+                <span className="grid lg:grid-cols-5 grid-cols-1 gap-5 items-start">
+                  <span className="text-[#00000080] opacity-80 font-light flex items-center gap-4 text-[16px] uppercase col-span-1">
+                    <p>{}</p>
+                  </span>
+
+                  <Image
+                    src={item?.value}
+                    alt=""
+                    width={1200}
+                    height={1200}
+                    className="w-full h-auto rounded-2xl object-cover col-span-4"
+                  />
+                </span>
               )}
             </span>
           ))}
-          {data?.subContent?.map((item: any, index: any) => (
+          {/* {data?.subContent?.map((item: any, index: any) => (
             <span key={index}>
               <span className="grid lg:grid-cols-5 grid-cols-1 gap-5 items-start">
                 <span className="text-[#00000080] opacity-80 font-light flex items-center gap-4 text-[16px] uppercase col-span-1">
@@ -131,7 +161,7 @@ function NewsResult() {
                 </span>
               </span>
             </span>
-          ))}
+          ))} */}
         </span>
         <span className="grid lg:grid-cols-5 grid-cols-1 gap-5">
           <span className="col-span-1"></span>

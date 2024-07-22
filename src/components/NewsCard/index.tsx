@@ -1,3 +1,4 @@
+import { formatDate } from "@/utils/formatDate";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -11,7 +12,7 @@ function NewsCard({ data, onClick, id }: any) {
       >
         <span className=" h-full max-w-[400px] aspect-[11/6] object-cover bg-[#588065] image-container ">
           <Image
-            src={data.image}
+            src={data?.image}
             alt=""
             width={500}
             height={300}
@@ -23,13 +24,17 @@ function NewsCard({ data, onClick, id }: any) {
           onClick={onClick}
         >
           <p className="text-[16px] text-brand-main font-medium max-w-[400px] leading-[20px] lg:col-span-3 col-span-2 ">
-            {data.title}
+            {data?.headline}
           </p>
           <span className="flex gap-5">
-            <p className="pr-6 border-r-[1px] border-r-gray-300">Now</p>
-            <span className="px-4 rounded-lg text-white bg-brand-main py-1">
-              {data.category}
-            </span>
+            <p className="pr-6 border-r-[1px] border-r-gray-300">
+              {formatDate(data?.updatedAt)}
+            </p>
+            {data?.tags[0]?.name && (
+              <span className="px-4 rounded-lg text-white bg-brand-main py-1">
+                {data?.tags[0]?.name}
+              </span>
+            )}
           </span>
         </span>
       </span>

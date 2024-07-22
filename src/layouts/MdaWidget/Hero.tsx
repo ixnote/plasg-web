@@ -7,7 +7,7 @@ const Hero = ({ data }: any) => {
     <>
       <div className="h-screen flex items-center justify-center">
         {/* hero content */}
-        <div className="m-auto max-w-[1200px]  grid lg:grid-cols-2 grid-cols-1 gap-4">
+        <div className="m-auto max-w-[1500px]  grid lg:grid-cols-2 grid-cols-1 gap-4">
           <span className="col-span-1"></span>
           <div className="col-span-1 flex flex-col gap-4 justify-between">
             <div className="flex flex-col gap-4">

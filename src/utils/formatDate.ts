@@ -16,7 +16,7 @@ export function formatDate(inputDate: any) {
     return n + (s[(v - 20) % 10] || s[v] || s[0]);
   };
 
-  if (diffDays === 0) {
+  if (diffDays <= 0) {
     return "today";
   } else if (diffDays === 1) {
     return "yesterday";
