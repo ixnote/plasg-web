@@ -20,7 +20,7 @@ const SectionHeader = ({
   const router = useRouter();
 
   const handleClick = () => {
-    router.push(`/government/${linkURL}`);
+    router.push(`/${baseURL}/${linkURL}`);
   };
 
   const goHome = () => {

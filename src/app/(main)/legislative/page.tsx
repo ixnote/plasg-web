@@ -5,9 +5,7 @@ import Footer from "@/layouts/Footer";
 export default function LegislativePage() {
   return (
     <main>
-      <Header />
       <Legislative />
-      <Footer />
     </main>
   );
 }

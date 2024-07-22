@@ -110,7 +110,7 @@ const Header = (data: any) => {
                 <ul className="menue-ul">
                   <li className="menu-item">
                     <div className="menu-hover">
-                      <Link href="#">Topics</Link>
+                      <Link href="#">Updates</Link>
                     </div>
                   </li>
                 </ul>

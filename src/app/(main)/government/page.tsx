@@ -1,7 +1,7 @@
 import SectionHeader from "@/components/SectionHeader";
 import React from "react";
 
-import governmentHouse from "../../../../public/government/government_house.png";
+import governmentHouse from "@/assets/imgs/government/government_house.png";
 import ThreePointAgenda from "./ThreePointAgenda";
 import SectionDividerLight from "@/components/SectionDividerLight";
 import Executive from "./Executive";

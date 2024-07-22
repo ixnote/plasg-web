@@ -10,6 +10,7 @@ import { getMdas } from "@/api/mda/getMdas";
 import Link from "next/link";
 import { IoArrowDownOutline } from "react-icons/io5";
 import { MdOutlineArrowOutward } from "react-icons/md";
+import SectionHeader from "@/components/SectionHeader";
 
 function MdaWidget() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -33,34 +34,44 @@ function MdaWidget() {
   console.log("mda :>> ", mda);
 
   return (
-    <div className="pt-[200px] p-5">
-      <span className="max-w-[1200px] mx-auto flex flex-col">
-        <span className="flex flex-col gap-8 mb-10">
-          <span className="uppercase text-[#00000080] opacity-80 font-light flex items-center gap-2 text-[14px] flex-wrap">
-            <GoHome size={18} />/<p>GOVERNMENT</p>/
-            <p>MINISTRIES, DEPARTMENTS & AGENCIES</p>
-          </span>
-          <span className="grid lg:grid-cols-5 grid-cols-2 gap-8">
-            <p className="text-[52px] text-brand-main font-medium max-w-[800px] leading-[56px] lg:col-span-3 col-span-2 lg:border-r-[1px] lg:border-r-gray-200">
-              Ministries, Departments & Agencies
-            </p>
-            <span className="col-span-2 flex flex-col gap-6">
-              <p className="text-[18px] font-normal text-brand-main m-0 lg:col-span-4 col-span-1 max-w-[800px]">
-                Plateau State's Ministries, Departments, and Agencies (MDAs) are
-                the driving force behind our community's progress. Discover the
-                array of dedicated entities committed to serving you. Explore
-                essential public services, strategic initiatives, and innovative
-                solutions aimed at enhancing your well-being and prosperity
-              </p>
-              <button
-                onClick={() => handleScrollDown()}
-                className="h-10 px-0 rounded-sm bg-white  w-fit flex items-center justify-center gap-2"
-              >
-                <IoArrowDownOutline size={32} />
-              </button>
-            </span>
-          </span>
-        </span>
+    // <div className="pt-[200px] p-5">
+    //   <span className="max-w-[1200px] mx-auto flex flex-col">
+    //     <span className="flex flex-col gap-8 mb-10">
+    //       <span className="uppercase text-[#00000080] opacity-80 font-light flex items-center gap-2 text-[14px] flex-wrap">
+    //         <GoHome size={18} />/<p>GOVERNMENT</p>/
+    //         <p>MINISTRIES, DEPARTMENTS & AGENCIES</p>
+    //       </span>
+    //       <span className="grid lg:grid-cols-5 grid-cols-2 gap-8">
+    //         <p className="text-[52px] text-brand-main font-medium max-w-[800px] leading-[56px] lg:col-span-3 col-span-2 lg:border-r-[1px] lg:border-r-gray-200">
+    //           Ministries, Departments & Agencies
+    //         </p>
+    //         <span className="col-span-2 flex flex-col gap-6">
+    //           <p className="text-[18px] font-normal text-brand-main m-0 lg:col-span-4 col-span-1 max-w-[800px]">
+    //             Plateau State's Ministries, Departments, and Agencies (MDAs) are
+    //             the driving force behind our community's progress. Discover the
+    //             array of dedicated entities committed to serving you. Explore
+    //             essential public services, strategic initiatives, and innovative
+    //             solutions aimed at enhancing your well-being and prosperity
+    //           </p>
+    //           <button
+    //             onClick={() => handleScrollDown()}
+    //             className="h-10 px-0 rounded-sm bg-white  w-fit flex items-center justify-center gap-2"
+    //           >
+    //             <IoArrowDownOutline size={32} />
+    //           </button>
+    //         </span>
+    //       </span>
+    //     </span>
+    <div className="min-h-screen max-w-[2040px] pb-[96px] relative flex items-center justify-center bg-cover bg-center bg-no-repeat">
+      <span className="m-auto w-[92%] flex justify-between flex-col gap-8">
+        <SectionHeader
+          title={"The Government of Plateau State"}
+          description={
+            "Our goal is to lead us in rebuilding a new Plateau, one that is secure, united, prosperous, and respected among Nigerian states. I aim to ensure that Plateau regains its pride of place and competitive edge, both nationally and internationally."
+          }
+          baseURL={"government"}
+          baseText={"GOVERNMENT"}
+        />
         <span className="flex flex-col gap-8 my-16">
           <span className="grid lg:grid-cols-5 grid-cols-2 gap-8">
             <span className="lg:col-span-3 col-span-2">
