@@ -8,7 +8,7 @@ function SearchHero() {
 
   return (
     <div className="pt-[200px] bg-brand-main p-5">
-      <span className="max-w-[1200px] mx-auto flex flex-col gap-20">
+      <span className="max-w-[1500px] mx-auto flex flex-col gap-20">
         <span className="flex flex-col gap-8">
           <span className="uppercase text-white opacity-80 font-medium flex items-center gap-2 text-[14px]">
             <GoHome size={18} />/<p>Search</p>/<p>SEARCH RESULTS</p>

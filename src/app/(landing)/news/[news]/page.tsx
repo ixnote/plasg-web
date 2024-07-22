@@ -1,5 +1,5 @@
 import Footer from "@/layouts/Footer";
-import NewsResult from "@/layouts/NewsResult/SearchResult";
+import NewsResult from "@/layouts/NewsResult/NewsResult";
 
 export default function NewsDetails() {
   return (

@@ -5,7 +5,7 @@ export const GeneralContext = createContext({});
 
 const GeneralProvider = (props: any) => {
   // Misc
-  const [name, setName] = useState<String>("Ministries");
+  const [name, setName] = useState<String>("");
 
   // Tags
   const [typeTags, setTypeTags] = useState([]);
