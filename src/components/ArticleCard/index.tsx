@@ -41,21 +41,17 @@ function ArticleCard({ onclick, data }: any) {
       </span>
       <span className="flex justify-between items-center">
         <span className="flex gap-2">
-          <Link href={`${data?.link}`}>
-            <ButtonComponent> View Website</ButtonComponent>
-          </Link>
+          {data?.link && (
+            <Link href={`${data?.link}`}>
+              <ButtonComponent> View Website</ButtonComponent>
+            </Link>
+          )}
           {/* <ButtonComponent className="text-brand-main border-none">
             Download
           </ButtonComponent> */}
         </span>
-        {data?.main_type_tag?.name === "resource" ? (
+        {data?.main_type_tag?.name !== "resource" && (
           <Link href={`/search/${data?.id}`}>
-            <button className="text-brand-main border-none hover:bg-none px-0 group-hover:block hidden">
-              <MdOutlineArrowOutward size={28} onClick={onclick} />
-            </button>
-          </Link>
-        ) : (
-          <Link href={`/news/${data?.id}`}>
             <button className="text-brand-main border-none hover:bg-none px-0 group-hover:block hidden">
               <MdOutlineArrowOutward size={28} onClick={onclick} />
             </button>

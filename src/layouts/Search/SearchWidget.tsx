@@ -10,14 +10,13 @@ import { getResources } from "@/api/mda/getResources";
 function SearchWidget() {
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 12;
 
   const handlePageChange = (page: any) => {
     setCurrentPage(page);
   };
   const { name, setName }: any = useGeneralContext();
   const { data, isLoading, error } = useQuery({
-    queryKey: ["getResources", name, currentPage, 1],
+    queryKey: ["getResources", name, currentPage, 20],
     queryFn: getResources,
     onSuccess: (result: any) => {
       setCurrentPage(result?.data?.data?.pagination?.currentPage);
