@@ -7,6 +7,8 @@ import { useQuery } from "react-query";
 import { getNews } from "@/api/news/getNews";
 import { cn } from "@/utils";
 import { useMediaQuery } from "@mantine/hooks";
+import Link from "next/link";
+import { formatDate } from "@/utils/formatDate";
 
 function News() {
   const links = [
@@ -68,7 +70,7 @@ function News() {
 
   return (
     <div className="pt-[120px] p-5">
-      <span className="max-w-[1360px] mx-auto flex flex-col gap-5">
+      <span className="max-w-[1500px] mx-auto flex flex-col gap-5">
         {matches ? (
           <span className="relative z-50">
             <span
@@ -160,30 +162,39 @@ function News() {
             </>
           ) : (
             <>
-              <span className="col-span-3 flex w-full  items-start bg-white border border-gray-200 h-[350px]">
-                <span className="w-full h-full max-w-[650px] aspect-[11/7] object-cover bg-[#588065] image-container ">
-                  <Image
-                    src={data?.data?.data?.news[0]?.image}
-                    alt=""
-                    width={500}
-                    height={300}
-                    className="w-full h-full max-w-[650px] aspect-[11/7] object-cover bg-[#588065] zoom-out-image"
-                  />
-                </span>
-                <span className="p-5 flex flex-col justify-between h-full flex-grow max-w-[40%]">
-                  <p className="text-[20px] text-brand-main font-medium max-w-[800px] leading-[28px] lg:col-span-3 col-span-2 ">
-                    {news[0].title}
-                  </p>
-                  <span className="flex gap-5">
-                    <p className="pr-6 border-r-[1px] border-r-gray-300">Now</p>
-                    <span className="px-4 rounded-lg text-white bg-brand-main py-1">
-                      {news[0].category}
+              <Link
+                href={`/news/${data?.data?.data?.news[0]?.id}`}
+                className="col-span-3"
+              >
+                <span className=" flex w-full  items-start bg-white border border-gray-200 h-[350px]">
+                  <span className="w-full h-full max-w-[650px] aspect-[11/7] object-cover bg-[#588065] image-container ">
+                    <Image
+                      src={data?.data?.data?.news[0]?.image}
+                      alt=""
+                      width={500}
+                      height={300}
+                      className="w-full h-full max-w-[650px] aspect-[11/7] object-cover bg-[#588065] zoom-out-image"
+                    />
+                  </span>
+                  <span className="p-5 flex flex-col justify-between h-full flex-grow max-w-[40%]">
+                    <p className="text-[20px] text-brand-main font-medium max-w-[800px] leading-[28px] lg:col-span-3 col-span-2 ">
+                      {data?.data?.data?.news[0]?.headline}
+                    </p>
+                    <span className="flex gap-5">
+                      <p className="pr-6 border-r-[1px] border-r-gray-300">
+                        {formatDate(data?.data?.data?.news[0]?.updatedAt)}
+                      </p>
+                      {data?.data?.data?.news[0]?.tags[0]?.name && (
+                        <span className="px-4 rounded-lg text-white bg-brand-main py-1">
+                          {data?.data?.data?.news[0]?.tags[0]?.name}
+                        </span>
+                      )}
                     </span>
                   </span>
                 </span>
-              </span>
+              </Link>
               {data?.data?.data?.news?.map((item: any, index: number) => (
-                <NewsCard key={index} data={news[0]} id={item.id} />
+                <NewsCard key={index} data={item} id={item.id} />
               ))}
             </>
           )}

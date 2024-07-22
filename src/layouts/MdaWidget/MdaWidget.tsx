@@ -18,23 +18,28 @@ function MdaWidget() {
     setCurrentPage(page);
   };
 
+  const [name, setName] = useState("");
   const {
     data: mda,
     isLoading: mdaIsLoading,
     error,
+    refetch,
   } = useQuery({
-    queryKey: ["getMdas", currentPage],
+    queryKey: ["getMdas", currentPage, 20, name],
     queryFn: getMdas,
     onSuccess: (result: any) => {
       setCurrentPage(result?.data?.data?.pagination?.currentPage);
     },
   });
 
-  console.log("mda :>> ", mda);
+  const handleSearch = (e: any) => {
+    e.preventDefault();
+    refetch();
+  };
 
   return (
     <div className="pt-[200px] p-5">
-      <span className="max-w-[1200px] mx-auto flex flex-col">
+      <span className="max-w-[1500px] mx-auto flex flex-col">
         <span className="flex flex-col gap-8 mb-10">
           <span className="uppercase text-[#00000080] opacity-80 font-light flex items-center gap-2 text-[14px] flex-wrap">
             <GoHome size={18} />/<p>GOVERNMENT</p>/
@@ -72,9 +77,14 @@ function MdaWidget() {
               <input
                 type="text"
                 placeholder="Find MDA..."
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 className="w-full flex-grow-0 bg-transparent py-2 text-[28px] outline-none placeholder:text-[#D1D5DB]"
               />
-              <button className="flex justify-center items-center bg-brand-lightYellow text-brand-main w-[48px] h-[48px] p-0 m-0 rounded ">
+              <button
+                onClick={handleSearch}
+                className="flex justify-center items-center bg-brand-lightYellow text-brand-main w-[48px] h-[48px] p-0 m-0 rounded "
+              >
                 <FiSearch size={24} />
               </button>
             </span>

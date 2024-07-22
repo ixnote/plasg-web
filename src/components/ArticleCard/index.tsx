@@ -9,7 +9,7 @@ import { formatDate } from "@/utils/formatDate";
 
 function ArticleCard({ onclick, data }: any) {
   return (
-    <div className="group col-span-1 bg-[#284F51] lg:p-8 p-5 rounded-2xl flex flex-col gap-4 justify-between h-[540px] hover:bg-brand-lightYellow text-white">
+    <div className="group col-span-1 bg-[#284F51] lg:p-8 p-5 rounded-2xl flex flex-col gap-4 justify-between h-[540px] hover:bg-brand-lightYellow text-white w-full">
       <span className="flex flex-col gap-[64px]">
         <span className="flex justify-between">
           <span className="flex flex-col gap-2">

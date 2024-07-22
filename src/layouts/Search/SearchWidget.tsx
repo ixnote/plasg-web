@@ -27,7 +27,7 @@ function SearchWidget() {
   console.log("data :>> ", data);
   return (
     <div className="py-[100px] bg-brand-main flex gap-8 flex-col p-5">
-      <span className="grid gap-5 lg:grid-cols-2 grid-cols-1 max-w-[1200px] mx-auto">
+      <span className="grid gap-5 lg:grid-cols-2 grid-cols-1 max-w-[1500px] mx-auto w-full">
         {data?.data?.data?.resources?.map((item: any) => (
           <ArticleCard
             key={item?.id}
