@@ -4,6 +4,7 @@ import React from "react";
 import AssetCardLight from "@/components/AssetCardLight";
 import ButtonLight from "@/components/ButtonLight";
 import { useGeneralContext } from "../../../../context/GenralContext";
+import moment from "moment";
 
 const QuickActions = () => {
   const { homeResources }: any = useGeneralContext();
@@ -66,6 +67,7 @@ const QuickActions = () => {
                     description={resource.description}
                     url={resource.link}
                     id={resource.id}
+                    updated={moment(resource.updatedAt).fromNow()}
                     button1text={"View Topic"}
                   />
                 ))

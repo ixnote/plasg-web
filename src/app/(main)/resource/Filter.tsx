@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useGeneralContext } from "../../../../context/GenralContext";
 import AssetCardLight from "@/components/AssetCardLight";
+import moment from "moment";
 import { Loader } from "@mantine/core";
 
 const Filter = () => {
@@ -28,7 +29,7 @@ const Filter = () => {
   }: any = useGeneralContext();
   // console.log("🚀 ~ Filter ~ activePage:", activePage);
   // console.log("🚀 ~ Filter ~ totalPages:", totalPages);
-  // console.log("🚀 ~ Filter ~ resources:", resources);
+  console.log("🚀 ~ Filter ~ resources:", resources);
 
   const handleTabSwitch = async () => {
     if (activeTag.name === "feed") {
@@ -93,6 +94,7 @@ const Filter = () => {
       {/* top */}
       <div className="flex justify-between items-center w-full">
         <div className="hidden lg:flex lg:gap-2 lg:items-center ">
+          {/* Feed */}
           <div
             className={
               active === "feed"
@@ -253,6 +255,7 @@ const Filter = () => {
                     description={resource.description}
                     url={resource.link}
                     id={resource.id}
+                    updated={moment(resource.updatedAt).fromNow()}
                     button1text={"View Topic"}
                   />
                 </>

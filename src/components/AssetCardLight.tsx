@@ -40,7 +40,7 @@ const AssetCardLight = ({
       onClick={handleClick}
     >
       {/* top */}
-      <div className="flex flex-col gap-16">
+      <div className="w-full flex flex-col gap-16">
         {/* logo part */}
         <div className="flex w-full items-center justify-between">
           <div className="flex flex-col gap-2 text-[#588065]">
