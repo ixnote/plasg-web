@@ -10,19 +10,21 @@ const FromTheGovernor = () => {
         {/* content */}
         <div className="flex items-center justify-between flex-col gap-8 w-[92%] md:justi-start lg:flex-row lg:gap-4 lg:items-center">
           {/* left */}
-          <div className="w-full relative lg:w-[50%]">
-            <Image
-              src={governor}
-              alt="His excellency"
-              className="w-[680px] rounded-xl mx-auto"
-            />
-            <div className="glass-fx w-[340px] absolute bottom-6 left-6 flex flex-col gap-1 p-4 text-left md:w-[476px] md:gap-4 md:p-6 md:bottom-10 md:left-[3.4rem] lg:left-[2.9rem] lg:w-[75%]">
-              <span className="font-medium text-[24px] font-geistsans text-brand-white md:text-4xl">
-                Barr. Caleb Mutfwang
-              </span>
-              <span className="font-normal text-base font-geistsans text-brand-white">
-                Executive Governor, Plateau State
-              </span>
+          <div className="w-full lg:w-[50%]">
+            <div className="relative mx-auto w-full xl:max-w-[680px]">
+              <Image
+                src={governor}
+                alt="His excellency"
+                className="w-[680px] rounded-xl mx-auto"
+              />
+              <div className="glass-fx w-[90%] absolute bottom-4 left-4 flex flex-col gap-1 p-4 text-left md:w-[476px] md:gap-4 md:p-6 md:bottom-10 md:left-[3.4rem] lg:left-[2.9rem] lg:w-[75%] 2xl:w-[75%]">
+                <span className="font-medium text-[24px] font-geistsans text-brand-white md:text-4xl">
+                  Barr. Caleb Mutfwang
+                </span>
+                <span className="font-normal text-base font-geistsans text-brand-white">
+                  Executive Governor, Plateau State
+                </span>
+              </div>
             </div>
           </div>
           {/* right */}

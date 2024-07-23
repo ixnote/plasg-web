@@ -100,7 +100,7 @@ export const MapData: any = {
   },
   barkinLadi: {
     name: "barkinLadi",
-    lga: "barkinLadi",
+    lga: "Barkin Ladi",
     position: "top-[110px] -right-[110px]",
     description:
       "Langtang North LGA, established in 1991, is located in central Plateau State, with its headquarters in Sabon Barki. It borders Jos East, Jos South, Kanke, Langtang South, and Bassa LGAs. With a population of 150,155 (2006 census), the area is predominantly agricultural.",

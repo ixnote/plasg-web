@@ -1,7 +1,28 @@
+"use client";
+
 import React from "react";
+import { useRouter } from "next/navigation";
 import ButtonDark from "@/components/ButtonDark";
 
 const Newsletter = () => {
+  const router = useRouter();
+  const handleClick = () => {
+    // if (outsideLink) {
+    //   const isExternalLink =
+    //     outsideLink.startsWith("http://") || outsideLink.startsWith("https://");
+    //   const formattedLink = isExternalLink
+    //     ? outsideLink
+    //     : `http://${outsideLink}`;
+    //   window.open(formattedLink, "_blank");
+    // }
+
+    // if (url) {
+    //   router.push(`/${url}`);
+    // }
+
+    return;
+  };
+
   return (
     <>
       <div className="flex items-center justify-center py-24 bg-brand-main">
@@ -34,14 +55,28 @@ const Newsletter = () => {
             </div>
             <div className="flex flex-col items-start justify-center gap-3">
               {/* <ButtonDark text={"Subscribe to our newsletter"} /> */}
-              <div className="w-full flex items-center justify-start">
-                <div className="w-full flex items-center justify-center lg:w-[430px]">
-                  <ButtonDark
-                    text={"Subscribe to our newsletter"}
-                    url={"government/governor"}
-                  />
+              <div className="w-full flex items-center justify-start lg:w-[422px]">
+                <div
+                  className={
+                    "btn-fx group w-[99%] mx-auto transition-fx border-[1px] border-brand-grayish flex items-center justify-center gap-4 p-4 px-8 rounded-lg font-normal text-base font-geistsans text-brand-white margin-auto  cursor-pointer hover:bg-brand-lightYellow hover:text-brand-dark hover:px-6 hover:border-brand-lightYellow"
+                  }
+                  onClick={() => handleClick()}
+                >
+                  Subscribe
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      className="svg-path group-hover:fill-brand-dark/80"
+                      d="M0 10.1364L0 7.86364H13.6364L7.38636 1.61364L9 0L18 9L9 18L7.38636 16.3864L13.6364 10.1364H0Z"
+                      fill="#D1D5DB"
+                    />
+                  </svg>
                 </div>
-                <div className="hidden lg:w-[40%] lg:block"></div>
               </div>
               <span className="flex items-center justify-center gap-1 font-normal text-xs text-brand-grayish font-geistsans lg:pl-1">
                 By subscribing you agree to with our{" "}

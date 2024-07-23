@@ -23,7 +23,7 @@ const Map = () => {
           <div
             className={`relative h-[36rem] w-full overflow-hidden ${
               selectedID &&
-              "rounded-lg border-b-2 border-r-2 border-brand-secondary"
+              "rounded-lg border-[0.005px] border-brand-grayish/40"
             }`}
           >
             {showPopUp && (

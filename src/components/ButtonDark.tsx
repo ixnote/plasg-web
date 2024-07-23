@@ -3,13 +3,24 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 
-const ButtonDark = ({ text, width, url }: any) => {
+const ButtonDark = ({ text, width, url, outsideLink }: any) => {
   const [hovered, setHovered] = useState(false);
 
   const router = useRouter();
-
   const handleClick = () => {
-    url && router.push(`/${url}`);
+    if (outsideLink) {
+      const isExternalLink =
+        outsideLink.startsWith("http://") || outsideLink.startsWith("https://");
+      const formattedLink = isExternalLink
+        ? outsideLink
+        : `http://${outsideLink}`;
+      window.open(formattedLink, "_blank");
+    }
+
+    if (url) {
+      router.push(`/${url}`);
+    }
+
     return;
   };
 

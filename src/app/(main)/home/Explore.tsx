@@ -42,7 +42,10 @@ const Explore = () => {
                 tourism, and tech. Join us in driving economic growth and
                 securing a prosperous future.
               </span>
-              <ButtonDark text={"View Opportunities"} url={"business"} />
+              <ButtonDark
+                text={"View Opportunities"}
+                outsideLink={"psosic.org"}
+              />
             </div>
           </div>
         </div>

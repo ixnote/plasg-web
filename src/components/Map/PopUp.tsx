@@ -19,11 +19,15 @@ const PopUp = ({
 
   return (
     <>
-      {/* <div className="absolute left-0 top-12 grow shrink basis-0 justify-start items-end gap-2.5 inline-flex">
-        <div className="w-[393px] h-px pb-0.5 justify-center items-end gap-2.5 flex"> */}
-      <div className="absolute top-6 left-6 w-[393px] h-[530px] bg-white rounded-2xl flex-col justify-start items-start gap-2.5 inline-flex z-10">
+      <div className="absolute top-6 left-6 w-[393px] bg-white rounded-2xl flex-col justify-start items-start gap-2.5 inline-flex z-10">
         <div className="p-10 flex-col justify-start items-start gap-4 flex">
-          <div className="self-stretch h-12 flex-col justify-center items-end gap-2.5 flex">
+          {/* <div className="self-stretch h-12 flex-col justify-center items-end gap-2.5 flex bg-red-300"> */}
+          <div className="w-full flex justify-between items-center gap-2.5">
+            <div className="text-cyan-950 text-3xl font-medium font-geistsans leading-loose capitalize">
+              {MapData[selectedID]?.lga
+                ? MapData[selectedID]?.lga
+                : "Please Select LGA"}
+            </div>
             <svg
               width="48"
               height="48"
@@ -92,11 +96,11 @@ const PopUp = ({
               </defs>
             </svg>
           </div>
-          <div className="w-[313px] text-cyan-950 text-2xl font-medium font-geistsans leading-loose">
+          {/* <div className="w-[313px] text-cyan-950 text-2xl font-medium font-geistsans leading-loose bg-green-300">
             {MapData[selectedID]?.lga
               ? MapData[selectedID]?.lga
               : "Please Select LGA"}
-          </div>
+          </div> */}
           <div className="w-[313px] text-black/opacity-70 text-base font-medium font-geistsans leading-normal">
             {MapData[selectedID]?.description
               ? MapData[selectedID]?.description

@@ -123,7 +123,7 @@ const Filter = () => {
             </div>
             <div className="w-[60%] flex items-center justify-end gap-1 mx-6 ">
               <span className="flex flex-col h-[22px] items-center justify-center font-medium font-geistsans text-xs">
-                FEED
+                ALL
               </span>
               {/* <span className="flex flex-col h-[22px] items-start font-normal font-geistsans text-xs">
                 32

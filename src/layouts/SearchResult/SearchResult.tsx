@@ -50,7 +50,7 @@ function SearchResult() {
     //         </Link>
     //         /<p>Search</p>/<p>SEARCH RESULTS</p>/<p>ARTICLES</p>
     //       </span>
-    <div className="min-h-screen  max-w-[2040px] pb-[96px] relative flex items-center justify-center bg-cover bg-center bg-no-repeat">
+    <div className="pt-[200px] max-w-[2040px] pb-[96px] relative flex items-center justify-center bg-cover bg-center bg-no-repeat">
       <span className="m-auto w-[92%] flex justify-between flex-col gap-8">
         <div className="flex flex-col py-24 pt-[180px] gap-4 lg:gap-16">
           <span className="flex flex-col gap-8 mb-10">
