@@ -13,7 +13,7 @@ const Footer = () => {
     <>
       <Newsletter />
       <SectionDividerDark />
-      <div className="min-h-screen flex flex-col items-center justify-center py-24 bg-brand-main">
+      <div className="min-h-screen flex flex-col items-center justify-center py-24 bg-brand-main z-10">
         {/* content */}
         <div className="flex flex-col items-between justify-between gap-16 w-[92%] h-[70%]">
           {/* Links */}

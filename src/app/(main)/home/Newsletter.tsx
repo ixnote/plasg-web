@@ -25,7 +25,7 @@ const Newsletter = () => {
 
   return (
     <>
-      <div className="flex items-center justify-center py-24 bg-brand-main">
+      <div className="flex items-center justify-center py-24 bg-brand-main z-10">
         {/* content */}
         <div className="flex flex-col gap-10 items-start justify-between w-[92%] h-[70%] lg:gap-0 lg:flex-row">
           {/* left */}
