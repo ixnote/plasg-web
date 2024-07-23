@@ -8,6 +8,7 @@ import { useGeneralContext } from "../../../context/GenralContext";
 
 const MobileNav = () => {
   const { topicTags, setTopicTagId, setOneTopicTag }: any = useGeneralContext();
+  // console.log("🚀 ~ MobileNav ~ topicTags:", topicTags);
 
   const [activeTopicTag, setActiveTopicTag] = useState() as any;
 
@@ -305,132 +306,133 @@ const MobileNav = () => {
                     ))}
                   </>
                 ) : (
-                  <>
-                    <Link
-                      href="/resource?name=governance"
-                      onClick={() => setIsOpen(!isOpen)}
-                      className="group transition-fx flex items-center text-brand-white py-4 bg-brand-main/70 hover:pl-4 hover:bg-[#284f51]"
-                    >
-                      <span className="mr-6 font-geistmono font-light text-base text-[#cfd8d9]">
-                        01
-                      </span>
-                      <span className="w-3/4 font-geistsans font-medium text-2xl">
-                        Governance
-                      </span>
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 18 18"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="transition-fx hidden group-hover:block"
-                      >
-                        <path
-                          d="M0 10.1364L0 7.86364H13.6364L7.38636 1.61364L9 0L18 9L9 18L7.38636 16.3864L13.6364 10.1364H0Z"
-                          fill="white"
-                        />
-                      </svg>
-                    </Link>
-                    <Link
-                      href="/resource?name=business"
-                      onClick={() => setIsOpen(!isOpen)}
-                      className="group transition-fx flex items-center text-brand-white py-4 bg-brand-main/70 hover:pl-4 hover:bg-[#284f51]"
-                    >
-                      <span className="mr-6 font-geistmono font-light text-base text-[#cfd8d9]">
-                        02
-                      </span>
-                      <span className="w-3/4 font-geistsans font-medium text-2xl">
-                        Business
-                      </span>
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 18 18"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="transition-fx hidden group-hover:block"
-                      >
-                        <path
-                          d="M0 10.1364L0 7.86364H13.6364L7.38636 1.61364L9 0L18 9L9 18L7.38636 16.3864L13.6364 10.1364H0Z"
-                          fill="white"
-                        />
-                      </svg>
-                    </Link>
-                    <Link
-                      href="/resource?name=health"
-                      onClick={() => setIsOpen(!isOpen)}
-                      className="group transition-fx flex items-center text-brand-white py-4 bg-brand-main/70 hover:pl-4 hover:bg-[#284f51]"
-                    >
-                      <span className="mr-6 font-geistmono font-light text-base text-[#cfd8d9]">
-                        03
-                      </span>
-                      <span className="w-3/4 font-geistsans font-medium text-2xl">
-                        Health <span className="text-xs">(coming soon)</span>
-                      </span>
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 18 18"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="transition-fx hidden group-hover:block"
-                      >
-                        <path
-                          d="M0 10.1364L0 7.86364H13.6364L7.38636 1.61364L9 0L18 9L9 18L7.38636 16.3864L13.6364 10.1364H0Z"
-                          fill="white"
-                        />
-                      </svg>
-                    </Link>
-                    <Link
-                      href="/resource?name=welfare"
-                      onClick={() => setIsOpen(!isOpen)}
-                      className="group transition-fx flex items-center text-brand-white py-4 bg-brand-main/70 hover:pl-4 hover:bg-[#284f51]"
-                    >
-                      <span className="mr-6 font-geistmono font-light text-base text-[#cfd8d9]">
-                        04
-                      </span>
-                      <span className="w-3/4 font-geistsans font-medium text-2xl">
-                        Welfare <span className="text-xs">(coming soon)</span>
-                      </span>
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 18 18"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="transition-fx hidden group-hover:block"
-                      >
-                        <path
-                          d="M0 10.1364L0 7.86364H13.6364L7.38636 1.61364L9 0L18 9L9 18L7.38636 16.3864L13.6364 10.1364H0Z"
-                          fill="white"
-                        />
-                      </svg>
-                    </Link>
-                    <Link
-                      href="#"
-                      className="group transition-fx flex items-center text-brand-white py-4 bg-brand-main/70 hover:pl-4 hover:bg-[#284f51]"
-                    >
-                      <span className="mr-6 font-geistmono font-light text-base text-[#cfd8d9]">
-                        05
-                      </span>
-                      <span className="w-3/4 font-geistsans font-medium text-2xl">
-                        Tourism <span className="text-xs">(coming soon)</span>
-                      </span>
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 18 18"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="transition-fx hidden group-hover:block"
-                      >
-                        <path
-                          d="M0 10.1364L0 7.86364H13.6364L7.38636 1.61364L9 0L18 9L9 18L7.38636 16.3864L13.6364 10.1364H0Z"
-                          fill="white"
-                        />
-                      </svg>
-                    </Link>
-                  </>
+                  ""
+                  // <>
+                  //   <Link
+                  //     href="/resource?name=governance"
+                  //     onClick={() => setIsOpen(!isOpen)}
+                  //     className="group transition-fx flex items-center text-brand-white py-4 bg-brand-main/70 hover:pl-4 hover:bg-[#284f51]"
+                  //   >
+                  //     <span className="mr-6 font-geistmono font-light text-base text-[#cfd8d9]">
+                  //       01
+                  //     </span>
+                  //     <span className="w-3/4 font-geistsans font-medium text-2xl">
+                  //       Governance
+                  //     </span>
+                  //     <svg
+                  //       width="18"
+                  //       height="18"
+                  //       viewBox="0 0 18 18"
+                  //       fill="none"
+                  //       xmlns="http://www.w3.org/2000/svg"
+                  //       className="transition-fx hidden group-hover:block"
+                  //     >
+                  //       <path
+                  //         d="M0 10.1364L0 7.86364H13.6364L7.38636 1.61364L9 0L18 9L9 18L7.38636 16.3864L13.6364 10.1364H0Z"
+                  //         fill="white"
+                  //       />
+                  //     </svg>
+                  //   </Link>
+                  //   <Link
+                  //     href="/resource?name=business"
+                  //     onClick={() => setIsOpen(!isOpen)}
+                  //     className="group transition-fx flex items-center text-brand-white py-4 bg-brand-main/70 hover:pl-4 hover:bg-[#284f51]"
+                  //   >
+                  //     <span className="mr-6 font-geistmono font-light text-base text-[#cfd8d9]">
+                  //       02
+                  //     </span>
+                  //     <span className="w-3/4 font-geistsans font-medium text-2xl">
+                  //       Business
+                  //     </span>
+                  //     <svg
+                  //       width="18"
+                  //       height="18"
+                  //       viewBox="0 0 18 18"
+                  //       fill="none"
+                  //       xmlns="http://www.w3.org/2000/svg"
+                  //       className="transition-fx hidden group-hover:block"
+                  //     >
+                  //       <path
+                  //         d="M0 10.1364L0 7.86364H13.6364L7.38636 1.61364L9 0L18 9L9 18L7.38636 16.3864L13.6364 10.1364H0Z"
+                  //         fill="white"
+                  //       />
+                  //     </svg>
+                  //   </Link>
+                  //   <Link
+                  //     href="/resource?name=health"
+                  //     onClick={() => setIsOpen(!isOpen)}
+                  //     className="group transition-fx flex items-center text-brand-white py-4 bg-brand-main/70 hover:pl-4 hover:bg-[#284f51]"
+                  //   >
+                  //     <span className="mr-6 font-geistmono font-light text-base text-[#cfd8d9]">
+                  //       03
+                  //     </span>
+                  //     <span className="w-3/4 font-geistsans font-medium text-2xl">
+                  //       Health <span className="text-xs">(coming soon)</span>
+                  //     </span>
+                  //     <svg
+                  //       width="18"
+                  //       height="18"
+                  //       viewBox="0 0 18 18"
+                  //       fill="none"
+                  //       xmlns="http://www.w3.org/2000/svg"
+                  //       className="transition-fx hidden group-hover:block"
+                  //     >
+                  //       <path
+                  //         d="M0 10.1364L0 7.86364H13.6364L7.38636 1.61364L9 0L18 9L9 18L7.38636 16.3864L13.6364 10.1364H0Z"
+                  //         fill="white"
+                  //       />
+                  //     </svg>
+                  //   </Link>
+                  //   <Link
+                  //     href="/resource?name=welfare"
+                  //     onClick={() => setIsOpen(!isOpen)}
+                  //     className="group transition-fx flex items-center text-brand-white py-4 bg-brand-main/70 hover:pl-4 hover:bg-[#284f51]"
+                  //   >
+                  //     <span className="mr-6 font-geistmono font-light text-base text-[#cfd8d9]">
+                  //       04
+                  //     </span>
+                  //     <span className="w-3/4 font-geistsans font-medium text-2xl">
+                  //       Welfare <span className="text-xs">(coming soon)</span>
+                  //     </span>
+                  //     <svg
+                  //       width="18"
+                  //       height="18"
+                  //       viewBox="0 0 18 18"
+                  //       fill="none"
+                  //       xmlns="http://www.w3.org/2000/svg"
+                  //       className="transition-fx hidden group-hover:block"
+                  //     >
+                  //       <path
+                  //         d="M0 10.1364L0 7.86364H13.6364L7.38636 1.61364L9 0L18 9L9 18L7.38636 16.3864L13.6364 10.1364H0Z"
+                  //         fill="white"
+                  //       />
+                  //     </svg>
+                  //   </Link>
+                  //   <Link
+                  //     href="#"
+                  //     className="group transition-fx flex items-center text-brand-white py-4 bg-brand-main/70 hover:pl-4 hover:bg-[#284f51]"
+                  //   >
+                  //     <span className="mr-6 font-geistmono font-light text-base text-[#cfd8d9]">
+                  //       05
+                  //     </span>
+                  //     <span className="w-3/4 font-geistsans font-medium text-2xl">
+                  //       Tourism <span className="text-xs">(coming soon)</span>
+                  //     </span>
+                  //     <svg
+                  //       width="18"
+                  //       height="18"
+                  //       viewBox="0 0 18 18"
+                  //       fill="none"
+                  //       xmlns="http://www.w3.org/2000/svg"
+                  //       className="transition-fx hidden group-hover:block"
+                  //     >
+                  //       <path
+                  //         d="M0 10.1364L0 7.86364H13.6364L7.38636 1.61364L9 0L18 9L9 18L7.38636 16.3864L13.6364 10.1364H0Z"
+                  //         fill="white"
+                  //       />
+                  //     </svg>
+                  //   </Link>
+                  // </>
                 )}
               </div>
             )}

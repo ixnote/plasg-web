@@ -138,7 +138,7 @@ const GeneralProvider = (props: any) => {
   const getHomeResources = async () => {
     try {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/resource/all?page=1&pageSize=10&`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/resource/home-page`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -146,9 +146,10 @@ const GeneralProvider = (props: any) => {
           timeout: 10000,
         }
       );
-      // console.log("🚀 ~ getHomeResources ~ response:", response.data.data);
-      const firstFourResources = response.data.data.resources.slice(0, 4);
-      return setHomeResources(firstFourResources);
+      console.log("🚀 ~ getHomeResources ~ response:", response.data.data);
+      // const firstFourResources = response.data.data.resources.slice(0, 4);
+      // return setHomeResources(firstFourResources);
+      return setHomeResources(response.data.data.slice(0, 4));
     } catch (error: any) {
       setLoadingResource(false);
       console.log("🚀 ~ getHomeResources ~ error:", error.message);
