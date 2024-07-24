@@ -288,7 +288,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

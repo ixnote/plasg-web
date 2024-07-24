@@ -14,7 +14,6 @@ export default async function LandingLayout({
       <Nav />
       {children}
       <Footer />
-      <ScrollToTopButton />
     </div>
   );
 }
