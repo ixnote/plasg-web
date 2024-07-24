@@ -73,7 +73,7 @@ const Header = () => {
                 <Image src={logo} alt="LOGO" />
               </div>
               <div className="w-[100px] h-[]36px p-2 font-semibold text-[#0E3E40]">
-                <p className="text-[28px] leading-[36px] font-[geist]">
+                <p className="text-[28px] leading-[36px] font-geistsans">
                   PICTDA
                 </p>
               </div>
@@ -86,17 +86,14 @@ const Header = () => {
                     className="menu-item"
                     onMouseEnter={() => handleMouseEnter(menu)}
                   >
-                    <div className="menu-hover">
-                      <Link href={menu.path}>{menu.name}</Link>
-                      {menu.drop && (
-                        <Image
-                          src={dropdown_icon}
-                          alt="DROP DOWN ICON"
-                          className=""
-                        />
-                      )}
+                    <div className="">
+                      <Link
+                        href={menu.path}
+                        className="visit-hover-fx transition-fx font-geistsans font-medium text-base text-brand-main mr-8"
+                      >
+                        {menu.name}
+                      </Link>
                     </div>
-                    {menu.drop && <div className="round-dot" />}
                   </li>
                 ))}
               </ul>

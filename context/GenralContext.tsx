@@ -22,7 +22,7 @@ const GeneralProvider = (props: any) => {
   const [loadingResource, setLoadingResource] = useState(false);
   const [activePage, setActivePage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  console.log("🚀 ~ GeneralProvider ~ totalPages:", totalPages);
+  // console.log("🚀 ~ GeneralProvider ~ totalPages:", totalPages);
 
   // Static
   const [legislatives, setLegislatives] = useState([]);
@@ -146,7 +146,7 @@ const GeneralProvider = (props: any) => {
           timeout: 10000,
         }
       );
-      console.log("🚀 ~ getHomeResources ~ response:", response.data.data);
+      // console.log("🚀 ~ getHomeResources ~ response:", response.data.data);
       // const firstFourResources = response.data.data.resources.slice(0, 4);
       // return setHomeResources(firstFourResources);
       return setHomeResources(response.data.data.slice(0, 4));
