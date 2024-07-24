@@ -9,9 +9,7 @@ import bg from "@/assets/imgs/bg-img.svg";
 const About = () => {
   return (
     <div className='w-full mx-auto 2xl:max-w-7xl"'>
-      <div>
-        <Nav />
-      </div>
+      <div>{/* <Nav /> */}</div>
       <div
         className=" mt-20 h-[144px]  w-full flex flex-col items-center"
         // className=" mt-20 h-[710px] w-full flex flex-col items-center justify-center bg-no-repeat bg-cover"

@@ -1,16 +1,17 @@
+"use client";
+
 import React from "react";
-import Nav from "../../nav";
 import Image from "next/image";
-import Footer from "@/layouts/Footer";
 import bg from "@/assets/imgs/bg-img.svg";
 import location from "@/assets/icons/location.svg";
 import phone from "@/assets/icons/phone.svg";
 import message from "@/assets/icons/message.svg";
+import { useGeneralContext } from "../../../../../../context/GenralContext";
 
 const Contact = () => {
+  const { oneMda }: any = useGeneralContext();
   return (
     <div className='w-full bg-brand-white 2xl:max-w-7xl"'>
-      <div>{/* <Nav /> */}</div>
       <div className="w-full h-[1030px] p-9 ">
         <div
           className="w-full bg-cover bg-center h-[720px] pt-8 px-10"
@@ -33,18 +34,19 @@ const Contact = () => {
                   <div className="text-white flex w-full py-7 ">
                     <Image src={location} alt="" />
                     <div className="px-6">
-                      <p className="text-white">
-                        Office Of The Executive Governor, Plateau State
-                        Government House, Little Rayfield, Jos Plateau State
-                      </p>
+                      <p className="text-white">{oneMda?.contact?.location}</p>
                     </div>
                   </div>
                   <div className="flex justify-between h-[64px] w-[600px] ">
                     <div className="flex items-center justify-between w-[180px]">
                       <Image src={phone} alt="" />
                       <div>
-                        <p className="p-2">23407013800040</p>
-                        <p className="p-2">23407013800040</p>
+                        <p className="p-2 text-brand-white">
+                          {oneMda?.contact?.phone_number_1}
+                        </p>
+                        <p className="p-2 text-brand-white">
+                          {oneMda?.contact?.phone_number_2}
+                        </p>
                       </div>
                     </div>
                     <div className="flex items-center justify-between w-[260px] ">
@@ -53,15 +55,15 @@ const Contact = () => {
                         href="pictda@plateaustate.gov.ng"
                         className="text-white"
                       >
-                        pictda@plateaustate.gov.ng
+                        {oneMda?.contact?.email}
                       </a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="w-[550px] h-[645px] bg-white rounded-xl">
-              <div className="w-full max-w-lg mx-auto mt-8   px-5  bg-white ">
+            <div className="w-[550px] bg-white rounded-xl">
+              <div className="w-full max-w-lg mx-auto mt-8 px-5  bg-white ">
                 <form className="space-y-6">
                   <div>
                     <label
@@ -130,7 +132,7 @@ const Contact = () => {
                   <div>
                     <button
                       type="submit"
-                      className="w-[154px] h-[54px] float-end inline-flex justify-center py-2 px-4 border border-transparent  text-sm font-medium rounded-md text-white bg-[#0E3E40] hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      className="w-[154px] float-end inline-flex justify-center py-2 px-4 border border-transparent  text-sm font-medium rounded-md text-white bg-[#0E3E40] hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
                       Submit
                     </button>
@@ -140,9 +142,6 @@ const Contact = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div>
-        <Footer />
       </div>
     </div>
   );

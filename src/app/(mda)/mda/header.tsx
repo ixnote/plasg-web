@@ -52,8 +52,8 @@ const Header = () => {
                 />
               </div>
               <div className="w-[100px] h-[]36px p-2 font-semibold text-[#0E3E40]">
-                <p className="text-[28px] leading-[36px] font-geistsans">
-                  PICTDA
+                <p className="text-[28px] leading-[36px] font-geistsans capitalize">
+                  {oneMda?.abbreviation}
                 </p>
               </div>
             </Link>

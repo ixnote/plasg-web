@@ -15,7 +15,7 @@ const MdaDirector = ({ slug, director }: any) => {
               Director
             </span>
             <span className="font-medium text-4xl text-center font-geistsans text-brand-dark lg:text-left">
-              {director?.title}
+              From the {director?.position}
             </span>
             <span className="font-normal text-base text-center text-brand-dark font-geistsans  w-[90%] lg:w-full lg:text-left">
               {director?.message}
