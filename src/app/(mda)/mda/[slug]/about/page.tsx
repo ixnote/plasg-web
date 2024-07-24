@@ -1,10 +1,10 @@
 import React from "react";
-import Nav from "../nav";
 import Image from "next/image";
-import { Team } from "../data";
-import SecondCard from "../secondCard";
+import { Team } from "../../data";
+import SecondCard from "../../secondCard";
 import Footer from "@/layouts/Footer";
 import bg from "@/assets/imgs/bg-img.svg";
+import Nav from "../../nav";
 
 const About = () => {
   return (
