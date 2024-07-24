@@ -1,14 +1,14 @@
 import React from "react";
 import Image from "next/image";
-import { Team } from "../../data";
-import SecondCard from "../../secondCard";
+import { Team } from "../data";
+import SecondCard from "../secondCard";
 import Footer from "@/layouts/Footer";
 import bg from "@/assets/imgs/bg-img.svg";
-import Nav from "../../nav";
+import Nav from "../nav";
 
 const About = () => {
   return (
-    <div className='w-full mx-auto 2xl:max-w-7xl"'>
+    <div className="w-full mx-auto bg-brand-white 2xl:max-w-7xl">
       <div>
         <Nav />
       </div>

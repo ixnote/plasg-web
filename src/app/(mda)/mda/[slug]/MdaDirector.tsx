@@ -21,7 +21,7 @@ const MdaDirector = ({ slug, director }: any) => {
               {director?.message}
             </span>
           </div>
-          <ButtonLight text={"About Us"} url={`${slug}/about`} />
+          <ButtonLight text={"About Us"} url={`/mda/${slug}/about`} />
         </div>
         {/* right */}
         <div className="w-full lg:w-[50%]">
