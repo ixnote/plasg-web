@@ -1,11 +1,8 @@
 import Image from "next/image";
 import React from "react";
 import { useRouter } from "next/navigation";
-import logo from "@/assets/imgs/layouts/PICDA.svg";
-import Hero_image from "@/assets/imgs/hero_img.svg";
 
 const MdaHero = ({ slug, hero }: any) => {
-  // console.log("🚀 ~ MdaHero ~ MdaHero:", hero);
   const router = useRouter();
 
   return (

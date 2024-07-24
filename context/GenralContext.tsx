@@ -27,6 +27,10 @@ const GeneralProvider = (props: any) => {
   // Static
   const [legislatives, setLegislatives] = useState([]);
 
+  // MDA
+  const [mdaSlug, setMdaSlug] = useState("");
+  const [oneMda, setOneMda] = useState();
+
   //*******/
   //************/
   // TAGS
@@ -297,6 +301,12 @@ const GeneralProvider = (props: any) => {
         legislatives,
         allLegislatives,
         setLegislatives,
+
+        // MDA
+        oneMda,
+        mdaSlug,
+        setOneMda,
+        setMdaSlug,
       }}
     >
       {props.children}

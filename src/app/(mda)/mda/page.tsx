@@ -22,7 +22,7 @@ import Link from "next/link";
 const Mdas = () => {
   return (
     <div className="first relative  h-full bg-white">
-      <Nav />
+      {/* <Nav /> */}
       <div className="main-content">
         <div className=" h-[450px] w-full mt-32  flex justify-between p-14">
           <div className=" w-[50%]  h-[362px] flex flex-col justify-between">

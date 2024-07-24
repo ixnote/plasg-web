@@ -1,76 +1,55 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
-import logo from "@/assets/imgs/layouts/PICDA.svg";
 import searchIcon from "@/assets/icons/layouts/searchIcon.svg";
-import dropdown_icon from "@/assets/icons/layouts/dropdown_icon.svg";
 import Image from "next/image";
 import Link from "next/link";
-import HoverTags from "@/layouts/hoverTags";
-import SearchComponent from "@/layouts/Search/SearchComponent";
-import { Modal } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
-
-const menueList = [
-  {
-    name: "About",
-    drop: true,
-    path: "/mda/about",
-  },
-  {
-    name: "Library",
-    drop: true,
-    path: "/mda/library",
-  },
-  {
-    name: "Contact",
-    drop: false,
-    path: "/mda/contact",
-  },
-  // {
-  //   name: "Accessibility",
-  //   drop: false,
-  //   path: "",
-  // },
-];
+import { useGeneralContext } from "../../../../context/GenralContext";
 
 const Header = () => {
-  const [hoveredMenuData, setHoveredMenuData] = useState(null);
+  const { mdaSlug, oneMda }: any = useGeneralContext();
+  const [aboutPath, setAboutPath] = useState("");
+  const [libraryPath, setLibraryPath] = useState("");
+  const [contactPath, setContactPath] = useState("");
 
-  const handleMouseEnter = (menu: any) => {
-    if (menu.drop) {
-      setHoveredMenuData(menu.data);
-    } else {
-      setHoveredMenuData(null);
-    }
-  };
+  const menueList = [
+    {
+      name: "About",
+      path: aboutPath,
+    },
+    {
+      name: "Library",
+      path: libraryPath,
+    },
+    {
+      name: "Contact",
+      path: contactPath,
+    },
+  ];
 
-  const handleMouseLeave = () => {
-    setHoveredMenuData(null);
-  };
-
-  const [opened, { open, close }] = useDisclosure(false);
+  useEffect(() => {
+    setAboutPath(`/mda/${mdaSlug}/about`);
+    setLibraryPath(`/mda/${mdaSlug}/library`);
+    setContactPath(`/mda/${mdaSlug}/contact`);
+  }, [mdaSlug]);
 
   return (
-    <div
-      className="header-container w-full  rounded-t-2xl"
-      onMouseLeave={handleMouseLeave}
-    >
-      <Modal fullScreen opened={opened} onClose={close} withCloseButton={false}>
-        <SearchComponent close={close} />
-      </Modal>
-      <div
-        className={`header-drop transition-all duration-300  w-full
-         ${hoveredMenuData ? "h-[464px]" : "h-auto"}`}
-      >
+    <div className="header-container bg-brand-white w-full  rounded-t-2xl">
+      <div className="header-drop transition-all duration-300  w-full h-auto">
         <div className="header w-full flex justify-around rounded-t-xl sticky top-0">
           <div className="header-content ">
             <Link
-              href={"/mda"}
+              href={`/mda/${mdaSlug}`}
               className=" flex justify-between items-center  w-[149px] h-[40px] "
             >
               <div className="w-[39px] h-[40px] pr-1">
-                <Image src={logo} alt="LOGO" />
+                <Image
+                  src={oneMda?.hero?.logo}
+                  width={39}
+                  height={40}
+                  alt="LOGO"
+                  className="w-[39px] h-[40px]"
+                />
               </div>
               <div className="w-[100px] h-[]36px p-2 font-semibold text-[#0E3E40]">
                 <p className="text-[28px] leading-[36px] font-geistsans">
@@ -81,11 +60,7 @@ const Header = () => {
             <div className="manue-container">
               <ul className="menue-ul">
                 {menueList.map((menu) => (
-                  <li
-                    key={menu.name}
-                    className="menu-item"
-                    onMouseEnter={() => handleMouseEnter(menu)}
-                  >
+                  <li key={menu.name} className="menu-item">
                     <div className="">
                       <Link
                         href={menu.path}
@@ -116,7 +91,6 @@ const Header = () => {
             </div>
           </div>
         </div>
-        {hoveredMenuData && <HoverTags data={hoveredMenuData} />}
       </div>
     </div>
   );
