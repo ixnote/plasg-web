@@ -36,7 +36,7 @@ const Header = () => {
   return (
     <div className="header-container bg-brand-white w-full  rounded-t-2xl">
       <div className="header-drop transition-all duration-300  w-full h-auto">
-        <div className="header w-full flex justify-around rounded-t-xl sticky top-0">
+        <div className="h-[76px] w-full rounded-lg px-10 py-4 flex items-center ustify-around rounded-t-xl sticky top-0">
           <div className="header-content ">
             <Link
               href={`/mda/${mdaSlug}`}
