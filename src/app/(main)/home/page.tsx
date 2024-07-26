@@ -11,8 +11,8 @@ import Visit from "./Visit";
 
 // Components
 // import bg from "@/assets/imgs/landing/background.png";
-// import bg from "@/assets/imgs/landing/background-paid.jpg";
-import bg from "@/assets/imgs/landing/background.webp";
+import bg from "@/assets/imgs/landing/background.jpg";
+// import bg from "@/assets/imgs/landing/background.webp";
 import SectionDividerDark from "@/components/SectionDividerDark";
 import SectionDividerLight from "@/components/SectionDividerLight";
 
