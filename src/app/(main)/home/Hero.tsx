@@ -1,21 +1,36 @@
 "use client";
 
 import React, { useState } from "react";
-import bg from "@/assets/imgs/landing/background.png";
+// import bg from "@/assets/imgs/landing/background.png";
+import bg from "@/assets/imgs/landing/background-paid.jpg";
 import Image from "next/image";
 import { IoArrowDownOutline } from "react-icons/io5";
 import { handleScrollDown } from "@/utils/handleScrollDown";
+import { useDisclosure } from "@mantine/hooks";
+import { Modal } from "@mantine/core";
+import SearchComponent from "@/layouts/Search/SearchComponent";
 
 const Hero = () => {
   const [showSearchResult, setShowSearchResult] = useState(false);
   const [hovered, setHovered] = useState(false);
+  const [opened, { open, close }] = useDisclosure(false);
 
   return (
     <>
       <div
         className="h-screen max-w-[2040px] relative flex items-center justify-center bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${bg.src})` }}
+        // style={{ backgroundImage: `url(${bg.src})` }}
       >
+        <Modal
+          fullScreen
+          bg={"#0E3E40"}
+          className="bg-brand-main"
+          opened={opened}
+          onClose={close}
+          withCloseButton={false}
+        >
+          <SearchComponent close={close} />
+        </Modal>
         {/* hero content */}
         <div className="m-auto w-[92%] flex justify-between flex-col lg:flex-row">
           {/* left */}
@@ -23,9 +38,9 @@ const Hero = () => {
             <div className="flex flex-col gap-4">
               {/* left top */}
               {!showSearchResult && (
-                <div className="glass-fx1 h-[296px] flex flex-col gap-10 text-left p-8">
+                <div className="glass-fx h-[296px] flex flex-col gap-10 text-left p-8">
                   <div className="text-left flex flex-col gap-2">
-                    <span className="stroke-fx font-medium text-3xl font-geistsans outline-2 md:text-5xl">
+                    <span className="font-medium text-3xl font-geistsans text-brand-white outline-2 md:text-5xl">
                       Welcome to{" "}
                     </span>
                     <span className="font-medium text-3xl font-geistsans w-[80%] text-wrap text-brand-white outline-2 md:text-5xl">
@@ -178,7 +193,7 @@ const Hero = () => {
                   className={
                     showSearchResult
                       ? "h-[74px] flex flex-row items-center justify-between p-4 rounded-lg bg-brand-lightYellow shadow-none rounded-t-none"
-                      : "glass-fx1 h-[74px] flex flex-row items-center justify-between p-4 rounded-lg duration-300 ease-in-out hover:bg-brand-lightYellow hover:shadow-none focus:bg-brand-lightYellow focus:rounded-t-none"
+                      : "glass-fx h-[74px] flex flex-row items-center justify-between p-4 rounded-lg duration-300 ease-in-out hover:bg-brand-lightYellow hover:shadow-none focus:bg-brand-lightYellow focus:rounded-t-none"
                   }
                   onMouseEnter={() => setHovered(true)}
                   onMouseLeave={() => setHovered(false)}
@@ -187,9 +202,10 @@ const Hero = () => {
                     type="search"
                     name="search"
                     id="search"
-                    onFocus={() => setShowSearchResult(true)}
+                    // onFocus={() => setShowSearchResult(true)}
                     onBlur={() => setShowSearchResult(false)}
                     placeholder="Looking for something? Search anything"
+                    onClick={open}
                     className={
                       showSearchResult
                         ? "flex items-center justify-center w-full p-4 bg-transparent text-brand-dark cursor:pointer outline-none border-t-[0.5px] border-brand-grayish/40 border-solid"

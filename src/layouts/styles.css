@@ -23,7 +23,7 @@
 }
 
 .menu-hover {
-  @apply w-fit flex items-center gap-1 relative;
+  @apply w-fit flex items-center gap-1 relative text-brand-white;
 }
 
 .menu-item {
@@ -103,8 +103,10 @@ body {
 
 .home-glass-fx {
   -webkit-backdrop-filter: blur(0.5px); /* Safari support */
-  background-color: #ffffff20;
-  backdrop-filter: blur(0.5px);
+  /* background-color: #ffffff20; */
+  background-color: #00000020;
+  /* backdrop-filter: blur(0.5px); */
+  backdrop-filter: blur(10px);
   /* box-shadow: 0 0 15px -6px #424242; */
   border: 1px solid rgba(255, 255, 255, 0.2);
   /* border-color: rgb(255 255 255 / 0.2); */

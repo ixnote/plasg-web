@@ -2,11 +2,12 @@ import React from "react";
 import governor from "@/assets/imgs/landing/BCM_homepage.webp";
 import Image from "next/image";
 import ButtonDark from "@/components/ButtonDark";
+import ButtonLight from "@/components/ButtonLight";
 
 const FromTheGovernor = () => {
   return (
     <>
-      <div className="min-h-screen flex items-center justify-center py-24  bg-brand-main">
+      <div className="min-h-screen flex items-center justify-center py-24  bg-brand-white">
         {/* content */}
         <div className="flex items-center justify-between flex-col gap-8 w-[92%] md:justi-start lg:flex-row lg:gap-4 lg:items-center">
           {/* left */}
@@ -30,14 +31,14 @@ const FromTheGovernor = () => {
           {/* right */}
           <div className="w-full flex flex-col items-center gap-24 lg:w-[45%] lg:items-start">
             <div className="flex flex-col items-center gap-8 w-full lg:w-[80%] lg:items-start">
-              <span className="font-normal text-base text-brand-white font-geistmono">
+              <span className="font-normal text-base text-brand-main font-geistmono">
                 FROM THE GOVERNOR
               </span>
-              <span className="font-medium text-4xl text-center font-geistsans text-brand-white lg:text-left">
+              <span className="font-medium text-4xl text-center font-geistsans text-brand-main lg:text-left">
                 &quot;No matter your origin or language, if you reside on or
                 cherish the Plateau, you&apos;re family to me.&quot;
               </span>
-              <span className="font-normal text-base text-center text-brand-white font-geistsans  w-[90%] lg:w-full lg:text-left">
+              <span className="font-normal text-base text-center text-brand-dark font-geistsans  w-[90%] lg:w-full lg:text-left">
                 Plateau State&apos;s values are not just a badge of honor; they
                 are the cornerstone of our history and our journey ahead. We
                 stand at the forefront of progress, championing bold reforms
@@ -52,10 +53,14 @@ const FromTheGovernor = () => {
             /> */}
             <div className="w-full flex items-center justify-start">
               <div className="w-full flex items-center justify-center lg:w-[334px]">
-                <ButtonDark
+                <ButtonLight
                   text={"Learn More About the Governor"}
                   url={"government/governor"}
                 />
+                {/* <ButtonDark
+                  text={"Learn More About the Governor"}
+                  url={"government/governor"}
+                /> */}
               </div>
               <div className="hidden lg:w-[40%] lg:block"></div>
             </div>
