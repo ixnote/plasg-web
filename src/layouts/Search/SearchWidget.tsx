@@ -9,6 +9,7 @@ function SearchWidget({
   data,
   currentPage,
   handlePageChange,
+  active,
 }: any) {
   const router = useRouter();
 
