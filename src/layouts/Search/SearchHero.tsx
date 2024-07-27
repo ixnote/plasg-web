@@ -280,6 +280,7 @@ function SearchHero() {
       <SearchWidget
         pagination={data?.data?.result?.resources?.pagination}
         data={data?.data?.results[active]}
+        active={active}
         currentPage={currentPage}
         handlePageChange={handlePageChange}
       />
