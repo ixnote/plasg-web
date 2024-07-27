@@ -4,6 +4,7 @@ import SectionHeader from "@/components/SectionHeader";
 import React from "react";
 import Filter from "./Filter";
 import { useGeneralContext } from "../../../../context/GenralContext";
+import ResourceFilter from "./ResourceFilter";
 
 const Page = () => {
   const { resources, oneTopicTag }: any = useGeneralContext();
@@ -34,7 +35,8 @@ const Page = () => {
               "resource"
             }
           />
-          <Filter />
+          {/* <Filter /> */}
+          <ResourceFilter />
         </div>
       </div>
     </>

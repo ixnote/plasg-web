@@ -129,7 +129,7 @@ const GeneralProvider = (props: any) => {
           timeout: 10000,
         }
       );
-      console.log("🚀 ~ allResources ~ response:", response);
+      // console.log("🚀 ~ allResources ~ response:", response);
       setLoadingResource(false);
       setResources(response.data.data);
       setTotalPages(response.data.data.pagination.totalPages); // Assuming the API returns total pages
@@ -236,8 +236,7 @@ const GeneralProvider = (props: any) => {
   };
 
   useEffect(() => {
-    // console.log("Context Tag Switch.");
-    if (typeTagId) allResources();
+    allResources();
   }, [typeTagId]);
 
   useEffect(() => {
