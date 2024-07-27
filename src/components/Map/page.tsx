@@ -43,7 +43,7 @@ const Map = () => {
                         ? `${MapData[selectedID].position}`
                         : " right-[375px] 2xl:right-[400px]"
                     } `
-                  : "map-fx absolute scale-[1] right-[350px] 2xl:right-[400px]"
+                  : "map-fx absolute scale-[1] xl:right-[400px] 2xl:right-[36%]"
               }
             >
               <svg
