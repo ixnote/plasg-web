@@ -9,6 +9,7 @@ const ResourceCard = ({
   mda,
   description,
   updated,
+  created,
 }: any) => {
   const router = useRouter();
   const handleClick = () => {
@@ -35,7 +36,7 @@ const ResourceCard = ({
             {title}
           </div>
           <div className="flex gap-2 items-center font-normal text-sm text-brand-grayish mb-2">
-            <span>Updated {updated}</span>
+            <span>Updated {updated ? updated : created}</span>
             <span>•</span>
             <span>{mda}</span>
           </div>

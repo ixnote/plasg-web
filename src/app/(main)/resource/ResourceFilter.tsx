@@ -152,6 +152,7 @@ const ResourceFilter = () => {
                       url={resource.link}
                       id={resource.id}
                       updated={moment(resource.updatedAt).fromNow()}
+                      created={moment(resource.createdAt).fromNow()}
                     />
                   ))
                 )}

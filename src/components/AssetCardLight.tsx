@@ -12,6 +12,7 @@ const AssetCardLight = ({
   byText,
   description,
   updated,
+  created,
   button1text,
   button2text,
   url,
@@ -50,7 +51,8 @@ const AssetCardLight = ({
           </div>
           {updated && (
             <span className="font-geistmono text-brand-grayish font-light text-sm">
-              {updated}
+              {/* {updated ? updated : created} */}
+              {created}
             </span>
           )}
         </div>

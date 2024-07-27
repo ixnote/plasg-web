@@ -66,7 +66,8 @@ const QuickActions = () => {
                     title={resource.name}
                     description={resource.description}
                     url={resource.link}
-                    id={resource.id}
+                    id={resource._id}
+                    created={moment(resource.createdAt).fromNow()}
                     updated={moment(resource.updatedAt).fromNow()}
                     button1text={"View Topic"}
                   />
