@@ -31,17 +31,11 @@ function SearchHero() {
     if (page) {
       setCurrentPage(page);
     }
-  }, [searchKey]);
+  }, [searchParams]);
 
-  const { data, isLoading, error } = useQuery({
+  const { data } = useQuery({
     queryKey: ["searchResources", name, currentPage, 20],
     queryFn: searchResources,
-    onSuccess: (result: any) => {
-      if (result) {
-        console.log("result :>> ", result);
-        // setCurrentPage(result?.data?.data?.pagination?.currentPage);
-      }
-    },
   });
 
   const [active, setActive] = useState("resources");
