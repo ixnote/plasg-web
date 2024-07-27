@@ -5,9 +5,12 @@ import Link from "next/link";
 import logomark from "@/assets/imgs/layouts/logomark.svg";
 import { useState, useRef, useEffect, MouseEvent } from "react";
 import { useGeneralContext } from "../../../context/GenralContext";
+import { useRouter } from "next/navigation";
 
 const MobileNav = () => {
-  const { topicTags, setTopicTagId, setOneTopicTag }: any = useGeneralContext();
+  const router = useRouter();
+  const { topicTags, setTopicTagId, setOneTopicTag, allResources }: any =
+    useGeneralContext();
   // console.log("🚀 ~ MobileNav ~ topicTags:", topicTags);
 
   const [activeTopicTag, setActiveTopicTag] = useState() as any;
@@ -55,9 +58,11 @@ const MobileNav = () => {
 
   useEffect(() => {
     if (activeTopicTag) {
+      console.log("🚀 ~ useEffect ~ activeTopicTag:", activeTopicTag);
       setTopicTagId(activeTopicTag.id);
       setOneTopicTag(activeTopicTag);
       setIsOpen(!isOpen);
+      router.push("/resource");
     }
   }, [activeTopicTag]);
 

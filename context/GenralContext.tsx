@@ -240,6 +240,10 @@ const GeneralProvider = (props: any) => {
   }, [typeTagId]);
 
   useEffect(() => {
+    allResources();
+  }, [topicTagId]);
+
+  useEffect(() => {
     if (tagTopicName) getResourceByTagTopicName(tagTopicName);
   }, [tagTopicName]);
 

@@ -133,7 +133,7 @@ const ResourceFilter = () => {
         </div>
         {/* right */}
         <div className="w-full text-brand-main font-medium text-[40px] flex items-start font-geistsans leading-[48px] mt-[-5px] lg:w-[80%]">
-          <div className="w-full flex flex-col h-[720px] overflow-y-scroll lg:overflow-hidden lg:h-max">
+          <div className="w-full flex flex-col max-h-[720px] overflow-y-scroll lg:overflow-hidden lg:h-max">
             {/* Cards */}
             {resources?.resources?.length > 0 ? (
               <>
