@@ -39,6 +39,7 @@ function SearchHero() {
   });
 
   const [active, setActive] = useState("resources");
+
   return (
     // <div className="pt-[200px] bg-brand-main p-5">
     //   <span className="max-w-[1500px] mx-auto flex flex-col gap-20">
@@ -114,7 +115,7 @@ function SearchHero() {
 
                 <p className="uppercase font-semibold">RESOURCES</p>
                 <p className="ml-[-16px] text-[10px] font-semibold pb-3">
-                  {data?.data?.results?.resources?.length}
+                  {data?.data?.results?.resources?.resources?.length}
                 </p>
               </div>
               <div
@@ -130,7 +131,7 @@ function SearchHero() {
                 <FaRegNewspaper size={16} />
                 <p className="uppercase font-semibold">news</p>
                 <p className="ml-[-16px] text-[10px] font-semibold pb-3">
-                  {data?.data?.results?.news?.length}
+                  {data?.data?.results?.news?.news?.length}
                 </p>
               </div>
               <div
@@ -146,7 +147,7 @@ function SearchHero() {
                 <BiArch size={16} />
                 <p className="uppercase font-semibold">legislatives </p>
                 <p className="ml-[-16px] text-[10px] font-semibold pb-3">
-                  {data?.data?.results?.legislatives?.length}
+                  {data?.data?.results?.legislatives?.legislatives?.length}
                 </p>
               </div>
               <div
@@ -173,7 +174,7 @@ function SearchHero() {
                 </svg>
                 <p className="uppercase font-semibold">destinations</p>
                 <p className="ml-[-16px] text-[10px] font-semibold pb-3">
-                  {data?.data?.results?.destinations?.length}
+                  {data?.data?.results?.destinations?.destinations?.length}
                 </p>
               </div>
               <div
@@ -212,7 +213,7 @@ function SearchHero() {
 
                 <p className="uppercase font-semibold">mdas</p>
                 <p className="ml-[-16px] text-[10px] font-semibold pb-3">
-                  {data?.data?.results?.mdas?.length}
+                  {data?.data?.results?.mdas?.mdas?.length}
                 </p>
               </div>
               <div
@@ -246,7 +247,7 @@ function SearchHero() {
 
                 <p className="uppercase font-semibold">government</p>
                 <p className="ml-[-16px] text-[10px] font-semibold pb-3">
-                  {data?.data?.results?.government?.length}
+                  {data?.data?.results?.government?.government?.length}
                 </p>
               </div>
             </span>
@@ -272,8 +273,8 @@ function SearchHero() {
         </span>
       </div>
       <SearchWidget
-        pagination={data?.data?.result?.resources?.pagination}
-        data={data?.data?.results[active]}
+        pagination={data?.data?.results[active]?.pagination}
+        data={data?.data?.results[active][active]}
         active={active}
         currentPage={currentPage}
         handlePageChange={handlePageChange}
