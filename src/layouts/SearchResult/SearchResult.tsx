@@ -39,7 +39,6 @@ function SearchResult() {
     enabled: !!id,
   });
 
-  console.log("resource :>> ", resource);
   return (
     // <div className="pt-[200px] p-5">
     //   <span className="max-w-[1200px] mx-auto flex flex-col">
