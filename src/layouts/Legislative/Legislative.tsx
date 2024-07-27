@@ -74,11 +74,13 @@ function Legislative() {
             </span>
           </span>
         </span> */}
-        <span className="grid lg:grid-cols-3 grid-cols-1 gap-5 gap-y-16 my-16">
-          {legislatives?.data?.data?.data?.map((item: any, index: number) => (
-            <LegislatureCard data={item} key={index} />
-          ))}
-        </span>
+        {legislatives?.data?.data?.data?.length > 0 && (
+          <span className="grid lg:grid-cols-3 grid-cols-1 gap-5 gap-y-16 my-16">
+            {legislatives?.data?.data?.data?.map((item: any, index: number) => (
+              <LegislatureCard data={item} key={index} />
+            ))}
+          </span>
+        )}
         <PaginationComponent
           lightMode={true}
           totalPages={legislatives?.data?.data?.pagination?.totalPages}
