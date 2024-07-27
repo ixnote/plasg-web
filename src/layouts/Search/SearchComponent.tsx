@@ -32,7 +32,7 @@ function SearchComponent({ close }: any) {
             placeholder="Looking for something? Start typing..."
             className="w-full flex-grow-0 bg-transparent lg:py-3 py-2 lg:text-[52px] text-[24px] text-white outline-none"
           />
-          <Link href={`/search?name=${name}`} onClick={close}>
+          <Link href={`/search?name=${name}&page=1`} onClick={close}>
             <button className="border border-gray-200 bg-brand-lightYellow text-brand-main lg:w-16 w-12 lg:h-16 h-11 rounded flex justify-center items-center">
               <FiSearch size={32} className="lg:ext-[32px] text-[24px]" />
             </button>

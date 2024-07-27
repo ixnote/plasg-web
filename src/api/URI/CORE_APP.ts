@@ -7,6 +7,7 @@ const CORE_APP = {
     news: `${BASE_URL}/news`,
     resources: `${BASE_URL}/resource`,
     users: `${BASE_URL}/user`,
+    search: `${BASE_URL}/statics/global-search`,
     legislatives: `${BASE_URL}/statics/legislatives`,
     destinations: `${BASE_URL}/statics/destinations`,
   },
