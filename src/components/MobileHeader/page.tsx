@@ -456,6 +456,13 @@ const MobileNav = () => {
           >
             News
           </Link>
+          <Link
+            href="/search"
+            onClick={() => setIsOpen(!isOpen)}
+            className="transition-fx cursor-pointer py-4 w-full font-geistsans font-medium text-2xl text-brand-white border-b-[0.1px] border-b-brand-grayish/10 hover:bg-brand-lightYellow hover:px-4 hover:rounded-lg hover:text-brand-dark"
+          >
+            Search
+          </Link>
         </nav>
       </div>
     </div>
