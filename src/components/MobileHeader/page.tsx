@@ -6,12 +6,15 @@ import logomark from "@/assets/imgs/layouts/logomark.svg";
 import { useState, useRef, useEffect, MouseEvent } from "react";
 import { useGeneralContext } from "../../../context/GenralContext";
 import { useRouter } from "next/navigation";
+import { useDisclosure } from "@mantine/hooks";
+import { Modal } from "@mantine/core";
+import SearchComponent from "@/layouts/Search/SearchComponent";
 
 const MobileNav = () => {
   const router = useRouter();
   const { topicTags, setTopicTagId, setOneTopicTag, allResources }: any =
     useGeneralContext();
-  // console.log("🚀 ~ MobileNav ~ topicTags:", topicTags);
+  const [opened, { open, close }] = useDisclosure(false);
 
   const [activeTopicTag, setActiveTopicTag] = useState() as any;
 
@@ -73,6 +76,16 @@ const MobileNav = () => {
         isOpen ? "rounded-t-lg" : "rounded-lg"
       }`}
     >
+      <Modal
+        fullScreen
+        bg={"#0E3E40"}
+        className="bg-brand-main"
+        opened={opened}
+        onClose={close}
+        withCloseButton={false}
+      >
+        <SearchComponent close={close} />
+      </Modal>
       <div className="flex items-center justify-between w-full">
         <Link href="/">
           <Image src={logomark} alt="LOGO" />
@@ -458,7 +471,8 @@ const MobileNav = () => {
           </Link>
           <Link
             href="/search"
-            onClick={() => setIsOpen(!isOpen)}
+            // onClick={() => setIsOpen(!isOpen)}
+            onClick={open}
             className="transition-fx cursor-pointer py-4 w-full font-geistsans font-medium text-2xl text-brand-white border-b-[0.1px] border-b-brand-grayish/10 hover:bg-brand-lightYellow hover:px-4 hover:rounded-lg hover:text-brand-dark"
           >
             Search
