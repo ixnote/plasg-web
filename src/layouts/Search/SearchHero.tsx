@@ -22,7 +22,7 @@ function SearchHero() {
     { name: "article", value: "articles" },
     { name: "legislative", value: "legislatives" },
     { name: "destination", value: "destinations" },
-    { name: "government", value: "governments" },
+    { name: "government", value: "government" },
     { name: "mdas", value: "mdas" },
     { name: "news", value: "news" },
   ];
@@ -49,7 +49,7 @@ function SearchHero() {
   }, [searchParams]);
 
   const { data } = useQuery({
-    queryKey: ["searchResources", name, currentPage, 20],
+    queryKey: ["searchResources", name, currentPage, 20, ""],
     queryFn: searchResources,
   });
 
@@ -70,8 +70,20 @@ function SearchHero() {
     return [];
   }, [page, active, data]);
 
-  console.log("elements :>> ", data);
+  const handleRoute = (value: any) => {
+    if (value?.main_type_tag.name === "resources") {
+      window.open(`${value?.link}`, "_blank", "noopener,noreferrer");
+    } else if (value?.main_type_tag.name === "mdas") {
+      router.push(`/mda/${value?.slug}`);
+    } else if (value?.main_type_tag.name === "news") {
+      router.push(`/news/${value?.id}`);
+    } else if (value?.type === "landmark") {
+      router.push(`/tourism`);
+    }
+  };
 
+  console.log("elements :>> ", elements);
+  console.log("data :>> ", data);
   return (
     // <div className="pt-[200px] bg-brand-main p-5">
     //   <span className="max-w-[1500px] mx-auto flex flex-col gap-20">
@@ -354,6 +366,13 @@ function SearchHero() {
             </span>
           </span>
           <span className="lg:col-span-10 col-span-12 flex flex-col gap-8">
+            {elements?.length < 1 && (
+              <span className="flex w-full justify-center items-center text-white">
+                <p className="capitalize text-[32px]">
+                  No Available Result for {name} in {active?.name}
+                </p>
+              </span>
+            )}
             {elements?.map((item: any, index: number) => (
               <span
                 key={index}
@@ -364,7 +383,13 @@ function SearchHero() {
                     {item?.type ? item?.type : item?.main_type_tag?.name}
                   </p>
                 </span>
-                <span className="lg:col-span-8 col-span-10 flex flex-col gap-4">
+                <span
+                  className={cn(
+                    "lg:col-span-8 col-span-10 flex flex-col gap-4 cursor-pointer",
+                    { "cursor-default": item.type === "legislative" }
+                  )}
+                  onClick={() => handleRoute(item)}
+                >
                   <h3 className="text-[22px] text-white font-medium">
                     {item?.name}
                   </h3>
