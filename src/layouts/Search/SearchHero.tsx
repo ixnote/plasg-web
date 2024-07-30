@@ -14,6 +14,18 @@ function SearchHero() {
   const { name, setName }: any = useGeneralContext();
   const router = useRouter();
 
+  const tabs = [
+    { name: "show all", value: "showAll" },
+    { name: "article", value: "articles" },
+    { name: "legislative", value: "legislatives" },
+    { name: "destination", value: "destinations" },
+    { name: "government", value: "governments" },
+    { name: "mdas", value: "mdas" },
+    { name: "news", value: "news" },
+  ];
+  const [active, setActive] = useState(tabs[0]);
+  const [sort, setSort] = useState("newest");
+
   const searchParams = useSearchParams();
   const searchKey = searchParams.get("name");
   const page = searchParams.get("page");
@@ -38,7 +50,7 @@ function SearchHero() {
     queryFn: searchResources,
   });
 
-  const [active, setActive] = useState("resources");
+  console.log("data :>> ", data);
 
   return (
     // <div className="pt-[200px] bg-brand-main p-5">
@@ -60,19 +72,12 @@ function SearchHero() {
               >
                 Search
               </p>
-              {/* /
-            <p
-              className="transition-fx cursor-pointer hover:text-brand-secondary"
-              onClick={() => router.push(`/search`)}
-            >
-              SEARCH RESULTS
-            </p> */}
             </span>
             <p className="lg:text-[52px] text-[40px] text-white font-medium max-w-[800px] lg:leading-[56px] leading-[44px]">
               Results Found for "{name}"
             </p>
           </span>
-          <span className="flex justify-between w-full gap-5 flex-wrap">
+          {/* <span className="flex justify-between w-full gap-5 flex-wrap">
             <span className="flex gap-2 flex-wrap">
               <div
                 className={cn(
@@ -269,16 +274,68 @@ function SearchHero() {
               <p className="uppercase font-semibold">FILTER</p>
               <p className="ml-[-16px] text-[10px] font-semibold pb-3">32</p>
             </div>
-          </span>
+          </span> */}
         </span>
       </div>
-      <SearchWidget
-        pagination={data?.data?.results[active]?.pagination}
-        data={data?.data?.results[active][active]}
-        active={active}
-        currentPage={currentPage}
-        handlePageChange={handlePageChange}
-      />
+      <div className="bg-brand-main">
+        <div className="max-w-[1540px] mx-auto grid grid-cols-12">
+          <span className="lg:col-span-2 col-span-12 flex flex-col gap-10">
+            <span className="flex flex-col gap-3 ">
+              <p className="text-gray-300 font-light text-[16px]">FILTER BY:</p>
+              {tabs.map((item, index) => (
+                <span
+                  key={index}
+                  className={cn("cursor-pointer  text-white", {
+                    "border-b-[3px] border-b-white w-fit":
+                      active.value === item.value,
+                  })}
+                  onClick={() => setActive(item)}
+                >
+                  <p
+                    className={cn("text-[20px] font-normal capitalize", {
+                      "font-semibold": active.value === item.value,
+                    })}
+                  >
+                    {item?.name}
+                  </p>
+                </span>
+              ))}
+            </span>
+            <span className="flex flex-col gap-3 ">
+              <p className="text-gray-300 font-light text-[16px]">SORT BY:</p>
+              {["newest", "oldest"].map((item, index) => (
+                <span
+                  key={index}
+                  className={cn("cursor-pointer  text-white", {
+                    "border-b-[3px] border-b-white w-fit": sort === item,
+                  })}
+                  onClick={() => setSort(item)}
+                >
+                  <p
+                    className={cn("text-[20px] font-normal capitalize", {
+                      "font-semibold": sort === item,
+                    })}
+                  >
+                    {item}
+                  </p>
+                </span>
+              ))}
+            </span>
+          </span>
+          <span className="lg:selection:col-span-10 grid lg:grid-cols-10 col-span-12">
+            <span></span>
+          </span>
+        </div>
+      </div>
+      {data?.data?.results[active.value]?.data && (
+        <SearchWidget
+          pagination={data?.data?.results[active.value]?.pagination}
+          data={data?.data?.results[active.value].data}
+          active={active}
+          currentPage={currentPage}
+          handlePageChange={handlePageChange}
+        />
+      )}
     </>
   );
 }
