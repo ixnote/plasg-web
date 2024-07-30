@@ -15,9 +15,18 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 const Page = ({ params }: { params: { slug: string } }) => {
-  const { allResources, resources, setOneMda, setMdaSlug }: any =
-    useGeneralContext();
-  console.log("🚀 ~ Page ~ resources:", resources);
+  const {
+    allResources,
+    resources,
+    setOneMda,
+    setMdaSlug,
+    mdaNews,
+    totalPages,
+    activePage,
+    setActivePage,
+    getMdaNews,
+  }: any = useGeneralContext();
+  console.log("🚀 ~ Page ~ mdaNews:", mdaNews);
 
   const {
     data: mda,
@@ -29,6 +38,28 @@ const Page = ({ params }: { params: { slug: string } }) => {
     enabled: !!params?.slug,
   });
   console.log("🚀 ~ Mdas ~ mda:", mda);
+
+  // PAGINATION
+  const handlePageChange = (page: number) => {
+    setActivePage(page);
+  };
+
+  const handleNextPage = () => {
+    // setActivePage(activePage + 1);
+    if (activePage < totalPages) {
+      setActivePage(activePage + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (activePage > 1) {
+      setActivePage(activePage - 1);
+    }
+  };
+
+  useEffect(() => {
+    getMdaNews(activePage);
+  }, [activePage]);
 
   useEffect(() => {
     if (params?.slug) {
@@ -129,7 +160,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
                 </div>
                 <ButtonLight
                   text={"See All Services"}
-                  url={`/mda/${params?.slug}/library`}
+                  url={`mda/${params?.slug}/library`}
                 />
               </div>
             </div>
@@ -157,7 +188,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
                 {/* content */}
                 <div className="flex items-center justify-between flex-wrap gap-4 w-full m-auto">
                   {/* Cards */}
-                  {newsList.map((item) => (
+                  {/* {newsList.map((item) => (
                     <Cards
                       key={item.id}
                       newsDate={item.date}
@@ -165,12 +196,100 @@ const Page = ({ params }: { params: { slug: string } }) => {
                       topic={item.topic}
                       text={item.text}
                     />
-                  ))}
+                  ))} */}
+                  {mdaNews?.length > 0 ? (
+                    mdaNews?.map((item: any, i: number) => (
+                      <Cards
+                        key={i}
+                        newsDate={moment(item?.createdAt).format(
+                          "Do MMMM YYYY"
+                        )}
+                        image={item?.image}
+                        topic={item?.headline}
+                        text={""}
+                      />
+                    ))
+                  ) : (
+                    <>
+                      <div className="mx-auto p-4 bg-brand-secondary/40 rounded-lg text-base font-semibold font-geistsans lg:mt-8">
+                        No Available News.
+                      </div>
+                    </>
+                  )}
                 </div>
-                <ButtonLight
+                {/* <ButtonLight
                   text={"See More"}
-                  url={`/mda/${params?.slug}/library`}
-                />
+                  url={`mda/${params?.slug}/library`}
+                /> */}
+                {/* bottom */}
+                <div className="w-full flex items-center justify-center lg:justify-end">
+                  <div className="flex items-center gap-4">
+                    {/* left arrow */}
+                    <div
+                      className={`cursor-pointer flex items-center ${
+                        activePage === 1 ? "opacity-50 cursor-not-allowed" : ""
+                      }`}
+                      onClick={handlePreviousPage}
+                    >
+                      <svg
+                        width="10"
+                        height="18"
+                        viewBox="0 0 10 18"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M9 17L5 13L1 9L9 1"
+                          stroke="#0E3E40"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </div>
+                    {/* numbers */}
+                    <div className="flex items-center gap-4">
+                      {[...Array(totalPages)].map((_, index) => (
+                        <span
+                          key={index}
+                          className={
+                            activePage === index + 1
+                              ? "transition-fx cursor-pointer flex items-center justify-center p-2 w-[40px] h-[36px] rounded-lg text-white font-geistsans font-normal text-sm bg-brand-main"
+                              : "transition-fx cursor-pointer flex items-center justify-center p-2 w-[40px] h-[36px] rounded-lg text-brand-main font-geistsans font-normal text-sm hover:bg-brand-main hover:text-brand-white"
+                          }
+                          onClick={() => handlePageChange(index + 1)}
+                        >
+                          {index + 1}
+                        </span>
+                      ))}
+                    </div>
+                    {/* right arrow */}
+                    <div
+                      className={`cursor-pointer flex items-center ${
+                        activePage === totalPages
+                          ? "opacity-50 cursor-not-allowed"
+                          : ""
+                      }`}
+                      onClick={handleNextPage}
+                    >
+                      <svg
+                        width="10"
+                        height="18"
+                        viewBox="0 0 10 18"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M1 1L5 5L9 9L1 17"
+                          stroke="#0E3E40"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

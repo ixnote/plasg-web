@@ -30,6 +30,7 @@ const GeneralProvider = (props: any) => {
   // MDA
   const [mdaSlug, setMdaSlug] = useState("");
   const [oneMda, setOneMda] = useState() as any;
+  const [mdaNews, setMdaNews] = useState() as any;
 
   //*******/
   //************/
@@ -129,7 +130,7 @@ const GeneralProvider = (props: any) => {
           timeout: 10000,
         }
       );
-      console.log("🚀 ~ allResources ~ response:", response.data.data);
+      // console.log("🚀 ~ allResources ~ response:", response.data.data);
       setLoadingResource(false);
       setResources(response.data.data);
       setTotalPages(response.data.data.pagination.totalPages); // Assuming the API returns total pages
@@ -211,6 +212,34 @@ const GeneralProvider = (props: any) => {
 
   //*******/
   //************/
+  // MDAs
+  //************/
+  //*******/
+  const getMdaNews = async (page = 1) => {
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/news/articles/${oneMda?.id}/?page=${page}&pageSize=10`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          timeout: 10000,
+        }
+      );
+      // console.log("🚀 ~ getMdaNews ~ response:", response.data.data);
+      // console.log("🚀 ~ getHomeResources ~ response:", response.data.data);
+      // const firstFourResources = response.data.data.resources.slice(0, 4);
+      // return setHomeResources(firstFourResources);
+      setMdaNews(response.data.data.news);
+      setTotalPages(response.data.data.pagination.totalPages);
+    } catch (error: any) {
+      setLoadingResource(false);
+      console.log("🚀 ~ getHomeResources ~ error:", error.message);
+    }
+  };
+
+  //*******/
+  //************/
   // STATIC
   //************/
   //*******/
@@ -235,17 +264,13 @@ const GeneralProvider = (props: any) => {
     }
   };
 
-  // useEffect(() => {
-  //   allResources();
-  // }, [typeTagId]);
-
   useEffect(() => {
     allResources();
   }, [typeTagId, topicTagId, oneMda]);
 
-  // useEffect(() => {
-  //   allResources();
-  // }, [oneMda]);
+  useEffect(() => {
+    if (oneMda) getMdaNews();
+  }, [oneMda]);
 
   useEffect(() => {
     if (tagTopicName) getResourceByTagTopicName(tagTopicName);
@@ -311,8 +336,11 @@ const GeneralProvider = (props: any) => {
 
         // MDA
         oneMda,
+        mdaNews,
         mdaSlug,
         setOneMda,
+        getMdaNews,
+        setMdaNews,
         setMdaSlug,
       }}
     >
