@@ -13,7 +13,7 @@ const Nav = () => {
         <div className="navs h-[40px] w-full bg-[#0E3E40] flex justify-end items-center py-2 px-[40px]">
           <p>
             <a
-              href="https://plateaustate.gov.ng"
+              href="/"
               className="text-brand-white hover:text-brand-lightYellow "
             >
               Go to plateaustate.gov.ng

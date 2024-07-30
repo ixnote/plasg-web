@@ -1,4 +1,10 @@
+"use client";
+
+import SectionHeader from "@/components/SectionHeader";
 import React from "react";
+import { useGeneralContext } from "../../../../../context/GenralContext";
+import ResourceFilter from "@/components/Resources/ResourceFilter";
+
 import Nav from "../nav";
 import Image from "next/image";
 import AssetCardLight from "@/components/AssetCardLight";
@@ -7,6 +13,8 @@ import Footer from "@/layouts/Footer";
 import Filter from "../libraryFilter";
 
 const Library = () => {
+  const { resources, oneTopicTag }: any = useGeneralContext();
+
   return (
     <>
       <div className="w-full mx-auto bg-brand-white 2xl:max-w-7xl">
@@ -27,7 +35,8 @@ const Library = () => {
             </div>
           </div>
         </div>
-        <div className="">
+        <ResourceFilter />
+        {/* <div className="">
           <div className="h-[3670] pb-48 w-[92%] mx-auto ">
             <Filter />
             <div className="w-[1160px] mx-auto">
@@ -53,7 +62,7 @@ const Library = () => {
           <div>
             <Footer />
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

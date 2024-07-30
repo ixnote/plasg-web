@@ -36,11 +36,11 @@ const ResourceCard = ({
             {title}
           </div>
           <div className="flex gap-2 items-center font-normal text-sm text-brand-grayish mb-2">
-            <span>Updated {updated ? updated : created}</span>
+            <span>{updated ? updated : created}</span>
             <span>•</span>
             <span>{mda}</span>
           </div>
-          <span className="font-normal text-lg text-brand-grayish max-h-[135px] overflow-y-hidden lg:max-h-[90px]">
+          <span className="font-normal text-lg text-brand-dark/70 max-h-[135px] overflow-y-hidden lg:max-h-[90px]">
             {description.length > 400
               ? description.substring(0, 400) + ". . ."
               : description}

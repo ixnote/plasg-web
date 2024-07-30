@@ -5,7 +5,13 @@ const nextConfig = {
     styledComponents: true,
   },
   images: {
-    domains: ["res.cloudinary.com", "www.thecable.ng", "localhost"],
+    domains: [
+      "res.cloudinary.com",
+      "www.thecable.ng",
+      "localhost",
+      "cdn.pixabay.com",
+      "*",
+    ],
   },
   webpack: (config, { isServer }) => {
     config.module.rules.push({

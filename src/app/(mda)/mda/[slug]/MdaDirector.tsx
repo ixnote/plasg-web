@@ -5,9 +5,9 @@ import React from "react";
 const MdaDirector = ({ slug, director }: any) => {
   //   console.log("🚀 ~ MdaDirector ~ director:", director);
   return (
-    <div className="min-h-screen flex items-center justify-center py-24  bg-brand-white">
+    <div className="w-full min-h-screen flex items-center justify-center py-24  bg-brand-white">
       {/* content */}
-      <div className="flex items-center justify-between flex-col gap-8 md:justi-start lg:flex-row lg:gap-4 lg:items-center">
+      <div className="w-full flex items-center justify-between flex-col gap-8 md:justi-start lg:flex-row lg:gap-4 lg:items-center">
         {/* left */}
         <div className="w-full flex flex-col items-center gap-16 lg:w-[40%] lg:items-start lg:ml-24">
           <div className="flex flex-col items-center gap-10 w-full lg:w-[80%] lg:items-start">

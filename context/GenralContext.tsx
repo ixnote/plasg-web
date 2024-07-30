@@ -29,7 +29,7 @@ const GeneralProvider = (props: any) => {
 
   // MDA
   const [mdaSlug, setMdaSlug] = useState("");
-  const [oneMda, setOneMda] = useState();
+  const [oneMda, setOneMda] = useState() as any;
 
   //*******/
   //************/
@@ -121,7 +121,7 @@ const GeneralProvider = (props: any) => {
           topicTagId ? `&main_topic_tag=${topicTagId}` : ""
         }${topicSubTagId ? `&all_topic_tag=${topicSubTagId}` : ""}${
           typeTagId ? `&main_type_tag=${typeTagId}` : ""
-        }`,
+        }${oneMda?.id ? `&mdaId=${oneMda?.id}` : ""}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -129,7 +129,7 @@ const GeneralProvider = (props: any) => {
           timeout: 10000,
         }
       );
-      // console.log("🚀 ~ allResources ~ response:", response);
+      console.log("🚀 ~ allResources ~ response:", response.data.data);
       setLoadingResource(false);
       setResources(response.data.data);
       setTotalPages(response.data.data.pagination.totalPages); // Assuming the API returns total pages
@@ -235,13 +235,17 @@ const GeneralProvider = (props: any) => {
     }
   };
 
-  useEffect(() => {
-    allResources();
-  }, [typeTagId]);
+  // useEffect(() => {
+  //   allResources();
+  // }, [typeTagId]);
 
   useEffect(() => {
     allResources();
-  }, [topicTagId]);
+  }, [typeTagId, topicTagId, oneMda]);
+
+  // useEffect(() => {
+  //   allResources();
+  // }, [oneMda]);
 
   useEffect(() => {
     if (tagTopicName) getResourceByTagTopicName(tagTopicName);

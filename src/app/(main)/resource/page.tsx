@@ -4,7 +4,7 @@ import SectionHeader from "@/components/SectionHeader";
 import React from "react";
 import Filter from "./Filter";
 import { useGeneralContext } from "../../../../context/GenralContext";
-import ResourceFilter from "./ResourceFilter";
+import ResourceFilter from "@/components/Resources/ResourceFilter";
 
 const Page = () => {
   const { resources, oneTopicTag }: any = useGeneralContext();

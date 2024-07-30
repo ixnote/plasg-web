@@ -70,6 +70,7 @@ const QuickActions = () => {
                     created={moment(resource.createdAt).fromNow()}
                     updated={moment(resource.updatedAt).fromNow()}
                     button1text={"View Topic"}
+                    byText={resource.mda?.name}
                   />
                 ))
               ) : (

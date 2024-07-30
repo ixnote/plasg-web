@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useGeneralContext } from "../../../../context/GenralContext";
-import ResourceCard from "@/components/ResourceCard";
+import { useGeneralContext } from "../../../context/GenralContext";
+import ResourceCard from "@/components/Resources/ResourceCard";
 import moment from "moment";
 import { Loader } from "@mantine/core";
 
@@ -133,7 +133,7 @@ const ResourceFilter = () => {
         </div>
         {/* right */}
         <div className="w-full text-brand-main font-medium text-[40px] flex items-start font-geistsans leading-[48px] mt-[-5px] lg:w-[80%]">
-          <div className="w-full flex flex-col max-h-[720px] overflow-y-scroll lg:overflow-hidden lg:h-max">
+          <div className="w-full flex flex-col max-h-[720px] overflow-y-scroll lg:overflow-hidden lg:h-max lg:max-h-max">
             {/* Cards */}
             {resources?.resources?.length > 0 ? (
               <>
@@ -145,14 +145,14 @@ const ResourceFilter = () => {
                   resources.resources.map((resource: any, i: number) => (
                     <ResourceCard
                       key={i}
-                      mda={"Ministry of Agriculture"}
-                      type={resource.main_topic_tag.name}
-                      title={resource.name}
-                      description={resource.description}
-                      url={resource.link}
-                      id={resource.id}
-                      updated={moment(resource.updatedAt).fromNow()}
-                      created={moment(resource.createdAt).fromNow()}
+                      mda={resource?.mda?.name}
+                      type={resource?.main_topic_tag?.name}
+                      title={resource?.name}
+                      description={resource?.description}
+                      url={resource?.link}
+                      id={resource?.id}
+                      updated={moment(resource?.updatedAt).fromNow()}
+                      created={moment(resource?.createdAt).fromNow()}
                     />
                   ))
                 )}
