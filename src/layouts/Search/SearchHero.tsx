@@ -10,6 +10,8 @@ import { FaRegNewspaper } from "react-icons/fa6";
 import { BiArch } from "react-icons/bi";
 import { cn } from "@/utils";
 import { formatDate } from "@/utils/formatDate";
+import { ScrollArea } from "@mantine/core";
+import PaginationComponent from "@/components/Pagination";
 
 function SearchHero() {
   const { name, setName }: any = useGeneralContext();
@@ -51,17 +53,24 @@ function SearchHero() {
     queryFn: searchResources,
   });
 
+  const [totalPages, setTotalPages] = useState(1);
   const elements = useMemo(() => {
-    console.log("data :>> ", data);
     if (data) {
       const newData = data?.data?.results[active.value]?.data;
-      console.log("newData :>> ", newData);
+
+      if (active.value === "showAll") {
+        setTotalPages(data?.data?.results["articles"]?.pagination?.totalPages);
+      } else if (active.value) {
+        setTotalPages(
+          data?.data?.results[active.value]?.pagination?.totalPages
+        );
+      }
       return newData;
     }
     return [];
   }, [page, active, data]);
 
-  console.log("elements :>> ", elements);
+  console.log("elements :>> ", data);
 
   return (
     // <div className="pt-[200px] bg-brand-main p-5">
@@ -288,78 +297,104 @@ function SearchHero() {
           </span> */}
         </span>
       </div>
-      <div className="bg-brand-main">
+      <div className="bg-brand-main p-6">
         <div className="max-w-[1540px] mx-auto grid grid-cols-12 gap-8">
           <span className="lg:col-span-2 col-span-12 flex flex-col gap-10">
             <span className="flex flex-col gap-3 ">
-              <p className="text-gray-300 font-light text-[16px]">FILTER BY:</p>
-              {tabs.map((item, index) => (
-                <span
-                  key={index}
-                  className={cn("cursor-pointer  text-white", {
-                    "border-b-[3px] border-b-white w-fit":
-                      active.value === item.value,
-                  })}
-                  onClick={() => setActive(item)}
-                >
-                  <p
-                    className={cn("text-[20px] font-normal capitalize", {
-                      "font-semibold": active.value === item.value,
-                    })}
-                  >
-                    {item?.name}
-                  </p>
+              <p className="text-gray-300 font-light text-[16px] whitespace-nowrap">
+                FILTER BY:
+              </p>
+              <ScrollArea>
+                <span className="flex lg:flex-col flex-row gap-4">
+                  {tabs.map((item, index) => (
+                    <span
+                      key={index}
+                      className={cn("cursor-pointer text-gray-300 ", {
+                        "border-b-[3px] border-b-white w-fit text-white":
+                          active.value === item.value,
+                      })}
+                      onClick={() => setActive(item)}
+                    >
+                      <p
+                        className={cn(
+                          "text-[20px] font-normal capitalize whitespace-nowrap",
+                          {
+                            "font-semibold": active.value === item.value,
+                          }
+                        )}
+                      >
+                        {item?.name}
+                      </p>
+                    </span>
+                  ))}
                 </span>
-              ))}
+              </ScrollArea>
             </span>
             <span className="flex flex-col gap-3 ">
               <p className="text-gray-300 font-light text-[16px]">SORT BY:</p>
-              {["newest", "oldest"].map((item, index) => (
-                <span
-                  key={index}
-                  className={cn("cursor-pointer  text-white", {
-                    "border-b-[3px] border-b-white w-fit": sort === item,
-                  })}
-                  onClick={() => setSort(item)}
-                >
-                  <p
-                    className={cn("text-[20px] font-normal capitalize", {
-                      "font-semibold": sort === item,
+              <span className="flex gap-4  lg:flex-col flow-row">
+                {["newest", "oldest"].map((item, index) => (
+                  <span
+                    key={index}
+                    className={cn("cursor-pointer  text-white", {
+                      "border-b-[3px] border-b-white w-fit": sort === item,
                     })}
+                    onClick={() => setSort(item)}
                   >
-                    {item}
-                  </p>
-                </span>
-              ))}
+                    <p
+                      className={cn("text-[20px] font-normal capitalize", {
+                        "font-semibold": sort === item,
+                      })}
+                    >
+                      {item}
+                    </p>
+                  </span>
+                ))}
+              </span>
             </span>
           </span>
-          <span className="lg:selection:col-span-10 grid lg:grid-cols-10 col-span-12">
+          <span className="lg:col-span-10 col-span-12 flex flex-col gap-8">
             {elements?.map((item: any, index: number) => (
-              <span key={index} className="grid grid-cols-10 gap-6">
-                <span className="col-span-2">
-                  <p className="text-gray-300 font-light text-[16px]">
-                    {item?.type}
+              <span
+                key={index}
+                className="grid grid-cols-10 gap-6 pb-8 border-b border-b-gray-500"
+              >
+                <span className="lg:col-span-2 col-span-10">
+                  <p className="text-gray-300 font-light text-[16px] uppercase">
+                    {item?.type ? item?.type : item?.main_type_tag?.name}
                   </p>
                 </span>
-                <span className="col-span-8 ">
+                <span className="lg:col-span-8 col-span-10 flex flex-col gap-4">
                   <h3 className="text-[22px] text-white font-medium">
                     {item?.name}
                   </h3>
                   <span className="flex items-center gap-5">
-                    <p className="text-[14px] font-light group-hover:text-[#6B7280]">
+                    <p className="text-[12px] font-light text-gray-400">
                       Updated {formatDate(item?.updatedAt)}
                     </p>
-                    <p className="text-[14px] font-normal group-hover:text-[#6B7280] m-0">
+                    <p className="text-[12px] font-normal text-gray-400 m-0">
                       {item?.name}
                     </p>
                   </span>
+                  <h3 className="text-[16px] text-white font-light">
+                    {item?.description
+                      ? item?.description
+                      : item?.about?.description}
+                  </h3>
                 </span>
               </span>
             ))}
           </span>
         </div>
+        <span className="py-10 flex">
+          <PaginationComponent
+            totalPages={totalPages}
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+          />
+        </span>
       </div>
-      {data?.data?.results[active.value]?.data && (
+      {/* {data?.data?.results[active.value]?.data && (
         <SearchWidget
           pagination={data?.data?.results[active.value]?.pagination}
           data={data?.data?.results[active.value].data}
@@ -367,7 +402,7 @@ function SearchHero() {
           currentPage={currentPage}
           handlePageChange={handlePageChange}
         />
-      )}
+      )} */}
     </>
   );
 }
