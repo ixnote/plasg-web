@@ -5,15 +5,19 @@ const handleParams = (paramsPayload: any) => {
   if (!paramsPayload.name) {
     delete paramsPayload.name;
   }
+  if (!paramsPayload.sort) {
+    delete paramsPayload.sort;
+  }
   return paramsPayload;
 };
 
 export const searchResources = async ({ queryKey }: any) => {
-  const [_, name, currentPage, pageSize] = queryKey;
+  const [_, name, currentPage, pageSize, sort] = queryKey;
   const params = {
     page: currentPage,
     name: name,
     pageSize: pageSize,
+    sort: sort,
   };
 
   console.log("name :>> ", name);

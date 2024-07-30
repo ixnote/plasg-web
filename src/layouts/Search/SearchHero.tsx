@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { GoHome } from "react-icons/go";
 import { useGeneralContext } from "../../../context/GenralContext";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -9,10 +9,25 @@ import SearchWidget from "./SearchWidget";
 import { FaRegNewspaper } from "react-icons/fa6";
 import { BiArch } from "react-icons/bi";
 import { cn } from "@/utils";
+import { formatDate } from "@/utils/formatDate";
+import { ScrollArea } from "@mantine/core";
+import PaginationComponent from "@/components/Pagination";
 
 function SearchHero() {
   const { name, setName }: any = useGeneralContext();
   const router = useRouter();
+
+  const tabs = [
+    { name: "show all", value: "showAll" },
+    { name: "article", value: "articles" },
+    { name: "legislative", value: "legislatives" },
+    { name: "destination", value: "destinations" },
+    { name: "government", value: "government" },
+    { name: "mdas", value: "mdas" },
+    { name: "news", value: "news" },
+  ];
+  const [active, setActive] = useState(tabs[0]);
+  const [sort, setSort] = useState("newest");
 
   const searchParams = useSearchParams();
   const searchKey = searchParams.get("name");
@@ -34,12 +49,41 @@ function SearchHero() {
   }, [searchParams]);
 
   const { data } = useQuery({
-    queryKey: ["searchResources", name, currentPage, 20],
+    queryKey: ["searchResources", name, currentPage, 20, ""],
     queryFn: searchResources,
   });
 
-  const [active, setActive] = useState("resources");
+  const [totalPages, setTotalPages] = useState(1);
+  const elements = useMemo(() => {
+    if (data) {
+      const newData = data?.data?.results[active.value]?.data;
 
+      if (active.value === "showAll") {
+        setTotalPages(data?.data?.results["articles"]?.pagination?.totalPages);
+      } else if (active.value) {
+        setTotalPages(
+          data?.data?.results[active.value]?.pagination?.totalPages
+        );
+      }
+      return newData;
+    }
+    return [];
+  }, [page, active, data]);
+
+  const handleRoute = (value: any) => {
+    if (value?.main_type_tag.name === "resources") {
+      window.open(`${value?.link}`, "_blank", "noopener,noreferrer");
+    } else if (value?.main_type_tag.name === "mdas") {
+      router.push(`/mda/${value?.slug}`);
+    } else if (value?.main_type_tag.name === "news") {
+      router.push(`/news/${value?.id}`);
+    } else if (value?.type === "landmark") {
+      router.push(`/tourism`);
+    }
+  };
+
+  console.log("elements :>> ", elements);
+  console.log("data :>> ", data);
   return (
     // <div className="pt-[200px] bg-brand-main p-5">
     //   <span className="max-w-[1500px] mx-auto flex flex-col gap-20">
@@ -60,19 +104,12 @@ function SearchHero() {
               >
                 Search
               </p>
-              {/* /
-            <p
-              className="transition-fx cursor-pointer hover:text-brand-secondary"
-              onClick={() => router.push(`/search`)}
-            >
-              SEARCH RESULTS
-            </p> */}
             </span>
             <p className="lg:text-[52px] text-[40px] text-white font-medium max-w-[800px] lg:leading-[56px] leading-[44px]">
               Results Found for "{name}"
             </p>
           </span>
-          <span className="flex justify-between w-full gap-5 flex-wrap">
+          {/* <span className="flex justify-between w-full gap-5 flex-wrap">
             <span className="flex gap-2 flex-wrap">
               <div
                 className={cn(
@@ -269,16 +306,128 @@ function SearchHero() {
               <p className="uppercase font-semibold">FILTER</p>
               <p className="ml-[-16px] text-[10px] font-semibold pb-3">32</p>
             </div>
-          </span>
+          </span> */}
         </span>
       </div>
-      <SearchWidget
-        pagination={data?.data?.results[active]?.pagination}
-        data={data?.data?.results[active][active]}
-        active={active}
-        currentPage={currentPage}
-        handlePageChange={handlePageChange}
-      />
+      <div className="bg-brand-main p-6">
+        <div className="max-w-[1540px] mx-auto grid grid-cols-12 gap-8">
+          <span className="lg:col-span-2 col-span-12 flex flex-col gap-10">
+            <span className="flex flex-col gap-3 ">
+              <p className="text-gray-300 font-light text-[16px] whitespace-nowrap">
+                FILTER BY:
+              </p>
+              <ScrollArea>
+                <span className="flex lg:flex-col flex-row gap-4">
+                  {tabs.map((item, index) => (
+                    <span
+                      key={index}
+                      className={cn("cursor-pointer text-gray-300 ", {
+                        "border-b-[3px] border-b-white w-fit text-white":
+                          active.value === item.value,
+                      })}
+                      onClick={() => setActive(item)}
+                    >
+                      <p
+                        className={cn(
+                          "text-[20px] font-normal capitalize whitespace-nowrap",
+                          {
+                            "font-semibold": active.value === item.value,
+                          }
+                        )}
+                      >
+                        {item?.name}
+                      </p>
+                    </span>
+                  ))}
+                </span>
+              </ScrollArea>
+            </span>
+            <span className="flex flex-col gap-3 ">
+              <p className="text-gray-300 font-light text-[16px]">SORT BY:</p>
+              <span className="flex gap-4  lg:flex-col flow-row">
+                {["newest", "oldest"].map((item, index) => (
+                  <span
+                    key={index}
+                    className={cn("cursor-pointer  text-white", {
+                      "border-b-[3px] border-b-white w-fit": sort === item,
+                    })}
+                    onClick={() => setSort(item)}
+                  >
+                    <p
+                      className={cn("text-[20px] font-normal capitalize", {
+                        "font-semibold": sort === item,
+                      })}
+                    >
+                      {item}
+                    </p>
+                  </span>
+                ))}
+              </span>
+            </span>
+          </span>
+          <span className="lg:col-span-10 col-span-12 flex flex-col gap-8">
+            {elements?.length < 1 && (
+              <span className="flex w-full justify-center items-center text-white">
+                <p className="capitalize text-[32px]">
+                  No Available Result for {name} in {active?.name}
+                </p>
+              </span>
+            )}
+            {elements?.map((item: any, index: number) => (
+              <span
+                key={index}
+                className="grid grid-cols-10 gap-6 pb-8 border-b border-b-gray-500"
+              >
+                <span className="lg:col-span-2 col-span-10">
+                  <p className="text-gray-300 font-light text-[16px] uppercase">
+                    {item?.type ? item?.type : item?.main_type_tag?.name}
+                  </p>
+                </span>
+                <span
+                  className={cn(
+                    "lg:col-span-8 col-span-10 flex flex-col gap-4 cursor-pointer",
+                    { "cursor-default": item.type === "legislative" }
+                  )}
+                  onClick={() => handleRoute(item)}
+                >
+                  <h3 className="text-[22px] text-white font-medium">
+                    {item?.name}
+                  </h3>
+                  <span className="flex items-center gap-5">
+                    <p className="text-[12px] font-light text-gray-400">
+                      Updated {formatDate(item?.updatedAt)}
+                    </p>
+                    <p className="text-[12px] font-normal text-gray-400 m-0">
+                      {item?.name}
+                    </p>
+                  </span>
+                  <h3 className="text-[16px] text-white font-light">
+                    {item?.description
+                      ? item?.description
+                      : item?.about?.description}
+                  </h3>
+                </span>
+              </span>
+            ))}
+          </span>
+        </div>
+        <span className="py-10 flex">
+          <PaginationComponent
+            totalPages={totalPages}
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+          />
+        </span>
+      </div>
+      {/* {data?.data?.results[active.value]?.data && (
+        <SearchWidget
+          pagination={data?.data?.results[active.value]?.pagination}
+          data={data?.data?.results[active.value].data}
+          active={active}
+          currentPage={currentPage}
+          handlePageChange={handlePageChange}
+        />
+      )} */}
     </>
   );
 }
