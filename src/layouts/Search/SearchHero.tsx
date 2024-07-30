@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { GoHome } from "react-icons/go";
 import { useGeneralContext } from "../../../context/GenralContext";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -9,6 +9,7 @@ import SearchWidget from "./SearchWidget";
 import { FaRegNewspaper } from "react-icons/fa6";
 import { BiArch } from "react-icons/bi";
 import { cn } from "@/utils";
+import { formatDate } from "@/utils/formatDate";
 
 function SearchHero() {
   const { name, setName }: any = useGeneralContext();
@@ -50,7 +51,17 @@ function SearchHero() {
     queryFn: searchResources,
   });
 
-  console.log("data :>> ", data);
+  const elements = useMemo(() => {
+    console.log("data :>> ", data);
+    if (data) {
+      const newData = data?.data?.results[active.value]?.data;
+      console.log("newData :>> ", newData);
+      return newData;
+    }
+    return [];
+  }, [page, active, data]);
+
+  console.log("elements :>> ", elements);
 
   return (
     // <div className="pt-[200px] bg-brand-main p-5">
@@ -278,7 +289,7 @@ function SearchHero() {
         </span>
       </div>
       <div className="bg-brand-main">
-        <div className="max-w-[1540px] mx-auto grid grid-cols-12">
+        <div className="max-w-[1540px] mx-auto grid grid-cols-12 gap-8">
           <span className="lg:col-span-2 col-span-12 flex flex-col gap-10">
             <span className="flex flex-col gap-3 ">
               <p className="text-gray-300 font-light text-[16px]">FILTER BY:</p>
@@ -323,7 +334,28 @@ function SearchHero() {
             </span>
           </span>
           <span className="lg:selection:col-span-10 grid lg:grid-cols-10 col-span-12">
-            <span></span>
+            {elements?.map((item: any, index: number) => (
+              <span key={index} className="grid grid-cols-10 gap-6">
+                <span className="col-span-2">
+                  <p className="text-gray-300 font-light text-[16px]">
+                    {item?.type}
+                  </p>
+                </span>
+                <span className="col-span-8 ">
+                  <h3 className="text-[22px] text-white font-medium">
+                    {item?.name}
+                  </h3>
+                  <span className="flex items-center gap-5">
+                    <p className="text-[14px] font-light group-hover:text-[#6B7280]">
+                      Updated {formatDate(item?.updatedAt)}
+                    </p>
+                    <p className="text-[14px] font-normal group-hover:text-[#6B7280] m-0">
+                      {item?.name}
+                    </p>
+                  </span>
+                </span>
+              </span>
+            ))}
           </span>
         </div>
       </div>
