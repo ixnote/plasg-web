@@ -11,11 +11,6 @@ export const governmentData = [
     name: " Overview",
     path: "/government",
   },
-  // {
-  //   _id: 0o2,
-  //   name: " Overview",
-  //   path: "#",
-  // },
   {
     _id: 0o2,
     name: " Legislative",
@@ -28,6 +23,11 @@ export const governmentData = [
   },
   {
     _id: 0o4,
+    name: "People",
+    path: "/people",
+  },
+  {
+    _id: 0o5,
     name: "Projects",
     path: "#",
   },

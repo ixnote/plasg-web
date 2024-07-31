@@ -5,6 +5,21 @@ import ProfileCard from "@/components/ProfileCard";
 import SubsectionHeader from "@/components/SubsectionHeader";
 
 import ArticleImage from "@/assets/imgs/img.png";
+import ChiefJudge from "@/assets/imgs/government/cabinet/1000065214.jpg";
+import ChiefRegistrar from "@/assets/imgs/government/cabinet/1000065231.jpg";
+import CommissionerWomenAffairs from "@/assets/imgs/government/cabinet/1000070808.jpg";
+import ChieftaincyAffairs from "@/assets/imgs/government/cabinet/1000070786.jpg";
+import InformationCommunication from "@/assets/imgs/government/cabinet/1000070789.jpg";
+import HigherEducation from "@/assets/imgs/government/cabinet/1000070631.jpg";
+import CommissionerHealth from "@/assets/imgs/government/cabinet/1000070623.jpg";
+import WaterResource from "@/assets/imgs/government/cabinet/1000070620.jpg";
+import YouthSport from "@/assets/imgs/government/cabinet/1000070617.jpg";
+import BudgetPlanning from "@/assets/imgs/government/cabinet/1000070617.jpg";
+import ChiefOfStaff from "@/assets/imgs/government/cabinet/1000071138.jpg";
+import AttorneyGeneral from "@/assets/imgs/government/cabinet/1000071164.jpg";
+import Transportation from "@/assets/imgs/government/cabinet/1000070791.jpg";
+import Agriculture from "@/assets/imgs/government/cabinet/1000070629.jpg";
+import Works from "@/assets/imgs/government/cabinet/1000071096.jpg";
 
 const Cabinet = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -12,35 +27,93 @@ const Cabinet = () => {
 
   const profiles = [
     {
-      // image: ArticleImage,
-      image:
-        "https://drive.google.com/file/d/1qlT7Fs-LQD1QcebYDSOYepcTT8Mifgbg/view?usp=drive_link",
-      name: "Hannatu Joel",
-      position: "Member House of Assembly.",
+      image: ChiefJudge,
+      name: "Hon. Justice D.G. Mann",
+      position: "Chief Judge",
       action: "mail",
     },
     {
-      image: ArticleImage,
-      name: "Dasbak Rifkatu",
-      position: "Member House of Assembly.",
+      image: ChiefRegistrar,
+      name: "Hon Andrawus Maikai",
+      position: "Chief Registrar High Court of Justice",
       action: "mail",
     },
     {
-      image: ArticleImage,
-      name: "Josephine Gali",
-      position: "Member House of Assembly.",
+      image: CommissionerWomenAffairs,
+      name: "Mrs. Caroline Pangjang",
+      position: "Commissioner Women Affairs",
       action: "mail",
     },
     {
-      image: ArticleImage,
-      name: "Josephine Gali",
-      position: "Member House of Assembly.",
+      image: ChieftaincyAffairs,
+      name: "Hon. Ephraim Ujemson",
+      position: "Comm. Local Govt & Chieftaincy Affairs",
       action: "mail",
     },
     {
-      image: ArticleImage,
-      name: "Josephine Gali",
-      position: "Member House of Assembly.",
+      image: InformationCommunication,
+      name: "Hon. Musa Ibrahim Ashoms",
+      position: "Comm. Information & Communication",
+      action: "mail",
+    },
+    {
+      image: HigherEducation,
+      name: "Hon. Dr. Hachollom Pyam Gang",
+      position: "Comm. Higher Education",
+      action: "mail",
+    },
+    {
+      image: CommissionerHealth,
+      name: "Hon. Dr. Cletus Bako Shurkuk",
+      position: "Comm. for Health",
+      action: "mail",
+    },
+    {
+      image: WaterResource,
+      name: "Hon. Noel Naanniap Nkup",
+      position: "Comm. Water Resource & Energy",
+      action: "mail",
+    },
+    {
+      image: YouthSport,
+      name: "Hon. Basir Lawandi Datti",
+      position: "Youth & Sport Development",
+      action: "mail",
+    },
+    {
+      image: BudgetPlanning,
+      name: "Hon. Chryenthus Dawan",
+      position: "Comm. Budget & Planning",
+      action: "mail",
+    },
+    {
+      image: ChiefOfStaff,
+      name: "Engr. Jerry Satmak",
+      position: "Chief of Staff to the Governor",
+      action: "mail",
+    },
+    {
+      image: AttorneyGeneral,
+      name: "Hon. Barr. Philomon Daffi",
+      position: "Attorney General & Comm. for Justice",
+      action: "mail",
+    },
+    {
+      image: Transportation,
+      name: "Hon. Jatau Davou Gyang",
+      position: "Comm. for Transportation",
+      action: "mail",
+    },
+    {
+      image: Agriculture,
+      name: "Hon. Samson Ishaku Bugama",
+      position: "Comm. of Agriculture & Natural Resources",
+      action: "mail",
+    },
+    {
+      image: Works,
+      name: "Hon. Adams Bulus Laksak",
+      position: "Comm. of Works",
       action: "mail",
     },
   ];

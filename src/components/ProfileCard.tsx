@@ -34,8 +34,8 @@ const ProfileCard = ({
         <div className="w-full h-full overflow-hidden rounded-xl">
           <Image
             src={image}
-            width={12}
-            height={12}
+            // width={12}
+            // height={12}
             alt="profile"
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
           />

@@ -47,9 +47,9 @@ const Header = (data: any) => {
       data: topicTags,
     },
     {
-      name: "People",
+      name: "Tourism",
       drop: false,
-      path: "/people",
+      path: "/tourism",
     },
     {
       name: "News",
@@ -107,13 +107,13 @@ const Header = (data: any) => {
               </ul>
 
               <div className="left-constainer">
-                <ul className="menue-ul">
+                {/* <ul className="menue-ul">
                   <li className="menu-item">
                     <div className="menu-hover">
                       <Link href="#">Updates</Link>
                     </div>
                   </li>
-                </ul>
+                </ul> */}
 
                 {/* <ul className="menue-ul">
                   <li className="menu-item">
