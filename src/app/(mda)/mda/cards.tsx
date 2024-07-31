@@ -2,6 +2,7 @@
 import { StaticImageData } from "next/image";
 import React, { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 // Define the interface for an individual news item
 interface NewsItem {
@@ -9,19 +10,22 @@ interface NewsItem {
   image: StaticImageData; // Adjust type according to your needs
   topic: string;
   text: string;
+  id: string;
 }
 
-const Cards: React.FC<NewsItem> = ({ newsDate, image, topic, text }) => {
+const Cards: React.FC<NewsItem> = ({ newsDate, image, topic, text, id }) => {
   const [hovered, setHovered] = useState(false);
+  const router = useRouter();
 
   return (
     <div
-      className="w-full h-[264px] p-8 gap-8 transition-fx cursor-pointer hover:bg-brand-lightYellow"
+      className="w-full p-8 gap-8 transition-fx cursor-pointer border-b-[1px] border-b-[#D4D4D4] hover:bg-brand-lightYellow"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onClick={() => router.push(`/news/${id}`)}
     >
       <div>
-        <div className="w-[1052px] flex pb-3">
+        <div className="w-[1052px] flex">
           <div className="flex w-full justify-between">
             <div className="flex flex-col gap-2 w-[125px] h-[22px] text-[#588065]">
               {newsDate}
@@ -39,21 +43,18 @@ const Cards: React.FC<NewsItem> = ({ newsDate, image, topic, text }) => {
             </div>
           </div>
         </div>
-        <hr className="border-[1px] border-[#D4D4D4]" />
+        {/* <hr className="border-[1px] border-[#D4D4D4]" />
         <div
           className={
-          
             hovered
               ? "transition-fx flex items-center justify-between w-[90%] ml-8"
               : "transition-fx flex items-center justify-between w-[90%]"
           }
         >
-          {/* Additional elements like buttons can be added here */}
-        </div>
+        </div> */}
       </div>
     </div>
   );
 };
 
 export default Cards;
-

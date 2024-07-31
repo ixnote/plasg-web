@@ -12,7 +12,6 @@ import MdaHero from "./MdaHero";
 import MdaDirector from "./MdaDirector";
 import { useGeneralContext } from "../../../../../context/GenralContext";
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
 
 const Page = ({ params }: { params: { slug: string } }) => {
   const {
@@ -206,6 +205,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
                         )}
                         image={item?.image}
                         topic={item?.headline}
+                        id={item?.id}
                         text={""}
                       />
                     ))
