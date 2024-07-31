@@ -71,19 +71,22 @@ function SearchHero() {
   }, [page, active, data]);
 
   const handleRoute = (value: any) => {
-    if (value?.main_type_tag.name === "resources") {
+    if (value?.main_type_tag?.name === "resources") {
       window.open(`${value?.link}`, "_blank", "noopener,noreferrer");
-    } else if (value?.main_type_tag.name === "mdas") {
+    } else if (
+      value?.main_type_tag?.name === "service" ||
+      value?.main_type_tag?.name === "resource"
+    ) {
+      router.push(`/search/${value?.id}`);
+    } else if (value?.abbreviation) {
       router.push(`/mda/${value?.slug}`);
-    } else if (value?.main_type_tag.name === "news") {
+    } else if (value?.main_type_tag?.name === "news") {
       router.push(`/news/${value?.id}`);
     } else if (value?.type === "landmark") {
       router.push(`/tourism`);
     }
   };
 
-  console.log("elements :>> ", elements);
-  console.log("data :>> ", data);
   return (
     // <div className="pt-[200px] bg-brand-main p-5">
     //   <span className="max-w-[1500px] mx-auto flex flex-col gap-20">
