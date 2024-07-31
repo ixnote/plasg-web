@@ -12,7 +12,9 @@ const Cabinet = () => {
 
   const profiles = [
     {
-      image: ArticleImage,
+      // image: ArticleImage,
+      image:
+        "https://drive.google.com/file/d/1qlT7Fs-LQD1QcebYDSOYepcTT8Mifgbg/view?usp=drive_link",
       name: "Hannatu Joel",
       position: "Member House of Assembly.",
       action: "mail",

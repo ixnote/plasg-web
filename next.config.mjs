@@ -5,14 +5,18 @@ const nextConfig = {
     styledComponents: true,
   },
   images: {
-    domains: [
-      "res.cloudinary.com",
-      "www.thecable.ng",
-      "localhost",
-      "cdn.pixabay.com",
-      "*",
-    ],
+    unoptimized: true, // Disable built-in image optimization
   },
+  // images: {
+  //   domains: [
+  //     "res.cloudinary.com",
+  //     "www.thecable.ng",
+  //     "localhost",
+  //     "cdn.pixabay.com",
+  //     "drive.google.com",
+  //     "*",
+  //   ],
+  // },
   webpack: (config, { isServer }) => {
     config.module.rules.push({
       test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)$/,
