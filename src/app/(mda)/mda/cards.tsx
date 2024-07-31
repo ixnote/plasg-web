@@ -10,7 +10,7 @@ interface NewsItem {
   image: StaticImageData; // Adjust type according to your needs
   topic: string;
   text: string;
-  id: string;
+  id?: string;
 }
 
 const Cards: React.FC<NewsItem> = ({ newsDate, image, topic, text, id }) => {

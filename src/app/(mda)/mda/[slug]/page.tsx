@@ -200,12 +200,12 @@ const Page = ({ params }: { params: { slug: string } }) => {
                     mdaNews?.map((item: any, i: number) => (
                       <Cards
                         key={i}
+                        id={item?.id}
                         newsDate={moment(item?.createdAt).format(
                           "Do MMMM YYYY"
                         )}
                         image={item?.image}
                         topic={item?.headline}
-                        id={item?.id}
                         text={""}
                       />
                     ))
