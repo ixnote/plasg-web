@@ -5,6 +5,8 @@ import React from "react";
 import { GoHome } from "react-icons/go";
 import { IoIosArrowRoundDown } from "react-icons/io";
 import { useRouter } from "next/navigation";
+import { IoArrowDownOutline } from "react-icons/io5";
+import { handleScrollDown } from "@/utils/handleScrollDown";
 
 const SectionHeaderDark = ({
   title,
@@ -64,8 +66,11 @@ const SectionHeaderDark = ({
               <p className="text-[18px] font-normal text-brand-white m-0 lg:col-span-4 col-span-1 max-w-[800px] font-geistsans">
                 {description}
               </p>
-              <button className="h-10 px-8 rounded-sm bg-white border w-fit border-gray-300 flex items-center justify-center gap-2">
-                Scroll down <IoIosArrowRoundDown />
+              <button
+                onClick={() => handleScrollDown()}
+                className="h-10 px-0 rounded-sm bg-brand-main text-brand-white  w-fit flex items-center justify-center gap-2 animate-bounce"
+              >
+                <IoArrowDownOutline size={32} />
               </button>
             </span>
           </span>
