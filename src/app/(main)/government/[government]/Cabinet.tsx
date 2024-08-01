@@ -121,7 +121,7 @@ const Cabinet = () => {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
-        setCardsToShow(4);
+        setCardsToShow(3);
       } else if (window.innerWidth >= 768) {
         setCardsToShow(2);
       } else {
