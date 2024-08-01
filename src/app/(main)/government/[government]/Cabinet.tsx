@@ -14,7 +14,7 @@ import HigherEducation from "@/assets/imgs/government/cabinet/1000070631.jpg";
 import CommissionerHealth from "@/assets/imgs/government/cabinet/1000070623.jpg";
 import WaterResource from "@/assets/imgs/government/cabinet/1000070620.jpg";
 import YouthSport from "@/assets/imgs/government/cabinet/1000070617.jpg";
-import BudgetPlanning from "@/assets/imgs/government/cabinet/1000070617.jpg";
+import BudgetPlanning from "@/assets/imgs/government/cabinet/1000071098.jpg";
 import ChiefOfStaff from "@/assets/imgs/government/cabinet/1000071138.jpg";
 import AttorneyGeneral from "@/assets/imgs/government/cabinet/1000071164.jpg";
 import Transportation from "@/assets/imgs/government/cabinet/1000070791.jpg";
@@ -121,7 +121,7 @@ const Cabinet = () => {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
-        setCardsToShow(3);
+        setCardsToShow(4);
       } else if (window.innerWidth >= 768) {
         setCardsToShow(2);
       } else {

@@ -1,19 +1,13 @@
 import ButtonDark from "@/components/ButtonDark";
 import SectionHeaderDark from "@/components/SectionHeaderDark";
-import { Header } from "@/layouts";
-import Footer from "@/layouts/Footer";
 import React from "react";
-// import people from "@/assets/imgs/people/people.mp4";
 
 const page = () => {
   return (
     <>
-      {/* <Header /> */}
       <div className="min-h-screen max-w-[2040px] pb-[96px] relative flex items-center justify-center bg-cover bg-center bg-no-repeat bg-brand-main">
         <div className="m-auto w-[92%] flex justify-between flex-col gap-8 items-center">
           <SectionHeaderDark
-            // image={governmentHouse}
-            // video={people}
             video={
               "https://sample-videos.com/video321/mp4/720/big_buck_bunny_720p_5mb.mp4"
             }
@@ -40,7 +34,6 @@ const page = () => {
           </div>
         </div>
       </div>
-      {/* <Footer /> */}
     </>
   );
 };
