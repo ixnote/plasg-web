@@ -73,7 +73,7 @@ const Header = () => {
                 ))}
               </ul>
             </div>
-            <div className="left-constainer">
+            {/* <div className="left-constainer">
               <ul className="menue-ul">
                 <li className="menu-item w-[148px] h-[38px] flex justify-center rounded-md items-center gap-3">
                   <div className="">
@@ -88,7 +88,7 @@ const Header = () => {
                   </div>
                 </li>
               </ul>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

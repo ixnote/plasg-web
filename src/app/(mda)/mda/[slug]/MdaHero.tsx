@@ -6,14 +6,14 @@ const MdaHero = ({ slug, hero }: any) => {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col py-24 pt-[120px] gap-4 lg:gap-16">
+    <div className="flex flex-col py-24 pt-[170px] gap-4 lg:gap-16">
       <span className="flex flex-col gap-8 mb-10">
-        <span className="flex items-start justify-between gap-8">
+        <span className="flex flex-col-reverse items-start justify-between gap-8 lg:flex-row">
           <div className="flex flex-col items-start justify-start gap-8">
             <p className="text-[52px] text-brand-main font-medium font-geistsans max-w-[800px] leading-[56px] lg:col-span-3 col-span-2">
               {hero?.title}
             </p>
-            <div className="w-[50%] font-geistsans font-normal text-lg text-brand-dark/70">
+            <div className="w-full font-geistsans font-normal text-lg text-brand-dark/70 lg:w-[50%]">
               {hero?.description}
             </div>
             <div className="flex items-center justify-start">
@@ -40,7 +40,7 @@ const MdaHero = ({ slug, hero }: any) => {
               </div>
             </div>
           </div>
-          <span className="col-span-2 flex flex-col gap-6">
+          <span className="col-span-2 hidden flex-col gap-6 lg:flex">
             <p className="text-[18px] font-normal text-brand-main m-0 min-w-[200px] max-w-[800px] font-geistsans">
               <Image
                 src={hero?.logo}

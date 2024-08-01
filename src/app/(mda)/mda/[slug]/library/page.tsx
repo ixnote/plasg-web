@@ -17,7 +17,7 @@ const Library = () => {
 
   return (
     <>
-      <div className="min-h-screen max-w-[2040px] pt-12 pb-[96px] relative flex items-center justify-center bg-brand-white">
+      <div className="min-h-screen max-w-[2040px] pt-[170px] pb-[96px] relative flex items-center justify-center bg-brand-white lg:pt-12">
         <div className="m-auto w-[92%] flex justify-between flex-col gap-12">
           <div className="flex flex-col gap-4 w-full items-center justify-center">
             <p className="text-brand-main font-medium text-3xl font-geistsans">

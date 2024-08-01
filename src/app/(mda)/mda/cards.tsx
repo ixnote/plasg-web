@@ -25,24 +25,26 @@ const Cards: React.FC<NewsItem> = ({ newsDate, image, topic, text, id }) => {
       onClick={() => router.push(`/news/${id}`)}
     >
       <div>
-        <div className="w-[1052px] flex">
-          <div className="flex w-full justify-between">
-            <div className="flex flex-col gap-2 w-[125px] h-[22px] text-[#588065]">
-              {newsDate}
-            </div>
+        {/* <div className="lg:w-[1052px] lg:flex-row"> */}
+        <div className="flex flex-col gap-4 w-full items-start justify-between lg:flex-row">
+          <div className="flex flex-col gap-2 w-full h-[22px] text-[#588065] lg:w-[10%]">
+            {newsDate}
+          </div>
+          <div className="flex flex-col items-start justify-start gap-4 lg:flex-row lg:justify-between">
             <div className="pb-[19px]">
               <Image src={image} alt={topic} width={320} height={200} />
             </div>
-            <div className="w-[433px] h-auto">
+            <div className="w-full h-auto">
               <div className="font-[Geist] leading-8 text-2xl text-[#0e3e40] text-left pb-[16px]">
                 {topic}
               </div>
-              <div className="w-[430px] leading-6 text-[#000000b3] text-base font-[Geist]">
+              <div className="w-full leading-6 text-[#000000b3] text-base font-[Geist]">
                 {text}
               </div>
             </div>
           </div>
         </div>
+        {/* </div> */}
         {/* <hr className="border-[1px] border-[#D4D4D4]" />
         <div
           className={

@@ -11,33 +11,33 @@ import { useGeneralContext } from "../../../../../../context/GenralContext";
 const Contact = () => {
   const { oneMda }: any = useGeneralContext();
   return (
-    <div className='w-full bg-brand-white 2xl:max-w-7xl"'>
-      <div className="w-full h-[1030px] p-9 ">
+    <div className='w-full min-h-screen pt-[100px] bg-brand-white lg:mt-[170px] 2xl:max-w-7xl"'>
+      <div className="w-full lg:p-9 ">
         <div
-          className="w-full bg-cover bg-center h-[720px] pt-8 px-10"
+          className="w-full bg-cover bg-center  pt-8 px-10 lg:h-[720px]"
           style={{ backgroundImage: `url(${bg.src})` }}
         >
-          <div className="flex justify-center  h-[646px]">
-            <div className="h-[438px] w-[682px] gap-20 my-28">
+          <div className="flex justify-center flex-col w-full lg:flex-row">
+            <div className="h-[438px] w-full gap-20 my-28 lg:w-[50%]">
               <div className="h-full w-full ">
-                <header className="w-[100px] h-[40px] flex justify-center items-center  border-white border-2 text-white  font-normal leading-3 size-4 font-[Geist] rounded-md mb-1">
+                <header className="w-[100px] h-[40px] flex justify-center items-center  border-white border-2 text-white  font-normal leading-3 size-4 font-geistsans rounded-md mb-1">
                   Contact
                 </header>
-                <p className=" w-[520px] h-[100px] flex justify-start items-center text-white font-[Geist] text-4xl size-10 font-medium leading-[20px]">
+                <p className="w-full flex justify-start items-center text-white font-geistsans my-4 text-4xl font-medium">
                   Need help? Contact us
                 </p>
-                <p className="text-white py-8 font-[Geist] font-normal text-xl">
+                <p className="text-white py-8 font-geistsans font-normal text-xl">
                   Having an issue or you just need help? Contact us with your
                   inquiries via:
                 </p>
-                <div className=" ">
+                <div className="flex flex-col gap-8">
                   <div className="text-white flex w-full py-7 ">
                     <Image src={location} alt="" />
                     <div className="px-6">
                       <p className="text-white">{oneMda?.contact?.location}</p>
                     </div>
                   </div>
-                  <div className="flex justify-between h-[64px] w-[600px] ">
+                  <div className="flex justify-between h-[64px] w-full ">
                     <div className="flex items-center justify-between w-[180px]">
                       <Image src={phone} alt="" />
                       <div>
@@ -49,21 +49,18 @@ const Contact = () => {
                         </p>
                       </div>
                     </div>
-                    <div className="flex items-center justify-between w-[260px] ">
-                      <Image src={message} alt="" />
-                      <a
-                        href="pictda@plateaustate.gov.ng"
-                        className="text-white"
-                      >
-                        {oneMda?.contact?.email}
-                      </a>
-                    </div>
+                  </div>
+                  <div className="flex items-center justify-start gap-8 my w-full">
+                    <Image src={message} alt="" />
+                    <a href="pictda@plateaustate.gov.ng" className="text-white">
+                      {oneMda?.contact?.email}
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="w-[550px] bg-white rounded-xl">
-              <div className="w-full max-w-lg mx-auto mt-8 px-5  bg-white ">
+            <div className="w-full mt-12 mb-8 bg-white rounded-xl lg:w-[50%]">
+              <div className="w-full max-w-lg mx-auto mt-8 px-5 bg-white ">
                 <form className="space-y-6">
                   <div>
                     <label
@@ -132,7 +129,7 @@ const Contact = () => {
                   <div>
                     <button
                       type="submit"
-                      className="w-[154px] float-end inline-flex justify-center py-2 px-4 border border-transparent  text-sm font-medium rounded-md text-white bg-[#0E3E40] hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      className="w-full float-end inline-flex justify-center py-2 px-4 border border-transparent  text-sm font-medium rounded-md text-white bg-[#0E3E40] hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
                       Submit
                     </button>

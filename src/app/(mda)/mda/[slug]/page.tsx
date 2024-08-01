@@ -166,9 +166,9 @@ const Page = ({ params }: { params: { slug: string } }) => {
           </div>
           <SectionDividerLight />
           {/* News */}
-          <div className="min-h-screen flex items-center justify-center py-24 bg-brand-white">
+          <div className="flex items-center justify-center py-24 bg-brand-white">
             {/* content */}
-            <div className="flex flex-col items-between justify-between gap-20 h-[70%]">
+            <div className="w-full flex flex-col items-between justify-between gap-20">
               {/* top */}
               <div className="w-full flex flex-col gap-8 lg:w-[65%]">
                 <span className="w-max font-normal text-base text-brand-dark font-geistmono px-2 py-1 border-[1px] border-brand-dark rounded">
@@ -187,15 +187,6 @@ const Page = ({ params }: { params: { slug: string } }) => {
                 {/* content */}
                 <div className="flex items-center justify-between flex-wrap gap-4 w-full m-auto">
                   {/* Cards */}
-                  {/* {newsList.map((item) => (
-                    <Cards
-                      key={item.id}
-                      newsDate={item.date}
-                      image={item.image}
-                      topic={item.topic}
-                      text={item.text}
-                    />
-                  ))} */}
                   {mdaNews?.length > 0 ? (
                     mdaNews?.map((item: any, i: number) => (
                       <Cards

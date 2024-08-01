@@ -11,7 +11,8 @@ interface Team {
 const SecondCard: React.FC<Team> = ({ id, name, image, position }) => {
   return (
     <div>
-      <div className="h-[490px] w-[385px] rounded-2xl gap-6">
+      {/* <div className="h-[490px] w-[385px] rounded-2xl gap-6"> */}
+      <div className="h-[490px] max-w-[385px] rounded-2xl gap-6">
         {typeof image === "string" ? (
           <Image
             src={image} // If image is a URL
