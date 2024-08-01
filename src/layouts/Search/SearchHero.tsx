@@ -71,7 +71,7 @@ function SearchHero() {
   }, [page, active, data]);
 
   const handleRoute = (value: any) => {
-    if (value?.main_type_tag?.name === "resources") {
+    if (value?.main_type_tag?.name === "document") {
       window.open(`${value?.link}`, "_blank", "noopener,noreferrer");
     } else if (
       value?.main_type_tag?.name === "service" ||
@@ -80,12 +80,14 @@ function SearchHero() {
       router.push(`/search/${value?.id}`);
     } else if (value?.abbreviation) {
       router.push(`/mda/${value?.slug}`);
-    } else if (value?.main_type_tag?.name === "news") {
+    } else if (value?.mda?.name === "News") {
       router.push(`/news/${value?.id}`);
     } else if (value?.type === "landmark") {
       router.push(`/tourism`);
     }
   };
+
+  console.log("data :>> ", data);
 
   return (
     // <div className="pt-[200px] bg-brand-main p-5">
@@ -383,7 +385,13 @@ function SearchHero() {
               >
                 <span className="lg:col-span-2 col-span-10">
                   <p className="text-gray-300 font-light text-[16px] uppercase">
-                    {item?.type ? item?.type : item?.main_type_tag?.name}
+                    {item?.type
+                      ? item?.type
+                      : item?.main_type_tag?.name
+                      ? item?.main_type_tag?.name
+                      : item?.abbreviation
+                      ? "mda"
+                      : item?.mda?.name}
                   </p>
                 </span>
                 <span
@@ -394,7 +402,7 @@ function SearchHero() {
                   onClick={() => handleRoute(item)}
                 >
                   <h3 className="text-[22px] text-white font-medium">
-                    {item?.name}
+                    {item?.name ? item?.name : item?.headline}
                   </h3>
                   <span className="flex items-center gap-5">
                     <p className="text-[12px] font-light text-gray-400">
