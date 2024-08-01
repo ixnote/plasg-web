@@ -25,7 +25,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
     setActivePage,
     getMdaNews,
   }: any = useGeneralContext();
-  console.log("🚀 ~ Page ~ mdaNews:", mdaNews);
+  // console.log("🚀 ~ Page ~ mdaNews:", mdaNews);
 
   const {
     data: mda,
@@ -36,7 +36,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
     queryFn: getMda,
     enabled: !!params?.slug,
   });
-  console.log("🚀 ~ Mdas ~ mda:", mda);
+  // console.log("🚀 ~ Mdas ~ mda:", mda);
 
   // PAGINATION
   const handlePageChange = (page: number) => {
