@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import React, { useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import ButtonLight from "@/components/ButtonLight";
@@ -85,12 +86,20 @@ const Visit = () => {
                 </span>
               </div>
               <div className="w-full h-[618px]">
-                <Image
-                  src={images[active]}
-                  alt="visit"
-                  className="w-[1360px] h-full object-cover rounded-xl xl:w-full"
-                  loading="lazy"
-                />
+                <Suspense
+                  fallback={
+                    <p className="text-xl font-medium text-brand-main p-12">
+                      Loading image, please wait...
+                    </p>
+                  }
+                >
+                  <Image
+                    src={images[active]}
+                    alt="visit"
+                    className="w-[1360px] h-full object-cover rounded-xl xl:w-full"
+                    loading="lazy"
+                  />
+                </Suspense>
               </div>
             </div>
             <ButtonLight text={"Visit Plateau"} url={"tourism"} />
