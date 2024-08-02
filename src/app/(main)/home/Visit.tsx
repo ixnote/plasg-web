@@ -21,7 +21,7 @@ const images: Record<LocationKeys, StaticImageData> = {
 };
 
 const Visit = () => {
-  const [active, setActive] = useState<LocationKeys>("jos");
+  const [active, setActive] = useState<LocationKeys>("hawon_kibbo");
 
   return (
     <>
@@ -84,7 +84,7 @@ const Visit = () => {
                 >
                   Rayfield Resort
                 </span>
-                <span
+                {/* <span
                   onClick={() => setActive("hawon_kibbo")}
                   className={
                     active === "hawon_kibbo"
@@ -93,7 +93,7 @@ const Visit = () => {
                   }
                 >
                   Hawon Kibbo
-                </span>
+                </span> */}
               </div>
               <div className="w-full h-[618px]">
                 <Suspense
