@@ -98,7 +98,7 @@ const SectionHeaderDark = ({
               <iframe
                 src={`https://www.youtube.com/embed/${getYouTubeVideoId(
                   video
-                )}`}
+                )}?autoplay=1&mute=1`}
                 className="absolute top-0 left-0 w-full h-full object-cover rounded-lg"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; gyroscope; picture-in-picture"
