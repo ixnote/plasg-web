@@ -9,7 +9,8 @@ const page = () => {
         <div className="m-auto w-[92%] flex justify-between flex-col gap-8 items-center">
           <SectionHeaderDark
             video={
-              "https://sample-videos.com/video321/mp4/720/big_buck_bunny_720p_5mb.mp4"
+              // "https://sample-videos.com/video321/mp4/720/big_buck_bunny_720p_5mb.mp4"
+              "https://youtu.be/PBKqLL8Ykks"
             }
             title={"The Beautiful People of Plateau."}
             description={

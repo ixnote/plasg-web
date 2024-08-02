@@ -3,9 +3,8 @@
 import Image from "next/image";
 import React from "react";
 import { GoHome } from "react-icons/go";
-import { IoIosArrowRoundDown } from "react-icons/io";
-import { useRouter } from "next/navigation";
 import { IoArrowDownOutline } from "react-icons/io5";
+import { useRouter } from "next/navigation";
 import { handleScrollDown } from "@/utils/handleScrollDown";
 
 const SectionHeaderDark = ({
@@ -30,6 +29,14 @@ const SectionHeaderDark = ({
 
   const gotoBase = () => {
     router.push(`/${baseURL}`);
+  };
+
+  // Function to get YouTube video ID from the URL
+  const getYouTubeVideoId = (url: string) => {
+    const regex =
+      /(?:https?:\/\/)?(?:www\.)?youtu(?:\.be\/|be\.com\/(?:watch\?v=|embed\/|v\/|shorts\/|shorts\/)?)([^\?&"\'>]+)/;
+    const match = url.match(regex);
+    return match ? match[1] : null;
   };
 
   return (
@@ -79,18 +86,25 @@ const SectionHeaderDark = ({
           <div className="w-full">
             <Image
               src={image}
-              alt="Government house"
+              alt="Image description"
               className="w-[1360px] h-full object-cover rounded-xl xl:w-full"
               loading="lazy"
             />
           </div>
         )}
         {video && (
-          <>
-            <div
-              className="relative w-full overflow-hidden h-[240px] md:h-[480px] lg:h-[620px]"
-              // style={{ paddingTop: "37.42%" }}
-            >
+          <div className="relative w-full overflow-hidden h-[240px] md:h-[480px] lg:h-[780px]">
+            {getYouTubeVideoId(video) ? (
+              <iframe
+                src={`https://www.youtube.com/embed/${getYouTubeVideoId(
+                  video
+                )}`}
+                className="absolute top-0 left-0 w-full h-full object-cover rounded-lg"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            ) : (
               <video
                 src={video}
                 className="absolute top-0 left-0 w-full h-full object-cover rounded-lg"
@@ -99,16 +113,8 @@ const SectionHeaderDark = ({
                 muted
                 loop
               />
-            </div>
-            {/* <div className="w-full">
-              <video
-              src={video}
-              // alt="Government house"
-              className="w-[1360px] h-full object-cover rounded-xl xl:w-full"
-              controls
-            />
-            </div> */}
-          </>
+            )}
+          </div>
         )}
       </div>
     </>
