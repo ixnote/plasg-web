@@ -30,7 +30,7 @@ function NewsCard({ data, onClick, id }: any) {
             <p className="pr-6 border-r-[1px] border-r-gray-300">
               {formatDate(data?.updatedAt)}
             </p>
-            {data?.tags.length > 0 && (
+            {data?.tags?.length > 0 && (
               <>
                 {data?.tags[0]?.name && (
                   <span className="px-4 rounded-lg text-white bg-brand-main py-1">

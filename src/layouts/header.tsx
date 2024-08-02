@@ -102,6 +102,7 @@ const Header = (data: any) => {
                       )}
                     </div>
                     {menu.drop && <div className="round-dot" />}
+                    {menu.name === "Tourism" && <div className="round-dot" />}
                   </li>
                 ))}
               </ul>

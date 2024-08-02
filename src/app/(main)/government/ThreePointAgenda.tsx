@@ -157,7 +157,7 @@ const ThreePointAgenda = () => {
                 //     overall quality of life through improved infrastructure.
                 //   </div>
                 // </div>
-                <div className="relative h-[463px] w-full mt-8">
+                <div className="relative h-[463px] w-full">
                   <Image
                     src={infrastructure}
                     alt="infrastructure"
