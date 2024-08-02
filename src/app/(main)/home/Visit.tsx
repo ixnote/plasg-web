@@ -45,6 +45,16 @@ const Visit = () => {
             <div className="flex flex-col items-center justify-between gap-8 w-full m-auto">
               <div className="hide-scrollbar flex flex-row gap-4 items-center justify-start w-full overflow-x-scroll">
                 <span
+                  onClick={() => setActive("hawon_kibbo")}
+                  className={
+                    active === "hawon_kibbo"
+                      ? "transition-fx flex items-center justify-center font-geistsans font-medium text-3xl p-2 pb-1 cursor-pointer border-b-[3px] text-nowrap  text-brand-main border-b-brand-main"
+                      : "visit-hover-fx transition-fx flex items-center justify-center font-geistsans text-brand-grayish font-medium text-3xl p-2 pb-1 cursor-pointer border-b-[3px] border-b-transparent text-nowrap hover:text-brand-main"
+                  }
+                >
+                  Hawon Kibbo
+                </span>
+                <span
                   onClick={() => setActive("jos")}
                   className={
                     active === "jos"
