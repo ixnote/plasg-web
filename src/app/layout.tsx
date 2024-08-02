@@ -18,7 +18,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html className={`${GeistSans.variable} ${GeistMono.variable}`} lang="en">
+    <html
+      className={`${GeistSans.variable} ${GeistMono.variable} scrollbar-hide`}
+      lang="en"
+    >
       <body>
         <Providers>
           <MantineProvider>
