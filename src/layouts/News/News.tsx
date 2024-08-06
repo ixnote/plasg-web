@@ -117,7 +117,7 @@ function News() {
                 </p>
               ))}
 
-              <p className="px-4 py-2 pr-6 uppercase cursor-pointer group">
+              <span className="px-4 py-2 pr-6 uppercase cursor-pointer group">
                 sell all
                 <div className="group-hover:block hidden absolute w-full left-0 pt-4 z-40">
                   <div className="w-full bg-brand-main p-8 rounded-3xl ">
@@ -146,7 +146,7 @@ function News() {
                     </span>
                   </div>
                 </div>
-              </p>
+              </span>
             </span>
           </span>
         )}
