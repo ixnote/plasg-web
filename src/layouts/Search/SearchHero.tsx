@@ -424,7 +424,7 @@ function SearchHero() {
         </div>
         <span className="py-10 flex">
           <PaginationComponent
-            totalPages={totalPages}
+            totalPages={totalPages !== 0 ? totalPages : 1}
             currentPage={currentPage}
             onPageChange={handlePageChange}
           />
