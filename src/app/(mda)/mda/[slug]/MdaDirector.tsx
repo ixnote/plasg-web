@@ -12,7 +12,8 @@ const MdaDirector = ({ slug, director }: any) => {
         <div className="w-full flex flex-col items-center gap-16 lg:w-[40%] lg:items-start lg:ml-24">
           <div className="flex flex-col items-center gap-10 w-full lg:w-[80%] lg:items-start">
             <span className="w-max font-normal text-base text-brand-dark font-geistmono px-2 py-1 border-[1px] border-brand-dark rounded">
-              Director
+              {/* Director */}
+              Head of MDA
             </span>
             <span className="font-medium text-4xl text-center font-geistsans text-brand-dark lg:text-left">
               From the {director?.position}

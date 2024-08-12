@@ -9,6 +9,7 @@ import { handleScrollDown } from "@/utils/handleScrollDown";
 import { useDisclosure } from "@mantine/hooks";
 import { Modal } from "@mantine/core";
 import SearchComponent from "@/layouts/Search/SearchComponent";
+import { FaLocationDot } from "react-icons/fa6";
 
 const Hero = () => {
   const [showSearchResult, setShowSearchResult] = useState(false);
@@ -272,31 +273,11 @@ const Hero = () => {
             <IoArrowDownOutline size={32} />
           </button>
         </div>
-        {/* <span
-          className="glass-fx absolute bottom-5 right-10 flex items-center justify-center gap-4 border-[2px] border-brand-white/20 px-[16px] py-[8px] font-geistsans text-base font-normal text-[#CDE399]"
-          onClick={() => handleScrollDown}
-        >
-          Scroll Down
-          <button
-            onClick={() => handleScrollDown}
-            className="h-10 px-0 rounded-sm  w-fit flex items-center justify-center gap-2 animate-bounce"
-          >
-            <IoArrowDownOutline size={32} />
+        <div className="absolute bottom-5 left-0 flex items-center justify-center gap-4 font-geistsans text-base font-normal text-[#CDE399] lg:left-10">
+          <button className="h-10 px-0 rounded-sm w-fit flex items-center justify-center gap-2">
+            <FaLocationDot size={18} /> Ritzek, in Jos East.
           </button>
-          <svg
-            width="8"
-            height="8"
-            viewBox="0 0 8 8"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="animate-bounce"
-          >
-            <path
-              d="M3.49495 0H4.50505V6.06061L7.28283 3.28283L8 4L4 8L0 4L0.717172 3.28283L3.49495 6.06061V0Z"
-              fill="#CDE399"
-            />
-          </svg>
-        </span> */}
+        </div>
       </div>
     </>
   );

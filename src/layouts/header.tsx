@@ -127,6 +127,7 @@ const Header = (data: any) => {
                 <div className="header-search" onClick={open}>
                   <Image src={search_icon} alt="" />
                   <p className="text-white">Search</p>
+                  <p></p>
                 </div>
               </div>
             </div>
