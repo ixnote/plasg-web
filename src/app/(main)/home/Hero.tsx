@@ -273,7 +273,7 @@ const Hero = () => {
             <IoArrowDownOutline size={32} />
           </button>
         </div>
-        <div className="absolute bottom-5 left-0 flex items-center justify-center gap-4 font-geistsans text-base font-normal text-[#CDE399] lg:left-10">
+        <div className="glass-fx absolute p-2 rounded-lg bottom-5 left-6 flex items-center justify-center gap-4 font-geistsans text-base font-normal text-brand-white lg:top-32 lg:right-10">
           <button className="h-10 px-0 rounded-sm w-fit flex items-center justify-center gap-2">
             <FaLocationDot size={18} /> Ritzek, in Jos East.
           </button>
