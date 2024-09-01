@@ -29,14 +29,15 @@ const MdaDirector = ({ slug, director }: any) => {
           <div className="relative mx-auto w-full xl:max-w-[680px]">
             <Image
               src={director?.image}
-              width={680}
-              height={690}
+              width={320}
+              height={240}
+              objectFit="cover"
               alt="director"
-              className="w-[680px] rounded-xl mx-auto"
+              className="w-[640px] h-[690px] rounded-xl mx-auto"
             />
             <div className="glass-fx w-[90%] absolute bottom-4 left-4 flex flex-col gap-1 p-4 text-left md:w-[476px] md:gap-4 md:p-6 md:bottom-10 md:left-[3.4rem] lg:left-[2.9rem] lg:w-[75%] 2xl:w-[75%]">
               <span className="font-medium text-[24px] font-geistsans text-brand-white md:text-4xl">
-                {director?.name}
+                {director?.title} {director?.name}
               </span>
               <span className="font-normal text-base font-geistsans text-brand-white">
                 {director?.position}{" "}

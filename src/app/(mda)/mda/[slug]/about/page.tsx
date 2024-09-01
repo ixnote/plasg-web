@@ -18,18 +18,24 @@ const About = () => {
         <div className="m-auto w-[92%] flex justify-between flex-col gap-8">
           <div
             // className=" mt-20 h-[144px]  w-full flex flex-col items-center"
-            className="mt-20 w-full flex flex-col gap-4 items-center justify-center bg-no-repeat bg-cover"
+            className="mt-12 w-full flex flex-col gap-4 items-center justify-center bg-no-repeat bg-cover"
           >
-            <div className="w-full h-[56px] flex justify-center  font-semibold font-[Geist] size-[52px] text-3xl text-brand-main">
+            <div className="w-full h-[56px] flex justify-center  font-semibold font-geistsans size-[52px] text-3xl text-brand-main">
               <p>About</p>
             </div>
-            <div className="w-full h-[56px] font-[Geist] flex justify-center text-center leading-[28px] text-brand-dark/70">
+            <div className="w-full font-geistsans flex justify-center text-center leading-[28px] text-[#00000070]">
+              <p className="text-brand-dark font-geistsans">
+                {oneMda?.about?.title}
+              </p>
+            </div>
+            {/* <div className="w-full h-[56px] font-geistsans flex justify-center text-center leading-[28px] text-brand-dark/70">
+              <p>{oneMda?.about?.title}</p>
               <p>
                 We are committed to building a world-class ICT ecosystem that
                 fosters innovation, entrepreneurship, and <br /> inclusive
                 growth.
               </p>
-            </div>
+            </div> */}
             <div className="w-full mt-16">
               <Image
                 src={oneMda?.about?.image}
@@ -47,11 +53,11 @@ const About = () => {
               <span className="w-max mb-8 text-brand-main font-normal text-base font-geistmono px-2 py-1 border-[1px] border-brand-main rounded">
                 About
               </span>
-              <p className="w-full flex justify-start items-center font-semibold text-brand-main font-[Geist] text-2xl size-[50px]  my-2 lg:text-[30px] lg:leading-[48px] lg:tracking-[-2%]">
+              <p className="w-full flex justify-start items-center font-semibold text-brand-main font-geistsans text-2xl size-[50px]  my-2 lg:text-[30px] lg:leading-[48px] lg:tracking-[-2%]">
                 {oneMda?.about?.title}
               </p>
             </div>
-            <div className="w-full font-geistsans font-normal text-base lg:text-lg lg:leading-[28px] lg:w-[50%]">
+            <div className="w-full font-geistsans text-lg font-normal lg:text-lg lg:w-[50%]">
               <p>{oneMda?.about?.description}</p>
             </div>
           </div>
@@ -67,7 +73,7 @@ const About = () => {
                   <p className="w-full h-[100px] flex justify-start items-center text-brand-main font-[Geist] text-4xl size-10 font-medium leading-[48px]">
                     Our Vision
                   </p>
-                  <p className="w-full  font-[Geist] leading-[28px] font-normal text-brand-main ">
+                  <p className="w-full font-geistsans text-lg font-normal text-brand-dark ">
                     {oneMda?.about?.vision}
                   </p>
                 </div>
@@ -80,7 +86,7 @@ const About = () => {
                   <p className="w-full h-[100px] flex justify-start items-center text-brand-main font-[Geist] text-4xl size-10 font-medium leading-[48px]">
                     Our Mission
                   </p>
-                  <p className="w-full font-[Geist] leading-[28px] font-normal text-brand-main ">
+                  <p className="w-full font-geistsans text-lg font-normal text-brand-dark ">
                     {oneMda?.about?.mission}
                   </p>
                 </div>
@@ -92,15 +98,15 @@ const About = () => {
           <div className="w-full my-8">
             <div className="w-full h-full">
               <div className="mt-20 mb-8 w-full flex flex-col items-center">
-                <header className="w-[100px] h-[40px] flex justify-center items-center border-brand-main border-2 text-brand-main font-normal leading-3 size-4 font-[Geist] rounded-md mb-4">
+                <header className="w-[100px] h-[40px] flex justify-center items-center border-brand-main border-2 text-brand-main font-normal leading-3 size-4 font-geistsans rounded-md mb-4">
                   Vision
                 </header>
 
-                <div className="w-full h-[76px] flex justify-center p-4  font-semibold font-[Geist] size-[52px] text-3xl text-brand-main">
+                <div className="w-full h-[76px] flex justify-center p-4  font-semibold font-geistsans size-[52px] text-3xl text-brand-main">
                   <p>Our Team</p>
                 </div>
-                <div className="w-full font-[Geist] flex justify-center text-center leading-[28px] text-[#00000070]">
-                  <p className="text-brand-main">
+                <div className="w-full font-geistsans flex justify-center text-center leading-[28px] text-[#00000070]">
+                  <p className="text-brand-dark font-geistsans">
                     Stay connected with the latest from {oneMda?.abbreviation}.
                     Get brief updates on new projects, collaborations, and
                     innovations shaping our state.
@@ -108,7 +114,7 @@ const About = () => {
                 </div>
               </div>
               <div className="w-full flex justify-center mx-auto lg:p-8">
-                <div className="grid grid-cols-1 gap-12 lg:grid-cols-3 lg:mx-auto lg:gap-x-16">
+                <div className="w-full grid grid-cols-1 gap-12 lg:grid-cols-3 lg:mx-auto lg:gap-x-16">
                   {oneMda?.team.map((item: any, i: number) => (
                     <SecondCard
                       key={i}

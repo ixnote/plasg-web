@@ -72,8 +72,8 @@ const AssetCardLight = ({
                   <path
                     d="M5.6 4.2V5.8M2.6 7.8V6.2H8.6V7.8M4.2 1H7V3.8H4.2V1ZM7.4 8.2H10.2V11H7.4V8.2ZM1 8.2H3.8V11H1V8.2Z"
                     stroke="#6B7280"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
                 {byText}

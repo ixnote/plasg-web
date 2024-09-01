@@ -194,9 +194,9 @@ const Cabinet = () => {
                 <path
                   d="M9 17.5234L5 13.5234L1 9.52344L9 1.52344"
                   stroke="#0E3E40"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </span>
@@ -214,9 +214,9 @@ const Cabinet = () => {
                 <path
                   d="M1 1.52344L5 5.52344L9 9.52344L1 17.5234"
                   stroke="#0E3E40"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </span>
