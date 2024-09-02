@@ -2,6 +2,11 @@ import ButtonLight from "@/components/ButtonLight";
 import Image from "next/image";
 import React from "react";
 
+import dynamic from "next/dynamic";
+import "react-quill/dist/quill.bubble.css";
+
+const QuillEditor = dynamic(() => import("react-quill"), { ssr: false });
+
 const MdaDirector = ({ slug, director }: any) => {
   //   console.log("🚀 ~ MdaDirector ~ director:", director);
   return (
@@ -18,9 +23,10 @@ const MdaDirector = ({ slug, director }: any) => {
             <span className="font-medium text-4xl text-center font-geistsans text-brand-dark lg:text-left">
               From the {director?.position}
             </span>
-            <span className="font-normal text-base text-center text-brand-dark font-geistsans  w-[90%] lg:w-full lg:text-left">
+            {<QuillEditor value={director?.message} theme="bubble" readOnly />}
+            {/* <span className="font-normal text-base text-center text-brand-dark font-geistsans  w-[90%] lg:w-full lg:text-left">
               {director?.message}
-            </span>
+            </span> */}
           </div>
           <ButtonLight text={"About Us"} url={`mda/${slug}/about`} />
         </div>
@@ -31,12 +37,13 @@ const MdaDirector = ({ slug, director }: any) => {
               src={director?.image}
               width={680}
               height={690}
+              objectFit="cover"
               alt="director"
-              className="w-[680px] rounded-xl mx-auto"
+              className="rounded-xl mx-auto"
             />
             <div className="glass-fx w-[90%] absolute bottom-4 left-4 flex flex-col gap-1 p-4 text-left md:w-[476px] md:gap-4 md:p-6 md:bottom-10 md:left-[3.4rem] lg:left-[2.9rem] lg:w-[75%] 2xl:w-[75%]">
               <span className="font-medium text-[24px] font-geistsans text-brand-white md:text-4xl">
-                {director?.name}
+                {director?.title} {director?.name}
               </span>
               <span className="font-normal text-base font-geistsans text-brand-white">
                 {director?.position}{" "}

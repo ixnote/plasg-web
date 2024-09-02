@@ -10,29 +10,18 @@ interface Team {
 
 const SecondCard: React.FC<Team> = ({ id, name, image, position }) => {
   return (
-    <div>
-      {/* <div className="h-[490px] w-[385px] rounded-2xl gap-6"> */}
-      <div className="h-[490px] max-w-[385px] rounded-2xl gap-6">
-        {typeof image === "string" ? (
-          <Image
-            src={image} // If image is a URL
-            alt=""
-            width={500}
-            height={544}
-            layout="responsive"
-          />
-        ) : (
-          <Image
-            src={image}
-            alt=""
-            width={500}
-            height={544}
-            layout="responsive"
-          />
-        )}
+    <div className="flex flex-col items-center rounded-2xl p-4 w-full">
+      <div className="relative w-[385px] h-[544px] rounded-2xl overflow-hidden">
+        <Image
+          src={image}
+          alt={`${name}'s image`}
+          layout="fill"
+          objectFit="cover"
+          className="rounded-2xl"
+        />
       </div>
-      <div>{name}</div>
-      <div>{position}</div>
+      <div className="mt-4 text-lg font-semibold">{name}</div>
+      <div className="text-sm text-gray-600">{position}</div>
     </div>
   );
 };

@@ -72,16 +72,16 @@ const Hero = () => {
                         <path
                           d="M3 17L9 11L13 15L21 7"
                           stroke="black"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                         <path
                           d="M17 7H21V11"
                           stroke="black"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       Trending Search 1
@@ -97,16 +97,16 @@ const Hero = () => {
                         <path
                           d="M3 17L9 11L13 15L21 7"
                           stroke="black"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                         <path
                           d="M17 7H21V11"
                           stroke="black"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       Trending Search 2
@@ -122,16 +122,16 @@ const Hero = () => {
                         <path
                           d="M3 17L9 11L13 15L21 7"
                           stroke="black"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                         <path
                           d="M17 7H21V11"
                           stroke="black"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       Trending Search
@@ -147,16 +147,16 @@ const Hero = () => {
                         <path
                           d="M3 17L9 11L13 15L21 7"
                           stroke="black"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                         <path
                           d="M17 7H21V11"
                           stroke="black"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       Trending Search
@@ -172,16 +172,16 @@ const Hero = () => {
                         <path
                           d="M3 17L9 11L13 15L21 7"
                           stroke="black"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                         <path
                           d="M17 7H21V11"
                           stroke="black"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       Trending Search
@@ -228,9 +228,9 @@ const Hero = () => {
                           <path
                             d="M30 30L34 34M16 24C16 26.1217 16.8429 28.1566 18.3431 29.6569C19.8434 31.1571 21.8783 32 24 32C26.1217 32 28.1566 31.1571 29.6569 29.6569C31.1571 28.1566 32 26.1217 32 24C32 21.8783 31.1571 19.8434 29.6569 18.3431C28.1566 16.8429 26.1217 16 24 16C21.8783 16 19.8434 16.8429 18.3431 18.3431C16.8429 19.8434 16 21.8783 16 24Z"
                             stroke="white"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                           />
                         </svg>
                       )}
@@ -249,10 +249,10 @@ const Hero = () => {
                           <path
                             d="M15 15L19 19M1 9C1 11.1217 1.84285 13.1566 3.34315 14.6569C4.84344 16.1571 6.87827 17 9 17C11.1217 17 13.1566 16.1571 14.6569 14.6569C16.1571 13.1566 17 11.1217 17 9C17 6.87827 16.1571 4.84344 14.6569 3.34315C13.1566 1.84285 11.1217 1 9 1C6.87827 1 4.84344 1.84285 3.34315 3.34315C1.84285 4.84344 1 6.87827 1 9Z"
                             stroke="white"
-                            stroke-opacity="0.5"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeOpacity="0.5"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                           />
                         </svg>
                       )}
