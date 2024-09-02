@@ -9,6 +9,9 @@ import bg from "@/assets/imgs/bg-img.svg";
 import { useGeneralContext } from "../../../../../../context/GenralContext";
 import SectionDividerLight from "@/components/SectionDividerLight";
 
+import dynamic from "next/dynamic";
+import "react-quill/dist/quill.bubble.css";
+const QuillEditor = dynamic(() => import("react-quill"), { ssr: false });
 const About = () => {
   const { oneMda }: any = useGeneralContext();
 
@@ -57,8 +60,16 @@ const About = () => {
                 {oneMda?.about?.title}
               </p>
             </div>
+
             <div className="w-full font-geistsans text-lg font-normal lg:text-lg lg:w-[50%]">
-              <p>{oneMda?.about?.description}</p>
+              {
+                <QuillEditor
+                  value={oneMda?.about?.description}
+                  theme="bubble"
+                  readOnly
+                />
+              }
+              {/* <p>{oneMda?.about?.description}</p> */}
             </div>
           </div>
           <SectionDividerLight />
@@ -74,7 +85,14 @@ const About = () => {
                     Our Vision
                   </p>
                   <p className="w-full font-geistsans text-lg font-normal text-brand-dark ">
-                    {oneMda?.about?.vision}
+                    {
+                      <QuillEditor
+                        value={oneMda?.about?.vision}
+                        theme="bubble"
+                        readOnly
+                      />
+                    }
+                    {/* {oneMda?.about?.vision} */}
                   </p>
                 </div>
               </div>
@@ -87,7 +105,14 @@ const About = () => {
                     Our Mission
                   </p>
                   <p className="w-full font-geistsans text-lg font-normal text-brand-dark ">
-                    {oneMda?.about?.mission}
+                    {
+                      <QuillEditor
+                        value={oneMda?.about?.mission}
+                        theme="bubble"
+                        readOnly
+                      />
+                    }
+                    {/* {oneMda?.about?.mission} */}
                   </p>
                 </div>
               </div>
