@@ -127,7 +127,7 @@ function MdaWidget() {
                       href={`/mda/${item?.slug}`}
                       className='w-full flex items-center justify-between'
                     >
-                      <p className='lg:text-[20px] text-[20px] lg:text-gray-400 text-gray-600 font-medium  py-6 whitespace-nowrap overflow-hidden text-ellipsis flex-grow max-w-[85%]'>
+                      <p className='lg:text-[20px] text-[20px] lg:text-gray-400 text-gray-600 font-medium  py-12 whitespace-nowrap overflow-hidden text-ellipsis flex-grow max-w-[85%]'>
                         {item?.name}
                       </p>
                       <button className='text-gray-300 border-none hover:bg-none px-0 block lg:hidden'>
