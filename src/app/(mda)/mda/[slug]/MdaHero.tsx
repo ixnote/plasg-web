@@ -21,9 +21,9 @@ const MdaHero = ({ slug, hero }: any) => {
                 className={
                   'group transition-fx border-[1px] border-brand-grayish flex items-center justify-center gap-4 p-4 px-8 rounded-lg font-normal text-base font-geistsans text-brand-white cursor-pointer bg-brand-main hover:bg-brand-lightYellow hover:text-brand-dark hover:px-6 hover:border-brand-lightYellow'
                 }
-                onClick={() => router.push(`/mda/${slug}/library`)}
+                onClick={() => router.push(`/mda/${slug}/about`)}
               >
-                View Library
+                Read More
                 <svg
                   width='18'
                   height='18'
