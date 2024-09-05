@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  trailingSlash: true,
   compiler: {
     styledComponents: true,
   },
@@ -21,11 +22,11 @@ const nextConfig = {
     config.module.rules.push({
       test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)$/,
       use: {
-        loader: "file-loader",
+        loader: 'file-loader',
         options: {
-          publicPath: "/_next/static/media/",
-          outputPath: "static/media/",
-          name: "[name].[hash].[ext]",
+          publicPath: '/_next/static/media/',
+          outputPath: 'static/media/',
+          name: '[name].[hash].[ext]',
           esModule: false,
         },
       },
