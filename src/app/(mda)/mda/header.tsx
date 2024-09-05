@@ -6,7 +6,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useGeneralContext } from "../../../../context/GenralContext";
 
-const Header = () => {
+const Header = ({ propSlug }: any) => {
+  console.log("🚀 ~ Header ~ propSlug:", propSlug);
   const { mdaSlug, oneMda }: any = useGeneralContext();
   const [aboutPath, setAboutPath] = useState("");
   const [libraryPath, setLibraryPath] = useState("");
@@ -28,10 +29,10 @@ const Header = () => {
   ];
 
   useEffect(() => {
-    setAboutPath(`/mda/${mdaSlug}/about`);
-    setLibraryPath(`/mda/${mdaSlug}/library`);
-    setContactPath(`/mda/${mdaSlug}/contact`);
-  }, [mdaSlug]);
+    setAboutPath(`/mda/${mdaSlug || propSlug}/about`);
+    setLibraryPath(`/mda/${mdaSlug || propSlug}/library`);
+    setContactPath(`/mda/${mdaSlug || propSlug}/contact`);
+  }, [mdaSlug, propSlug]);
 
   return (
     <div className="header-container bg-brand-white w-full  rounded-t-2xl">
@@ -39,7 +40,7 @@ const Header = () => {
         <div className="h-[76px] w-full rounded-lg px-10 py-4 flex items-center ustify-around rounded-t-xl sticky top-0">
           <div className="header-content ">
             <Link
-              href={`/mda/${mdaSlug}`}
+              href={`/mda/${mdaSlug || propSlug}`}
               className=" flex justify-between items-center  w-[149px] h-[40px] "
             >
               <div className="w-[39px] h-[40px] pr-1">
