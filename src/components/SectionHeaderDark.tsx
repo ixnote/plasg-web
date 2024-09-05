@@ -93,7 +93,8 @@ const SectionHeaderDark = ({
           </div>
         )}
         {video && (
-          <div className="relative w-full overflow-hidden h-[240px] md:h-[480px] lg:h-[780px]">
+          // <div className="relative w-full overflow-hidden h-[240px] md:h-[480px] lg:h-[780px]">
+          <div className="relative w-full overflow-hidden h-[240px] md:h-[480px] lg:h-[80vh]">
             {getYouTubeVideoId(video) ? (
               <iframe
                 src={`https://www.youtube.com/embed/${getYouTubeVideoId(
