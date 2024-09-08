@@ -107,7 +107,7 @@ const Visit = () => {
                     src={images[active]}
                     alt="visit"
                     className="w-[1360px] h-full object-cover rounded-xl xl:w-full"
-                    loading="lazy"
+                    // loading="lazy"
                   />
                 </Suspense>
               </div>
