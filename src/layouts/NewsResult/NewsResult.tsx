@@ -56,12 +56,114 @@ function NewsResult() {
             {resource?.data?.data?.headline}
           </p>
           <span className="text-[#00000080] opacity-80 font-medium flex items-center gap-4 text-[14px] flex-wrap">
-            <p>{resource?.data?.data?.name}</p>/
+            <p>{resource?.data?.data?.mda?.name}</p>/
             <p>{formatDate(resource?.data?.data?.updatedAt)}</p>/
             <p>{resource?.data?.data?.newsSections?.length} min read</p>
           </span>
         </span>
-        <span className="my-8 flex flex-col gap-10">
+        <span className="my-8 flex flex-col gap-16">
+          <span className="flex w-full h-[500px] relative">
+            <Image
+              src={resource?.data?.data?.image}
+              alt=""
+              width={1200}
+              height={100}
+              className="w-full h-auto rounded-2xl object-cover"
+            />
+          </span>
+
+          <span className="grid lg:grid-cols-5 grid-cols-1 gap-5 items-start">
+            <span className="text-[#00000080] opacity-80 font-light flex items-center gap-4 text-[16px] uppercase col-span-1">
+              <p>INTRODUCTION</p>
+            </span>
+            <p className="text-[18px] font-normal text-[#00000099] m-0 lg:col-span-4 col-span-1">
+              {resource?.data?.data?.description}
+            </p>
+          </span>
+        </span>
+        <span className="grid lg:grid-cols-5 grid-cols-2 gap-5 items-start mb-10">
+          <span className="text-[#00000080] opacity-80 font-light flex items-center gap-4 text-[16px] uppercase col-span-1">
+            <p>Details</p>
+          </span>
+          <span className=" m-0 lg:col-span-4 col-span-1">
+            {resource?.data?.data?.newsSections.map((data: any, index: any) => (
+              // <RenderNewsSection data={item} key={index} />
+              <div key={index} className="flex py-2 mb-2">
+                {data?.type === "image" && (
+                  <Image
+                    src={data?.value}
+                    alt=""
+                    width={1200}
+                    height={1200}
+                    className="w-full h-auto rounded-2xl object-cover py-2"
+                  />
+                )}
+                {data?.type === "paragraph" && (
+                  <p className="text-[18px] font-normal text-[#00000099] m-0">
+                    {data?.value}
+                  </p>
+                )}
+                {data?.type === "heading" && (
+                  <p className="text-[28px] font-bold text-black m-0 py-4">
+                    {data?.value}
+                  </p>
+                )}
+                {data?.type === "sub_heading" && (
+                  <p className="text-[20px] font-semibold text-black/70 m-0 py-2">
+                    {data?.value}
+                  </p>
+                )}
+                {data?.type === "section_title" && (
+                  <p className="text-[18px] font-medium text-[#00000099] m-0 py-2">
+                    {data?.value}
+                  </p>
+                )}
+                {data?.type === "text" && (
+                  <p className="text-[18px] font-normal text-[#00000099] m-0">
+                    {data?.value}
+                  </p>
+                )}
+                {data?.type === "bullet" && (
+                  <ol className="flex flex-col gap-3 py-2">
+                    {data.value.map((i: any, index: number) => (
+                      <li key={index}>
+                        {index + 1}.{i}
+                      </li>
+                    ))}
+                  </ol>
+                )}
+              </div>
+            ))}
+          </span>
+        </span>
+        <span className="grid lg:grid-cols-5 grid-cols-1 gap-5 mb-12">
+          <span className="col-span-1"></span>
+          <span className="flex gap-3 flex-wrap lg:col-span-4 col-span-1 ">
+            {resource?.data?.data.tags?.map((item: any, index: any) => (
+              <button
+                key={index}
+                className="h-10 px-8 rounded-full bg-gray-200 border w-fit border-gray-400"
+              >
+                {item.name}
+              </button>
+            ))}
+          </span>
+          <span className="col-span-1"></span>
+          <span className="text-gray-400 gap-6  lg:col-span-4 col-span-1 flex items-center mt-5">
+            <p className="flex items-center text-[14px]">
+              <AiOutlineLike size={24} />
+              42
+            </p>
+            <p className="flex items-center text-[14px]">
+              <AiOutlineDislike size={24} />
+            </p>
+            <p className="flex items-center text-[14px]">
+              <IoShareOutline size={24} />
+            </p>
+          </span>
+        </span>
+
+        {/* <span className="my-8 flex flex-col gap-10">
           <Image
             src={resource?.data?.data?.image}
             alt=""
@@ -81,16 +183,6 @@ function NewsResult() {
                   </p>
                 </span>
               )}
-              {/* {item?.paragraph === "heading1" && (
-                <span className="grid lg:grid-cols-5 grid-cols-1 gap-5 items-start">
-                  <span className="text-[#00000080] opacity-80 font-light flex items-center gap-4 text-[16px] uppercase col-span-1">
-                    <p>{item?.title}</p>
-                  </span>
-                  <p className="text-[40px] leading-[40px] font-normal text-brand-main m-0 lg:col-span-4 col-span-1">
-                    {item?.paragraph}
-                  </p>
-                </span>
-              )} */}
               {item?.type === "bullet" && (
                 <span className="grid lg:grid-cols-5 grid-cols-1 gap-5 items-start">
                   <span className="text-[#00000080] opacity-80 font-light flex items-center gap-4 text-[16px] uppercase col-span-1">
@@ -125,43 +217,6 @@ function NewsResult() {
               )}
             </span>
           ))}
-          {/* {data?.subContent?.map((item: any, index: any) => (
-            <span key={index}>
-              <span className="grid lg:grid-cols-5 grid-cols-1 gap-5 items-start">
-                <span className="text-[#00000080] opacity-80 font-light flex items-center gap-4 text-[16px] uppercase col-span-1">
-                  <p>{item?.title}</p>
-                </span>
-                <span className="lg:col-span-4 col-span-1 flex flex-col gap-6">
-                  <p className="text-[24px] leading-[36px] font-normal text-brand-main m-0 lg:col-span-4 col-span-1">
-                    {item?.heading}
-                  </p>
-                  <p className="text-[18px] font-normal text-[#00000099] m-0 ">
-                    {item?.text}
-                  </p>
-                  <ul>
-                    {item?.lists.map((element: any, index: any) => (
-                      <li
-                        className="list-disc ml-8 pl-3 my-2 text-[#00000099]"
-                        key={index}
-                      >
-                        {element}
-                      </li>
-                    ))}
-                  </ul>
-                  {item?.text2 && (
-                    <p className="text-[18px] font-normal text-[#00000099] m-0 ">
-                      {item?.text2}
-                    </p>
-                  )}
-                  {item?.text3 && (
-                    <p className="text-[18px] font-normal text-[#00000099] m-0 ">
-                      {item?.text3}
-                    </p>
-                  )}
-                </span>
-              </span>
-            </span>
-          ))} */}
         </span>
         <span className="grid lg:grid-cols-5 grid-cols-1 gap-5">
           <span className="col-span-1"></span>
@@ -202,7 +257,7 @@ function NewsResult() {
           {[1, 2, 3, 4].map((item, index) => (
             <ArticleCardTwo data={article} key={index} />
           ))}
-        </span>
+        </span> */}
       </span>
     </div>
   );
