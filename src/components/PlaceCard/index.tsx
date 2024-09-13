@@ -22,13 +22,12 @@ function PlaceCard({ data, onclick }: any) {
       </span>
       <span className="mt-[-80px] ml-7 mb-6 bg-[#ffffff30] w-fit py-1 border-[0.2px] border-gray-400 backdrop-blur-sm">
         <span className="px-4 py-2  uppercase bg-[#00000050] w-fit text-white text-[16px]">
-          Jos North
+          Valada Hotel
         </span>
       </span>
       <span className="flex gap-4 justify-between items-center">
         <p className="text-[24px] leading-[24px] font-medium  m-0 lg:col-span-4 col-span-1 h-10">
           {/* {data?.name} */}
-          Valada Hotel
         </p>
       </span>
       <button className="rounded-full bg-brand-lightYellow text-brand-main w-14 h-14  group-hover:flex hidden absolute top-6 right-6 justify-center items-center hidden-element">
