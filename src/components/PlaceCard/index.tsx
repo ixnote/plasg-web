@@ -10,7 +10,10 @@ function PlaceCard({ data, onclick }: any) {
     >
       <span className="w-full h-auto rounded-2xl aspect-[9/8] object-cover bg-[#588065] image-container">
         <Image
-          src={data?.image}
+          // src={data?.image}
+          src={
+            "https://images.trvl-media.com/lodging/35000000/34540000/34536000/34535926/f89651e3.jpg?impolicy=resizecrop&rw=1200&ra=fit"
+          }
           alt=""
           width={1200}
           height={1200}
@@ -19,7 +22,7 @@ function PlaceCard({ data, onclick }: any) {
       </span>
       <span className="mt-[-80px] ml-7 mb-6 bg-[#ffffff30] w-fit py-1 border-[0.2px] border-gray-400 backdrop-blur-sm">
         <span className="px-4 py-2  uppercase bg-[#00000050] w-fit text-white text-[16px]">
-          PANKSHIN NORTH
+          Valada Hotel
         </span>
       </span>
       <span className="flex gap-4 justify-between items-center">

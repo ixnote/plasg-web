@@ -152,7 +152,10 @@ function Discover({ destinations }: any) {
                       onMouseLeave={() => setShow(false)}
                     >
                       <Image
-                        src={ArticleImage}
+                        // src={ArticleImage}
+                        src={
+                          "https://images.trvl-media.com/lodging/35000000/34540000/34536000/34535926/f89651e3.jpg?impolicy=resizecrop&rw=1200&ra=fit"
+                        }
                         alt=""
                         width={1200}
                         height={1200}
