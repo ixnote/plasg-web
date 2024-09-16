@@ -16,7 +16,7 @@ const Hero = ({ data }: any) => {
                 <div className="h-fit glass-fx1 flex flex-col gap-10 text-left p-8">
                   <div className="text-left flex flex-col gap-2">
                     <span className="font-medium text-5xl font-geistsans text-white outline-2">
-                      Visit the{" "}
+                      Visit Plateau{" "}
                     </span>
                     <span className="font-medium text-5xl font-geistsans text-white outline-2">
                       {data?.name}
@@ -29,9 +29,9 @@ const Hero = ({ data }: any) => {
                     visit today and experience the unique charm and hospitality
                     that make ours a must-visit destination.
                   </span>
-                  <p className="text-white text-[20px]">
+                  {/* <p className="text-white text-[20px]">
                     Background: Riyom Rocks
-                  </p>
+                  </p> */}
                 </div>
               </div>
             </div>

@@ -6,14 +6,42 @@ import { cn } from "@/utils";
 import { Divider } from "@mantine/core";
 
 function Essentials() {
-  const article = {
-    image: ArticleImage,
-    name: "Hon. Gabriel Dewan",
-    position: "Speaker ",
-  };
+  const hotels = [
+    {
+      image:
+        "https://images.trvl-media.com/lodging/35000000/34540000/34536000/34535926/f89651e3.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+      name: "Valada Hotel",
+    },
+    {
+      image:
+        "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/a6/43/d0/our-suites-rooms-are.jpg?w=1200&h=-1&s=1",
+      name: "Shartell Hotels",
+    },
+    {
+      image:
+        "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1d/52/e8/73/my-room-was-always-tidy.jpg?w=1200&h=-1&s=1",
+      name: "Novel Suites Resort LTD",
+    },
+    {
+      image:
+        "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/26/db/b8/c5/caption.jpg?w=1200&h=-1&s=1",
+      name: "Crispan Suites & Event Centre",
+    },
+    {
+      image:
+        "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/12/9e/62/00/silk-suites.jpg?w=1200&h=-1&s=1",
+      name: "Silk Suites",
+    },
+    {
+      image:
+        "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/35/b4/fc/hbc-resort.jpg?w=1100&h=-1&s=1",
+      name: "Healthy Body Clinic and Resort",
+    },
+  ];
+  console.log("🚀 ~ Essentials ~ hotels:", hotels);
   const data = [
     { name: "Where to Stay", value: "stay" },
-    { name: "Where to Eat", value: "eat" },
+    // { name: "Where to Eat", value: "eat" },
   ];
   const [active, setActive] = useState<any>([data[0]]);
   useEffect(() => {
@@ -57,8 +85,11 @@ function Essentials() {
           ))}
         </span>
         <span className="grid lg:grid-cols-3 grid-cols-1 gap-5 gap-y-16 my-10">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 1].map((item, index) => (
-            <PlaceCard data={article} key={index} />
+          {/* {hotels.map(({ hotel, i }: any) => (
+            <PlaceCard data={hotel} key={i} />
+          ))} */}
+          {[1, 2, 3, 4, 5, 6].map((item, index) => (
+            <PlaceCard data={hotels[index]} key={index} />
           ))}
         </span>
         <Divider />
