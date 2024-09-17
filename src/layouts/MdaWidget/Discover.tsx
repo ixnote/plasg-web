@@ -1,54 +1,117 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Divider } from "@mantine/core";
-import { GoPlus } from "react-icons/go";
-import ArticleImage from "@/assets/imgs/img.png";
-import Image from "next/image";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import Image from "next/image";
 import { cn } from "@/utils";
 import { useMediaQuery } from "@mantine/hooks";
 import { MdOutlineArrowOutward } from "react-icons/md";
 
 function Discover({ destinations }: any) {
-  const article = {
-    image: ArticleImage,
-    name: "Hon. Gabriel Dewan",
-    position: "Speaker ",
+  const tabs = [
+    { text: "landmark", name: "Landmarks", value: "stay" },
+    { text: "parks", name: "Parks", value: "eat" },
+    { text: "gallery", name: "Gallery", value: "food" },
+  ];
+  const [activeTab, setActiveTab] = useState<any>(tabs[0]);
+
+  useEffect(() => {
+    setActiveTab(tabs[0]);
+  }, []);
+
+  const matches = useMediaQuery("(max-width: 768px)");
+
+  const filterDestinations = (value: string) => {
+    return places.filter((item: any) => item.type === value);
   };
-  const data = [
+
+  const places = [
     {
-      question: "Where to Stay",
-      answer:
-        "Plateau State&apos;s Ministries, Departments, and Agencies (MDAs) are the driving force behind our community&apos;s progress. Discover the array of dedicated entities committed to serving you. Explore essential public services, strategic initiatives, and innovative solutions aimed at enhancing your well-being and prosperity",
+      name: "Wase Rock",
+      description:
+        "This massive dome-shaped rocky inselberg is found near Wase town in Wase Local Government Area of Plateau State, Nigeria.",
+      image:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Wase_Rock.JPG/1280px-Wase_Rock.JPG",
+      type: "landmark",
     },
     {
-      question: "When is the cheapest time to visit Jos?",
-      answer:
-        "Plateau State&apos;s Ministries, Departments, and Agencies (MDAs) are the driving force behind our community&apos;s progress. Discover the array of dedicated entities committed to serving you. Explore essential public services, strategic initiatives, and innovative solutions aimed at enhancing your well-being and prosperity",
+      name: "Shere Hills",
+      description:
+        "The Shere Hills are a range of undulating hills and rock formations located in Plateau State, offering scenic views and hiking opportunities.",
+      image:
+        "https://emc3nigeria.com/wp-content/uploads/2016/09/Shere-Hills-Jos-Plateau-State.jpg",
+      type: "landmark",
     },
     {
-      question: "Where should I stay in Jos?",
-      answer:
-        "Plateau State&apos;s Ministries, Departments, and Agencies (MDAs) are the driving force behind our community&apos;s progress. Discover the array of dedicated entities committed to serving you. Explore essential public services, strategic initiatives, and innovative solutions aimed at enhancing your well-being and prosperity",
+      name: "Jos Wildlife Park",
+      description:
+        "Jos Wildlife Park offers a scenic and wildlife-rich area where you can explore Plateau's biodiversity. A must-visit for nature lovers.",
+      image:
+        "https://lh3.googleusercontent.com/p/AF1QipPWy_4dGLVklVOFuJxCZJuTlFncVEhWFD9o8jk=s680-w680-h510",
+      type: "parks",
+    },
+    {
+      name: "Assop Falls",
+      description:
+        "Located along the Jos-Kagoro road, Assop Falls is a beautiful waterfall known for its cascading waters and serene environment.",
+      image:
+        "https://www.hlimg.com/images/things2do/738X538/ttd_1520680241m3.jpg?w=1880&dpr=1.0",
+      type: "landmark",
+    },
+    {
+      name: "National Museum Jos",
+      description:
+        "The National Museum in Jos is home to a rich collection of Nigerian artifacts, especially known for its pottery and archaeological exhibits.",
+      image:
+        "https://www.bmitpglobalnetwork.org/wp-content/uploads/2023/12/national-museum-jos.jpg",
+      type: "gallery",
+    },
+    {
+      name: "Riyom Rock",
+      description:
+        "Riyom Rock, an iconic rock formation, is located near Riyom town in Plateau State. It stands as a natural sculpture, showcasing the beauty of the region's geology.",
+      image: "https://cimages.timbu.com/guides/2017/07/Riyom-Rock-2.jpg",
+      type: "landmark",
+    },
+    {
+      name: "Kurra Falls",
+      description:
+        "Kurra Falls, located near Barkin Ladi, is a man-made water body used to generate hydroelectric power, and it's a stunning place for sightseeing and picnics.",
+      image:
+        "https://www.researchgate.net/profile/Nathaniel-Goki/publication/327405748/figure/fig6/AS:675093973852173@1537966354497/Kurra-Falls-in-Riyom-south-east-of-Jos-central-Nigeria.jpg",
+      type: "landmark",
+    },
+    {
+      name: "Pandam Wildlife Park",
+      description:
+        "Located in Qua’an Pan Local Government Area, Pandam Wildlife Park is a natural sanctuary for a variety of animals and plant species.",
+      image:
+        "https://www.icirnigeria.org/wp-content/uploads/2016/04/Pandam-Wildlife-Park.jpg",
+      type: "parks",
+    },
+    {
+      name: "Rayfield Resort",
+      description:
+        "Rayfield Resort is a popular recreational area in Jos, featuring serene lakes for boating and relaxation, ideal for family outings.",
+      image:
+        "https://lh3.googleusercontent.com/p/AF1QipOnS9mh1Dj3C6GcMLUe9VU-UtRzRfuKDzyAJWAi=s680-w680-h510",
+      type: "parks",
+    },
+    {
+      name: "Jos Museum of Traditional Nigerian Architecture (MOTNA)",
+      description:
+        "A specialized museum showcasing indigenous Nigerian architectural styles, with life-sized models and detailed displays.",
+      image:
+        "https://lh3.googleusercontent.com/p/AF1QipNs5BqjGuxv9WlgHpEp8aF-i2ADX1YOjHV28KeI=s680-w680-h510",
+      type: "gallery",
     },
   ];
-  const [active, setActive] = useState<any>(null);
-
-  const handleOpen = (value: any) => {
-    if (value === active) {
-      setActive(null);
-    } else {
-      setActive(value);
-    }
-  };
-
-  const [show, setShow] = useState(false);
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const filteredPlaces = filterDestinations(activeTab.text);
 
-  const images = [1, 2, 3, 7, 4, 5];
   const nextSlide = () => {
-    if (currentIndex < images.length - 1) {
+    if (currentIndex < filteredPlaces.length - 1) {
       setCurrentIndex(currentIndex + 1);
     } else {
       setCurrentIndex(0);
@@ -59,27 +122,8 @@ function Discover({ destinations }: any) {
     if (currentIndex > 0) {
       setCurrentIndex(currentIndex - 1);
     } else {
-      setCurrentIndex(images.length - 1);
+      setCurrentIndex(filteredPlaces.length - 1);
     }
-  };
-
-  const tabs = [
-    { text: "landmark", name: "Landmarks", value: "stay" },
-    { text: "parks", name: "Parks", value: "eat" },
-    { text: "gallery", name: "Gallery", value: "food" },
-  ];
-  const [activeTab, setActiveTab] = useState<any>([tabs[0]]);
-  useEffect(() => {
-    tabs;
-    setActiveTab(tabs[0]);
-  }, []);
-
-  const matches = useMediaQuery("(max-width: 768px)");
-
-  const filterDestinations = (value: string) => {
-    console.log("value :>> ", value);
-    const newList = destinations.filter((item: any) => item.type === value);
-    return newList;
   };
 
   return (
@@ -101,7 +145,9 @@ function Discover({ destinations }: any) {
             </span>
           </span>
           <span className="col-span-3">
-            <span className="flex flex-col gap-4 cursor-pointer mt-12 pb-10">
+            <span className="flex flex-row gap-4 cursor-pointer mt-12 pb-10">
+              {" "}
+              {/* Changed to flex-row */}
               {tabs.map((item: any, index: number) => (
                 <span
                   key={index}
@@ -123,13 +169,13 @@ function Discover({ destinations }: any) {
         <span>
           <span className="grid lg:grid-cols-10 grid-cols-3 gap-10">
             <span className="col-span-3 flex flex-col justify-end">
-              {destinations && (
+              {filteredPlaces.length > 0 && (
                 <span className="flex flex-col gap-8 pb-14">
                   <p className="text-[24px] text-brand-main font-medium max-w-[800px]">
-                    {filterDestinations(activeTab?.text)[0]?.name}
+                    {filteredPlaces[currentIndex]?.name}
                   </p>
                   <p className="text-[18px] font-normal text-brand-main m-0 lg:col-span-4  max-w-[700px]">
-                    {destinations[0]?.description}
+                    {filteredPlaces[currentIndex]?.description}
                   </p>
                 </span>
               )}
@@ -144,35 +190,18 @@ function Discover({ destinations }: any) {
                     }%)`,
                   }}
                 >
-                  {images.map((item, index) => (
+                  {filteredPlaces.map((item, index) => (
                     <span
                       key={index}
-                      className="w-full h-auto rounded-2xl aspect-[9/7] object-cover bg-[#588065] image-container relative carousel-image relative"
-                      onMouseEnter={() => setShow(true)}
-                      onMouseLeave={() => setShow(false)}
+                      className="w-full h-auto rounded-2xl aspect-[9/7] object-cover bg-[#588065] image-container relative carousel-image"
                     >
                       <Image
-                        // src={ArticleImage}
-                        src={
-                          "https://images.trvl-media.com/lodging/35000000/34540000/34536000/34535926/f89651e3.jpg?impolicy=resizecrop&rw=1200&ra=fit"
-                        }
-                        alt=""
+                        src={item.image}
+                        alt={item.name}
                         width={1200}
                         height={1200}
-                        className="w-full h-full rounded-2xl aspect-[9/7] object-cover bg-[#588065] zoom-out-image"
+                        className="w-full h-full rounded-2xl aspect-[9/7] object-cover bg-[#588065]"
                       />
-                      {show && (
-                        <span className="absolute z-30 w-full h-full aspect-[9/7] bg-[#39441f35] top-0 flex flex-col justify-end p-8">
-                          <span className="flex justify-between items-center">
-                            <h1 className="text-[28px] text-white font-semibold">
-                              More Details
-                            </h1>
-                            <button className="bg-brand-lightYellow text-brand-main w-16 h-16 flex justify-center items-center absolute top-6 right-6 rounded-full">
-                              <MdOutlineArrowOutward size={28} />
-                            </button>
-                          </span>
-                        </span>
-                      )}
                     </span>
                   ))}
                 </div>

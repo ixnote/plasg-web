@@ -22,7 +22,7 @@ const Hero = ({ data }: any) => {
                       {data?.name}
                     </span>
                   </div>
-                  <span className="font-normal text-base text-white font-geistsans w-[94%]">
+                  <span className="font-normal text-lg text-white font-geistsans w-[94%]">
                     From majestic waterfalls and serene lakes to historic sites
                     and lively festivals, immerse yourself in the beauty and
                     tranquility of the home of peace and tourism. Plan your
