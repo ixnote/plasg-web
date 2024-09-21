@@ -119,10 +119,7 @@ function MdaWidget() {
             {mda && (
               <>
                 {mda?.data?.data?.mdas?.map((item: any) => (
-                  <span
-                    key={item?.id}
-                    className='border-b-[1px] border-b-gray-300 cursor-pointer flex w-full'
-                  >
+                  <span key={item?.id} className=' cursor-pointer flex w-full'>
                     <Link
                       href={`/mda/${item?.slug}`}
                       className='w-full flex items-center justify-between'
