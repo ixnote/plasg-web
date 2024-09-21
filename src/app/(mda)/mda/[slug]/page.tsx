@@ -119,8 +119,8 @@ const Page = ({ params }: { params: { slug: string } }) => {
                 {/* content */}
                 <div className='flex items-center justify-between flex-wrap gap-4 w-full m-auto'>
                   {/* Cards */}
-                  {resources?.resources?.length > 0 ? (
-                    resources?.resources
+                  {mda?.data?.data?.resources?.length > 0 ? (
+                    mda?.data?.data?.resources
                       ?.slice(0, 4)
                       .map((resource: any, i: number) => (
                         <AssetCardLight
