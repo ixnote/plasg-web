@@ -1,27 +1,37 @@
 "use client";
 import React, { useState } from "react";
 import { Divider } from "@mantine/core";
-import { AiOutlineMinus } from "react-icons/ai";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 
 function Faqs() {
   const data = [
     {
-      question: "Where to Stay",
+      question: "Where to Stay in Plateau State?",
       answer:
-        "Plateau State's Ministries, Departments, and Agencies (MDAs) are the driving force behind our community's progress. Discover the array of dedicated entities committed to serving                  you. Explore essential public services, strategic initiatives, and innovative solutions aimed at enhancing your well-being and prosperity",
+        "Plateau State offers a wide range of accommodations, from budget-friendly hotels to luxury resorts. Popular areas include Jos, where you'll find various hotels like Hill Station Hotel and Rayfield Resort, providing a comfortable stay with beautiful views of the surrounding landscape.",
     },
     {
-      question: "When is the cheapest time to visit Jos?",
+      question: "What are the Best Attractions in Plateau State?",
       answer:
-        "Plateau State's Ministries, Departments, and Agencies (MDAs) are the driving force behind our community's progress. Discover the array of dedicated entities committed to serving                  you. Explore essential public services, strategic initiatives, and innovative solutions aimed at enhancing your well-being and prosperity",
+        "Some must-see attractions in Plateau State include the scenic Shere Hills, Wase Rock, Jos Wildlife Park, and Riyom Rock. The state is also home to stunning waterfalls like Kurra Falls and the beautiful Jos Museum, which houses a variety of historical and cultural artifacts.",
     },
     {
-      question: "Where should I stay in Jos?",
+      question: "When is the Best Time to Visit Jos?",
       answer:
-        "Plateau State's Ministries, Departments, and Agencies (MDAs) are the driving force behind our community's progress. Discover the array of dedicated entities committed to serving                  you. Explore essential public services, strategic initiatives, and innovative solutions aimed at enhancing your well-being and prosperity",
+        "The best time to visit Jos and Plateau State is during the dry season, from November to February. During this time, the weather is cool and pleasant, making it ideal for sightseeing and outdoor activities. However, the rainy season (April to October) is also beautiful with lush green landscapes.",
+    },
+    {
+      question: "What Outdoor Activities Can I Do in Plateau State?",
+      answer:
+        "Plateau State offers a variety of outdoor activities including hiking the Shere Hills, bird watching at Pandam Wildlife Park, and boating at Rayfield Resort. You can also explore the wildlife at Jos Wildlife Park or enjoy a peaceful walk through the rock formations at Riyom Rock.",
+    },
+    {
+      question: "What is the Best Way to Travel Around Plateau State?",
+      answer:
+        "The best way to travel around Plateau State is by road. You can hire a car or use local taxis and buses to get around. Roads are fairly accessible to most tourist destinations, though some remote areas might require more rugged vehicles.",
     },
   ];
+
   const [active, setActive] = useState<any>(null);
 
   const handleOpen = (value: any) => {
@@ -34,8 +44,6 @@ function Faqs() {
 
   return (
     <>
-      {/* <div className="py-12 bg-white px-4 pb-4">
-        <span className="max-w-[1520px] mx-auto flex flex-col"> */}
       <div className="min-h-screen bg-brand-white py-12 max-w-[2040px] pb-[96px] relative flex items-center justify-center">
         <span className="m-auto w-[92%] flex justify-between flex-col gap-8">
           <span className="flex flex-col gap-8 mb-10">
@@ -56,10 +64,10 @@ function Faqs() {
             {data.map((item, index) => (
               <span
                 key={index}
-                className="border-b-[1px] border-b-gray-300 flex flex-col gap-8  group"
+                className="border-b-[1px] border-b-gray-300 flex flex-col gap-8 group"
                 onClick={() => handleOpen(index)}
               >
-                <span className="flex justify-between gap-4 items-center cursor-pointer py-6 px-0 group-hover:px-8  group-hover:bg-brand-lightYellow group-hover:border-none group-hover:rounded-lg">
+                <span className="flex justify-between gap-4 items-center cursor-pointer py-6 px-0 group-hover:px-8 group-hover:bg-brand-lightYellow group-hover:border-none group-hover:rounded-lg">
                   <p className="text-[40px] text-gray-700 font-medium max-w-[800px] py-0 ">
                     {item.question}
                   </p>
