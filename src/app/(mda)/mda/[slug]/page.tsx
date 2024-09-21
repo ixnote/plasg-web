@@ -77,7 +77,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
   }, [params]);
 
   useEffect(() => {
-    setOneMda(mda?.data.data);
+    setOneMda(mda?.data.data.mda);
     allResources();
   }, [mda]);
 
