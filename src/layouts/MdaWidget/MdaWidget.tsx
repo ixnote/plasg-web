@@ -127,7 +127,7 @@ function MdaWidget() {
                       <p className='lg:text-[20px] text-[20px] lg:text-gray-400 text-gray-600 font-medium  py-2 whitespace-nowrap overflow-hidden text-ellipsis flex-grow max-w-[85%]'>
                         {item?.name}
                       </p>
-                      <button className='text-gray-300 border-none hover:bg-none px-0 block lg:hidden'>
+                      <button className='text-gray-300 border-none hover:bg-none px-0'>
                         <MdOutlineArrowOutward size={28} />
                       </button>
                     </Link>
