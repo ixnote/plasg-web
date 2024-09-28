@@ -120,7 +120,7 @@ function MdaWidget() {
               <>
                 {mda?.data?.data?.mdas?.map((item: any) => (
                   <>
-                    {item.name !== 'News' && (
+                    {item.name !== 'News' && item.name !== 'Documents' && (
                       <span
                         key={item?.id}
                         className=' cursor-pointer flex w-full'

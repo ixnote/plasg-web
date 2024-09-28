@@ -12,9 +12,9 @@ const MdaDirector = ({ slug, director }: any) => {
   return (
     <div className='w-full min-h-screen flex items-center justify-center py-24  bg-brand-white'>
       {/* content */}
-      <div className='w-full flex items-START justify-between flex-col gap-8 md:justi-start lg:flex-row lg:gap-4 lg:items-center'>
+      <div className='w-full flex items-start justify-between flex-col gap-8 md:justi-start lg:flex-row lg:gap-4 lg:items-center'>
         {/* left */}
-        <div className='w-full flex flex-col  items-center gap-16 lg:w-[40%] lg:items-start lg:ml-24'>
+        <div className='w-full flex flex-col justify-start  items-center gap-16 lg:w-[40%] lg:items-start lg:ml-24'>
           <div className='flex flex-col items-center gap-10 w-full lg:w-[80%] lg:items-start'>
             {/* <span className="w-max font-normal text-base text-brand-dark font-geistmono px-2 py-1 border-[1px] border-brand-dark rounded pb-auto">
               Head of MDA
