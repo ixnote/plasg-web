@@ -1,38 +1,38 @@
-"use client";
+'use client';
 
-import dynamic from "next/dynamic";
-import React, { useState } from "react";
-import "react-quill/dist/quill.bubble.css";
-import { GoHome } from "react-icons/go";
-import Image from "next/image";
-import { AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
-import { IoShareOutline } from "react-icons/io5";
-import { articleData } from "@/utils/mockArticle";
-import { Divider } from "@mantine/core";
-import ArticleImage from "@/assets/imgs/article1png.png";
-import ArticleCardTwo from "@/components/ArticleCardTwo";
-import { useQuery } from "react-query";
-import { getResource } from "@/api/mda/getResource";
-import { usePathname } from "next/navigation";
-import { formatDate } from "@/utils/formatDate";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import Preview from "@/components/Preview/Preview";
+import dynamic from 'next/dynamic';
+import React, { useState } from 'react';
+import 'react-quill/dist/quill.bubble.css';
+import { GoHome } from 'react-icons/go';
+import Image from 'next/image';
+import { AiOutlineDislike, AiOutlineLike } from 'react-icons/ai';
+import { IoDocumentOutline, IoShareOutline } from 'react-icons/io5';
+import { articleData } from '@/utils/mockArticle';
+import { Divider } from '@mantine/core';
+import ArticleImage from '@/assets/imgs/article1png.png';
+import ArticleCardTwo from '@/components/ArticleCardTwo';
+import { useQuery } from 'react-query';
+import { getResource } from '@/api/mda/getResource';
+import { usePathname } from 'next/navigation';
+import { formatDate } from '@/utils/formatDate';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import Preview from '@/components/Preview/Preview';
 
-const QuillEditor = dynamic(() => import("react-quill"), { ssr: false });
+const QuillEditor = dynamic(() => import('react-quill'), { ssr: false });
 
 function SearchResult() {
   const router = useRouter();
   const pathname = usePathname();
-  const pathSegments = pathname.split("/").filter((segment) => segment);
+  const pathSegments = pathname.split('/').filter((segment) => segment);
 
   const id = pathSegments[pathSegments.length - 1];
 
   const data = articleData;
   const article = {
     image: ArticleImage,
-    title: "Guide to Renewing Your Vehicle Registration",
-    text: "Learn the steps, required documents, fees, and timelines renewing your vehicle registration in Plateau State. Simplify he process with our comprehensive guide.",
+    title: 'Guide to Renewing Your Vehicle Registration',
+    text: 'Learn the steps, required documents, fees, and timelines renewing your vehicle registration in Plateau State. Simplify he process with our comprehensive guide.',
   };
 
   const {
@@ -40,53 +40,54 @@ function SearchResult() {
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["getResource", id],
+    queryKey: ['getResource', id],
     queryFn: getResource,
     enabled: !!id,
   });
-  console.log("🚀 ~ SearchResult ~ resource:", resource?.data.data);
+  console.log('🚀 ~ SearchResult ~ resource:', resource?.data.data);
 
   return (
     <>
-      <div className="pt-[200px] max-w-[2040px] pb-[96px] relative flex items-center justify-center bg-cover bg-center bg-no-repeat">
-        <span className="m-auto w-[92%] flex justify-between flex-col gap-8">
-          <div className="flex flex-col gap-4 lg:gap-16">
-            <span className="flex flex-col gap-8 mb-10">
-              <span className="uppercase text-brand-dark opacity-80 font-medium flex items-center gap-2 text-[14px]">
+      <div className='pt-[200px] max-w-[2040px] pb-[96px] relative flex items-center justify-center bg-cover bg-center bg-no-repeat'>
+        <span className='m-auto w-[92%] flex justify-between flex-col gap-8'>
+          <div className='flex flex-col gap-4 lg:gap-16'>
+            <span className='flex flex-col gap-8 mb-10'>
+              <span className='uppercase text-brand-dark opacity-80 font-medium flex items-center gap-2 text-[14px]'>
                 <GoHome
                   size={18}
                   onClick={() => router.push(`/`)}
-                  className="transition-fx cursor-pointer hover:text-brand-main"
+                  className='transition-fx cursor-pointer hover:text-brand-main'
                 />
                 /
                 <p
-                  className="transition-fx cursor-pointer hover:text-brand-main"
+                  className='transition-fx cursor-pointer hover:text-brand-main'
                   onClick={() => router.push(`/search`)}
                 >
                   Search
                 </p>
                 /
                 <p
-                  className="transition-fx cursor-pointer hover:text-brand-main"
+                  className='transition-fx cursor-pointer hover:text-brand-main'
                   onClick={() => router.push(`/search`)}
                 >
                   SEARCH RESULTS
                 </p>
               </span>
-              <button className="py-2 px-4 capitalize rounded-full bg-gray-200 border w-fit border-gray-400">
+              <div>{resource?.data?.data?.mda.name}</div>
+              <button className='py-2 px-4 capitalize rounded-full bg-gray-200 border w-fit border-gray-400'>
                 {resource?.data?.data?.main_topic_tag?.name}
               </button>
-              <p className="text-[52px] text-brand-main font-medium max-w-[800px] leading-[56px]">
+              <p className='text-[52px] text-brand-main font-medium max-w-[800px] leading-[56px]'>
                 {resource?.data?.data?.name}
               </p>
-              <span className="text-[#00000080] opacity-80 font-medium flex items-center gap-4 text-[14px] flex-wrap">
+              <span className='text-[#00000080] opacity-80 font-medium flex items-center gap-4 text-[14px] flex-wrap'>
                 <p>{resource?.data?.data?.name}</p>/
                 <p>{formatDate(resource?.data?.data?.updatedAt)}</p>
                 {/* <p>/ {data?.min}</p> */}
               </span>
             </span>
           </div>
-          <span className="flex flex-col gap-16">
+          <span className='flex flex-col gap-16'>
             {resource?.data?.data?.image && (
               <>
                 {/* <Image
@@ -100,42 +101,54 @@ function SearchResult() {
                   src={resource?.data?.data?.image}
                   width={1360}
                   height={420}
-                  alt="mda_hero_image"
-                  className="w-[1360px] h-[580px] object-cover rounded-xl xl:w-full"
+                  alt='mda_hero_image'
+                  className='w-[1360px] h-[580px] object-cover rounded-xl xl:w-full'
                   // loading="lazy"
                 />
               </>
             )}
-            <span className="grid lg:grid-cols-5 grid-cols-1 gap-5 items-start">
-              <span className="text-[#00000080] opacity-80 font-light flex items-center gap-4 text-[16px] uppercase col-span-1">
+            <span className='grid lg:grid-cols-5 grid-cols-1 gap-5 items-start'>
+              <span className='text-[#00000080] opacity-80 font-light flex items-center gap-4 text-[16px] uppercase col-span-1'>
                 <p>INTRODUCTION</p>
               </span>
-              <p className="text-[18px] font-normal text-[#00000099] m-0 lg:col-span-4 col-span-1">
+              <p className='text-[18px] font-normal text-[#00000099] m-0 lg:col-span-4 col-span-1'>
                 {resource?.data?.data?.description}
               </p>
             </span>
-            <span className="grid lg:grid-cols-5 grid-cols-1 gap-5 items-start">
-              <span className="text-[#00000080] opacity-80 font-light flex items-center gap-4 text-[16px] uppercase col-span-1">
+            <span className='grid lg:grid-cols-5 grid-cols-1 gap-5 items-start'>
+              <span className='text-[#00000080] opacity-80 font-light flex items-center gap-4 text-[16px] uppercase col-span-1'>
                 <p>CONTENT</p>
               </span>
-              <p className="text-[18px] font-normal text-[#00000099] m-0 lg:col-span-4 col-span-1">
-                {resource?.data?.data?.body && (
-                  <QuillEditor
-                    value={resource?.data?.data?.body}
-                    theme="bubble"
-                    readOnly
-                  />
-                )}
-              </p>
+              {resource?.data?.data?.main_type_tag?.name !== 'document' ? (
+                <p className='text-[18px] font-normal text-[#00000099] m-0 lg:col-span-4 col-span-1'>
+                  {resource?.data?.data?.body && (
+                    <QuillEditor
+                      value={resource?.data?.data?.body}
+                      theme='bubble'
+                      readOnly
+                    />
+                  )}
+                </p>
+              ) : (
+                <div className='flex items-center justify-between gap-3  text-black w-full border lg:col-span-4 p-2 rounded-md'>
+                  <div className='flex justify-center items-center h-10 w-10  border rounded-sm'>
+                    <IoDocumentOutline size={40} />
+                  </div>
+                  {resource?.data?.data?.document.url}
+                  <div className=' py-2 px-6 bg-slate-400 cursor-pointer rounded-md text-white'>
+                    View
+                  </div>
+                </div>
+              )}
             </span>
-            <span className="grid lg:grid-cols-5 grid-cols-1 gap-5">
-              <span className="col-span-1"></span>
-              <span className="flex gap-3 flex-wrap lg:col-span-4 col-span-1 ">
+            <span className='grid lg:grid-cols-5 grid-cols-1 gap-5'>
+              <span className='col-span-1'></span>
+              <span className='flex gap-3 flex-wrap lg:col-span-4 col-span-1 '>
                 {resource?.data?.data?.all_topic_tags?.map(
                   (item: any, index: any) => (
                     <button
                       key={index}
-                      className="h-10 px-8 rounded-full bg-gray-200 border w-fit border-gray-400"
+                      className='h-10 px-8 rounded-full bg-gray-200 border w-fit border-gray-400'
                     >
                       {item?.name}
                     </button>
