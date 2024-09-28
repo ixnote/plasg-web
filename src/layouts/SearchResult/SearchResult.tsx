@@ -6,7 +6,7 @@ import 'react-quill/dist/quill.bubble.css';
 import { GoHome } from 'react-icons/go';
 import Image from 'next/image';
 import { AiOutlineDislike, AiOutlineLike } from 'react-icons/ai';
-import { IoShareOutline } from 'react-icons/io5';
+import { IoDocumentOutline, IoShareOutline } from 'react-icons/io5';
 import { articleData } from '@/utils/mockArticle';
 import { Divider } from '@mantine/core';
 import ArticleImage from '@/assets/imgs/article1png.png';
@@ -119,15 +119,27 @@ function SearchResult() {
               <span className='text-[#00000080] opacity-80 font-light flex items-center gap-4 text-[16px] uppercase col-span-1'>
                 <p>CONTENT</p>
               </span>
-              <p className='text-[18px] font-normal text-[#00000099] m-0 lg:col-span-4 col-span-1'>
-                {resource?.data?.data?.body && (
-                  <QuillEditor
-                    value={resource?.data?.data?.body}
-                    theme='bubble'
-                    readOnly
-                  />
-                )}
-              </p>
+              {resource?.data?.data?.main_type_tag?.name !== 'document' ? (
+                <p className='text-[18px] font-normal text-[#00000099] m-0 lg:col-span-4 col-span-1'>
+                  {resource?.data?.data?.body && (
+                    <QuillEditor
+                      value={resource?.data?.data?.body}
+                      theme='bubble'
+                      readOnly
+                    />
+                  )}
+                </p>
+              ) : (
+                <div className='flex items-center justify-between gap-3  text-black w-full border lg:col-span-4 p-2 rounded-md'>
+                  <div className='flex justify-center items-center h-10 w-10  border rounded-sm'>
+                    <IoDocumentOutline size={40} />
+                  </div>
+                  {resource?.data?.data?.document.url}
+                  <div className=' py-2 px-6 bg-slate-400 cursor-pointer rounded-md text-white'>
+                    View
+                  </div>
+                </div>
+              )}
             </span>
             <span className='grid lg:grid-cols-5 grid-cols-1 gap-5'>
               <span className='col-span-1'></span>
