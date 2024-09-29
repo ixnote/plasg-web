@@ -25,6 +25,7 @@ function SearchResult() {
   const router = useRouter();
   const pathname = usePathname();
   const pathSegments = pathname.split('/').filter((segment) => segment);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const id = pathSegments[pathSegments.length - 1];
 
@@ -135,9 +136,13 @@ function SearchResult() {
                     <IoDocumentOutline size={40} />
                   </div>
                   {resource?.data?.data?.document.url}
-                  <div className=' py-2 px-6 bg-slate-400 cursor-pointer rounded-md text-white'>
+                  <Link
+                    href={resource?.data?.data?.document.url}
+                    target='_blank'
+                    className=' py-2 px-6 bg-slate-400 cursor-pointer rounded-md text-white'
+                  >
                     View
-                  </div>
+                  </Link>
                 </div>
               )}
             </span>
