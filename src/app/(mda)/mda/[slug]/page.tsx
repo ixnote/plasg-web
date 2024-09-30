@@ -4,7 +4,7 @@ import AssetCardLight from '@/components/AssetCardLight';
 import { newsList } from '../data';
 import Cards from '../cards';
 import ButtonLight from '@/components/ButtonLight';
-import { getMda } from '@/api/mda/getMda';
+import { getMda, getMdaResources } from '@/api/mda/getMda';
 import { useQuery } from 'react-query';
 import SectionDividerLight from '@/components/SectionDividerLight';
 import moment from 'moment';
@@ -36,6 +36,16 @@ const Page = ({ params }: { params: { slug: string } }) => {
     queryFn: getMda,
     enabled: !!params?.slug,
   });
+
+  // const {
+  //   data: fetchResources,
+  //   isLoading: resIsLoading,
+  //   error: resError,
+  // } = useQuery({
+  //   queryKey: ['getMdaResources', mda?.data.data.id],
+  //   queryFn: getMdaResources,
+  //   enabled: !!mda?.data.data.id,
+  // });
   // console.log("🚀 ~ Mdas ~ mda:", mda);
 
   // PAGINATION
@@ -67,7 +77,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
   }, [params]);
 
   useEffect(() => {
-    setOneMda(mda?.data.data);
+    setOneMda(mda?.data.data.mda);
     allResources();
   }, [mda]);
 
@@ -75,14 +85,17 @@ const Page = ({ params }: { params: { slug: string } }) => {
     <div className='first relative h-full bg-white'>
       {/* <Nav /> */}
       <div className='min-h-screen max-w-[2040px] pb-[96px] relative flex items-center justify-center bg-cover bg-center bg-no-repeat'>
-        <div className='m-auto w-[92%] flex justify-between flex-col gap-8'>
+        <div className='m-auto w-[92%] flex justify-between flex-col gap-4'>
           {/* Hero */}
-          <MdaHero slug={mda?.data?.data?.slug} hero={mda?.data?.data?.hero} />
+          <MdaHero
+            slug={mda?.data?.data.mda?.slug}
+            hero={mda?.data?.data?.mda.hero}
+          />
           <SectionDividerLight />
           {/* Director */}
           <MdaDirector
-            slug={mda?.data?.data?.slug}
-            director={mda?.data?.data?.director}
+            slug={mda?.data?.data?.mda.slug}
+            director={mda?.data?.data?.mda.director}
           />
           <SectionDividerLight />
           {/* Quick Access */}
@@ -106,8 +119,8 @@ const Page = ({ params }: { params: { slug: string } }) => {
                 {/* content */}
                 <div className='flex items-center justify-between flex-wrap gap-4 w-full m-auto'>
                   {/* Cards */}
-                  {resources?.resources?.length > 0 ? (
-                    resources?.resources
+                  {mda?.data?.data?.resources?.length > 0 ? (
+                    mda?.data?.data?.resources
                       ?.slice(0, 4)
                       .map((resource: any, i: number) => (
                         <AssetCardLight

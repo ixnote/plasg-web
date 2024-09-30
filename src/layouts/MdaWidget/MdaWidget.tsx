@@ -119,22 +119,26 @@ function MdaWidget() {
             {mda && (
               <>
                 {mda?.data?.data?.mdas?.map((item: any) => (
-                  <span
-                    key={item?.id}
-                    className='border-b-[1px] border-b-gray-300 cursor-pointer flex w-full'
-                  >
-                    <Link
-                      href={`/mda/${item?.slug}`}
-                      className='w-full flex items-center justify-between'
-                    >
-                      <p className='lg:text-[20px] text-[20px] lg:text-gray-400 text-gray-600 font-medium  py-2 whitespace-nowrap overflow-hidden text-ellipsis flex-grow max-w-[85%]'>
-                        {item?.name}
-                      </p>
-                      <button className='text-gray-300 border-none hover:bg-none px-0 block lg:hidden'>
-                        <MdOutlineArrowOutward size={28} />
-                      </button>
-                    </Link>
-                  </span>
+                  <>
+                    {item.name !== 'News' && item.name !== 'Documents' && (
+                      <span
+                        key={item?.id}
+                        className=' cursor-pointer flex w-full'
+                      >
+                        <Link
+                          href={`/mda/${item?.slug}`}
+                          className='w-full flex items-center justify-between'
+                        >
+                          <p className='lg:text-[20px] text-[20px] lg:text-gray-400 text-gray-600 font-medium  py-2 whitespace-nowrap overflow-hidden text-ellipsis flex-grow max-w-[85%]'>
+                            {item?.name}
+                          </p>
+                          <button className='text-gray-300 border-none hover:bg-none px-0'>
+                            <MdOutlineArrowOutward size={28} />
+                          </button>
+                        </Link>
+                      </span>
+                    )}
+                  </>
                 ))}
               </>
             )}
