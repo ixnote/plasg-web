@@ -141,7 +141,7 @@ const About = ({ params }: { params: { slug: string } }) => {
               </div>
             </div>
           </div>
-          {(oneMda?.team.length > 0 || mda?.data?.data?.team.length > 0) && (
+          {(oneMda?.team?.length > 0 || mda?.data?.data?.team?.length > 0) && (
             <>
               <SectionDividerLight />
               {/* Team */}
@@ -171,9 +171,9 @@ const About = ({ params }: { params: { slug: string } }) => {
                         <SecondCard
                           key={i}
                           id={item?._id}
-                          name={item.name}
-                          image={item.image}
-                          position={item.role}
+                          name={item?.name}
+                          image={item?.image}
+                          position={item?.role}
                         />
                       ))}
                       {oneMda?.team
@@ -181,18 +181,18 @@ const About = ({ params }: { params: { slug: string } }) => {
                             <SecondCard
                               key={i}
                               id={item?._id}
-                              name={item.name}
-                              image={item.image}
-                              position={item.role}
+                              name={item?.name}
+                              image={item?.image}
+                              position={item?.role}
                             />
                           ))
                         : mda?.data?.data?.team.map((item: any, i: number) => (
                             <SecondCard
                               key={i}
                               id={item?._id}
-                              name={item.name}
-                              image={item.image}
-                              position={item.role}
+                              name={item?.name}
+                              image={item?.image}
+                              position={item?.role}
                             />
                           ))}
                     </div>

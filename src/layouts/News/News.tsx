@@ -48,7 +48,7 @@ function News() {
     queryFn: getNews,
   });
 
-  console.log("data :>> ", data);
+  // console.log("data :>> ", data);
 
   // const dialogRef = useRef(null);
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -74,7 +74,7 @@ function News() {
         {matches ? (
           <span className="relative z-50">
             <span
-              className="bg-white  rounded-xl px-4 py-2 uppercase border cursor-pointer w-fit"
+              className="bg-white rounded-xl px-4 py-2 uppercase border cursor-pointer w-fit"
               ref={dialogRef}
               onClick={() => setShow(true)}
             >
@@ -89,7 +89,7 @@ function News() {
                   {links.map((item) => (
                     <p
                       className={cn(
-                        "capitalize text-[18px] cursor-pointer text-white"
+                        "capitalize text-[18px] cursor-pointer text-brand-main"
                       )}
                       onClick={() => setActive(item)}
                       key={item.id}
@@ -106,10 +106,13 @@ function News() {
             <span className="flex gap-4 border justify-between w-full rounded-xl relative">
               {links.slice(0, 9).map((item, index) => (
                 <p
-                  className={cn("px-4 py-2 uppercase border-r cursor-pointer", {
-                    "bg-brand-main text-white": active?.id === item.id,
-                    "rounded-l-xl": index === 0,
-                  })}
+                  className={cn(
+                    "px-4 py-2 uppercase border-r cursor-pointer text-brand-main",
+                    {
+                      "bg-brand-main text-white": active?.id === item.id,
+                      "rounded-l-xl": index === 0,
+                    }
+                  )}
                   onClick={() => setActive(item)}
                   key={item.id}
                 >
@@ -118,7 +121,7 @@ function News() {
               ))}
 
               <span className="px-4 py-2 pr-6 uppercase cursor-pointer group">
-                sell all
+                <span className="text-brand-main">see all</span>
                 <div className="group-hover:block hidden absolute w-full left-0 pt-4 z-40">
                   <div className="w-full bg-brand-main p-8 rounded-3xl ">
                     <p className="text-[32px] text-white font-medium capitalize mb-6">
@@ -182,8 +185,16 @@ function News() {
                         <p className="text-[20px] text-brand-main font-medium max-w-[800px] leading-[28px] lg:col-span-3 col-span-2 ">
                           {data?.data?.data?.news[0]?.headline}
                         </p>
-                        <span className="flex gap-5">
-                          <p className="pr-6 border-r-[1px] border-r-gray-300">
+                        <span className="text-brand-dark font-geistsans font-light text-sm">
+                          {data?.data?.data?.news[0]?.description?.slice(
+                            0,
+                            200
+                          )}
+                          {data?.data?.data?.news[0]?.description?.length >
+                            200 && "..."}
+                        </span>
+                        <span className="flex gap-5 items-center">
+                          <p className="pr-6 border-r-[1px] text-brand-dark/70 border-r-gray-300">
                             {formatDate(data?.data?.data?.news[0]?.updatedAt)}
                           </p>
                           {data?.data?.data?.news[0]?.tags[0]?.name && (

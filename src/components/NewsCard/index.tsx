@@ -4,6 +4,7 @@ import Link from "next/link";
 import React from "react";
 
 function NewsCard({ data, onClick, id }: any) {
+  console.log("🚀 ~ NewsCard ~ data:", data);
   return (
     <Link href={`/news/${id}`}>
       <span
@@ -23,17 +24,22 @@ function NewsCard({ data, onClick, id }: any) {
           className="p-4 flex flex-col justify-between h-full flex-grow "
           onClick={onClick}
         >
-          <p className="text-[16px] text-brand-main font-medium max-w-[400px] leading-[20px] lg:col-span-3 col-span-2 ">
-            {data?.headline}
+          <p className="text-[16px] text-brand-main font-medium max-w-[400px] leading-[20px] lg:col-span-3 col-span-2 capitalize">
+            {data?.headline?.slice(0, 57)}
+            {data?.headline?.length > 57 && "..."}
           </p>
-          <span className="flex gap-5">
-            <p className="pr-6 border-r-[1px] border-r-gray-300">
+          <span className="text-brand-dark font-geistsans font-light text-sm">
+            {data?.description?.slice(0, 80)}
+            {data?.description?.length > 80 && "..."}
+          </span>
+          <span className="flex gap-5 items-center">
+            <p className="pr-6 border-r-[1px] text-brand-dark/70 text-xs border-r-gray-300">
               {formatDate(data?.updatedAt)}
             </p>
             {data?.tags?.length > 0 && (
               <>
                 {data?.tags[0]?.name && (
-                  <span className="px-4 rounded-lg text-white bg-brand-main py-1">
+                  <span className="px-4 rounded-lg text-sm text-white bg-brand-main py-1">
                     {data?.tags[0]?.name}
                   </span>
                 )}
