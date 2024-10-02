@@ -9,6 +9,7 @@ const GeneralProvider = (props: any) => {
 
   // Tags
   const [typeTags, setTypeTags] = useState([]);
+  const [newsTags, setNewsTags] = useState([]);
   const [typeTagId, setTypeTagId] = useState("");
   const [tagTopicName, setTagTopicName] = useState("");
   const [topicTags, setTopicTags] = useState();
@@ -74,6 +75,27 @@ const GeneralProvider = (props: any) => {
     } catch (error: any) {
       console.log("🚀 ~ allResources ~ error:", error.message);
       // throw new Error(error.message);
+    }
+  };
+
+  const allNewsTags = async () => {
+    try {
+      setLoadingResource(true);
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/tag/news`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          timeout: 10000,
+        }
+      );
+      console.log("🚀 ~ allNewsTags ~ response:", response);
+      setLoadingResource(false);
+      return setNewsTags(response.data.data);
+    } catch (error: any) {
+      setLoadingResource(false);
+      console.log("🚀 ~ allNewsTags ~ error:", error);
     }
   };
 
@@ -284,6 +306,7 @@ const GeneralProvider = (props: any) => {
 
   useEffect(() => {
     console.log("__3d1k4N.init");
+    allNewsTags();
     allTypeTags();
     getTopicTags();
     getHomeResources();
@@ -300,6 +323,7 @@ const GeneralProvider = (props: any) => {
         setLoadingResource,
 
         // Tags
+        newsTags,
         typeTags,
         topicTags,
         typeTagId,
@@ -308,6 +332,7 @@ const GeneralProvider = (props: any) => {
         tagTopicName,
         topicSubTagId,
         allTypeTags,
+        setNewsTags,
         setTypeTags,
         getTopicTags,
         setTopicTags,

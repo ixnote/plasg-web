@@ -4,7 +4,6 @@ import Link from "next/link";
 import React from "react";
 
 function NewsCard({ data, onClick, id }: any) {
-  console.log("🚀 ~ NewsCard ~ data:", data);
   return (
     <Link href={`/news/${id}`}>
       <span

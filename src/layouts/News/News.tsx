@@ -9,8 +9,11 @@ import { cn } from "@/utils";
 import { useMediaQuery } from "@mantine/hooks";
 import Link from "next/link";
 import { formatDate } from "@/utils/formatDate";
+import { useGeneralContext } from "../../../context/GenralContext";
 
 function News() {
+  // TAGS / CATEGORIES
+  const { newsTags }: any = useGeneralContext();
   const links = [
     { name: "General", id: "fbdfbssf" },
     { name: "National", id: "adcasdkj" },
@@ -59,6 +62,12 @@ function News() {
     setShow(false);
   };
 
+  const [categoreis, setCategories] = useState();
+  newsTags.map((item: any) => {
+    console.log("🚀 ~ newsTags.map ~ item:", item);
+  });
+  console.log("🚀 ~ News ~ newsTags:", newsTags[0]?.name);
+
   useEffect(() => {
     if (show) {
       document.addEventListener("click", globalListener);
@@ -68,8 +77,10 @@ function News() {
     };
   }, [show]);
 
+  useEffect(() => {}, [newsTags]);
+
   return (
-    <div className="pt-[120px] p-5">
+    <div className="pt-[120px] p-5 text-brand-dark">
       <span className="max-w-[1500px] mx-auto flex flex-col gap-5">
         {matches ? (
           <span className="relative z-50">
@@ -153,6 +164,16 @@ function News() {
             </span>
           </span>
         )}
+        {newsTags.length > 0
+          ? newsTags?.map(({ item, i }: any) => (
+              <span key={i}>{item?.type}</span>
+            ))
+          : "Mehhh"}
+        {newsTags &&
+          newsTags?.map(({ item, i }: any) => (
+            <span key={i}>{item?.name || "trese"}</span>
+          ))}
+        <span>{newsTags[2]?.name}</span>
         <p className="text-[32px] text-brand-main font-medium">
           Today’s Headlines
         </p>
