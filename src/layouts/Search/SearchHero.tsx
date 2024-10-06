@@ -89,6 +89,10 @@ function SearchHero() {
 
   console.log("data :>> ", data);
 
+  const createMarkup = (html: string) => {
+    return { __html: html };
+  };
+
   return (
     // <div className="pt-[200px] bg-brand-main p-5">
     //   <span className="max-w-[1500px] mx-auto flex flex-col gap-20">
@@ -412,11 +416,7 @@ function SearchHero() {
                       {item?.name}
                     </p>
                   </span>
-                  <h3 className="text-[16px] text-white font-light">
-                    {item?.description
-                      ? item?.description
-                      : item?.about?.description}
-                  </h3>
+                  <h3 className="text-[16px] text-white font-light" dangerouslySetInnerHTML={createMarkup(item?.description ?? item?.about?.description  ?? '')}/>
                 </span>
               </span>
             ))}
