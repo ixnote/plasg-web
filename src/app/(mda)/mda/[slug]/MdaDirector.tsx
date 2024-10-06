@@ -34,6 +34,7 @@ const MdaDirector = ({ slug, director }: any) => {
                 value={director?.message}
                 theme='bubble'
                 style={{ fontSize: '100px' }}
+                className='font-geistsans'
                 readOnly
               />
             }
