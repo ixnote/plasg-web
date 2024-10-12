@@ -164,7 +164,7 @@ function News() {
             </span>
           </span>
         )}
-        {newsTags.length > 0
+        {/* {newsTags.length > 0
           ? newsTags?.map(({ item, i }: any) => (
               <span key={i}>{item?.type}</span>
             ))
@@ -173,7 +173,7 @@ function News() {
           newsTags?.map(({ item, i }: any) => (
             <span key={i}>{item?.name || "trese"}</span>
           ))}
-        <span>{newsTags[2]?.name}</span>
+        <span>{newsTags[2]?.name}</span> */}
         <p className="text-[32px] text-brand-main font-medium">
           Today’s Headlines
         </p>
