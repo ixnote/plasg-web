@@ -51,7 +51,7 @@ function News() {
     queryFn: getNews,
   });
 
-  // console.log("data :>> ", data);
+  console.log("data :>> ", data);
 
   // const dialogRef = useRef(null);
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -181,7 +181,8 @@ function News() {
           {matches ? (
             <>
               {[1, 2, 3, 4, 5].map((item, index) => (
-                <NewsCard key={index} data={news[0]} />
+                // <NewsCard key={index} data={news[0]} />
+                <NewsCard key={index} data={data?.data?.data?.news[index]} />
               ))}
             </>
           ) : (
