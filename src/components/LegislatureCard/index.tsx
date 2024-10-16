@@ -4,8 +4,6 @@ import { AiOutlineMail } from "react-icons/ai";
 import ArticleImage from "@/assets/imgs/img.png";
 
 function LegislatureCard({ data, onclick }: any) {
-  console.log("🚀 ~ LegislatureCard ~ data:", data);
-
   const handleClick = () => {
     window.location.href = `mailto:${data?.email}`;
   };

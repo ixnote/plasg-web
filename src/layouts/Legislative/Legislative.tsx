@@ -32,12 +32,12 @@ function Legislative() {
     queryKey: ["getLegislatives"],
     queryFn: getLegislatives,
     onSuccess: (result: any) => {
-      console.log("🚀 ~ Legislative ~ result:", result);
+      // console.log("🚀 ~ Legislative ~ result:", result);
       setCurrentPage(result?.data?.data?.pagination?.currentPage);
     },
   });
 
-  console.log("users :>> ", legislatives);
+  // console.log("users :>> ", legislatives);
   return (
     // <div className="pt-[200px] p-5 bg-red-500">
     //   <span className="max-w-[1200px] mx-auto flex flex-col bg-green-500">

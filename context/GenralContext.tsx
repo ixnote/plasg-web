@@ -90,7 +90,7 @@ const GeneralProvider = (props: any) => {
           timeout: 10000,
         }
       );
-      console.log("🚀 ~ allNewsTags ~ response:", response);
+      // console.log("🚀 ~ allNewsTags ~ response:", response);
       setLoadingResource(false);
       return setNewsTags(response.data.data);
     } catch (error: any) {
