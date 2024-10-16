@@ -32,7 +32,7 @@ const Legislative = () => {
     queryKey: ["getLegislatives"],
     queryFn: getLegislatives,
     onSuccess: (result: any) => {
-      console.log("🚀 ~ Legislative ~ result:", result);
+      // console.log("🚀 ~ Legislative ~ result:", result);
     },
   });
 
