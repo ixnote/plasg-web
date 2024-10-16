@@ -167,7 +167,7 @@ const About = ({ params }: { params: { slug: string } }) => {
                   </div>
                   <div className="w-full flex justify-center mx-auto lg:p-8">
                     <div className="w-full grid grid-cols-1 gap-12 lg:grid-cols-3 lg:mx-auto lg:gap-x-16">
-                      {oneMda?.team.map((item: any, i: number) => (
+                      {/* {oneMda?.team.map((item: any, i: number) => (
                         <SecondCard
                           key={i}
                           id={item?._id}
@@ -175,7 +175,7 @@ const About = ({ params }: { params: { slug: string } }) => {
                           image={item?.image}
                           position={item?.role}
                         />
-                      ))}
+                      ))} */}
                       {oneMda?.team
                         ? oneMda?.team.map((item: any, i: number) => (
                             <SecondCard
