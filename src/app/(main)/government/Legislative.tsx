@@ -7,20 +7,34 @@ import SubsectionHeader from "@/components/SubsectionHeader";
 import ButtonLight from "@/components/ButtonLight";
 import ArticleImage from "@/assets/imgs/img.png";
 import { useGeneralContext } from "../../../../context/GenralContext";
+import { getLegislatives } from "@/api/mda/getLegislatives";
+import { useQuery } from "react-query";
 
 const Legislative = () => {
-  const { legislatives }: any = useGeneralContext();
-  console.log("🚀 ~ Legislative ~ legislatives:", legislatives.data);
+  // const { legislatives }: any = useGeneralContext();
+  // console.log("🚀 ~ Legislative ~ legislatives:", legislatives);
 
-  const [data, setData] = useState([]);
-  console.log("🚀 ~ Legislative ~ data:", data);
+  // const [data, setData] = useState([]);
+  // console.log("🚀 ~ Legislative ~ data:", data);
 
-  useEffect(() => {
-    if (legislatives) {
-      const legis = legislatives?.data?.slice(0, 3);
-      setData(legis);
-    }
-  }, [legislatives]);
+  // useEffect(() => {
+  //   if (legislatives) {
+  //     const legis = legislatives?.data?.slice(0, 3);
+  //     setData(legis);
+  //   }
+  // }, [legislatives]);
+
+  const {
+    data: legislatives,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["getLegislatives"],
+    queryFn: getLegislatives,
+    onSuccess: (result: any) => {
+      console.log("🚀 ~ Legislative ~ result:", result);
+    },
+  });
 
   return (
     <>
@@ -30,12 +44,13 @@ const Legislative = () => {
           right={"Meet the Leaders Shaping Plateau State’s Legislation"}
         />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {data ? (
+          {legislatives?.data?.data?.data?.length ? (
             <>
-              {data.map((item: any, i: number) => (
+              {legislatives?.data?.data?.data?.map((item: any, i: number) => (
                 <ProfileCard
                   key={i}
-                  image={ArticleImage}
+                  // image={ArticleImage}
+                  image={item.image || ArticleImage}
                   action={"mail"}
                   name={item.name || "Kyale Isaac Kwallu"}
                   position={item.title || "Member House of Representatives."}
