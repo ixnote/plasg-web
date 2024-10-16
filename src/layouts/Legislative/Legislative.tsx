@@ -23,6 +23,7 @@ function Legislative() {
     name: "Hon. Gabriel Dewan",
     position: "Speaker ",
   };
+
   const {
     data: legislatives,
     isLoading,
