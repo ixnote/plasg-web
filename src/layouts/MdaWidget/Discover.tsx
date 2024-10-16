@@ -31,8 +31,8 @@ function Discover({ destinations }: any) {
       description:
         "This massive dome-shaped rocky inselberg is found near Wase town in Wase Local Government Area of Plateau State, Nigeria.",
       image:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Wase_Rock.JPG/1280px-Wase_Rock.JPG",
-      // "https://64.media.tumblr.com/6401c819ea781861479ee271504c2b0e/tumblr_na8k9xzDtF1sv7o1do1_400.jpg",
+        // "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Wase_Rock.JPG/1280px-Wase_Rock.JPG",
+        "https://64.media.tumblr.com/4571b2c8086a533004ae6bc6a1436c58/tumblr_inline_nnxqj6AtPc1tncvgu_1280.jpg",
       type: "landmark",
     },
     {
