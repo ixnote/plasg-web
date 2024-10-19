@@ -1,4 +1,5 @@
 import GovernmentPage from "@/components/governmentPage/page";
+import { Suspense } from "react";
 
 export function generateStaticParams() {
   return [
@@ -9,5 +10,9 @@ export function generateStaticParams() {
 }
 
 export default function Page() {
-  return <GovernmentPage />;
+  return (
+    <Suspense>
+      <GovernmentPage />;
+    </Suspense>
+  );
 }

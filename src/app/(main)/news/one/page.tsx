@@ -1,9 +1,12 @@
 import NewsResult from "@/layouts/NewsResult/NewsResult";
+import { Suspense } from "react";
 
 export default function NewsDetails() {
   return (
     <main>
-      <NewsResult />
+      <Suspense>
+        <NewsResult />
+      </Suspense>
     </main>
   );
 }
