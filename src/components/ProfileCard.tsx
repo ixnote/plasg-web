@@ -17,7 +17,7 @@ const ProfileCard = ({
 
   const handleClick = () => {
     if (action === "page") {
-      router.push(`/government/${link}`);
+      router.push(`/government/one?position=${link}`);
     } else if (action === "mail") {
       window.location.href = `mailto:${email}`;
     }

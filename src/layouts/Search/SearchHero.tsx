@@ -77,11 +77,11 @@ function SearchHero() {
       value?.main_type_tag?.name === "service" ||
       value?.main_type_tag?.name === "resource"
     ) {
-      router.push(`/search/${value?.id}`);
+      router.push(`/search/one?id=${value?.id}`);
     } else if (value?.abbreviation) {
-      router.push(`/mda/${value?.slug}`);
+      router.push(`/mda/one?id=${value?.slug}`);
     } else if (value?.mda?.name === "News") {
-      router.push(`/news/${value?.id}`);
+      router.push(`/news/one?id=${value?.id}`);
     } else if (value?.type === "landmark") {
       router.push(`/tourism`);
     }
@@ -416,7 +416,12 @@ function SearchHero() {
                       {item?.name}
                     </p>
                   </span>
-                  <h3 className="text-[16px] text-white font-light" dangerouslySetInnerHTML={createMarkup(item?.description ?? item?.about?.description  ?? '')}/>
+                  <h3
+                    className="text-[16px] text-white font-light"
+                    dangerouslySetInnerHTML={createMarkup(
+                      item?.description ?? item?.about?.description ?? ""
+                    )}
+                  />
                 </span>
               </span>
             ))}

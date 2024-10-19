@@ -4,7 +4,7 @@ import { Header } from "@/layouts";
 import Footer from "@/layouts/Footer";
 import Filter from "../Filter";
 
-const page = async ({ params }: { params: { name: string } }) => {
+const page = async () => {
   return (
     <>
       {/* <Header /> */}

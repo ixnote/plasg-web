@@ -12,6 +12,7 @@ import MdaHero from "./MdaHero";
 import MdaDirector from "./MdaDirector";
 import { useGeneralContext } from "../../../../../context/GenralContext";
 import { useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 
 const Page = ({ params }: { params: { slug: string } }) => {
   const {
@@ -27,14 +28,19 @@ const Page = ({ params }: { params: { slug: string } }) => {
   }: any = useGeneralContext();
   // console.log("🚀 ~ Page ~ mdaNews:", mdaNews);
 
+  const searchParams = useSearchParams();
+  const slug = searchParams.get("slug");
+  console.log("🚀 ~ Page ~ slug:", slug);
+
   const {
     data: mda,
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["getMda", params?.slug],
+    queryKey: ["getMda", slug],
     queryFn: getMda,
-    enabled: !!params?.slug,
+    // enabled: !!params?.slug,
+    enabled: !!slug,
   });
 
   // const {
@@ -71,10 +77,11 @@ const Page = ({ params }: { params: { slug: string } }) => {
   }, [activePage]);
 
   useEffect(() => {
-    if (params?.slug) {
-      setMdaSlug(params?.slug);
+    if (slug) {
+      setMdaSlug(slug);
     }
-  }, [params]);
+  }, [slug]);
+  // }, [params]);
 
   useEffect(() => {
     setOneMda(mda?.data.data.mda);
@@ -172,7 +179,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
                 </div>
                 <ButtonLight
                   text={"See All Services"}
-                  url={`mda/${params?.slug}/library`}
+                  url={`mda/one/library?slug=${slug}`}
                 />
               </div>
             </div>

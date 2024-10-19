@@ -57,7 +57,7 @@ const MdaMobileNav = () => {
     >
       <div className="flex items-center justify-between w-full">
         <Link
-          href={`/mda/${mdaSlug}`}
+          href={`/mda/one?slug=${mdaSlug}`}
           className="flex items-end justify-center gap-2 text-xl text-brand-white font-geistsans"
         >
           <Image
@@ -110,21 +110,21 @@ const MdaMobileNav = () => {
         {/* List items */}
         <nav className="flex flex-col items-start">
           <Link
-            href={`/mda/${mdaSlug}/about`}
+            href={`/mda/one/about?slug=${mdaSlug}`}
             onClick={() => setIsOpen(!isOpen)}
             className="transition-fx cursor-pointer py-4 w-full font-geistsans font-medium text-2xl text-brand-white border-b-[0.1px] border-b-brand-grayish/10 hover:bg-brand-lightYellow hover:px-4 hover:rounded-lg hover:text-brand-dark"
           >
             About
           </Link>
           <Link
-            href={`/mda/${mdaSlug}/library`}
+            href={`/mda/one/library?slug=${mdaSlug}`}
             onClick={() => setIsOpen(!isOpen)}
             className="transition-fx cursor-pointer py-4 w-full font-geistsans font-medium text-2xl text-brand-white border-b-[0.1px] border-b-brand-grayish/10 hover:bg-brand-lightYellow hover:px-4 hover:rounded-lg hover:text-brand-dark"
           >
             Library
           </Link>
           <Link
-            href={`/mda/${mdaSlug}/contact`}
+            href={`/mda/one/contact?slug=${mdaSlug}`}
             onClick={() => setIsOpen(!isOpen)}
             className="transition-fx cursor-pointer py-4 w-full font-geistsans font-medium text-2xl text-brand-white border-b-[0.1px] border-b-brand-grayish/10 hover:bg-brand-lightYellow hover:px-4 hover:rounded-lg hover:text-brand-dark"
           >

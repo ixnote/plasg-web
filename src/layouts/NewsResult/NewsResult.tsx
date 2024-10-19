@@ -10,7 +10,7 @@ import ArticleImage from "@/assets/imgs/article1png.png";
 import ArticleCardTwo from "@/components/ArticleCardTwo";
 import { useQuery } from "react-query";
 import { getResource } from "@/api/mda/getResource";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { formatDate } from "@/utils/formatDate";
 import Link from "next/link";
 import { getSingleNews } from "@/api/mda/getSingleNews";
@@ -19,7 +19,10 @@ function NewsResult() {
   const pathname = usePathname();
   const pathSegments = pathname.split("/").filter((segment) => segment);
 
-  const id = pathSegments[pathSegments.length - 1];
+  const searchParams = useSearchParams();
+  const id = searchParams.get("id");
+
+  // const id = pathSegments[pathSegments.length - 1];
 
   const data = articleData;
   const article = {
@@ -38,7 +41,7 @@ function NewsResult() {
     enabled: !!id,
   });
 
-  console.log("resource :>> ", resource);
+  // console.log("resource :>> ", resource);
   return (
     <div className="pt-[200px] p-5">
       <span className="max-w-[1200px] mx-auto flex flex-col">

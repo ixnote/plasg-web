@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import SectionHeader from "@/components/SectionHeader";
 import governor from "@/assets/imgs/government/governor.png";
 import Cabinet from "./Cabinet";
@@ -11,9 +11,13 @@ import DeputyBiography from "./DeputyBiography";
 import SecretaryBiography from "./SecretaryBiography";
 
 const GovernmentPage = () => {
-  const params = useParams();
-  const { government } = params;
-  const type = Array.isArray(government) ? government[0] : government;
+  // const params = useParams();
+  // const { government } = params;
+  // const type = Array.isArray(government) ? government[0] : government;
+
+  const searchParams = useSearchParams();
+  const searchKey = searchParams.get("position");
+  console.log("🚀 ~ GovernmentPage ~ searchKey:", searchKey);
 
   const titles = {
     governor: `The Executive Governor of Plateau State`,
@@ -40,7 +44,7 @@ const GovernmentPage = () => {
   const [linkURL, setLinkURL] = useState("governor");
 
   useEffect(() => {
-    if (type === "governor") {
+    if (searchKey === "governor") {
       setTitle(titles.governor);
       setDescription(descriptions.governor);
       setImage(images.governor);
@@ -48,7 +52,7 @@ const GovernmentPage = () => {
       setLinkURL("governor");
     }
 
-    if (type === "deputy") {
+    if (searchKey === "deputy") {
       setTitle(titles.deputy);
       setDescription(descriptions.deputy);
       setImage(images.deputy);
@@ -56,14 +60,14 @@ const GovernmentPage = () => {
       setLinkURL("deputy");
     }
 
-    if (type === "secretary") {
+    if (searchKey === "secretary") {
       setTitle(titles.secretary);
       setDescription(descriptions.secretary);
       setImage(images.secretary);
       setLinkText("THE SECRETARY OF STATE");
       setLinkURL("secretary");
     }
-  }, [type]);
+  }, [searchKey]);
 
   return (
     <div className="min-h-screen max-w-[2040px] pb-[96px] relative flex items-center justify-center bg-cover bg-center bg-no-repeat">
@@ -77,14 +81,14 @@ const GovernmentPage = () => {
           baseURL={"government"}
           baseText={"GOVERNMENT"}
         />
-        {type === "governor" && (
+        {searchKey === "governor" && (
           <>
             <GovernorBiography />
             <Cabinet />
           </>
         )}
-        {type === "deputy" && <DeputyBiography />}
-        {type === "secretary" && <SecretaryBiography />}
+        {searchKey === "deputy" && <DeputyBiography />}
+        {searchKey === "secretary" && <SecretaryBiography />}
       </div>
     </div>
   );

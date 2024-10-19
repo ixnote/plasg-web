@@ -22,7 +22,7 @@ const AssetCardLight = ({
   const router = useRouter();
 
   const handleClick = () => {
-    id && router.push(`/search/${id}`);
+    id && router.push(`/search/one?id=${id}`);
     return;
   };
 

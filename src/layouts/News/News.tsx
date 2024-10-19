@@ -51,7 +51,7 @@ function News() {
     queryFn: getNews,
   });
 
-  console.log("data :>> ", data);
+  // console.log("data :>> ", data);
 
   // const dialogRef = useRef(null);
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -63,10 +63,10 @@ function News() {
   };
 
   const [categoreis, setCategories] = useState();
-  newsTags.map((item: any) => {
-    console.log("🚀 ~ newsTags.map ~ item:", item);
-  });
-  console.log("🚀 ~ News ~ newsTags:", newsTags[0]?.name);
+  // newsTags.map((item: any) => {
+  //   console.log("🚀 ~ newsTags.map ~ item:", item);
+  // });
+  // console.log("🚀 ~ News ~ newsTags:", newsTags[0]?.name);
 
   useEffect(() => {
     if (show) {
@@ -190,7 +190,8 @@ function News() {
               {data?.data?.data?.news.length > 0 ? (
                 <>
                   <Link
-                    href={`/news/${data?.data?.data?.news[0]?.id}`}
+                    // href={`/news/${data?.data?.data?.news[0]?.id}`}
+                    href={`/news/one?id=${data?.data?.data?.news[0]?.id}`}
                     className="col-span-3"
                   >
                     <span className=" flex w-full  items-start bg-white border border-gray-200 h-[350px]">

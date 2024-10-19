@@ -4,9 +4,9 @@ import Link from "next/link";
 import React from "react";
 
 function NewsCard({ data, onClick, id }: any) {
-  console.log("🚀 ~ NewsCard ~ data:", data);
+  // console.log("🚀 ~ NewsCard ~ data:", data);
   return (
-    <Link href={`/news/${id}`}>
+    <Link href={`/news/one?id=${id}`}>
       <span
         className="col-span-1 flex flex-col bg-white border border-gray-200  h-[350px] cursor-pointer"
         onClick={onClick}
