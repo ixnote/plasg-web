@@ -9,29 +9,29 @@ import { cn } from "@/utils";
 import { useMediaQuery } from "@mantine/hooks";
 import Link from "next/link";
 import { formatDate } from "@/utils/formatDate";
+import { getNewsTags } from "@/api/news/getNewsTags";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Loader } from "@mantine/core";
 
 function News() {
-  const links = [
-    { name: "General", id: "fbdfbssf" },
-    { name: "National", id: "adcasdkj" },
-    { name: "International", id: "nkwjwns" },
-    { name: "Politics", id: "sjsksns" },
-    { name: "Regulation", id: "dshjdsdkd" },
-    { name: "Business", id: "ansksdjee" },
-    { name: "Finance", id: "nsjsiee" },
-    { name: "Health Care", id: "mxkxhdaw" },
-    { name: "Technology", id: "yhsowhje" },
-    { name: "Security", id: "hskssisi" },
-    { name: "Media", id: "dgsjswnejs" },
-    { name: "Administration", id: "xbsjxbjs" },
-    { name: "Sports", id: "hdjdhsksn" },
-    { name: "Entertainment", id: "sksowjejs" },
-    { name: "Finance", id: "hksnskwns" },
-  ];
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const tag = searchParams.get("tag");
+  const current_page = searchParams.get("page");
 
   const matches = useMediaQuery("(max-width: 768px)");
 
-  const [active, setActive] = useState(links[0]);
+  const [active, setActive] = useState<any>("");
+  const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    if (tag) {
+      setActive(tag);
+    }
+    if (current_page) {
+      setPage(page);
+    }
+  }, [tag, current_page]);
 
   const news = [
     {
@@ -42,9 +42,13 @@ function News() {
     },
   ];
 
-  const [page, setPage] = useState(1);
+  const { data: tags } = useQuery({
+    queryKey: ["getNewsTags"],
+    queryFn: getNewsTags,
+  });
+
   const { data, isLoading, error } = useQuery({
-    queryKey: ["getNews", page, 20, "", "", "", "", ""],
+    queryKey: ["getNews", page, 20, "", "", active, "", ""],
     queryFn: getNews,
   });
 
@@ -68,6 +72,11 @@ function News() {
     };
   }, [show]);
 
+  const handlePageChange = (item: any) => {
+    setActive(item?.id);
+    router.push(`/news?tag=${item?.id}&page=${page}`);
+  };
+
   return (
     <div className="pt-[120px] p-5">
       <span className="max-w-[1500px] mx-auto flex flex-col gap-5">
@@ -86,12 +95,12 @@ function News() {
                   Categories
                 </p>
                 <span className="flex flex-col gap-4">
-                  {links.map((item) => (
+                  {tags?.data?.data?.map((item: any) => (
                     <p
                       className={cn(
                         "capitalize text-[18px] cursor-pointer text-white"
                       )}
-                      onClick={() => setActive(item)}
+                      onClick={() => handlePageChange(item)}
                       key={item.id}
                     >
                       {item.name}
@@ -104,13 +113,13 @@ function News() {
         ) : (
           <span className="w-full flex gap-6 bg-white  rounded-xl">
             <span className="flex gap-4 border justify-between w-full rounded-xl relative">
-              {links.slice(0, 9).map((item, index) => (
+              {tags?.data?.data?.slice(0, 9).map((item: any, index: number) => (
                 <p
                   className={cn("px-4 py-2 uppercase border-r cursor-pointer", {
-                    "bg-brand-main text-white": active?.id === item.id,
+                    "bg-brand-main text-white": active === item.id,
                     "rounded-l-xl": index === 0,
                   })}
-                  onClick={() => setActive(item)}
+                  onClick={() => handlePageChange(item)}
                   key={item.id}
                 >
                   {item.name}
@@ -130,12 +139,12 @@ function News() {
                           <p className="text-[24px] text-white font-medium capitalize">
                             Governance
                           </p>
-                          {links.slice(0, 6).map((item) => (
+                          {tags?.data?.data?.slice(0, 6).map((item: any) => (
                             <p
                               className={cn(
                                 "capitalize text-[18px] cursor-pointer text-white"
                               )}
-                              onClick={() => setActive(item)}
+                              onClick={() => handlePageChange(item)}
                               key={item.id}
                             >
                               {item.name}
@@ -200,6 +209,12 @@ function News() {
                     .map((item: any, index: number) => (
                       <NewsCard key={index} data={item} id={item.id} />
                     ))}
+                </>
+              ) : isLoading ? (
+                <>
+                  <span className="flex items-center justify-center p-8 w-full lg:col-span-4 col-span-1">
+                    <Loader color="black" size={28} />
+                  </span>
                 </>
               ) : (
                 <>
