@@ -9,32 +9,29 @@ import { cn } from "@/utils";
 import { useMediaQuery } from "@mantine/hooks";
 import Link from "next/link";
 import { formatDate } from "@/utils/formatDate";
-import { useGeneralContext } from "../../../context/GenralContext";
+import { getNewsTags } from "@/api/news/getNewsTags";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Loader } from "@mantine/core";
 
 function News() {
-  // TAGS / CATEGORIES
-  const { newsTags }: any = useGeneralContext();
-  const links = [
-    { name: "General", id: "fbdfbssf" },
-    { name: "National", id: "adcasdkj" },
-    { name: "International", id: "nkwjwns" },
-    { name: "Politics", id: "sjsksns" },
-    { name: "Regulation", id: "dshjdsdkd" },
-    { name: "Business", id: "ansksdjee" },
-    { name: "Finance", id: "nsjsiee" },
-    { name: "Health Care", id: "mxkxhdaw" },
-    { name: "Technology", id: "yhsowhje" },
-    { name: "Security", id: "hskssisi" },
-    { name: "Media", id: "dgsjswnejs" },
-    { name: "Administration", id: "xbsjxbjs" },
-    { name: "Sports", id: "hdjdhsksn" },
-    { name: "Entertainment", id: "sksowjejs" },
-    { name: "Finance", id: "hksnskwns" },
-  ];
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const tag = searchParams.get("tag");
+  const current_page = searchParams.get("page");
 
   const matches = useMediaQuery("(max-width: 768px)");
 
-  const [active, setActive] = useState(links[0]);
+  const [active, setActive] = useState<any>("");
+  const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    if (tag) {
+      setActive(tag);
+    }
+    if (current_page) {
+      setPage(page);
+    }
+  }, [tag, current_page]);
 
   const news = [
     {
@@ -45,13 +42,17 @@ function News() {
     },
   ];
 
-  const [page, setPage] = useState(1);
+  const { data: tags } = useQuery({
+    queryKey: ["getNewsTags"],
+    queryFn: getNewsTags,
+  });
+
   const { data, isLoading, error } = useQuery({
-    queryKey: ["getNews", page, 20, "", "", "", "", ""],
+    queryKey: ["getNews", page, 20, "", "", active, "", ""],
     queryFn: getNews,
   });
 
-  // console.log("data :>> ", data);
+  console.log("data :>> ", data);
 
   // const dialogRef = useRef(null);
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -62,12 +63,6 @@ function News() {
     setShow(false);
   };
 
-  const [categoreis, setCategories] = useState();
-  // newsTags.map((item: any) => {
-  //   console.log("🚀 ~ newsTags.map ~ item:", item);
-  // });
-  // console.log("🚀 ~ News ~ newsTags:", newsTags[0]?.name);
-
   useEffect(() => {
     if (show) {
       document.addEventListener("click", globalListener);
@@ -77,7 +72,14 @@ function News() {
     };
   }, [show]);
 
-  useEffect(() => {}, [newsTags]);
+  const handlePageChange = (item: any) => {
+    setActive(item?.id);
+    router.push(`/news?tag=${item?.id}&page=${page}`);
+  };
+  const handlePageDefault = () => {
+    setActive("");
+    router.push(`/news?page=${page}`);
+  };
 
   return (
     <div className="pt-[120px] p-5 text-brand-dark">
@@ -97,12 +99,12 @@ function News() {
                   Categories
                 </p>
                 <span className="flex flex-col gap-4">
-                  {links.map((item) => (
+                  {tags?.data?.data?.map((item: any) => (
                     <p
                       className={cn(
-                        "capitalize text-[18px] cursor-pointer text-brand-main"
+                        "capitalize text-[18px] cursor-pointer text-white"
                       )}
-                      onClick={() => setActive(item)}
+                      onClick={() => handlePageChange(item)}
                       key={item.id}
                     >
                       {item.name}
@@ -115,16 +117,13 @@ function News() {
         ) : (
           <span className="w-full flex gap-6 bg-white  rounded-xl">
             <span className="flex gap-4 border justify-between w-full rounded-xl relative">
-              {links.slice(0, 9).map((item, index) => (
+              {tags?.data?.data?.slice(0, 9).map((item: any, index: number) => (
                 <p
-                  className={cn(
-                    "px-4 py-2 uppercase border-r cursor-pointer text-brand-main",
-                    {
-                      "bg-brand-main text-white": active?.id === item.id,
-                      "rounded-l-xl": index === 0,
-                    }
-                  )}
-                  onClick={() => setActive(item)}
+                  className={cn("px-4 py-2 uppercase border-r cursor-pointer", {
+                    "bg-brand-main text-white": active === item.id,
+                    "rounded-l-xl": index === 0,
+                  })}
+                  onClick={() => handlePageChange(item)}
                   key={item.id}
                 >
                   {item.name}
@@ -132,7 +131,9 @@ function News() {
               ))}
 
               <span className="px-4 py-2 pr-6 uppercase cursor-pointer group">
-                <span className="text-brand-main">see all</span>
+                <span className="text-brand-main" onClick={handlePageDefault}>
+                  see all
+                </span>
                 <div className="group-hover:block hidden absolute w-full left-0 pt-4 z-40">
                   <div className="w-full bg-brand-main p-8 rounded-3xl ">
                     <p className="text-[32px] text-white font-medium capitalize mb-6">
@@ -142,14 +143,14 @@ function News() {
                       {[1, 2, 3, 4].map((item, index) => (
                         <span key={index} className="flex flex-col gap-4">
                           <p className="text-[24px] text-white font-medium capitalize">
-                            Governance
+                            Categories
                           </p>
-                          {links.slice(0, 6).map((item) => (
+                          {tags?.data?.data?.slice(0, 6).map((item: any) => (
                             <p
                               className={cn(
                                 "capitalize text-[18px] cursor-pointer text-white"
                               )}
-                              onClick={() => setActive(item)}
+                              onClick={() => handlePageChange(item)}
                               key={item.id}
                             >
                               {item.name}
@@ -180,9 +181,9 @@ function News() {
         <span className="flex-grow grid lg:grid-cols-4 gap-5 grid-cols-1 w-full">
           {matches ? (
             <>
-              {[1, 2, 3, 4, 5].map((item, index) => (
+              {data?.data?.data?.news.map((item: any, index: number) => (
                 // <NewsCard key={index} data={news[0]} />
-                <NewsCard key={index} data={data?.data?.data?.news[index]} />
+                <NewsCard key={index} data={item} id={item.id} />
               ))}
             </>
           ) : (
@@ -234,6 +235,12 @@ function News() {
                     .map((item: any, index: number) => (
                       <NewsCard key={index} data={item} id={item.id} />
                     ))}
+                </>
+              ) : isLoading ? (
+                <>
+                  <span className="flex items-center justify-center p-8 w-full lg:col-span-4 col-span-1">
+                    <Loader color="black" size={28} />
+                  </span>
                 </>
               ) : (
                 <>
