@@ -10,6 +10,7 @@ const CORE_APP = {
     search: `${BASE_URL}/statics/global-search`,
     legislatives: `${BASE_URL}/statics/legislatives`,
     destinations: `${BASE_URL}/statics/destinations`,
+    news_tags: `${BASE_URL}/tag/news`,
   },
 };
 export default CORE_APP;
