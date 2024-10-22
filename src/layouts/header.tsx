@@ -64,12 +64,14 @@ const Header = (data: any) => {
       onMouseLeave={handleMouseLeave}
     >
       <Modal
-        fullScreen
+        // fullScreen
+        size={"100%"}
         bg={"#0E3E40"}
         className="bg-brand-main"
         opened={opened}
         onClose={close}
         withCloseButton={false}
+        h={300}
       >
         <SearchComponent close={close} />
       </Modal>

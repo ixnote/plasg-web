@@ -12,6 +12,7 @@ import { formatDate } from "@/utils/formatDate";
 import { getNewsTags } from "@/api/news/getNewsTags";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Loader } from "@mantine/core";
+import NewsSection from "./NewsSection";
 
 function News() {
   const router = useRouter();
@@ -254,6 +255,18 @@ function News() {
             </>
           )}
         </span>
+        {!active && (
+          <div className="my-11 flex flex-col">
+            {tags?.data?.data?.map((item: any) => (
+              <div key={item.id} className="flex flex-col mb-16 gap-4">
+                <p className="text-[24px]  font-medium capitalize">
+                  {item?.name}
+                </p>
+                <NewsSection active={item.id} />
+              </div>
+            ))}
+          </div>
+        )}
       </span>
     </div>
   );
