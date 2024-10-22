@@ -17,12 +17,6 @@ function SearchComponent({ close }: any) {
 
   return (
     <div className="flex flex-col gap-[200px]">
-      <button
-        className="border border-gray-200 bg-[#ffffff30] w-[76px] h-16 rounded flex justify-center items-center"
-        onClick={close}
-      >
-        <IoMdClose color="white" size={32} />
-      </button>
       <span className="flex flex-col gap-8">
         <span className="flex border-b-[2px] border-b-[#ffffff70]">
           <input
@@ -37,21 +31,6 @@ function SearchComponent({ close }: any) {
               <FiSearch size={32} className="lg:ext-[32px] text-[24px]" />
             </button>
           </Link>
-        </span>
-        <span className="flex items-center lg:gap-20 gap-6 flex-wrap">
-          <span className="uppercase text-white opacity-80 font-light flex items-center gap-2 text-[14px]">
-            <p>TOP SEARCHES:</p>
-          </span>
-          <span className="flex lg:gap-8 gap-4 flex-wrap">
-            {products?.map((item, index) => (
-              <button
-                key={index}
-                className="text-white border border-[#ffffff50] px-2 py-1 text-[14px] opacity-80 font-light"
-              >
-                {item}
-              </button>
-            ))}
-          </span>
         </span>
       </span>
     </div>
