@@ -34,15 +34,6 @@ function News() {
     }
   }, [tag, current_page]);
 
-  const news = [
-    {
-      image: ArticleImage,
-      title:
-        "Gov. Mutfwang Partners with International NGOs to Address Humanitarian Needs of Vulnerable People",
-      category: "Welfare ",
-    },
-  ];
-
   const { data: tags } = useQuery({
     queryKey: ["getNewsTags"],
     queryFn: getNewsTags,
@@ -53,7 +44,7 @@ function News() {
     queryFn: getNews,
   });
 
-  console.log("data :>> ", data);
+  console.log("data :>> ", tags);
 
   // const dialogRef = useRef(null);
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -176,9 +167,7 @@ function News() {
             <span key={i}>{item?.name || "trese"}</span>
           ))}
         <span>{newsTags[2]?.name}</span> */}
-        <p className="text-[32px] text-brand-main font-medium">
-          Today’s Headlines
-        </p>
+        <p className="text-[32px] text-brand-main font-medium">Recent News</p>
         <span className="flex-grow grid lg:grid-cols-4 gap-5 grid-cols-1 w-full">
           {matches ? (
             <>
@@ -256,16 +245,28 @@ function News() {
           )}
         </span>
         {!active && (
-          <div className="my-11 flex flex-col">
-            {tags?.data?.data?.map((item: any) => (
-              <div key={item.id} className="flex flex-col mb-16 gap-4">
+          <>
+            <div className="my-11 flex flex-col">
+              <div className="flex flex-col mb-16 gap-4">
                 <p className="text-[24px]  font-medium capitalize">
-                  {item?.name}
+                  Administration
                 </p>
-                <NewsSection active={item.id} />
+                <NewsSection active={"66ce1689584c4af93178b747"} />
               </div>
-            ))}
-          </div>
+            </div>
+            <div className="my-11 flex flex-col">
+              <div className="flex flex-col mb-16 gap-4">
+                <p className="text-[24px]  font-medium capitalize">Politics</p>
+                <NewsSection active={"66ce1686584c4af93178b5fe"} />
+              </div>
+            </div>
+            <div className="my-11 flex flex-col">
+              <div className="flex flex-col mb-16 gap-4">
+                <p className="text-[24px]  font-medium capitalize">Sports</p>
+                <NewsSection active={"66ce1689584c4af93178b771"} />
+              </div>
+            </div>
+          </>
         )}
       </span>
     </div>
