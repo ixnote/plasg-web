@@ -168,7 +168,7 @@ function News() {
           ))}
         <span>{newsTags[2]?.name}</span> */}
         <p className="text-[32px] text-brand-main font-medium">Recent News</p>
-        <span className="flex-grow grid lg:grid-cols-4 gap-5 grid-cols-1 w-full">
+        <span className="flex-grow grid lg:grid-cols-4 gap-5 grid-cols-1 w-full mb-8">
           {matches ? (
             <>
               {data?.data?.data?.news.map((item: any, index: number) => (
@@ -221,7 +221,7 @@ function News() {
                     </span>
                   </Link>
                   {data?.data?.data?.news
-                    ?.slice(1)
+                    ?.slice(1, 6)
                     .map((item: any, index: number) => (
                       <NewsCard key={index} data={item} id={item.id} />
                     ))}
@@ -235,7 +235,7 @@ function News() {
               ) : (
                 <>
                   <span className="flex items-center justify-center p-8 w-full lg:col-span-4 col-span-1">
-                    <p className="text-center text-[32px] mx-auto">
+                    <p className="text-center text-[32px] mx-auto ">
                       No Available News
                     </p>
                   </span>
@@ -246,23 +246,27 @@ function News() {
         </span>
         {!active && (
           <>
-            <div className="my-11 flex flex-col">
-              <div className="flex flex-col mb-16 gap-4">
-                <p className="text-[24px]  font-medium capitalize">
+            <div className="my-0 flex flex-col">
+              <div className="flex flex-col mb-8 gap-4">
+                <p className="text-[32px]  font-medium capitalize text-brand-main">
                   Administration
                 </p>
                 <NewsSection active={"66ce1689584c4af93178b747"} />
               </div>
             </div>
-            <div className="my-11 flex flex-col">
-              <div className="flex flex-col mb-16 gap-4">
-                <p className="text-[24px]  font-medium capitalize">Politics</p>
+            <div className="my-0 flex flex-col">
+              <div className="flex flex-col mb-8 gap-4">
+                <p className="text-[32px]  font-medium capitalize text-brand-main">
+                  Politics
+                </p>
                 <NewsSection active={"66ce1686584c4af93178b5fe"} />
               </div>
             </div>
-            <div className="my-11 flex flex-col">
-              <div className="flex flex-col mb-16 gap-4">
-                <p className="text-[24px]  font-medium capitalize">Sports</p>
+            <div className="my-0 flex flex-col">
+              <div className="flex flex-col mb-8 gap-4">
+                <p className="text-[32px]  font-medium capitalize text-brand-main">
+                  Sports
+                </p>
                 <NewsSection active={"66ce1689584c4af93178b771"} />
               </div>
             </div>
