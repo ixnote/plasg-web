@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import ArticleImage from "@/assets/imgs/img.png";
+import miango from "@/assets/imgs//miango.jpg";
 import PlaceCard from "@/components/PlaceCard";
 import { cn } from "@/utils";
 import { Divider } from "@mantine/core";
@@ -36,6 +36,10 @@ function Essentials() {
       image:
         "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/35/b4/fc/hbc-resort.jpg?w=1100&h=-1&s=1",
       name: "Healthy Body Clinic and Resort",
+    },
+    {
+      image: miango,
+      name: "Miango Rest Home",
     },
   ];
   console.log("🚀 ~ Essentials ~ hotels:", hotels);
@@ -88,7 +92,7 @@ function Essentials() {
           {/* {hotels.map(({ hotel, i }: any) => (
             <PlaceCard data={hotel} key={i} />
           ))} */}
-          {[1, 2, 3, 4, 5, 6].map((item, index) => (
+          {[1, 2, 3, 4, 5, 6, 7].map((item, index) => (
             <PlaceCard data={hotels[index]} key={index} />
           ))}
         </span>

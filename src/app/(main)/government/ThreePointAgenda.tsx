@@ -4,9 +4,12 @@ import SubsectionHeader from "@/components/SubsectionHeader";
 import Image from "next/image";
 import React, { useState, useEffect, useRef } from "react";
 
-import governance from "@/assets/imgs/government/three-points/governance.jpg";
-import infrastructure from "@/assets/imgs/government/three-points/infrastructure.jpg";
-import economy from "@/assets/imgs/government/three-points/image 20.png";
+// import governance from "@/assets/imgs/government/three-points/governance.jpg";
+import governance from "@/assets/imgs/government/three-points/economy3.jpg";
+// import infrastructure from "@/assets/imgs/government/three-points/infrastructure.jpg";
+import infrastructure from "@/assets/imgs/government/three-points/infrastructure2.jpg";
+// import economy from "@/assets/imgs/government/three-points/image 20.png";
+import economy from "@/assets/imgs/government/three-points/economy2.jpg";
 
 const ThreePointAgenda = () => {
   const [active, setActive] = useState("governance");
