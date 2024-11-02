@@ -10,6 +10,7 @@ const ResourceCard = ({
   description,
   updated,
   created,
+  date,
 }: any) => {
   const router = useRouter();
   const handleClick = () => {
@@ -36,7 +37,11 @@ const ResourceCard = ({
             {title}
           </div>
           <div className="flex gap-2 items-center font-normal text-sm text-brand-grayish mb-2">
-            <span>{updated ? updated : created}</span>
+            {date ? (
+              <span>{date}</span>
+            ) : (
+              <span>{updated ? updated : created}</span>
+            )}
             <span>•</span>
             <span>{mda}</span>
           </div>
