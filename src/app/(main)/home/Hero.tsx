@@ -205,7 +205,7 @@ const Hero = () => {
                     id="search"
                     // onFocus={() => setShowSearchResult(true)}
                     onBlur={() => setShowSearchResult(false)}
-                    placeholder="Looking for something? Search anything"
+                    placeholder="Looking for something? Start typing..."
                     onClick={open}
                     className={
                       showSearchResult

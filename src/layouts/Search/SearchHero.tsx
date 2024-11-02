@@ -410,7 +410,8 @@ function SearchHero() {
                   </h3>
                   <span className="flex items-center gap-5">
                     <p className="text-[12px] font-light text-gray-400">
-                      Updated {formatDate(item?.updatedAt)}
+                      Updated{" "}
+                      {formatDate(item?.date) || formatDate(item?.updatedAt)}
                     </p>
                     <p className="text-[12px] font-normal text-gray-400 m-0">
                       {item?.name}
