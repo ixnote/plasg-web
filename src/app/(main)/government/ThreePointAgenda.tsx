@@ -7,7 +7,7 @@ import React, { useState, useEffect, useRef } from "react";
 // import governance from "@/assets/imgs/government/three-points/governance.jpg";
 import governance from "@/assets/imgs/government/three-points/economy3.jpg";
 // import infrastructure from "@/assets/imgs/government/three-points/infrastructure.jpg";
-import infrastructure from "@/assets/imgs/government/three-points/infrastructure2.jpg";
+import infrastructure from "@/assets/imgs/government/three-points/Infrastructure__.jpg";
 // import economy from "@/assets/imgs/government/three-points/image 20.png";
 import economy from "@/assets/imgs/government/three-points/economy2.jpg";
 
