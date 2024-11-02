@@ -16,18 +16,23 @@ export function formatDate(inputDate: any) {
     return n + (s[(v - 20) % 10] || s[v] || s[0]);
   };
 
-  if (diffDays <= 0) {
-    return "today";
-  } else if (diffDays === 1) {
-    return "yesterday";
-  } else if (diffDays < 7) {
-    return `${diffDays} days ago`;
-  } else {
-    const day = formatToOrdinal(date.getDate());
-    const month = date.toLocaleString("default", { month: "long" });
-    const year = date.getFullYear();
-    return `${day} ${month} ${year}`;
-  }
+  const day = formatToOrdinal(date.getDate());
+  const month = date.toLocaleString("default", { month: "long" });
+  const year = date.getFullYear();
+  return `${day} ${month} ${year}`;
+
+  // if (diffDays <= 0) {
+  //   return "today";
+  // } else if (diffDays === 1) {
+  //   return "yesterday";
+  // } else if (diffDays < 7) {
+  //   return `${diffDays} days ago`;
+  // } else {
+  //   const day = formatToOrdinal(date.getDate());
+  //   const month = date.toLocaleString("default", { month: "long" });
+  //   const year = date.getFullYear();
+  //   return `${day} ${month} ${year}`;
+  // }
 }
 
 // Examples:

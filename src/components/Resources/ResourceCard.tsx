@@ -1,5 +1,6 @@
 import React from "react";
 import { useRouter } from "next/navigation";
+import { formatDate } from "@/utils/formatDate";
 
 const ResourceCard = ({
   id,
@@ -38,9 +39,9 @@ const ResourceCard = ({
           </div>
           <div className="flex gap-2 items-center font-normal text-sm text-brand-grayish mb-2">
             {date ? (
-              <span>{date}</span>
+              <span>{formatDate(date)}</span>
             ) : (
-              <span>{updated ? updated : created}</span>
+              <span>{updated ? formatDate(updated) : formatDate(created)}</span>
             )}
             <span>•</span>
             <span>{mda}</span>

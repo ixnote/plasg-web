@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { formatDate } from "@/utils/formatDate";
 
 const AssetCardLight = ({
   logo,
@@ -13,6 +14,7 @@ const AssetCardLight = ({
   description,
   updated,
   created,
+  date,
   button1text,
   button2text,
   url,
@@ -49,12 +51,13 @@ const AssetCardLight = ({
             {icon && <Image src={icon} alt="" />}
             <span>{logoText}</span>
           </div>
-          {updated && (
-            <span className="font-geistmono text-brand-grayish font-light text-sm">
-              {/* {updated ? updated : created} */}
-              {created}
-            </span>
-          )}
+          <span className="font-geistmono text-brand-grayish font-light text-sm">
+            {date
+              ? formatDate(date)
+              : updated
+              ? formatDate(updated)
+              : formatDate(created)}
+          </span>
         </div>
         {/* title part */}
         <div className="flex flex-col gap-8">

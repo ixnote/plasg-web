@@ -25,7 +25,7 @@ const ResourceFilter = () => {
     activePage,
     setActivePage,
   }: any = useGeneralContext();
-  console.log("🚀 ~ ResourceFilter ~ resources:", resources);
+  // console.log("🚀 ~ ResourceFilter ~ resources:", resources);
 
   const handleTabSwitch = async () => {
     setActive(activeTag.name);
@@ -156,9 +156,12 @@ const ResourceFilter = () => {
                       // date={moment(resource?.date).fromNow()}
                       // updated={moment(resource?.updatedAt).fromNow()}
                       // created={moment(resource?.createdAt).fromNow()}
-                      date={formatDate(resource?.date)}
-                      updated={formatDate(resource?.updatedAt)}
-                      created={formatDate(resource?.createdAt)}
+                      date={resource?.date}
+                      updated={resource?.updatedAt}
+                      created={resource?.createdAt}
+                      // date={formatDate(resource?.date)}
+                      // updated={formatDate(resource?.updatedAt)}
+                      // created={formatDate(resource?.createdAt)}
                     />
                   ))
                 )}
