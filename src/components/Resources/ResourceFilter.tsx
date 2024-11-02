@@ -5,6 +5,7 @@ import { useGeneralContext } from "../../../context/GenralContext";
 import ResourceCard from "@/components/Resources/ResourceCard";
 import moment from "moment";
 import { Loader } from "@mantine/core";
+import { formatDate } from "@/utils/formatDate";
 
 const ResourceFilter = () => {
   const [active, setActive] = useState("all");
@@ -152,9 +153,12 @@ const ResourceFilter = () => {
                       description={resource?.description}
                       url={resource?.link}
                       id={resource?.id}
-                      date={moment(resource?.date).fromNow()}
-                      updated={moment(resource?.updatedAt).fromNow()}
-                      created={moment(resource?.createdAt).fromNow()}
+                      // date={moment(resource?.date).fromNow()}
+                      // updated={moment(resource?.updatedAt).fromNow()}
+                      // created={moment(resource?.createdAt).fromNow()}
+                      date={formatDate(resource?.date)}
+                      updated={formatDate(resource?.updatedAt)}
+                      created={formatDate(resource?.createdAt)}
                     />
                   ))
                 )}
