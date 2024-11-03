@@ -411,7 +411,12 @@ function SearchHero() {
                   <span className="flex items-center gap-5">
                     <p className="text-[12px] font-light text-gray-400">
                       Updated{" "}
-                      {formatDate(item?.date) || formatDate(item?.updatedAt)}
+                      {item?.date
+                        ? formatDate(item?.date)
+                        : item?.updatedAt
+                        ? formatDate(item?.updatedAt)
+                        : formatDate(item?.createdAt)}
+                      {/* {formatDate(item?.date) || formatDate(item?.updatedAt)} */}
                     </p>
                     <p className="text-[12px] font-normal text-gray-400 m-0">
                       {item?.name}

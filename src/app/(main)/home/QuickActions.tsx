@@ -4,8 +4,8 @@ import React from "react";
 import AssetCardLight from "@/components/AssetCardLight";
 import ButtonLight from "@/components/ButtonLight";
 import { useGeneralContext } from "../../../../context/GenralContext";
-import moment from "moment";
-import { formatDate } from "@/utils/formatDate";
+// import moment from "moment";
+// import { formatDate } from "@/utils/formatDate";
 
 const QuickActions = () => {
   const { homeResources }: any = useGeneralContext();
@@ -70,9 +70,9 @@ const QuickActions = () => {
                     id={resource._id}
                     // created={moment(resource.createdAt).fromNow()}
                     // updated={moment(resource.updatedAt).fromNow()}
-                    date={formatDate(resource?.date)}
-                    updated={formatDate(resource?.updatedAt)}
-                    created={formatDate(resource?.createdAt)}
+                    date={resource?.date}
+                    updated={resource.updatedAt}
+                    created={resource.createdAt}
                     button1text={"View Topic"}
                     byText={resource.mda?.name}
                   />
