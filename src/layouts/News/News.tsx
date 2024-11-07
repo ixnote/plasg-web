@@ -44,7 +44,8 @@ function News() {
     queryFn: getNews,
   });
 
-  console.log("data :>> ", tags);
+  console.log("🚀 ~ News ~ data:", data);
+  // console.log("data :>> ", tags);
 
   // const dialogRef = useRef(null);
   const dialogRef = useRef<HTMLDivElement>(null);
