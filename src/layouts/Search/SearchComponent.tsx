@@ -23,7 +23,7 @@ function SearchComponent({ close }: any) {
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Looking for something? Start typing..."
+            placeholder="Search for Documents, MDA and Arcticles"
             className="w-full flex-grow-0 bg-transparent lg:py-3 py-2 lg:text-[52px] text-[24px] text-white outline-none"
           />
           <Link href={`/search?name=${name}&page=1`} onClick={close}>
