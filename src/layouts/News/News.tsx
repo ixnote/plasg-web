@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
+import React, { Suspense, useEffect, useRef, useState } from "react";
 import ArticleImage from "@/assets/imgs/img.png";
 import NewsCard from "@/components/NewsCard";
 import { useQuery } from "react-query";
@@ -278,4 +278,12 @@ function News() {
   );
 }
 
-export default News;
+// export default News;
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <News />
+    </Suspense>
+  );
+}
