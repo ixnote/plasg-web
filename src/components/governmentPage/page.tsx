@@ -5,6 +5,8 @@ import React, { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "next/navigation";
 import SectionHeader from "@/components/SectionHeader";
 import governor from "@/assets/imgs/government/governor.png";
+import deputy from "@/assets/imgs/government/deputy.jpg";
+import secretary from "@/assets/imgs/government/secretary.jpg";
 import Cabinet from "./Cabinet";
 import GovernorBiography from "./GovernorBiography";
 import DeputyBiography from "./DeputyBiography";
@@ -33,8 +35,8 @@ const GovernmentPage = () => {
 
   const images = {
     governor: governor,
-    deputy: governor,
-    secretary: governor,
+    deputy: deputy,
+    secretary: secretary,
   };
 
   const [title, setTitle] = useState(titles.governor);

@@ -1,16 +1,20 @@
 "use client";
 
 import SectionHeader from "@/components/SectionHeader";
-import React from "react";
+import React, { Suspense } from "react";
 import { useGeneralContext } from "../../../../../../context/GenralContext";
 import ResourceFilter from "@/components/Resources/ResourceFilter";
 
-import Nav from "../../nav";
-import Image from "next/image";
-import AssetCardLight from "@/components/AssetCardLight";
-import { LibraryItemList } from "../../data";
-import Footer from "@/layouts/Footer";
-import Filter from "../../libraryFilter";
+// import Nav from "../../nav";
+// import Image from "next/image";
+// import AssetCardLight from "@/components/AssetCardLight";
+// import { LibraryItemList } from "../../data";
+// import Footer from "@/layouts/Footer";
+// import Filter from "../../libraryFilter";
+
+import { useQuery } from "react-query";
+import { getMda } from "@/api/mda/getMda";
+import { useSearchParams } from "next/navigation";
 
 const Library = () => {
   const { resources, oneTopicTag }: any = useGeneralContext();
@@ -37,4 +41,12 @@ const Library = () => {
   );
 };
 
-export default Library;
+// export default Library;
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Library />
+    </Suspense>
+  );
+}
