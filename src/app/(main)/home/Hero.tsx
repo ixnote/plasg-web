@@ -10,11 +10,12 @@ import { useDisclosure } from "@mantine/hooks";
 import { Modal } from "@mantine/core";
 import SearchComponent from "@/layouts/Search/SearchComponent";
 import { FaLocationDot } from "react-icons/fa6";
+import { useGeneralContext } from "../../../../context/GenralContext";
 
 const Hero = () => {
   const [showSearchResult, setShowSearchResult] = useState(false);
   const [hovered, setHovered] = useState(false);
-  const [opened, { open, close }] = useDisclosure(false);
+  const { open }: any = useGeneralContext();
 
   return (
     <>
@@ -22,7 +23,7 @@ const Hero = () => {
         className="h-screen max-w-[2040px] relative flex items-center justify-center bg-cover bg-center bg-no-repeat"
         // style={{ backgroundImage: `url(${bg.src})` }}
       >
-        <Modal
+        {/* <Modal
           fullScreen
           bg={"#0E3E40"}
           className="bg-brand-main"
@@ -31,7 +32,7 @@ const Hero = () => {
           withCloseButton={false}
         >
           <SearchComponent close={close} />
-        </Modal>
+        </Modal> */}
         {/* hero content */}
         <div className="m-auto w-[92%] flex justify-between flex-col lg:flex-row">
           {/* left */}
