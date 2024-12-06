@@ -1,3 +1,4 @@
+import { useDisclosure } from "@mantine/hooks";
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
 
@@ -6,6 +7,7 @@ export const GeneralContext = createContext({});
 const GeneralProvider = (props: any) => {
   // Misc
   const [name, setName] = useState<String>("");
+  const [opened, { open, close }] = useDisclosure(false);
 
   // Tags
   const [typeTags, setTypeTags] = useState([]);
@@ -367,6 +369,9 @@ const GeneralProvider = (props: any) => {
         getMdaNews,
         setMdaNews,
         setMdaSlug,
+        opened,
+        open,
+        close,
       }}
     >
       {props.children}
