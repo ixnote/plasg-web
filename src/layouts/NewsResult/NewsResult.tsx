@@ -41,6 +41,14 @@ function NewsResult() {
     enabled: !!id,
   });
 
+  // Function to get YouTube video ID from the URL
+  const getYouTubeVideoId = (url: string) => {
+    const regex =
+      /(?:https?:\/\/)?(?:www\.)?youtu(?:\.be\/|be\.com\/(?:watch\?v=|embed\/|v\/|shorts\/|shorts\/)?)([^\?&"\'>]+)/;
+    const match = url.match(regex);
+    return match ? match[1] : null;
+  };
+
   // console.log("resource :>> ", resource);
   return (
     <div className="pt-[200px] p-5">
@@ -100,6 +108,30 @@ function NewsResult() {
                     height={1200}
                     className="w-full h-auto rounded-2xl object-cover py-2"
                   />
+                )}
+                {data?.type === "video" && (
+                  <div className="relative w-full overflow-hidden h-[240px] md:h-[480px] lg:h-[60vh]">
+                    {getYouTubeVideoId(data?.value) ? (
+                      <iframe
+                        src={`https://www.youtube.com/embed/${getYouTubeVideoId(
+                          data?.value
+                        )}?autoplay=1&mute=1`}
+                        className="absolute top-0 left-0 w-full h-full object-cover rounded-lg"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      ></iframe>
+                    ) : (
+                      <video
+                        src={data?.value}
+                        className="absolute top-0 left-0 w-full h-full object-cover rounded-lg"
+                        controls
+                        autoPlay
+                        muted
+                        loop
+                      />
+                    )}
+                  </div>
                 )}
                 {data?.type === "paragraph" && (
                   <p className="text-[18px] font-normal text-[#00000099] m-0">

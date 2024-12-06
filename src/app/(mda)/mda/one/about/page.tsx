@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { Suspense, useEffect } from "react";
 import Image from "next/image";
 
 import SecondCard from "../../secondCard";
@@ -11,23 +11,44 @@ import dynamic from "next/dynamic";
 import "react-quill/dist/quill.bubble.css";
 import { useQuery } from "react-query";
 import { getMda } from "@/api/mda/getMda";
+import { useSearchParams } from "next/navigation";
 
 const QuillEditor = dynamic(() => import("react-quill"), { ssr: false });
 
-const About = ({ params }: { params: { slug: string } }) => {
-  console.log("🚀 ~ About ~ params:", params?.slug);
-  const { oneMda }: any = useGeneralContext();
+const About = () => {
+  const {
+    allResources,
+    setOneMda,
+    setMdaSlug,
+    oneMda,
+  }: any = useGeneralContext();
+
+  const searchParams = useSearchParams();
+  const slug = searchParams.get("slug");
+  // console.log("🚀 ~ About ~ slug: ", slug);
 
   const {
     data: mda,
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["getMda", params?.slug],
+    queryKey: ["getMda", slug],
     queryFn: getMda,
-    enabled: !!params?.slug,
+    enabled: !!slug,
   });
-  console.log("🚀 ~ Mdas ~ mda:", mda?.data.data);
+  // console.log("🚀 ~ Mdas ~ mda:", mda?.data.data);
+
+  useEffect(() => {
+    if (slug) {
+      setMdaSlug(slug);
+    }
+  }, [slug]);
+  // }, [params]);
+
+  useEffect(() => {
+    setOneMda(mda?.data.data.mda);
+    allResources();
+  }, [mda]);
 
   return (
     <>
@@ -259,4 +280,12 @@ const About = ({ params }: { params: { slug: string } }) => {
   );
 };
 
-export default About;
+// export default About;
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <About />
+    </Suspense>
+  );
+}

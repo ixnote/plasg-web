@@ -15,7 +15,7 @@ import MobileNav from "@/components/MobileHeader/page";
 import { useGeneralContext } from "../../context/GenralContext";
 
 const Header = (data: any) => {
-  const { topicTags }: any = useGeneralContext();
+  const { topicTags, opened, open, close }: any = useGeneralContext();
   const [hoveredMenuData, setHoveredMenuData] = useState(null);
 
   const handleMouseEnter = (menu: any) => {
@@ -29,8 +29,6 @@ const Header = (data: any) => {
   const handleMouseLeave = () => {
     setHoveredMenuData(null);
   };
-
-  const [opened, { open, close }] = useDisclosure(false);
 
   const menueList = [
     {
