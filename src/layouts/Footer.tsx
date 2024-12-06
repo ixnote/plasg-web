@@ -136,19 +136,19 @@ const Footer = () => {
               </span>
               <div className="flex flex-col items-center gap-2 lg:items-start">
                 <Link
-                  href={"#"}
+                  href={"/people"}
                   className="font-geistsans font-normal text-base text-brand-white/55 hover:text-brand-secondary"
                 >
                   People
                 </Link>
                 <Link
-                  href={"#"}
+                  href={"/government"}
                   className="font-geistsans font-normal text-base text-brand-white/55 hover:text-brand-secondary"
                 >
                   The Government
                 </Link>
                 <Link
-                  href={"#"}
+                  href={"/tourism"}
                   className="font-geistsans font-normal text-base text-brand-white/55 hover:text-brand-secondary"
                 >
                   Visit Plateau
@@ -176,19 +176,19 @@ const Footer = () => {
             </span>
             <div className="flex items-center justify-between gap-4 md:flex-col md:gap-8 md:items-start lg:flex-row">
               <a
-                href="#"
+                href="https://www.instagram.com/plsgovt/?igshid=1w0ehvmgvssgt"
                 className="font-geistsans font-normal text-base text-brand-white/55 hover:text-brand-secondary"
               >
-                Email
+                Instagram
               </a>
               <a
-                href="#"
+                href="https://web.facebook.com/PLStateGovt/"
                 className="font-geistsans font-normal text-base text-brand-white/55 hover:text-brand-secondary"
               >
                 Facebook
               </a>
               <a
-                href="#"
+                href="https://x.com/PlateauStateGov?s=09"
                 className="font-geistsans font-normal text-base text-brand-white/55 hover:text-brand-secondary"
               >
                 X (Formerly Twitter){" "}
