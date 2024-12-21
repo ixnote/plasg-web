@@ -62,7 +62,7 @@ const AssetCardLight = ({
         {/* title part */}
         <div className="flex flex-col gap-8">
           <div className="font-geistsans font-medium text-2xl mb-4 text-brand-main flex flex-col gap-2 md:text-3xl lg:h-[60px]">
-            {title}
+            <span className="uppercase">{title}</span>
             {byText && (
               <span className="flex items-center justify-start gap-4 text-brand-grayish font-normal text-sm font-geistsans">
                 <svg

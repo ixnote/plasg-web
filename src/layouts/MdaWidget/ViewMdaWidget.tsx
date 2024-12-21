@@ -22,13 +22,17 @@ function ViewMdaWidget() {
 
   console.log("data :>> ", data);
   return (
-    <div className="relative min-h-screen overflow-hidden">
+    <div className="relative min-h-screen">
       {/* bg */}
-      <Image
-        src={bg}
-        alt="LOGO"
-        className="fixed top-0 left-0 w-full h-full bg-cover bg-center bg-no-repeat"
-      />
+      <div className="absolute top-0 left-0 w-full h-screen">
+        <Image
+          src={bg}
+          alt="LOGO"
+          layout="fill"
+          objectFit="cover"
+          className="bg-cover bg-center bg-no-repeat"
+        />
+      </div>
       <div className="relative z-10">
         <Hero data={data?.data?.data} />
         <Discover destinations={data?.data?.data?.destinations} />

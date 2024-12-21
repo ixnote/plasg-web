@@ -17,28 +17,30 @@ import SectionDividerLight from "@/components/SectionDividerLight";
 const Landing = () => {
   return (
     <>
-      <div className="relative min-h-screen overflow-hidden w-full">
+      <div className="relative min-h-screen w-full">
         {/* Background */}
-        <Suspense
-          fallback={
-            <Image
-              src={bg}
-              alt="Background Image"
-              layout="fill"
-              objectFit="cover"
-              className="fixed top-0 left-0 w-full h-full bg-cover bg-center bg-no-repeat"
+        <div className="absolute top-0 left-0 w-full h-screen">
+          <Suspense
+            fallback={
+              <Image
+                src={bg}
+                alt="Background Image"
+                layout="fill"
+                objectFit="cover"
+                className="absolute top-0 left-0 w-full h-full bg-cover bg-center bg-no-repeat"
+              />
+            }
+          >
+            <video
+              src="https://res.cloudinary.com/ddnojjpux/video/upload/v1722542304/BG_o3q1tw.mp4"
+              className="absolute top-0 left-0 w-full h-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
             />
-          }
-        >
-          <video
-            src="https://res.cloudinary.com/ddnojjpux/video/upload/v1722542304/BG_o3q1tw.mp4"
-            className="fixed top-0 left-0 w-full h-full object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
-          />
-        </Suspense>
+          </Suspense>
+        </div>
 
         <div className="relative min-h-screen max-w-[2040px] w-full mx-auto z-10">
           {/* Sections */}
