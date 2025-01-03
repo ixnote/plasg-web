@@ -407,7 +407,7 @@ function SearchHero() {
                   )}
                   onClick={() => handleRoute(item)}
                 >
-                  <h3 className="text-[22px] text-white font-medium">
+                  <h3 className="text-[22px] text-white font-medium uppercase">
                     {item?.name ? item?.name : item?.headline}
                   </h3>
                   <span className="flex items-center gap-5">
@@ -420,12 +420,12 @@ function SearchHero() {
                         : formatDate(item?.createdAt)}
                       {/* {formatDate(item?.date) || formatDate(item?.updatedAt)} */}
                     </p>
-                    <p className="text-[12px] font-normal text-gray-400 m-0">
+                    <p className="text-[12px] font-normal text-gray-400 m-0 uppercase">
                       {item?.name}
                     </p>
                   </span>
                   <h3
-                    className="text-[16px] text-white font-light"
+                    className="text-[16px] text-white font-light uppercase"
                     style={{
                       display: "-webkit-box",
                       WebkitBoxOrient: "vertical",
