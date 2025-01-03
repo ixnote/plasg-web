@@ -79,7 +79,8 @@ function SearchHero() {
     ) {
       router.push(`/search/one?id=${value?.id}`);
     } else if (value?.abbreviation) {
-      router.push(`/mda/one?id=${value?.slug}`);
+      // router.push(`/mda/one?id=${value?.slug}`);
+      router.push(`/mda/one?skug=${value?.slug}`);
     } else if (value?.mda?.name === "News") {
       router.push(`/news/one?id=${value?.id}`);
     } else if (value?.type === "landmark") {
