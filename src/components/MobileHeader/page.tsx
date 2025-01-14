@@ -495,6 +495,27 @@ const MobileNav = () => {
             News
           </Link>
           <Link
+            href="#"
+            onClick={() => setIsOpen(!isOpen)}
+            className="transition-fx cursor-pointer py-4 w-full font-geistsans font-medium text-2xl text-brand-white border-b-[0.1px] border-b-brand-grayish/10 hover:bg-brand-lightYellow hover:px-4 hover:rounded-lg hover:text-brand-dark"
+          >
+            Mining
+          </Link>
+          <Link
+            href="#"
+            onClick={() => setIsOpen(!isOpen)}
+            className="transition-fx cursor-pointer py-4 w-full font-geistsans font-medium text-2xl text-brand-white border-b-[0.1px] border-b-brand-grayish/10 hover:bg-brand-lightYellow hover:px-4 hover:rounded-lg hover:text-brand-dark"
+          >
+            Agriculture
+          </Link>
+          <Link
+            href="#"
+            onClick={() => setIsOpen(!isOpen)}
+            className="transition-fx cursor-pointer py-4 w-full font-geistsans font-medium text-2xl text-brand-white border-b-[0.1px] border-b-brand-grayish/10 hover:bg-brand-lightYellow hover:px-4 hover:rounded-lg hover:text-brand-dark"
+          >
+            Applications
+          </Link>
+          <Link
             href="/search"
             // onClick={() => setIsOpen(!isOpen)}
             onClick={open}

@@ -54,6 +54,21 @@ const Header = (data: any) => {
       drop: false,
       path: "/news",
     },
+    {
+      name: "Mining",
+      drop: false,
+      path: "#",
+    },
+    {
+      name: "Agriculture",
+      drop: false,
+      path: "#",
+    },
+    {
+      name: "Applications",
+      drop: false,
+      path: "#",
+    },
   ];
 
   return (
@@ -102,7 +117,12 @@ const Header = (data: any) => {
                       )}
                     </div>
                     {menu.drop && <div className="round-dot" />}
-                    {menu.name === "Tourism" && <div className="round-dot" />}
+                    {(menu.name === "Tourism" ||
+                      menu.name === "News" ||
+                      menu.name === "Mining" ||
+                      menu.name === "Agriculture") && (
+                      <div className="round-dot" />
+                    )}
                   </li>
                 ))}
               </ul>
