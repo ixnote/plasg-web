@@ -14,7 +14,7 @@ const SecretaryBiography = () => {
             "Meet Arch. Samuel Jatau: A Beacon of Leadership for Plateau State"
           }
         />
-        <div className="flex flex-col gap-4 lg:gap-8">
+        {/* <div className="flex flex-col gap-4 lg:gap-8">
           <SubsectionHeader
             left={""}
             right={
@@ -52,7 +52,7 @@ const SecretaryBiography = () => {
               loading="lazy"
             />
           </div>
-        </div>
+        </div> */}
         <div className="flex items-start justify-between"></div>
       </div>
     </>
