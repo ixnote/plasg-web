@@ -57,12 +57,12 @@ const Header = (data: any) => {
     {
       name: "Mining",
       drop: false,
-      path: "#",
+      path: "/mining",
     },
     {
       name: "Agriculture",
       drop: false,
-      path: "#",
+      path: "/agriculture",
     },
     {
       name: "Applications",

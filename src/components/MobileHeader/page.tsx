@@ -261,7 +261,7 @@ const MobileNav = () => {
                   </svg>
                 </Link>
                 <Link
-                  href="#"
+                  href="/projects"
                   onClick={() => setIsOpen(!isOpen)}
                   className="group transition-fx flex items-center text-brand-white py-4 bg-brand-main/70 hover:pl-4 hover:bg-[#284f51]"
                 >
@@ -495,14 +495,14 @@ const MobileNav = () => {
             News
           </Link>
           <Link
-            href="#"
+            href="/mining"
             onClick={() => setIsOpen(!isOpen)}
             className="transition-fx cursor-pointer py-4 w-full font-geistsans font-medium text-2xl text-brand-white border-b-[0.1px] border-b-brand-grayish/10 hover:bg-brand-lightYellow hover:px-4 hover:rounded-lg hover:text-brand-dark"
           >
             Mining
           </Link>
           <Link
-            href="#"
+            href="agriculture"
             onClick={() => setIsOpen(!isOpen)}
             className="transition-fx cursor-pointer py-4 w-full font-geistsans font-medium text-2xl text-brand-white border-b-[0.1px] border-b-brand-grayish/10 hover:bg-brand-lightYellow hover:px-4 hover:rounded-lg hover:text-brand-dark"
           >
