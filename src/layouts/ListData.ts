@@ -29,7 +29,7 @@ export const governmentData = [
   {
     _id: 0o5,
     name: "Projects",
-    path: "#",
+    path: "/projects",
   },
 ];
 
