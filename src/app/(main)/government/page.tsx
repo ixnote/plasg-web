@@ -31,10 +31,10 @@ const page = () => {
           <Executive />
           <SectionDividerLight />
           <Legislative />
-          <SectionDividerLight />
-          <Judiciary />
-          <SectionDividerLight />
-          <PastPresentLeaders />
+          {/* <SectionDividerLight /> */}
+          {/* <Judiciary /> */}
+          {/* <SectionDividerLight /> */}
+          {/* <PastPresentLeaders /> */}
         </div>
       </div>
       {/* <Footer /> */}
