@@ -10,7 +10,7 @@ import { FaRegNewspaper } from "react-icons/fa6";
 import { BiArch } from "react-icons/bi";
 import { cn } from "@/utils";
 import { formatDate } from "@/utils/formatDate";
-import { ScrollArea } from "@mantine/core";
+import { Group, Loader, ScrollArea } from "@mantine/core";
 import PaginationComponent from "@/components/Pagination";
 
 function SearchHero() {
@@ -48,7 +48,7 @@ function SearchHero() {
     }
   }, [searchParams]);
 
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["searchResources", name, currentPage, 20, ""],
     queryFn: searchResources,
   });
@@ -79,7 +79,8 @@ function SearchHero() {
     ) {
       router.push(`/search/one?id=${value?.id}`);
     } else if (value?.abbreviation) {
-      router.push(`/mda/one?id=${value?.slug}`);
+      // router.push(`/mda/one?id=${value?.slug}`);
+      router.push(`/mda/one?slug=${value?.slug}`);
     } else if (value?.mda?.name === "News") {
       router.push(`/news/one?id=${value?.id}`);
     } else if (value?.type === "landmark") {
@@ -375,12 +376,14 @@ function SearchHero() {
             </span>
           </span>
           <span className="lg:col-span-10 col-span-12 flex flex-col gap-8">
-            {elements?.length < 1 && (
+            {data && elements?.length === 0 ? (
               <span className="flex w-full justify-center items-center text-white">
                 <p className="capitalize text-[32px]">
                   No Available Result for {name} in {active?.name}
                 </p>
               </span>
+            ) : (
+              ""
             )}
             {elements?.map((item: any, index: number) => (
               <span
@@ -405,19 +408,32 @@ function SearchHero() {
                   )}
                   onClick={() => handleRoute(item)}
                 >
-                  <h3 className="text-[22px] text-white font-medium">
+                  <h3 className="text-[22px] text-white font-medium uppercase">
                     {item?.name ? item?.name : item?.headline}
                   </h3>
                   <span className="flex items-center gap-5">
                     <p className="text-[12px] font-light text-gray-400">
-                      Updated {formatDate(item?.updatedAt)}
+                      Uploaded{" "}
+                      {item?.date
+                        ? formatDate(item?.date)
+                        : item?.updatedAt
+                        ? formatDate(item?.updatedAt)
+                        : formatDate(item?.createdAt)}
+                      {/* {formatDate(item?.date) || formatDate(item?.updatedAt)} */}
                     </p>
-                    <p className="text-[12px] font-normal text-gray-400 m-0">
+                    <p className="text-[12px] font-normal text-gray-400 m-0 uppercase">
                       {item?.name}
                     </p>
                   </span>
                   <h3
-                    className="text-[16px] text-white font-light"
+                    className="text-[16px] text-white font-light uppercase"
+                    style={{
+                      display: "-webkit-box",
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      WebkitLineClamp: 4,
+                    }}
                     dangerouslySetInnerHTML={createMarkup(
                       item?.description ?? item?.about?.description ?? ""
                     )}
@@ -425,6 +441,11 @@ function SearchHero() {
                 </span>
               </span>
             ))}
+            {isLoading && (
+              <span className="flex w-full justify-center">
+                <Loader size={60} color="white" />
+              </span>
+            )}
           </span>
         </div>
         <span className="py-10 flex">

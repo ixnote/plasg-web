@@ -1,15 +1,47 @@
 "use client";
 
-import React from "react";
+import React, { Suspense, useEffect } from "react";
 import Image from "next/image";
 import bg from "@/assets/imgs/bg-img.svg";
 import location from "@/assets/icons/location.svg";
 import phone from "@/assets/icons/phone.svg";
 import message from "@/assets/icons/message.svg";
 import { useGeneralContext } from "../../../../../../context/GenralContext";
+import { useQuery } from "react-query";
+import { getMda } from "@/api/mda/getMda";
+import { useSearchParams } from "next/navigation";
 
 const Contact = () => {
-  const { oneMda }: any = useGeneralContext();
+  const { allResources, setOneMda, setMdaSlug, oneMda }: any =
+    useGeneralContext();
+
+  const searchParams = useSearchParams();
+  const slug = searchParams.get("slug");
+  // console.log("🚀 ~ About ~ slug: ", slug);
+
+  const {
+    data: mda,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["getMda", slug],
+    queryFn: getMda,
+    enabled: !!slug,
+  });
+  // console.log("🚀 ~ Mdas ~ mda:", mda?.data.data);
+
+  useEffect(() => {
+    if (slug) {
+      setMdaSlug(slug);
+    }
+  }, [slug]);
+  // }, [params]);
+
+  useEffect(() => {
+    setOneMda(mda?.data.data.mda);
+    allResources();
+  }, [mda]);
+
   return (
     <div className='w-full min-h-screen pt-[100px] bg-brand-white lg:mt-[170px] 2xl:max-w-7xl"'>
       <div className="w-full lg:p-9 ">
@@ -144,4 +176,12 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+// export default Contact;
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Contact />
+    </Suspense>
+  );
+}

@@ -15,7 +15,7 @@ import MobileNav from "@/components/MobileHeader/page";
 import { useGeneralContext } from "../../context/GenralContext";
 
 const Header = (data: any) => {
-  const { topicTags }: any = useGeneralContext();
+  const { topicTags, opened, open, close }: any = useGeneralContext();
   const [hoveredMenuData, setHoveredMenuData] = useState(null);
 
   const handleMouseEnter = (menu: any) => {
@@ -29,8 +29,6 @@ const Header = (data: any) => {
   const handleMouseLeave = () => {
     setHoveredMenuData(null);
   };
-
-  const [opened, { open, close }] = useDisclosure(false);
 
   const menueList = [
     {
@@ -56,6 +54,21 @@ const Header = (data: any) => {
       drop: false,
       path: "/news",
     },
+    {
+      name: "Mining",
+      drop: false,
+      path: "/mining",
+    },
+    {
+      name: "Agriculture",
+      drop: false,
+      path: "/agriculture",
+    },
+    {
+      name: "Applications",
+      drop: false,
+      path: "#",
+    },
   ];
 
   return (
@@ -64,12 +77,14 @@ const Header = (data: any) => {
       onMouseLeave={handleMouseLeave}
     >
       <Modal
-        fullScreen
+        // fullScreen
+        size={"100%"}
         bg={"#0E3E40"}
         className="bg-brand-main"
         opened={opened}
         onClose={close}
         withCloseButton={false}
+        h={300}
       >
         <SearchComponent close={close} />
       </Modal>
@@ -102,7 +117,12 @@ const Header = (data: any) => {
                       )}
                     </div>
                     {menu.drop && <div className="round-dot" />}
-                    {menu.name === "Tourism" && <div className="round-dot" />}
+                    {(menu.name === "Tourism" ||
+                      menu.name === "News" ||
+                      menu.name === "Mining" ||
+                      menu.name === "Agriculture") && (
+                      <div className="round-dot" />
+                    )}
                   </li>
                 ))}
               </ul>

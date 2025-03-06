@@ -5,6 +5,7 @@ import { useGeneralContext } from "../../../context/GenralContext";
 import ResourceCard from "@/components/Resources/ResourceCard";
 import moment from "moment";
 import { Loader } from "@mantine/core";
+import { formatDate } from "@/utils/formatDate";
 
 const ResourceFilter = () => {
   const [active, setActive] = useState("all");
@@ -24,6 +25,7 @@ const ResourceFilter = () => {
     activePage,
     setActivePage,
   }: any = useGeneralContext();
+  // console.log("🚀 ~ ResourceFilter ~ resources:", resources);
 
   const handleTabSwitch = async () => {
     setActive(activeTag.name);
@@ -151,8 +153,15 @@ const ResourceFilter = () => {
                       description={resource?.description}
                       url={resource?.link}
                       id={resource?.id}
-                      updated={moment(resource?.updatedAt).fromNow()}
-                      created={moment(resource?.createdAt).fromNow()}
+                      // date={moment(resource?.date).fromNow()}
+                      // updated={moment(resource?.updatedAt).fromNow()}
+                      // created={moment(resource?.createdAt).fromNow()}
+                      date={resource?.date}
+                      updated={resource?.updatedAt}
+                      created={resource?.createdAt}
+                      // date={formatDate(resource?.date)}
+                      // updated={formatDate(resource?.updatedAt)}
+                      // created={formatDate(resource?.createdAt)}
                     />
                   ))
                 )}

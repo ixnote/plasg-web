@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
+import React, { Suspense, useEffect, useRef, useState } from "react";
 import ArticleImage from "@/assets/imgs/img.png";
 import NewsCard from "@/components/NewsCard";
 import { useQuery } from "react-query";
@@ -12,6 +12,7 @@ import { formatDate } from "@/utils/formatDate";
 import { getNewsTags } from "@/api/news/getNewsTags";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Loader } from "@mantine/core";
+import NewsSection from "./NewsSection";
 
 function News() {
   const router = useRouter();
@@ -33,15 +34,6 @@ function News() {
     }
   }, [tag, current_page]);
 
-  const news = [
-    {
-      image: ArticleImage,
-      title:
-        "Gov. Mutfwang Partners with International NGOs to Address Humanitarian Needs of Vulnerable People",
-      category: "Welfare ",
-    },
-  ];
-
   const { data: tags } = useQuery({
     queryKey: ["getNewsTags"],
     queryFn: getNewsTags,
@@ -52,7 +44,8 @@ function News() {
     queryFn: getNews,
   });
 
-  console.log("data :>> ", data);
+  console.log("🚀 ~ News ~ data:", data);
+  // console.log("data :>> ", tags);
 
   // const dialogRef = useRef(null);
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -175,10 +168,8 @@ function News() {
             <span key={i}>{item?.name || "trese"}</span>
           ))}
         <span>{newsTags[2]?.name}</span> */}
-        <p className="text-[32px] text-brand-main font-medium">
-          Today’s Headlines
-        </p>
-        <span className="flex-grow grid lg:grid-cols-4 gap-5 grid-cols-1 w-full">
+        <p className="text-[32px] text-brand-main font-medium">Recent News</p>
+        <span className="flex-grow grid lg:grid-cols-4 gap-5 grid-cols-1 w-full mb-8">
           {matches ? (
             <>
               {data?.data?.data?.news.map((item: any, index: number) => (
@@ -231,7 +222,7 @@ function News() {
                     </span>
                   </Link>
                   {data?.data?.data?.news
-                    ?.slice(1)
+                    ?.slice(1, 6)
                     .map((item: any, index: number) => (
                       <NewsCard key={index} data={item} id={item.id} />
                     ))}
@@ -245,7 +236,7 @@ function News() {
               ) : (
                 <>
                   <span className="flex items-center justify-center p-8 w-full lg:col-span-4 col-span-1">
-                    <p className="text-center text-[32px] mx-auto">
+                    <p className="text-center text-[32px] mx-auto ">
                       No Available News
                     </p>
                   </span>
@@ -254,9 +245,45 @@ function News() {
             </>
           )}
         </span>
+        {!active && (
+          <>
+            <div className="my-0 flex flex-col">
+              <div className="flex flex-col mb-8 gap-4">
+                <p className="text-[32px]  font-medium capitalize text-brand-main">
+                  Administration
+                </p>
+                <NewsSection active={"66ce1689584c4af93178b747"} />
+              </div>
+            </div>
+            <div className="my-0 flex flex-col">
+              <div className="flex flex-col mb-8 gap-4">
+                <p className="text-[32px]  font-medium capitalize text-brand-main">
+                  Politics
+                </p>
+                <NewsSection active={"66ce1686584c4af93178b5fe"} />
+              </div>
+            </div>
+            <div className="my-0 flex flex-col">
+              <div className="flex flex-col mb-8 gap-4">
+                <p className="text-[32px]  font-medium capitalize text-brand-main">
+                  Sports
+                </p>
+                <NewsSection active={"66ce1689584c4af93178b771"} />
+              </div>
+            </div>
+          </>
+        )}
       </span>
     </div>
   );
 }
 
-export default News;
+// export default News;
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <News />
+    </Suspense>
+  );
+}

@@ -9,6 +9,7 @@ import Legislative from "./Legislative";
 import Judiciary from "./Judiciary";
 import { Header } from "@/layouts";
 import Footer from "@/layouts/Footer";
+import PastPresentLeaders from "./PastPresentLeaders";
 
 const page = () => {
   return (
@@ -30,8 +31,10 @@ const page = () => {
           <Executive />
           <SectionDividerLight />
           <Legislative />
-          <SectionDividerLight />
-          <Judiciary />
+          {/* <SectionDividerLight /> */}
+          {/* <Judiciary /> */}
+          {/* <SectionDividerLight /> */}
+          {/* <PastPresentLeaders /> */}
         </div>
       </div>
       {/* <Footer /> */}

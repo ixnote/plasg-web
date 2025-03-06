@@ -14,7 +14,7 @@ function ArticleCard({ onclick, data }: any) {
         <span className="flex justify-between">
           <span className="flex flex-col gap-2">
             <Image src={SettingIcon} alt="" />
-            <p className="text-[18px] font-medium group-hover:text-black capitalize">
+            <p className="text-[18px] font-medium group-hover:text-black uppercase">
               {data?.main_type_tag?.name}
             </p>
           </span>
