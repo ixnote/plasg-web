@@ -45,7 +45,9 @@ const Cabinet = () => {
   }, [mdasResponse]);
 
   if (mdaIsLoading) {
-    return <FaSpinner className="animate-spin text-brand-main" />;
+    return (
+      <FaSpinner className="animate-spin text-brand-main mx-auto text-4xl" />
+    );
   }
 
   const displayedMdas = showMore ? fetchedMdas : fetchedMdas.slice(0, 6);
