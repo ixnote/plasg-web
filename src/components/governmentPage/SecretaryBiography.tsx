@@ -1,19 +1,50 @@
 import React from "react";
 import Image from "next/image";
 import SubsectionHeader from "@/components/SubsectionHeader";
-
-import signature from "@/assets/imgs/government/signature.png";
+import dynamic from "next/dynamic";
+import "react-quill/dist/quill.bubble.css";
+const QuillEditor = dynamic(() => import("react-quill"), { ssr: false });
+import { useQuery } from "react-query";
+import { getActiveGovernment } from "@/api/government/government.api";
+import { FaSpinner } from "react-icons/fa6";
 
 const SecretaryBiography = () => {
+  const { data: activeGovernment, isLoading } = useQuery({
+    queryKey: ["getActiveGovernment"],
+    queryFn: getActiveGovernment,
+  });
+
+  // console.log({ activeGovernment: activeGovernment });
+
+  if (isLoading) {
+    return (
+      <FaSpinner className="animate-spin text-brand-main mx-auto text-4xl" />
+    );
+  }
+
   return (
     <>
       <div className="flex flex-col gap-12 pb-12 lg:gap-20">
         <SubsectionHeader
           left={"BIOGRAPHY"}
-          right={
-            "Meet Arch. Samuel Jatau: A Beacon of Leadership for Plateau State"
-          }
+          // right={
+          //   "Meet Arch. Samuel Jatau: A Beacon of Leadership for Plateau State"
+          // }
+          right={activeGovernment.stateSecretary.biography.title}
         />
+        <div className="flex flex-col gap-4 lg:gap-8">
+          <SubsectionHeader
+            left={""}
+            right={
+              <QuillEditor
+                value={activeGovernment.stateSecretary.biography.description}
+                theme="bubble"
+                readOnly
+              />
+            }
+            body
+          />
+        </div>
         {/* <div className="flex flex-col gap-4 lg:gap-8">
           <SubsectionHeader
             left={""}

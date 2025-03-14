@@ -75,7 +75,7 @@ const GovernmentPage = () => {
     <div className="min-h-screen max-w-[2040px] pb-[96px] relative flex items-center justify-center bg-cover bg-center bg-no-repeat">
       <div className="m-auto w-[92%] flex justify-between flex-col gap-8">
         <SectionHeader
-          image={image}
+          // image={image}
           title={title}
           description={description}
           linkText={linkText}

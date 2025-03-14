@@ -1,15 +1,19 @@
 "use client";
 import React, { useState } from "react";
-import { GoHome } from "react-icons/go";
-import ArticleImage from "@/assets/imgs/img.png";
-import LegislatureCard from "@/components/LegislatureCard";
-import { handleScrollDown } from "@/utils/handleScrollDown";
-import { IoArrowDownOutline } from "react-icons/io5";
-import { useQuery } from "react-query";
-import { getLegislatives } from "@/api/mda/getLegislatives";
-import PaginationComponent from "@/components/Pagination";
+// import { GoHome } from "react-icons/go";
+// import ArticleImage from "@/assets/imgs/img.png";
+// import LegislatureCard from "@/components/LegislatureCard";
+// import { handleScrollDown } from "@/utils/handleScrollDown";
+// import { IoArrowDownOutline } from "react-icons/io5";
+// import { useQuery } from "react-query";
+// import { getLegislatives } from "@/api/mda/getLegislatives";
+// import PaginationComponent from "@/components/Pagination";
+// import governmentHouse from "@/assets/imgs/government/government_house.png";
 import SectionHeader from "@/components/SectionHeader";
-import governmentHouse from "@/assets/imgs/government/government_house.png";
+import { useQuery } from "react-query";
+import { getActiveGovernment } from "@/api/government/government.api";
+import { FaSpinner } from "react-icons/fa6";
+import ProfileCard from "@/components/ProfileCard";
 
 function Legislative() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -18,26 +22,40 @@ function Legislative() {
     setCurrentPage(page);
   };
 
-  const article = {
-    image: ArticleImage,
-    name: "Hon. Gabriel Dewan",
-    position: "Speaker ",
-  };
+  // const article = {
+  //   image: ArticleImage,
+  //   name: "Hon. Gabriel Dewan",
+  //   position: "Speaker ",
+  // };
 
-  const {
-    data: legislatives,
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["getLegislatives"],
-    queryFn: getLegislatives,
-    onSuccess: (result: any) => {
-      // console.log("🚀 ~ Legislative ~ result:", result);
-      setCurrentPage(result?.data?.data?.pagination?.currentPage);
-    },
-  });
+  // const {
+  //   data: legislatives,
+  //   isLoading,
+  //   error,
+  // } = useQuery({
+  //   queryKey: ["getLegislatives"],
+  //   queryFn: getLegislatives,
+  //   onSuccess: (result: any) => {
+  //     // console.log("🚀 ~ Legislative ~ result:", result);
+  //     setCurrentPage(result?.data?.data?.pagination?.currentPage);
+  //   },
+  // });
 
   // console.log("users :>> ", legislatives);
+
+  const { data: activeGovernment, isLoading } = useQuery({
+    queryKey: ["getActiveGovernment"],
+    queryFn: getActiveGovernment,
+  });
+
+  // console.log({ activeGovernment: activeGovernment });
+
+  // if (isLoading) {
+  //   return (
+  //     <FaSpinner className="animate-spin text-brand-main mx-auto text-4xl" />
+  //   );
+  // }
+
   return (
     // <div className="pt-[200px] p-5 bg-red-500">
     //   <span className="max-w-[1200px] mx-auto flex flex-col bg-green-500">
@@ -53,6 +71,25 @@ function Legislative() {
           linkText={"LEGISLATIVE"}
           linkURL={"legislative"}
         />
+        {isLoading ? (
+          <FaSpinner className="animate-spin text-brand-main mx-auto text-4xl" />
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <>
+              {activeGovernment?.executives.map((item: any, i: number) => (
+                <ProfileCard
+                  key={i}
+                  // image={ArticleImage}
+                  image={item.image}
+                  email={item.email}
+                  action={"mail"}
+                  name={`${item.title} ${item.name}`}
+                  position={item.party}
+                />
+              ))}
+            </>
+          </div>
+        )}
         {/* <span className="flex flex-col gap-8 mb-10">
           <span className="uppercase text-[#0000000] opacity-80 font-light flex items-center gap-2 text-[14px]">
             <GoHome size={18} />/<p>GOVERNMENT</p>/<p>LEGISLATIVE</p>
@@ -75,19 +112,19 @@ function Legislative() {
             </span>
           </span>
         </span> */}
-        {legislatives?.data?.data?.data?.length > 0 && (
+        {/* {legislatives?.data?.data?.data?.length > 0 && (
           <span className="grid lg:grid-cols-3 grid-cols-1 gap-5 gap-y-16 my-16">
             {legislatives?.data?.data?.data?.map((item: any, index: number) => (
               <LegislatureCard data={item} key={index} />
             ))}
           </span>
-        )}
-        <PaginationComponent
+        )} */}
+        {/* <PaginationComponent
           lightMode={true}
           totalPages={legislatives?.data?.data?.pagination?.totalPages}
           currentPage={currentPage}
           onPageChange={handlePageChange}
-        />
+        /> */}
       </span>
     </div>
   );

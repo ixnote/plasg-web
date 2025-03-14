@@ -28,7 +28,7 @@ const Cabinet = () => {
     queryFn: getMdas,
   });
 
-  console.log({ mdasResponse: mdasResponse?.data.data.mdas });
+  // console.log({ mdasResponse: mdasResponse?.data.data.mdas });
 
   const [showMore, setShowMore] = useState(false);
   const [fetchedMdas, setFetchedMdas] = useState<MDA[]>([]);
