@@ -110,7 +110,8 @@ const QuickStats = () => {
                     Est Population
                   </span>
                   <span className="font-medium text-5xl text-brand-white">
-                    3M
+                    {/* 3M */}
+                    4.2M
                   </span>
                 </div>
                 <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-brand-white/40 p-8 px-16 mb-8 font-geistsans min-w-[30%] w-[100%] mx-auto md:w-[480px] lg:w-[30%]">
@@ -166,7 +167,8 @@ const QuickStats = () => {
                     </svg>
                     GDP (Tril. ₦)
                   </span>
-                  <span className="font-medium text-5xl text-white">1.50</span>
+                  {/* <span className="font-medium text-5xl text-white">1.50</span> */}
+                  <span className="font-medium text-5xl text-white">--</span>
                 </div>
                 <div className="flex flex-col gap-6 items-center justify-center border-[1px] border-brand-white/40 p-8 px-16 mb-8 font-geistsans min-w-[30%] w-[100%] mx-auto md:w-[480px] lg:w-[30%]">
                   <span className="flex items-center justify-start gap-4 text-white font-normal text-base w-full">
@@ -191,7 +193,8 @@ const QuickStats = () => {
                     </svg>
                     IGR (Tril. ₦)
                   </span>
-                  <span className="font-medium text-5xl text-white">1.67</span>
+                  {/* <span className="font-medium text-5xl text-white">1.67</span> */}
+                  <span className="font-medium text-5xl text-white">--</span>
                 </div>
               </div>
               {/* bottom */}
