@@ -57,7 +57,7 @@ const Legislative = () => {
                   email={item.email}
                   action={"mail"}
                   name={`${item.title} ${item.name}`}
-                  position={item.party}
+                  position={item.constituency}
                 />
               ))}
           </>
