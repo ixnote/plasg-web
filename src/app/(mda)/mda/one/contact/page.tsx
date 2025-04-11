@@ -12,7 +12,7 @@ import { getMda } from "@/api/mda/getMda";
 import { useSearchParams } from "next/navigation";
 
 const Contact = () => {
-  const { allResources, setOneMda, setMdaSlug, oneMda }: any =
+  const { allResources, setOneMda, setMdaSlug, oneMda, sendMdaMail, mdaMailDetails, setMdaMailDetails }: any =
     useGeneralContext();
 
   const searchParams = useSearchParams();
@@ -28,7 +28,15 @@ const Contact = () => {
     queryFn: getMda,
     enabled: !!slug,
   });
-  // console.log("🚀 ~ Mdas ~ mda:", mda?.data.data);
+  console.log("🚀 ~ Mdas ~ mda:", mda?.data.data);
+
+  const onchangeHandler = async (e: any) => {
+    e.persist();
+    setMdaMailDetails((item: any) => ({
+      ...item,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
   useEffect(() => {
     if (slug) {
@@ -40,7 +48,18 @@ const Contact = () => {
   useEffect(() => {
     setOneMda(mda?.data.data.mda);
     allResources();
+    setMdaMailDetails((item: any) => ({
+      ...item,
+      mdaId: mda?.data.data.mda.id,
+    }));
   }, [mda]);
+
+    useEffect(() => {
+    setMdaMailDetails((item: any) => ({
+      ...item,
+      mdaId: mda?.data.data.mda.id,
+    }));
+  }, []);
 
   return (
     <div className='w-full min-h-screen pt-[100px] bg-brand-white lg:mt-[170px] 2xl:max-w-7xl"'>
@@ -93,7 +112,7 @@ const Contact = () => {
             </div>
             <div className="w-full mt-12 mb-8 bg-white rounded-xl lg:w-[50%]">
               <div className="w-full max-w-lg mx-auto mt-8 px-5 bg-white ">
-                <form className="space-y-6">
+                <form onSubmit={sendMdaMail} className="space-y-6">
                   <div>
                     <label
                       htmlFor="name"
@@ -108,6 +127,7 @@ const Contact = () => {
                       name="name"
                       className="mt-1 block w-full p-2 border-b border-gray-300 rounded-md  focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       required
+                      onChange={onchangeHandler}
                     />
                   </div>
                   <div>
@@ -124,6 +144,7 @@ const Contact = () => {
                       name="email"
                       className="mt-1 block w-full p-2 border-b border-gray-300 rounded-md  focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       required
+                      onChange={onchangeHandler}
                     />
                   </div>
                   <div>
@@ -131,15 +152,16 @@ const Contact = () => {
                       htmlFor="phone"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Phone Number
+                      Subject
                     </label>
                     <input
-                      placeholder="Name"
-                      type="tel"
-                      id="phone"
-                      name="phone"
+                      placeholder="Email subject"
+                      type="text"
+                      id="subject"
+                      name="subject"
                       className="mt-1 block w-full p-2 border-b border-gray-300 rounded-md  focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       required
+                      onChange={onchangeHandler}
                     />
                   </div>
                   <div>
@@ -156,6 +178,7 @@ const Contact = () => {
                       rows={4}
                       className="mt-1 block w-full p-2 border-b border-gray-300 rounded-md  focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       required
+                      onChange={onchangeHandler}
                     />
                   </div>
                   <div>

@@ -34,6 +34,14 @@ const GeneralProvider = (props: any) => {
   const [mdaSlug, setMdaSlug] = useState("");
   const [oneMda, setOneMda] = useState() as any;
   const [mdaNews, setMdaNews] = useState() as any;
+  const [mdaMailDetails, setMdaMailDetails] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+    mdaId: "",
+  });
+  const [mdaLoading, setMdaLoading] = useState(false);
 
   //*******/
   //************/
@@ -262,6 +270,26 @@ const GeneralProvider = (props: any) => {
     }
   };
 
+  const sendMdaMail = async (e: any) => {
+    setMdaLoading(true);
+    // console.log("signupDetails", signupDetails);
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/mda/contact-us`,
+        mdaMailDetails,
+        {
+          headers: { "content-type": "application/json" },
+        }
+      );
+      console.log("🚀 ~ sendMdaMail ~ response:", response);
+      setMdaLoading(false);
+    } catch (err: any) {
+      console.log("🚀 ~ sendMdaMail ~ err:", err);
+      setMdaLoading(false);
+    }
+  };
+
   //*******/
   //************/
   // STATIC
@@ -366,9 +394,14 @@ const GeneralProvider = (props: any) => {
         mdaNews,
         mdaSlug,
         setOneMda,
-        getMdaNews,
         setMdaNews,
+        mdaLoading,
+        mdaMailDetails,
         setMdaSlug,
+        getMdaNews,
+        sendMdaMail,
+        setMdaLoading,
+        setMdaMailDetails,
         opened,
         open,
         close,
