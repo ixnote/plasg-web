@@ -127,7 +127,7 @@ export const libraryData = [
 export const applicationData = [
   {
     _id: 0o1,
-    name: "Plateau State Gov. Portal",
+    name: "Citizens Engagement Portal",
     path: "https://egov.plateaustate.gov.ng/",
   },
 ];
