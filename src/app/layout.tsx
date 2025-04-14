@@ -22,6 +22,21 @@ export default function RootLayout({
       className={`${GeistSans.variable} ${GeistMono.variable} scrollbar-hide`}
       lang="en"
     >
+      <head>
+          <Script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=G-3JC1C9HKDV`}
+          />
+
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-3JC1C9HKDV');
+          `}
+          </Script>
+        </head>
       <body>
         <Providers>
           <MantineProvider>

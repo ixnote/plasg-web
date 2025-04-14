@@ -284,6 +284,9 @@ const GeneralProvider = (props: any) => {
       );
       console.log("🚀 ~ sendMdaMail ~ response:", response);
       setMdaLoading(false);
+      if (response.status === 201) {
+        return true;
+      }
     } catch (err: any) {
       console.log("🚀 ~ sendMdaMail ~ err:", err);
       setMdaLoading(false);

@@ -10,14 +10,23 @@ import { useGeneralContext } from "../../../../../../context/GenralContext";
 import { useQuery } from "react-query";
 import { getMda } from "@/api/mda/getMda";
 import { useSearchParams } from "next/navigation";
+import { FaSpinner } from "react-icons/fa6";
 
 const Contact = () => {
-  const { allResources, setOneMda, setMdaSlug, oneMda, sendMdaMail, mdaMailDetails, setMdaMailDetails }: any =
-    useGeneralContext();
+  const {
+    oneMda,
+    setOneMda,
+    mdaLoading
+    setMdaSlug,
+    sendMdaMail,
+    allResources,
+    setMdaLoading,
+    mdaMailDetails,
+    setMdaMailDetails,
+  }: any = useGeneralContext();
 
   const searchParams = useSearchParams();
   const slug = searchParams.get("slug");
-  // console.log("🚀 ~ About ~ slug: ", slug);
 
   const {
     data: mda,
@@ -28,7 +37,6 @@ const Contact = () => {
     queryFn: getMda,
     enabled: !!slug,
   });
-  console.log("🚀 ~ Mdas ~ mda:", mda?.data.data);
 
   const onchangeHandler = async (e: any) => {
     e.persist();
@@ -43,7 +51,6 @@ const Contact = () => {
       setMdaSlug(slug);
     }
   }, [slug]);
-  // }, [params]);
 
   useEffect(() => {
     setOneMda(mda?.data.data.mda);
@@ -54,12 +61,18 @@ const Contact = () => {
     }));
   }, [mda]);
 
-    useEffect(() => {
-    setMdaMailDetails((item: any) => ({
-      ...item,
+  const handleSubmit = async (e: React.FormEvent) => {
+    setMdaLoading(true);
+    e.preventDefault();
+    await sendMdaMail(e); // Call the sendMdaMail function
+    setMdaMailDetails({
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
       mdaId: mda?.data.data.mda.id,
-    }));
-  }, []);
+    }); // Clear the form
+  };
 
   return (
     <div className='w-full min-h-screen pt-[100px] bg-brand-white lg:mt-[170px] 2xl:max-w-7xl"'>
@@ -112,7 +125,7 @@ const Contact = () => {
             </div>
             <div className="w-full mt-12 mb-8 bg-white rounded-xl lg:w-[50%]">
               <div className="w-full max-w-lg mx-auto mt-8 px-5 bg-white ">
-                <form onSubmit={sendMdaMail} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <label
                       htmlFor="name"
@@ -182,12 +195,16 @@ const Contact = () => {
                     />
                   </div>
                   <div>
-                    <button
-                      type="submit"
-                      className="w-full float-end inline-flex justify-center mb-4 py-2 px-4 border border-transparent  text-sm font-medium rounded-md text-white bg-[#0E3E40] hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    >
-                      Submit
-                    </button>
+                    {mdaLoading ? (
+                      <FaSpinner className="animate-spin text-brand-main mx-auto text-4xl" />
+                    ) : (
+                      <button
+                        type="submit"
+                        className="w-full float-end inline-flex justify-center mb-4 py-2 px-4 border border-transparent  text-sm font-medium rounded-md text-white bg-[#0E3E40] hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      >
+                        Submit
+                      </button>
+                    )}
                   </div>
                 </form>
               </div>
