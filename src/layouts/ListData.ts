@@ -123,3 +123,11 @@ export const libraryData = [
     forwardArrow: false,
   },
 ];
+
+export const applicationData = [
+  {
+    _id: 0o1,
+    name: "Plateau State Gov. Portal",
+    path: "https://egov.plateaustate.gov.ng/",
+  },
+];

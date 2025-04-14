@@ -7,7 +7,7 @@ import search_icon from "@/assets/icons/layouts/search_icon.svg";
 import Image from "next/image";
 import Link from "next/link";
 import HoverTags from "./hoverTags";
-import { libraryData, governmentData } from "./ListData";
+import { libraryData, governmentData, applicationData } from "./ListData";
 import SearchComponent from "./Search/SearchComponent";
 import { Modal } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
@@ -66,8 +66,9 @@ const Header = (data: any) => {
     },
     {
       name: "Applications",
-      drop: false,
+      drop: true,
       path: "#",
+      data: applicationData,
     },
   ];
 
