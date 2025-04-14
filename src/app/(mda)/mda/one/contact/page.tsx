@@ -16,7 +16,7 @@ const Contact = () => {
   const {
     oneMda,
     setOneMda,
-    mdaLoading
+    mdaLoading,
     setMdaSlug,
     sendMdaMail,
     allResources,
