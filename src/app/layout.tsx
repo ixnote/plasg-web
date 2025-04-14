@@ -6,6 +6,7 @@ import "@mantine/core/styles.css";
 import { MantineProvider } from "@mantine/core";
 import Providers from "@/utils/Provider";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "PLSG",
