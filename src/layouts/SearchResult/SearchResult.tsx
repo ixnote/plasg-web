@@ -18,6 +18,7 @@ import { formatDate } from "@/utils/formatDate";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Preview from "@/components/Preview/Preview";
+import { FaSpinner } from "react-icons/fa6";
 
 const QuillEditor = dynamic(() => import("react-quill"), { ssr: false });
 
@@ -49,7 +50,15 @@ function SearchResult() {
     queryFn: getResource,
     enabled: !!id,
   });
-  // console.log("🚀 ~ SearchResult ~ resource:", resource?.data.data);
+  console.log("🚀 ~ SearchResult ~ resource:", resource?.data.data);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <FaSpinner className="animate-spin text-brand-main mx-auto text-4xl" />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -139,9 +148,15 @@ function SearchResult() {
                   <div className="flex justify-center items-center h-10 w-10  border rounded-sm">
                     <IoDocumentOutline size={40} />
                   </div>
-                  {resource?.data?.data?.document.url}
+                  {resource?.data?.data?.document?.url
+                    ? resource?.data?.data?.document?.url
+                    : resource?.data?.data?.link}
                   <Link
-                    href={resource?.data?.data?.document.url}
+                    href={
+                      resource?.data?.data?.document?.url
+                        ? resource?.data?.data?.document?.url
+                        : resource?.data?.data?.link
+                    }
                     target="_blank"
                     className=" py-2 px-6 bg-slate-400 cursor-pointer rounded-md text-white"
                   >

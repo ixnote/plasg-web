@@ -25,7 +25,7 @@ const ResourceFilter = () => {
     activePage,
     setActivePage,
   }: any = useGeneralContext();
-  // console.log("🚀 ~ ResourceFilter ~ resources:", resources);
+  console.log("🚀 ~ ResourceFilter ~ resources:", resources);
 
   const handleTabSwitch = async () => {
     setActive(activeTag.name);

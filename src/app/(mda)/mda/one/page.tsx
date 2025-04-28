@@ -52,7 +52,7 @@ const OneMda = () => {
   //   queryFn: getMdaResources,
   //   enabled: !!mda?.data.data.id,
   // });
-  // console.log("🚀 ~ Mdas ~ mda:", mda);
+  console.log("🚀 ~ Mdas ~ mda:", mda?.data?.data?.resources);
 
   // PAGINATION
   const handlePageChange = (page: number) => {
@@ -167,6 +167,7 @@ const OneMda = () => {
                           updated={moment(resource.updatedAt).fromNow()}
                           button1text={"View Topic"}
                           byText={resource.mda?.name}
+                          date={resource.date}
                         />
                       ))
                   ) : (
