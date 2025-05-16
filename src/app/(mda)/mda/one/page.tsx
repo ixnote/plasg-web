@@ -167,7 +167,7 @@ const OneMda = () => {
                           updated={moment(resource.updatedAt).fromNow()}
                           button1text={"View Topic"}
                           byText={resource.mda?.name}
-                          date={resource.date}
+                          date={resource.date || resource.createdAt}
                         />
                       ))
                   ) : (

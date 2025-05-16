@@ -37,13 +37,13 @@ const AssetCardLight = ({
 
   return (
     <div
-      className="w-full bg-[#E5E7EB] p-8 mb-2 rounded-2xl flex flex-col items-start justify-between gap-8 transition-fx cursor-pointer hover:bg-brand-lightYellow lg:w-[49%] lg:pt-8 lg:h-[550px]"
+      className="w-full bg-[#E5E7EB] p-8 mb-2 rounded-2xl flex flex-col items-start justify-between transition-fx cursor-pointer hover:bg-brand-lightYellow lg:w-[49%] lg:pt-8 lg:h-[550px]"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onClick={handleClick}
     >
       {/* top */}
-      <div className="w-full flex flex-col gap-16">
+      <div className="w-full flex flex-col gap-8">
         {/* logo part */}
         <div className="flex w-full items-center justify-between">
           <div className="flex flex-col gap-2 text-[#588065]">
@@ -60,11 +60,11 @@ const AssetCardLight = ({
           </span>
         </div>
         {/* title part */}
-        <div className="flex flex-col gap-8">
-          <div className="font-geistsans font-medium text-2xl mb-4 text-brand-main flex flex-col gap-2 md:text-3xl lg:h-[60px]">
+        <div className="flex flex-col gap-2">
+          <div className="font-geistsans font-medium text-2xl mb-4 text-brand-main flex flex-col gap-2 md:text-3xl lg:h-max">
             <span className="uppercase">{title}</span>
             {byText && (
-              <span className="flex items-center justify-start gap-4 text-brand-grayish font-normal text-sm font-geistsans">
+              <span className="flex items-center justify-start gap-4 text-brand-grayish font-normal text-sm font-geistsans mb-4">
                 <svg
                   width="11"
                   height="12"
@@ -83,7 +83,7 @@ const AssetCardLight = ({
               </span>
             )}
           </div>
-          <div className="font-geistsans font-normal text-base text-brand-main md:text-lg lg:h-[170px] lg:overflow-y-hidden">
+          <div className="font-geistsans font-normal text-base text-brand-main md:text-lg lg:max-h-[170px] lg:overflow-y-hidden">
             {description.length > 400
               ? description.substring(0, 400) + ". . ."
               : description}
