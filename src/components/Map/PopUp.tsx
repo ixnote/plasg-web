@@ -101,7 +101,7 @@ const PopUp = ({
               ? MapData[selectedID]?.lga
               : "Please Select LGA"}
           </div> */}
-          <div className="w-[313px] text-black/opacity-70 text-base font-medium font-geistsans leading-normal">
+          <div className="w-[313px] text-cyan-950 text-base font-medium font-geistsans leading-normal">
             {MapData[selectedID]?.description
               ? MapData[selectedID]?.description
               : "Description goes here."}

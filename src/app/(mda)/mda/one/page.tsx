@@ -13,6 +13,7 @@ import MdaDirector from "./MdaDirector";
 import { useGeneralContext } from "../../../../../context/GenralContext";
 import { Suspense, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+import PaginationComponent from "@/components/Pagination";
 
 const OneMda = () => {
   const {
@@ -21,16 +22,17 @@ const OneMda = () => {
     setOneMda,
     setMdaSlug,
     mdaNews,
-    totalPages,
-    activePage,
-    setActivePage,
+    totalNewsPages,
+    activeNewsPage,
+    setActiveNewsPage,
     getMdaNews,
   }: any = useGeneralContext();
   // console.log("🚀 ~ Page ~ mdaNews:", mdaNews);
+  // console.log({ totalNewsPages, activeNewsPage });
 
   const searchParams = useSearchParams();
   const slug = searchParams.get("slug");
-  console.log("🚀 ~ Page ~ slug:", slug);
+  // console.log("🚀 ~ Page ~ slug:", slug);
 
   const {
     data: mda,
@@ -52,29 +54,29 @@ const OneMda = () => {
   //   queryFn: getMdaResources,
   //   enabled: !!mda?.data.data.id,
   // });
-  console.log("🚀 ~ Mdas ~ mda:", mda?.data?.data?.resources);
+  // console.log("🚀 ~ Mdas ~ mda:", mda?.data?.data?.resources);
 
   // PAGINATION
   const handlePageChange = (page: number) => {
-    setActivePage(page);
+    setActiveNewsPage(page);
   };
 
   const handleNextPage = () => {
-    // setActivePage(activePage + 1);
-    if (activePage < totalPages) {
-      setActivePage(activePage + 1);
+    // setActiveNewsPage(activeNewsPage + 1);
+    if (activeNewsPage < totalNewsPages) {
+      setActiveNewsPage(activeNewsPage + 1);
     }
   };
 
   const handlePreviousPage = () => {
-    if (activePage > 1) {
-      setActivePage(activePage - 1);
+    if (activeNewsPage > 1) {
+      setActiveNewsPage(activeNewsPage - 1);
     }
   };
 
   useEffect(() => {
-    getMdaNews(activePage);
-  }, [activePage]);
+    getMdaNews(activeNewsPage);
+  }, [activeNewsPage]);
 
   useEffect(() => {
     if (slug) {
@@ -235,76 +237,86 @@ const OneMda = () => {
                 /> */}
                 {/* bottom */}
                 {mdaNews?.length > 0 ? (
-                  <div className="w-full flex items-center justify-center lg:justify-end">
-                    <div className="flex items-center gap-4">
-                      {/* left arrow */}
-                      <div
-                        className={`cursor-pointer flex items-center ${
-                          activePage === 1
-                            ? "opacity-50 cursor-not-allowed"
-                            : ""
-                        }`}
-                        onClick={handlePreviousPage}
-                      >
-                        <svg
-                          width="10"
-                          height="18"
-                          viewBox="0 0 10 18"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M9 17L5 13L1 9L9 1"
-                            stroke="#0E3E40"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      </div>
-                      {/* numbers */}
+                  <>
+                    <div className="w-full flex items-center justify-center lg:justify-end">
                       <div className="flex items-center gap-4">
-                        {[...Array(totalPages)].map((_, index) => (
-                          <span
-                            key={index}
-                            className={
-                              activePage === index + 1
-                                ? "transition-fx cursor-pointer flex items-center justify-center p-2 w-[40px] h-[36px] rounded-lg text-white font-geistsans font-normal text-sm bg-brand-main"
-                                : "transition-fx cursor-pointer flex items-center justify-center p-2 w-[40px] h-[36px] rounded-lg text-brand-main font-geistsans font-normal text-sm hover:bg-brand-main hover:text-brand-white"
-                            }
-                            onClick={() => handlePageChange(index + 1)}
-                          >
-                            {index + 1}
-                          </span>
-                        ))}
-                      </div>
-                      {/* right arrow */}
-                      <div
-                        className={`cursor-pointer flex items-center ${
-                          activePage === totalPages
-                            ? "opacity-50 cursor-not-allowed"
-                            : ""
-                        }`}
-                        onClick={handleNextPage}
-                      >
-                        <svg
-                          width="10"
-                          height="18"
-                          viewBox="0 0 10 18"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
+                        {/* left arrow */}
+                        <div
+                          className={`cursor-pointer flex items-center ${
+                            activeNewsPage === 1
+                              ? "opacity-50 cursor-not-allowed"
+                              : ""
+                          }`}
+                          onClick={handlePreviousPage}
                         >
-                          <path
-                            d="M1 1L5 5L9 9L1 17"
-                            stroke="#0E3E40"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
+                          <svg
+                            width="10"
+                            height="18"
+                            viewBox="0 0 10 18"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M9 17L5 13L1 9L9 1"
+                              stroke="#0E3E40"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </div>
+                        {/* numbers */}
+                        <div className="flex items-center gap-4">
+                          {[...Array(totalNewsPages)].map((_, index) => (
+                            <span
+                              key={index}
+                              className={
+                                activeNewsPage === index + 1
+                                  ? "transition-fx cursor-pointer flex items-center justify-center p-2 w-[40px] h-[36px] rounded-lg text-white font-geistsans font-normal text-sm bg-brand-main"
+                                  : "transition-fx cursor-pointer flex items-center justify-center p-2 w-[40px] h-[36px] rounded-lg text-brand-main font-geistsans font-normal text-sm hover:bg-brand-main hover:text-brand-white"
+                              }
+                              onClick={() => handlePageChange(index + 1)}
+                            >
+                              {index + 1}
+                            </span>
+                          ))}
+                        </div>
+                        {/* right arrow */}
+                        <div
+                          className={`cursor-pointer flex items-center ${
+                            activeNewsPage === totalNewsPages
+                              ? "opacity-50 cursor-not-allowed"
+                              : ""
+                          }`}
+                          onClick={handleNextPage}
+                        >
+                          <svg
+                            width="10"
+                            height="18"
+                            viewBox="0 0 10 18"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M1 1L5 5L9 9L1 17"
+                              stroke="#0E3E40"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                    {/* <PaginationComponent
+                      lightMode={true}
+                      // totalNewsPages={mda?.data?.data?.pagination?.totalNewsPages}
+                      totalNewsPages={totalNewsPages}
+                      // currentPage={currentPage}
+                      currentPage={activeNewsPage}
+                      onPageChange={handlePageChange}
+                    /> */}
+                  </>
                 ) : (
                   <></>
                 )}

@@ -75,6 +75,7 @@ const Map = () => {
                   borderRadius: "8px",
                   zIndex: 100000,
                   fontSize: "16px",
+                  color: "black",
                   // boxShadow: "0px 0px 5px rgba(0,0,0,0.3)",
                 }}
                 className="popup"

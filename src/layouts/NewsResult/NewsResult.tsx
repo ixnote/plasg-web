@@ -92,7 +92,7 @@ function NewsResult() {
             </p>
           </span>
         </span>
-        <span className="grid lg:grid-cols-5 grid-cols-2 gap-5 items-start mb-10">
+        <span className="grid lg:grid-cols-5 grid-cols-1 gap-5 items-start mb-10">
           <span className="text-[#00000080] opacity-80 font-light flex items-center gap-4 text-[16px] uppercase col-span-1">
             <p>Details</p>
           </span>
@@ -158,6 +158,14 @@ function NewsResult() {
                     {data?.value}
                   </p>
                 )}
+                {data?.type === "link" && (
+                  <Link
+                    href={data?.value}
+                    className="transition-fx text-[18px] font-normal text-brand-secondary m-0 no-underline w-full break-words whitespace-normal hover:text-brand-main hover:underline"
+                  >
+                    {data?.value}
+                  </Link>
+                )}
                 {data?.type === "bullet" && (
                   <ol className="flex flex-col gap-3 py-2">
                     {data.value.map((i: any, index: number) => (
@@ -173,7 +181,7 @@ function NewsResult() {
         </span>
         <span className="grid lg:grid-cols-5 grid-cols-1 gap-5 mb-12">
           <span className="col-span-1"></span>
-          <span className="flex gap-3 flex-wrap lg:col-span-4 col-span-1 ">
+          <span className="flex gap-3 flex-wrap lg:col-span-4 col-span-1">
             {resource?.data?.data.tags?.map((item: any, index: any) => (
               <button
                 key={index}

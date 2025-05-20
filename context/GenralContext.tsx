@@ -42,6 +42,8 @@ const GeneralProvider = (props: any) => {
     mdaId: "",
   });
   const [mdaLoading, setMdaLoading] = useState(false);
+  const [activeNewsPage, setActiveNewsPage] = useState(1);
+  const [totalNewsPages, setTotalNewsPages] = useState(1);
 
   //*******/
   //************/
@@ -217,7 +219,7 @@ const GeneralProvider = (props: any) => {
   };
 
   const getResourceByTagTopicName = async (name: any) => {
-    console.log("🚀 ~ getResourceByTagTopicName ~ name:", name);
+    // console.log("🚀 ~ getResourceByTagTopicName ~ name:", name);
     // Governance, Business, Health, Welfare, Tourism
     try {
       setLoadingResource(true);
@@ -249,6 +251,7 @@ const GeneralProvider = (props: any) => {
   //*******/
   const getMdaNews = async (page = 1) => {
     try {
+      // console.log("🚀 ~ MDA ID:", oneMda?.id);
       const response = await axios.get(
         `${process.env.NEXT_PUBLIC_BASE_URL}/news/articles/${oneMda?.id}/?page=${page}&pageSize=10`,
         {
@@ -259,11 +262,16 @@ const GeneralProvider = (props: any) => {
         }
       );
       // console.log("🚀 ~ getMdaNews ~ response:", response.data.data);
+      // console.log(
+      //   "🚀 ~ getMdaNews ~ pagination:",
+      //   response.data.data.pagination
+      // );
       // console.log("🚀 ~ getHomeResources ~ response:", response.data.data);
       // const firstFourResources = response.data.data.resources.slice(0, 4);
       // return setHomeResources(firstFourResources);
       setMdaNews(response.data.data.news);
-      setTotalPages(response.data.data.pagination.totalPages);
+      setTotalNewsPages(response.data.data.pagination.totalPages);
+      // setTotalPages(response.data.data.pagination.totalPages);
     } catch (error: any) {
       setLoadingResource(false);
       console.log("🚀 ~ getHomeResources ~ error:", error.message);
@@ -282,7 +290,7 @@ const GeneralProvider = (props: any) => {
           headers: { "content-type": "application/json" },
         }
       );
-      console.log("🚀 ~ sendMdaMail ~ response:", response);
+      // console.log("🚀 ~ sendMdaMail ~ response:", response);
       setMdaLoading(false);
       if (response.status === 201) {
         return true;
@@ -399,11 +407,15 @@ const GeneralProvider = (props: any) => {
         setOneMda,
         setMdaNews,
         mdaLoading,
+        activeNewsPage,
+        totalNewsPages,
         mdaMailDetails,
         setMdaSlug,
         getMdaNews,
         sendMdaMail,
         setMdaLoading,
+        setTotalNewsPages,
+        setActiveNewsPage,
         setMdaMailDetails,
         opened,
         open,
