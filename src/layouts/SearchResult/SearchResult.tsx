@@ -30,7 +30,7 @@ function SearchResult() {
 
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
-  console.log("🚀 ~ GovernmentPage ~ id:", id);
+  // console.log("🚀 ~ GovernmentPage ~ id:", id);
 
   // const id = pathSegments[pathSegments.length - 1];
 
@@ -50,7 +50,7 @@ function SearchResult() {
     queryFn: getResource,
     enabled: !!id,
   });
-  console.log("🚀 ~ SearchResult ~ resource:", resource?.data.data);
+  // console.log("🚀 ~ SearchResult ~ resource:", resource?.data.data);
 
   if (isLoading) {
     return (
@@ -96,7 +96,8 @@ function SearchResult() {
               </p>
               <span className="text-[#00000080] opacity-80 font-medium flex items-center gap-4 text-[14px] flex-wrap">
                 <p>{resource?.data?.data?.name}</p>/
-                <p>{formatDate(resource?.data?.data?.updatedAt)}</p>
+                {/* <p>{formatDate(resource?.data?.data?.updatedAt)}</p> */}
+                <p>{formatDate(resource?.data?.data?.date)}</p>
                 {/* <p>/ {data?.min}</p> */}
               </span>
             </span>

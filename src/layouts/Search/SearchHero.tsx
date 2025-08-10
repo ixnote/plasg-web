@@ -88,7 +88,7 @@ function SearchHero() {
     }
   };
 
-  console.log("data :>> ", data);
+  // console.log("data :>> ", data);
 
   const createMarkup = (html: string) => {
     return { __html: html };
