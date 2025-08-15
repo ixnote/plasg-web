@@ -209,7 +209,8 @@ const QuickStats = () => {
                 <ButtonDark
                   text={"Access Financial Reports"}
                   // url={"mda/ministry-of-finance"}
-                  url={"financialReport"}
+                  // url={"financialReport"}
+                  url={"finance"}
                 />
               </div>
             </div>

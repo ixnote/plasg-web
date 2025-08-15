@@ -10,7 +10,7 @@ import AssetCardLight from "@/components/AssetCardLight";
 // import ButtonLight from "@/components/ButtonLight";
 import { FaSpinner } from "react-icons/fa6";
 
-const page = () => {
+const FinancialReport = () => {
   const [currentPage, setCurrentPage] = useState<any>(1);
 
   const { data, isLoading } = useQuery({
@@ -33,7 +33,8 @@ const page = () => {
             description={
               "Discover our comprehensive collection of financial reports. Our team of experts works tirelessly to provide you with the latest updates and insights into our work."
             }
-            baseURL={"financialReport"}
+            // baseURL={"financialReport"}
+            baseURL={"finance"}
             baseText={"FINANCE"}
           />
           {/* <SectionDividerLight /> */}
@@ -199,4 +200,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default FinancialReport;
