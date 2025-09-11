@@ -131,3 +131,11 @@ export const applicationData = [
     path: "https://egov.plateaustate.gov.ng/",
   },
 ];
+
+export const GRMData = [
+  {
+    _id: 0o1,
+    name: "GRM for Trade export",
+    path: "https://docs.google.com/forms/d/e/1FAIpQLSc6JeAj2mIBrFOmXEIJeBPQtTgmzduU4nIEWUpJpAvMSB8NaA/viewform?embedded=true",
+  },
+];

@@ -7,7 +7,12 @@ import search_icon from "@/assets/icons/layouts/search_icon.svg";
 import Image from "next/image";
 import Link from "next/link";
 import HoverTags from "./hoverTags";
-import { libraryData, governmentData, applicationData } from "./ListData";
+import {
+  libraryData,
+  governmentData,
+  applicationData,
+  GRMData,
+} from "./ListData";
 import SearchComponent from "./Search/SearchComponent";
 import { Modal } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
@@ -69,6 +74,12 @@ const Header = (data: any) => {
       drop: true,
       path: "#",
       data: applicationData,
+    },
+    {
+      name: "GRM",
+      drop: true,
+      path: "#",
+      data: GRMData,
     },
   ];
 

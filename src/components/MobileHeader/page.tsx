@@ -508,13 +508,131 @@ const MobileNav = () => {
           >
             Agriculture
           </Link>
-          <Link
+          {/* Application item */}
+          {/* <Link
             href="#"
             onClick={() => setIsOpen(!isOpen)}
             className="transition-fx cursor-pointer py-4 w-full font-geistsans font-medium text-2xl text-brand-white border-b-[0.1px] border-b-brand-grayish/10 hover:bg-brand-lightYellow hover:px-4 hover:rounded-lg hover:text-brand-dark"
           >
             Applications
-          </Link>
+          </Link> */}
+          <>
+            <div
+              className={`group transition-fx flex items-center justify-between cursor-pointer py-4 w-full font-geistsans font-medium text-2xl ${
+                activeDropdown === "applications"
+                  ? "bg-brand-lightYellow px-4 rounded-lg text-brand-dark"
+                  : "text-brand-white border-b-[0.1px] border-b-brand-grayish/10 hover:bg-brand-lightYellow hover:px-4 hover:rounded-lg hover:text-brand-dark"
+              }`}
+              onClick={() => handleDropdownToggle("applications")}
+            >
+              <span className="group-hover:text-brand-dark">Applications</span>
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 10 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className={`transition-fx mr-2 ${
+                  activeDropdown === "applications" ? "rotate-180" : ""
+                } group-hover:fill-brand-dark`}
+              >
+                <path
+                  d="M4.99023 5.75023C4.92466 5.75103 4.85964 5.7381 4.79936 5.71227C4.73909 5.68643 4.68488 5.64827 4.64023 5.60023L0.140234 1.10023C-0.0597656 0.900234 -0.0597656 0.590234 0.140234 0.390234C0.340234 0.190234 0.650234 0.190234 0.850234 0.390234L5.00023 4.54023L9.14023 0.400234C9.34023 0.200234 9.65023 0.200234 9.85023 0.400234C10.0502 0.600234 10.0502 0.910234 9.85023 1.11023L5.35023 5.61023C5.25023 5.71023 5.12023 5.76023 5.00023 5.76023L4.99023 5.75023Z"
+                  className="transition-colors duration-300 group-hover:fill-brand-dark"
+                  fill="currentColor"
+                />
+              </svg>
+            </div>
+            {activeDropdown === "applications" && (
+              <div className="py-6 pl-12 w-full">
+                <Link
+                  href="https://egov.plateaustate.gov.ng/"
+                  target="_blank"
+                  className="group transition-fx flex items-center text-brand-white py-4 bg-brand-main/70 hover:pl-4 hover:bg-[#284f51]"
+                  onClick={() => setIsOpen(!isOpen)}
+                >
+                  <span className="mr-6 font-geistmono font-light text-base text-[#cfd8d9]">
+                    01
+                  </span>
+                  <span className="w-3/4 font-geistsans font-medium text-2xl">
+                    Citizens Engagement Portal
+                  </span>
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="transition-fx hidden group-hover:block"
+                  >
+                    <path
+                      d="M0 10.1364L0 7.86364H13.6364L7.38636 1.61364L9 0L18 9L9 18L7.38636 16.3864L13.6364 10.1364H0Z"
+                      fill="white"
+                    />
+                  </svg>
+                </Link>
+              </div>
+            )}
+          </>
+          {/* GRM item */}
+          <>
+            <div
+              className={`group transition-fx flex items-center justify-between cursor-pointer py-4 w-full font-geistsans font-medium text-2xl ${
+                activeDropdown === "grm"
+                  ? "bg-brand-lightYellow px-4 rounded-lg text-brand-dark"
+                  : "text-brand-white border-b-[0.1px] border-b-brand-grayish/10 hover:bg-brand-lightYellow hover:px-4 hover:rounded-lg hover:text-brand-dark"
+              }`}
+              onClick={() => handleDropdownToggle("grm")}
+            >
+              <span className="group-hover:text-brand-dark">GRM</span>
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 10 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className={`transition-fx mr-2 ${
+                  activeDropdown === "grm" ? "rotate-180" : ""
+                } group-hover:fill-brand-dark`}
+              >
+                <path
+                  d="M4.99023 5.75023C4.92466 5.75103 4.85964 5.7381 4.79936 5.71227C4.73909 5.68643 4.68488 5.64827 4.64023 5.60023L0.140234 1.10023C-0.0597656 0.900234 -0.0597656 0.590234 0.140234 0.390234C0.340234 0.190234 0.650234 0.190234 0.850234 0.390234L5.00023 4.54023L9.14023 0.400234C9.34023 0.200234 9.65023 0.200234 9.85023 0.400234C10.0502 0.600234 10.0502 0.910234 9.85023 1.11023L5.35023 5.61023C5.25023 5.71023 5.12023 5.76023 5.00023 5.76023L4.99023 5.75023Z"
+                  className="transition-colors duration-300 group-hover:fill-brand-dark"
+                  fill="currentColor"
+                />
+              </svg>
+            </div>
+            {activeDropdown === "grm" && (
+              <div className="py-6 pl-12 w-full">
+                <Link
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSc6JeAj2mIBrFOmXEIJeBPQtTgmzduU4nIEWUpJpAvMSB8NaA/viewform?embedded=true"
+                  target="_blank"
+                  className="group transition-fx flex items-center text-brand-white py-4 bg-brand-main/70 hover:pl-4 hover:bg-[#284f51]"
+                  onClick={() => setIsOpen(!isOpen)}
+                >
+                  <span className="mr-6 font-geistmono font-light text-base text-[#cfd8d9]">
+                    01
+                  </span>
+                  <span className="w-3/4 font-geistsans font-medium text-2xl">
+                    GRM for Trade export
+                  </span>
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="transition-fx hidden group-hover:block"
+                  >
+                    <path
+                      d="M0 10.1364L0 7.86364H13.6364L7.38636 1.61364L9 0L18 9L9 18L7.38636 16.3864L13.6364 10.1364H0Z"
+                      fill="white"
+                    />
+                  </svg>
+                </Link>
+              </div>
+            )}
+          </>
           <Link
             href="/search"
             // onClick={() => setIsOpen(!isOpen)}
