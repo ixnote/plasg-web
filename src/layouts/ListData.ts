@@ -130,6 +130,11 @@ export const applicationData = [
     name: "Citizens Engagement Portal",
     path: "https://egov.plateaustate.gov.ng/",
   },
+  {
+    _id: 0o2,
+    name: "Plateau State Bureau of Public Procurement",
+    path: "https://bpp.plateaustate.gov.ng/",
+  },
 ];
 
 export const GRMData = [
