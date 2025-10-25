@@ -124,7 +124,7 @@ const OneMda = () => {
             "@type": "GovernmentOrganization",
             name: mda?.data?.data?.mda?.name,
             description: mda?.data?.data?.mda?.description,
-            url: `https://plsg.gov.ng/mda/one?slug=${slug}`,
+            url: `http://plateaustate.gov.ng//mda/one?slug=${slug}`,
           })}
         </script>
 
@@ -132,6 +132,7 @@ const OneMda = () => {
           rel="canonical"
           href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/mda/${slug}`}
         />
+        {/* Open Graph Meta Tags for Facebook, WhatsApp, LinkedIn */}
         <meta
           property="og:title"
           content={
@@ -154,6 +155,58 @@ const OneMda = () => {
           content={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/mda/${slug}`}
         />
         <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Plateau State Government" />
+        <meta
+          property="og:image"
+          content={
+            mda?.data?.data?.mda?.hero ||
+            `${process.env.NEXT_PUBLIC_FRONTEND_URL}/images/default.svg`
+          }
+        />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta
+          property="og:image:alt"
+          content={`${
+            mda?.data?.data?.mda?.name || "MDA"
+          } - Plateau State Government`}
+        />
+        <meta property="og:locale" content="en_NG" />
+
+        {/* Twitter Card Meta Tags for X (Twitter) */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content={
+            mda?.data?.data?.mda?.name
+              ? `${mda.data.data.mda.name} - Plateau State Government`
+              : "MDA - Plateau State Government"
+          }
+        />
+        <meta
+          name="twitter:description"
+          content={
+            mda?.data?.data?.mda?.description ||
+            `Official page for ${
+              mda?.data?.data?.mda?.name || "this MDA"
+            } in Plateau State Government`
+          }
+        />
+        <meta
+          name="twitter:image"
+          content={
+            mda?.data?.data?.mda?.hero ||
+            `${process.env.NEXT_PUBLIC_FRONTEND_URL}/images/default.svg`
+          }
+        />
+        <meta
+          name="twitter:image:alt"
+          content={`${
+            mda?.data?.data?.mda?.name || "MDA"
+          } - Plateau State Government`}
+        />
+        <meta name="twitter:site" content="@PlateauStateGov" />
+        <meta name="twitter:creator" content="@PlateauStateGov" />
       </Head>
       <div className="first relative h-full bg-white">
         {/* <Nav /> */}
