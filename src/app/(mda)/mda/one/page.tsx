@@ -47,6 +47,8 @@ const OneMda = () => {
     enabled: !!slug,
   });
 
+  console.log("MDA: ", mda?.data?.data);
+
   // const {
   //   data: fetchResources,
   //   isLoading: resIsLoading,
@@ -88,7 +90,7 @@ const OneMda = () => {
   // }, [params]);
 
   useEffect(() => {
-    setOneMda(mda?.data.data.mda);
+    setOneMda(mda?.data?.data?.mda);
     allResources();
   }, [mda, setOneMda, allResources]);
 
@@ -97,15 +99,19 @@ const OneMda = () => {
       <Head>
         <title>
           {mda?.data?.data?.mda?.name
-            ? `${mda.data.data.mda.name} - Plateau State Government`
-            : "MDA - Plateau State Government"}
+            ? `${mda?.data?.data?.mda?.name} - Plateau State Government`
+            : `${
+                mda?.data?.data?.mda?.abbreviation || "MDA"
+              } - Plateau State Government`}
         </title>
         <meta
           name="description"
           content={
-            mda?.data?.data?.mda?.description ||
+            mda?.data?.data?.mda?.hero?.description ||
             `Official page for ${
-              mda?.data?.data?.mda?.name || "this MDA"
+              mda?.data?.data?.mda?.name ||
+              mda?.data?.data?.mda?.abbreviation ||
+              "this MDA"
             } in Plateau State Government`
           }
         />
@@ -123,43 +129,50 @@ const OneMda = () => {
             "@context": "https://schema.org",
             "@type": "GovernmentOrganization",
             name: mda?.data?.data?.mda?.name,
-            description: mda?.data?.data?.mda?.description,
-            url: `http://plateaustate.gov.ng//mda/one?slug=${slug}`,
+            description: mda?.data?.data?.mda?.hero?.description,
+            url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/mda/one/?slug=${slug}`,
           })}
         </script>
 
         <link
           rel="canonical"
-          href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/mda/${slug}`}
+          href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/mda/one/?slug=${slug}`}
         />
         {/* Open Graph Meta Tags for Facebook, WhatsApp, LinkedIn */}
         <meta
           property="og:title"
           content={
-            mda?.data?.data?.mda?.name
-              ? `${mda.data.data.mda.name} - Plateau State Government`
-              : "MDA - Plateau State Government"
+            mda?.data?.data?.mda?.name || mda?.data?.data?.mda?.abbreviation
+              ? `${
+                  mda?.data?.data?.mda?.name ||
+                  mda?.data?.data?.mda?.abbreviation
+                } - Plateau State Government`
+              : `${
+                  mda?.data?.data?.mda?.abbreviation || "MDA"
+                } - Plateau State Government`
           }
         />
         <meta
           property="og:description"
           content={
-            mda?.data?.data?.mda?.description ||
+            mda?.data?.data?.mda?.hero?.description ||
             `Official page for ${
-              mda?.data?.data?.mda?.name || "this MDA"
+              mda?.data?.data?.mda?.name ||
+              mda?.data?.data?.mda?.abbreviation ||
+              "this MDA"
             } in Plateau State Government`
           }
         />
         <meta
           property="og:url"
-          content={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/mda/${slug}`}
+          content={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/mda/one/?slug=${slug}`}
         />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Plateau State Government" />
         <meta
           property="og:image"
           content={
-            mda?.data?.data?.mda?.hero ||
+            mda?.data?.data?.mda?.hero?.logo ||
             `${process.env.NEXT_PUBLIC_FRONTEND_URL}/images/default.svg`
           }
         />
@@ -168,7 +181,9 @@ const OneMda = () => {
         <meta
           property="og:image:alt"
           content={`${
-            mda?.data?.data?.mda?.name || "MDA"
+            mda?.data?.data?.mda?.name ||
+            mda?.data?.data?.mda?.abbreviation ||
+            "MDA"
           } - Plateau State Government`}
         />
         <meta property="og:locale" content="en_NG" />
@@ -178,31 +193,40 @@ const OneMda = () => {
         <meta
           name="twitter:title"
           content={
-            mda?.data?.data?.mda?.name
-              ? `${mda.data.data.mda.name} - Plateau State Government`
-              : "MDA - Plateau State Government"
+            mda?.data?.data?.mda?.name || mda?.data?.data?.mda?.abbreviation
+              ? `${
+                  mda?.data?.data?.mda?.name ||
+                  mda?.data?.data?.mda?.abbreviation
+                } - Plateau State Government`
+              : `${
+                  mda?.data?.data?.mda?.abbreviation || "MDA"
+                } - Plateau State Government`
           }
         />
         <meta
           name="twitter:description"
           content={
-            mda?.data?.data?.mda?.description ||
+            mda?.data?.data?.mda?.hero?.description ||
             `Official page for ${
-              mda?.data?.data?.mda?.name || "this MDA"
+              mda?.data?.data?.mda?.name ||
+              mda?.data?.data?.mda?.abbreviation ||
+              "this MDA"
             } in Plateau State Government`
           }
         />
         <meta
           name="twitter:image"
           content={
-            mda?.data?.data?.mda?.hero ||
+            mda?.data?.data?.mda?.hero?.logo ||
             `${process.env.NEXT_PUBLIC_FRONTEND_URL}/images/default.svg`
           }
         />
         <meta
           name="twitter:image:alt"
           content={`${
-            mda?.data?.data?.mda?.name || "MDA"
+            mda?.data?.data?.mda?.name ||
+            mda?.data?.data?.mda?.abbreviation ||
+            "MDA"
           } - Plateau State Government`}
         />
         <meta name="twitter:site" content="@PlateauStateGov" />
@@ -214,14 +238,14 @@ const OneMda = () => {
           <div className="m-auto w-[92%] flex justify-between flex-col gap-4">
             {/* Hero */}
             <MdaHero
-              slug={mda?.data?.data.mda?.slug}
-              hero={mda?.data?.data?.mda.hero}
+              slug={mda?.data?.data?.mda?.slug}
+              hero={mda?.data?.data?.mda?.hero}
             />
             <SectionDividerLight />
             {/* Director */}
             <MdaDirector
-              slug={mda?.data?.data?.mda.slug}
-              director={mda?.data?.data?.mda.director}
+              slug={mda?.data?.data?.mda?.slug}
+              director={mda?.data?.data?.mda?.director}
             />
             <SectionDividerLight />
             {/* Quick Access */}
