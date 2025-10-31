@@ -183,7 +183,7 @@ function News() {
                 <>
                   <Link
                     // href={`/news/${data?.data?.data?.news[0]?.id}`}
-                    href={`/news/one?id=${data?.data?.data?.news[0]?.id}`}
+                    href={`/news/${data?.data?.data?.news[0]?.id}`}
                     className="col-span-3"
                   >
                     <span className=" flex w-full  items-start bg-white border border-gray-200 h-[350px]">

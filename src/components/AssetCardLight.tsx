@@ -32,7 +32,7 @@ const AssetCardLight = ({
     if (url) {
       window.open(url, "_blank");
     }
-    id && router.push(`/search/one?id=${id}`);
+    id && router.push(`/search/${id}`);
     return;
   };
 

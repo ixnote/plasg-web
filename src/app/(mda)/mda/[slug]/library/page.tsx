@@ -14,7 +14,7 @@ import ResourceFilter from "@/components/Resources/ResourceFilter";
 
 import { useQuery } from "react-query";
 import { getMda } from "@/api/mda/getMda";
-import { useSearchParams } from "next/navigation";
+import { useParams } from "next/navigation";
 
 const Library = () => {
   const { resources, oneTopicTag }: any = useGeneralContext();
@@ -50,3 +50,4 @@ export default function Page() {
     </Suspense>
   );
 }
+

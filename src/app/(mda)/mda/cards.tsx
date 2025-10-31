@@ -22,7 +22,7 @@ const Cards: React.FC<NewsItem> = ({ newsDate, image, topic, text, id }) => {
       className="w-full p-8 gap-8 transition-fx cursor-pointer border-b-[1px] border-b-[#D4D4D4] hover:bg-brand-lightYellow"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      onClick={() => router.push(`/news/one?id=${id}`)}
+      onClick={() => router.push(`/news/${id}`)}
     >
       <div>
         {/* <div className="lg:w-[1052px] lg:flex-row"> */}

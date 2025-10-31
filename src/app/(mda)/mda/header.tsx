@@ -28,9 +28,9 @@ const Header = () => {
   ];
 
   useEffect(() => {
-    setAboutPath(`/mda/one/about?slug=${mdaSlug}`);
-    setLibraryPath(`/mda/one/library?slug=${mdaSlug}`);
-    setContactPath(`/mda/one/contact?slug=${mdaSlug}`);
+    setAboutPath(`/mda/${mdaSlug}/about`);
+    setLibraryPath(`/mda/${mdaSlug}/library`);
+    setContactPath(`/mda/${mdaSlug}/contact`);
   }, [mdaSlug]);
 
   return (
@@ -39,7 +39,7 @@ const Header = () => {
         <div className="h-[76px] w-full rounded-lg px-10 py-4 flex items-center ustify-around rounded-t-xl sticky top-0">
           <div className="header-content">
             <Link
-              href={`/mda/one?slug=${mdaSlug}`}
+              href={`/mda/${mdaSlug}`}
               className=" flex justify-between items-center  h-[40px] "
             >
               <div className="w-[39px] h-[40px] pr-1">

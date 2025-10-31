@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useParams, useSearchParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import SectionHeader from "@/components/SectionHeader";
 import governor from "@/assets/imgs/government/governor.png";
 import deputy from "@/assets/imgs/government/deputy.jpg";
@@ -17,8 +17,8 @@ const GovernmentPage = () => {
   // const { government } = params;
   // const type = Array.isArray(government) ? government[0] : government;
 
-  const searchParams = useSearchParams();
-  const searchKey = searchParams.get("position");
+  const params = useParams();
+  const searchKey = params?.slug as string;
   console.log("🚀 ~ GovernmentPage ~ searchKey:", searchKey);
 
   const titles = {

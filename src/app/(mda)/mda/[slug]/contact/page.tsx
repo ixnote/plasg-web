@@ -9,7 +9,7 @@ import message from "@/assets/icons/message.svg";
 import { useGeneralContext } from "../../../../../../context/GenralContext";
 import { useQuery } from "react-query";
 import { getMda } from "@/api/mda/getMda";
-import { useSearchParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import { FaSpinner } from "react-icons/fa6";
 
 const Contact = () => {
@@ -25,8 +25,8 @@ const Contact = () => {
     setMdaMailDetails,
   }: any = useGeneralContext();
 
-  const searchParams = useSearchParams();
-  const slug = searchParams.get("slug");
+  const params = useParams();
+  const slug = params?.slug as string;
 
   const {
     data: mda,
@@ -225,3 +225,4 @@ export default function Page() {
     </Suspense>
   );
 }
+

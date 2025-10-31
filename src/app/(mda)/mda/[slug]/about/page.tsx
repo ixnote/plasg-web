@@ -3,7 +3,7 @@
 import React, { Suspense, useEffect } from "react";
 import Image from "next/image";
 
-import SecondCard from "../../secondCard";
+import SecondCard from "../../../secondCard";
 
 import { useGeneralContext } from "../../../../../../context/GenralContext";
 import SectionDividerLight from "@/components/SectionDividerLight";
@@ -11,7 +11,7 @@ import dynamic from "next/dynamic";
 import "react-quill/dist/quill.bubble.css";
 import { useQuery } from "react-query";
 import { getMda } from "@/api/mda/getMda";
-import { useSearchParams } from "next/navigation";
+import { useParams } from "next/navigation";
 
 const QuillEditor = dynamic(() => import("react-quill"), { ssr: false });
 
@@ -23,8 +23,8 @@ const About = () => {
     oneMda,
   }: any = useGeneralContext();
 
-  const searchParams = useSearchParams();
-  const slug = searchParams.get("slug");
+  const params = useParams();
+  const slug = params?.slug as string;
   // console.log("🚀 ~ About ~ slug: ", slug);
 
   const {
@@ -289,3 +289,4 @@ export default function Page() {
     </Suspense>
   );
 }
+

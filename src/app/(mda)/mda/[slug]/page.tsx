@@ -1,8 +1,8 @@
 "use client";
 
 import AssetCardLight from "@/components/AssetCardLight";
-import { newsList } from "../data";
-import Cards from "../cards";
+import { newsList } from "../../data";
+import Cards from "../../cards";
 import ButtonLight from "@/components/ButtonLight";
 import { getMda, getMdaResources } from "@/api/mda/getMda";
 import { useQuery } from "react-query";
@@ -12,7 +12,7 @@ import MdaHero from "./MdaHero";
 import MdaDirector from "./MdaDirector";
 import { useGeneralContext } from "../../../../../context/GenralContext";
 import { Suspense, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import PaginationComponent from "@/components/Pagination";
 import Link from "next/link";
 import Head from "next/head";
@@ -32,8 +32,8 @@ const OneMda = () => {
   // console.log("🚀 ~ Page ~ mdaNews:", mdaNews);
   // console.log({ totalNewsPages, activeNewsPage });
 
-  const searchParams = useSearchParams();
-  const slug = searchParams.get("slug");
+  const params = useParams();
+  const slug = params?.slug as string;
   // console.log("🚀 ~ Page ~ slug:", slug);
 
   const {
@@ -43,7 +43,6 @@ const OneMda = () => {
   } = useQuery({
     queryKey: ["getMda", slug],
     queryFn: getMda,
-    // enabled: !!params?.slug,
     enabled: !!slug,
   });
 
@@ -130,13 +129,13 @@ const OneMda = () => {
             "@type": "GovernmentOrganization",
             name: mda?.data?.data?.mda?.name,
             description: mda?.data?.data?.mda?.hero?.description,
-            url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/mda/one/?slug=${slug}`,
+            url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/mda/${slug}`,
           })}
         </script>
 
         <link
           rel="canonical"
-          href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/mda/one/?slug=${slug}`}
+          href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/mda/${slug}`}
         />
         {/* Open Graph Meta Tags for Facebook, WhatsApp, LinkedIn */}
         <meta
@@ -165,7 +164,7 @@ const OneMda = () => {
         />
         <meta
           property="og:url"
-          content={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/mda/one/?slug=${slug}`}
+          content={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/mda/${slug}`}
         />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Plateau State Government" />
@@ -323,7 +322,7 @@ const OneMda = () => {
                   </div>
                   <ButtonLight
                     text={"See All Services"}
-                    url={`mda/one/library?slug=${slug}`}
+                    url={`mda/${slug}/library`}
                   />
                 </div>
               </div>
@@ -374,7 +373,7 @@ const OneMda = () => {
                   </div>
                   {/* <ButtonLight
                   text={"See More"}
-                  url={`mda/${params?.slug}/library`}
+                  url={`mda/${slug}/library`}
                 /> */}
                   {/* bottom */}
                   {mdaNews?.length > 0 ? (
@@ -480,3 +479,4 @@ export default function Page() {
 }
 
 // export default Page;
+

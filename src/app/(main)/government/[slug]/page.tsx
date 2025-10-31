@@ -3,9 +3,9 @@ import { Suspense } from "react";
 
 export function generateStaticParams() {
   return [
-    { government: "governor" },
-    { government: "deputy" },
-    { government: "secretary" },
+    { slug: "governor" },
+    { slug: "deputy" },
+    { slug: "secretary" },
   ];
 }
 
@@ -16,3 +16,4 @@ export default function Page() {
     </Suspense>
   );
 }
+

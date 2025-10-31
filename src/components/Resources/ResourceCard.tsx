@@ -19,7 +19,7 @@ const ResourceCard = ({
       window.open(url, "_blank");
       return;
     } else {
-      id && router.push(`/search/one?id=${id}`);
+      id && router.push(`/search/${id}`);
       return;
     }
   };

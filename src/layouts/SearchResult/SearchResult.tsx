@@ -13,7 +13,7 @@ import ArticleImage from "@/assets/imgs/article1png.png";
 import ArticleCardTwo from "@/components/ArticleCardTwo";
 import { useQuery } from "react-query";
 import { getResource } from "@/api/mda/getResource";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useParams } from "next/navigation";
 import { formatDate } from "@/utils/formatDate";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -28,8 +28,8 @@ function SearchResult() {
   const pathSegments = pathname.split("/").filter((segment) => segment);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const searchParams = useSearchParams();
-  const id = searchParams.get("id");
+  const params = useParams();
+  const id = params?.id as string;
   // console.log("🚀 ~ GovernmentPage ~ id:", id);
 
   // const id = pathSegments[pathSegments.length - 1];

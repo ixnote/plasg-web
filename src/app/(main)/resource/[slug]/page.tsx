@@ -2,7 +2,7 @@ import SectionHeader from "@/components/SectionHeader";
 import React, { Suspense } from "react";
 import { Header } from "@/layouts";
 import Footer from "@/layouts/Footer";
-import Filter from "../Filter";
+import Filter from "../../Filter";
 
 const page = async () => {
   return (
@@ -31,3 +31,4 @@ const page = async () => {
 };
 
 export default page;
+
