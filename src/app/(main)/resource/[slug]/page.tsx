@@ -2,7 +2,31 @@ import SectionHeader from "@/components/SectionHeader";
 import React, { Suspense } from "react";
 import { Header } from "@/layouts";
 import Footer from "@/layouts/Footer";
-import Filter from "../../Filter";
+import axios from 'axios';
+import Filter from "../Filter";
+
+export async function generateStaticParams() {
+  try {
+    const res = await axios.get(
+      `${process.env.NEXT_PUBLIC_BASE_URL
+      }/resource/all?page=1&pageSize=100`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        timeout: 10000,
+      }
+    )
+    const data = res.data.data;
+
+    return data.map((item: any) => ({
+      slug: item.id.toString(),
+    }));
+  } catch (error) {
+    console.error("Failed to fetch News list for static params:", error);
+    return [{ slug: "1" }];
+  }
+}
 
 const page = async () => {
   return (

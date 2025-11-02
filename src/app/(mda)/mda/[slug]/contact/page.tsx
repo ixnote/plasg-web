@@ -1,228 +1,255 @@
-"use client";
+// "use client";
 
-import React, { Suspense, useEffect } from "react";
-import Image from "next/image";
-import bg from "@/assets/imgs/bg-img.svg";
-import location from "@/assets/icons/location.svg";
-import phone from "@/assets/icons/phone.svg";
-import message from "@/assets/icons/message.svg";
-import { useGeneralContext } from "../../../../../../context/GenralContext";
-import { useQuery } from "react-query";
+// import React, { Suspense, useEffect } from "react";
+// import Image from "next/image";
+// import bg from "@/assets/imgs/bg-img.svg";
+// import location from "@/assets/icons/location.svg";
+// import phone from "@/assets/icons/phone.svg";
+// import message from "@/assets/icons/message.svg";
+// import { useGeneralContext } from "../../../../../../context/GenralContext";
+// import { useQuery } from "react-query";
+// import { getMda } from "@/api/mda/getMda";
+// import { useParams } from "next/navigation";
+// import { FaSpinner } from "react-icons/fa6";
+
+// const Contact = () => {
+//   const {
+//     oneMda,
+//     setOneMda,
+//     mdaLoading,
+//     setMdaSlug,
+//     sendMdaMail,
+//     allResources,
+//     setMdaLoading,
+//     mdaMailDetails,
+//     setMdaMailDetails,
+//   }: any = useGeneralContext();
+
+//   const params = useParams();
+//   const slug = params?.slug as string;
+
+//   const {
+//     data: mda,
+//     isLoading,
+//     error,
+//   } = useQuery({
+//     queryKey: ["getMda", slug],
+//     queryFn: getMda,
+//     enabled: !!slug,
+//   });
+
+//   const onchangeHandler = async (e: any) => {
+//     e.persist();
+//     setMdaMailDetails((item: any) => ({
+//       ...item,
+//       [e.target.name]: e.target.value,
+//     }));
+//   };
+
+//   useEffect(() => {
+//     if (slug) {
+//       setMdaSlug(slug);
+//     }
+//   }, [slug]);
+
+//   useEffect(() => {
+//     setOneMda(mda?.data.data.mda);
+//     allResources();
+//     setMdaMailDetails((item: any) => ({
+//       ...item,
+//       mdaId: mda?.data.data.mda.id,
+//     }));
+//   }, [mda]);
+
+//   const handleSubmit = async (e: React.FormEvent) => {
+//     setMdaLoading(true);
+//     e.preventDefault();
+//     await sendMdaMail(e); // Call the sendMdaMail function
+//     setMdaMailDetails({
+//       name: "",
+//       email: "",
+//       subject: "",
+//       message: "",
+//       mdaId: mda?.data.data.mda.id,
+//     }); // Clear the form
+//   };
+
+//   return (
+//     <div className='w-full min-h-screen pt-[100px] bg-brand-white lg:mt-[170px] 2xl:max-w-7xl"'>
+//       <div className="w-full lg:p-9 ">
+//         <div
+//           className="w-full bg-cover bg-center  pt-8 px-10 lg:h-[720px]"
+//           style={{ backgroundImage: `url(${bg.src})` }}
+//         >
+//           <div className="flex justify-center flex-col w-full lg:flex-row">
+//             <div className="h-[438px] w-full gap-20 my-28 lg:w-[50%]">
+//               <div className="h-full w-full ">
+//                 <header className="w-[100px] h-[40px] flex justify-center items-center  border-white border-2 text-white  font-normal leading-3 size-4 font-geistsans rounded-md mb-1">
+//                   Contact
+//                 </header>
+//                 <p className="w-full flex justify-start items-center text-white font-geistsans my-4 text-4xl font-medium">
+//                   Need help? Contact us
+//                 </p>
+//                 <p className="text-white py-8 font-geistsans font-normal text-xl">
+//                   Having an issue or you just need help? Contact us with your
+//                   inquiries via:
+//                 </p>
+//                 <div className="flex flex-col gap-8">
+//                   <div className="text-white flex w-full py-7 ">
+//                     <Image src={location} alt="" />
+//                     <div className="px-6">
+//                       <p className="text-white">{oneMda?.contact?.location}</p>
+//                     </div>
+//                   </div>
+//                   <div className="flex justify-between h-[64px] w-full ">
+//                     <div className="flex items-center justify-between w-[180px]">
+//                       <Image src={phone} alt="" />
+//                       <div>
+//                         <p className="p-2 text-brand-white">
+//                           {oneMda?.contact?.phone_number_1}
+//                         </p>
+//                         <p className="p-2 text-brand-white">
+//                           {oneMda?.contact?.phone_number_2}
+//                         </p>
+//                       </div>
+//                     </div>
+//                   </div>
+//                   <div className="flex items-center justify-start gap-8 my w-full">
+//                     <Image src={message} alt="" />
+//                     <a href="pictda@plateaustate.gov.ng" className="text-white">
+//                       {oneMda?.contact?.email}
+//                     </a>
+//                   </div>
+//                 </div>
+//               </div>
+//             </div>
+//             <div className="w-full mt-12 mb-8 bg-white rounded-xl lg:w-[50%]">
+//               <div className="w-full max-w-lg mx-auto mt-8 px-5 bg-white ">
+//                 <form onSubmit={handleSubmit} className="space-y-6">
+//                   <div>
+//                     <label
+//                       htmlFor="name"
+//                       className="block text-sm font-medium text-gray-700"
+//                     >
+//                       Name
+//                     </label>
+//                     <input
+//                       placeholder="John Doe"
+//                       type="text"
+//                       id="name"
+//                       name="name"
+//                       className="mt-1 block w-full p-2 border-b border-gray-300 rounded-md  focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+//                       required
+//                       onChange={onchangeHandler}
+//                     />
+//                   </div>
+//                   <div>
+//                     <label
+//                       htmlFor="email"
+//                       className="block text-sm font-medium text-gray-700"
+//                     >
+//                       Email
+//                     </label>
+//                     <input
+//                       placeholder="Namesurname@email.com"
+//                       type="email"
+//                       id="email"
+//                       name="email"
+//                       className="mt-1 block w-full p-2 border-b border-gray-300 rounded-md  focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+//                       required
+//                       onChange={onchangeHandler}
+//                     />
+//                   </div>
+//                   <div>
+//                     <label
+//                       htmlFor="phone"
+//                       className="block text-sm font-medium text-gray-700"
+//                     >
+//                       Subject
+//                     </label>
+//                     <input
+//                       placeholder="Email subject"
+//                       type="text"
+//                       id="subject"
+//                       name="subject"
+//                       className="mt-1 block w-full p-2 border-b border-gray-300 rounded-md  focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+//                       required
+//                       onChange={onchangeHandler}
+//                     />
+//                   </div>
+//                   <div>
+//                     <label
+//                       htmlFor="message"
+//                       className="block text-sm font-medium text-gray-700"
+//                     >
+//                       Message
+//                     </label>
+//                     <textarea
+//                       placeholder="Type message"
+//                       id="message"
+//                       name="message"
+//                       rows={4}
+//                       className="mt-1 block w-full p-2 border-b border-gray-300 rounded-md  focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+//                       required
+//                       onChange={onchangeHandler}
+//                     />
+//                   </div>
+//                   <div>
+//                     {mdaLoading ? (
+//                       <FaSpinner className="animate-spin text-brand-main mx-auto text-4xl" />
+//                     ) : (
+//                       <button
+//                         type="submit"
+//                         className="w-full float-end inline-flex justify-center mb-4 py-2 px-4 border border-transparent  text-sm font-medium rounded-md text-white bg-[#0E3E40] hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+//                       >
+//                         Submit
+//                       </button>
+//                     )}
+//                   </div>
+//                 </form>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// // export default Contact;
+
+// export default function Page() {
+//   return (
+//     <Suspense fallback={<div>Loading...</div>}>
+//       <Contact />
+//     </Suspense>
+//   );
+// }
+
+
+import ClientContactPage from "./ClientContactPage";
 import { getMda } from "@/api/mda/getMda";
-import { useParams } from "next/navigation";
-import { FaSpinner } from "react-icons/fa6";
+import axios from 'axios';
+import CORE_APP from "@/api/URI/CORE_APP";
 
-const Contact = () => {
-  const {
-    oneMda,
-    setOneMda,
-    mdaLoading,
-    setMdaSlug,
-    sendMdaMail,
-    allResources,
-    setMdaLoading,
-    mdaMailDetails,
-    setMdaMailDetails,
-  }: any = useGeneralContext();
+export async function generateStaticParams() {
+  try {
+    const res = await axios.get(
+      `${CORE_APP.plsg.mda}`
+    )
+    const data = res.data.data.mdas;
 
-  const params = useParams();
-  const slug = params?.slug as string;
-
-  const {
-    data: mda,
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["getMda", slug],
-    queryFn: getMda,
-    enabled: !!slug,
-  });
-
-  const onchangeHandler = async (e: any) => {
-    e.persist();
-    setMdaMailDetails((item: any) => ({
-      ...item,
-      [e.target.name]: e.target.value,
+    return data.map((item: any) => ({
+      slug: item.slug.toString(),
     }));
-  };
+  } catch (error) {
+    console.error("Failed to fetch MDA list for static params:", error);
+    return [{ slug: "1" }];
+  }
+}
 
-  useEffect(() => {
-    if (slug) {
-      setMdaSlug(slug);
-    }
-  }, [slug]);
-
-  useEffect(() => {
-    setOneMda(mda?.data.data.mda);
-    allResources();
-    setMdaMailDetails((item: any) => ({
-      ...item,
-      mdaId: mda?.data.data.mda.id,
-    }));
-  }, [mda]);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    setMdaLoading(true);
-    e.preventDefault();
-    await sendMdaMail(e); // Call the sendMdaMail function
-    setMdaMailDetails({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-      mdaId: mda?.data.data.mda.id,
-    }); // Clear the form
-  };
-
-  return (
-    <div className='w-full min-h-screen pt-[100px] bg-brand-white lg:mt-[170px] 2xl:max-w-7xl"'>
-      <div className="w-full lg:p-9 ">
-        <div
-          className="w-full bg-cover bg-center  pt-8 px-10 lg:h-[720px]"
-          style={{ backgroundImage: `url(${bg.src})` }}
-        >
-          <div className="flex justify-center flex-col w-full lg:flex-row">
-            <div className="h-[438px] w-full gap-20 my-28 lg:w-[50%]">
-              <div className="h-full w-full ">
-                <header className="w-[100px] h-[40px] flex justify-center items-center  border-white border-2 text-white  font-normal leading-3 size-4 font-geistsans rounded-md mb-1">
-                  Contact
-                </header>
-                <p className="w-full flex justify-start items-center text-white font-geistsans my-4 text-4xl font-medium">
-                  Need help? Contact us
-                </p>
-                <p className="text-white py-8 font-geistsans font-normal text-xl">
-                  Having an issue or you just need help? Contact us with your
-                  inquiries via:
-                </p>
-                <div className="flex flex-col gap-8">
-                  <div className="text-white flex w-full py-7 ">
-                    <Image src={location} alt="" />
-                    <div className="px-6">
-                      <p className="text-white">{oneMda?.contact?.location}</p>
-                    </div>
-                  </div>
-                  <div className="flex justify-between h-[64px] w-full ">
-                    <div className="flex items-center justify-between w-[180px]">
-                      <Image src={phone} alt="" />
-                      <div>
-                        <p className="p-2 text-brand-white">
-                          {oneMda?.contact?.phone_number_1}
-                        </p>
-                        <p className="p-2 text-brand-white">
-                          {oneMda?.contact?.phone_number_2}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-start gap-8 my w-full">
-                    <Image src={message} alt="" />
-                    <a href="pictda@plateaustate.gov.ng" className="text-white">
-                      {oneMda?.contact?.email}
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="w-full mt-12 mb-8 bg-white rounded-xl lg:w-[50%]">
-              <div className="w-full max-w-lg mx-auto mt-8 px-5 bg-white ">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Name
-                    </label>
-                    <input
-                      placeholder="John Doe"
-                      type="text"
-                      id="name"
-                      name="name"
-                      className="mt-1 block w-full p-2 border-b border-gray-300 rounded-md  focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                      required
-                      onChange={onchangeHandler}
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Email
-                    </label>
-                    <input
-                      placeholder="Namesurname@email.com"
-                      type="email"
-                      id="email"
-                      name="email"
-                      className="mt-1 block w-full p-2 border-b border-gray-300 rounded-md  focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                      required
-                      onChange={onchangeHandler}
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="phone"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Subject
-                    </label>
-                    <input
-                      placeholder="Email subject"
-                      type="text"
-                      id="subject"
-                      name="subject"
-                      className="mt-1 block w-full p-2 border-b border-gray-300 rounded-md  focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                      required
-                      onChange={onchangeHandler}
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Message
-                    </label>
-                    <textarea
-                      placeholder="Type message"
-                      id="message"
-                      name="message"
-                      rows={4}
-                      className="mt-1 block w-full p-2 border-b border-gray-300 rounded-md  focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                      required
-                      onChange={onchangeHandler}
-                    />
-                  </div>
-                  <div>
-                    {mdaLoading ? (
-                      <FaSpinner className="animate-spin text-brand-main mx-auto text-4xl" />
-                    ) : (
-                      <button
-                        type="submit"
-                        className="w-full float-end inline-flex justify-center mb-4 py-2 px-4 border border-transparent  text-sm font-medium rounded-md text-white bg-[#0E3E40] hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                      >
-                        Submit
-                      </button>
-                    )}
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// export default Contact;
-
-export default function Page() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Contact />
-    </Suspense>
-  );
+export default async function Page({ params }: { params: { slug: string } }) {
+  const initialData = (await getMda({ queryKey: ["getMda", params.slug] })).data.data;
+  return <ClientContactPage slug={params.slug} initialData={initialData} />;
 }
 
