@@ -7,7 +7,7 @@ import CORE_APP from "@/api/URI/CORE_APP";
 export async function generateStaticParams() {
   try {
     const res = await axios.get(
-      `${CORE_APP.plsg.resources}/all`,
+      `${CORE_APP.plsg.resources}/static`,
     )
     const data = res.data.data.resources;
     console.log(data.map((item: any) => ({

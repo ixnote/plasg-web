@@ -9,7 +9,7 @@ export async function generateStaticParams() {
   try {
     const res = await axios.get(
       `${process.env.NEXT_PUBLIC_BASE_URL
-      }/resource/all/static`,
+      }/resource/static`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -17,7 +17,7 @@ export async function generateStaticParams() {
         timeout: 10000,
       }
     )
-    const data = res.data.data;
+    const data = res.data.data.resources;
 
     return data.map((item: any) => ({
       slug: item.id.toString(),
