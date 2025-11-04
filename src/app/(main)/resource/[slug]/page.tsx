@@ -9,7 +9,7 @@ export async function generateStaticParams() {
   try {
     const res = await axios.get(
       `${process.env.NEXT_PUBLIC_BASE_URL
-      }/resource/all?page=1&pageSize=100`,
+      }/resource/all/static`,
       {
         headers: {
           "Content-Type": "application/json",
