@@ -28,7 +28,16 @@ export async function generateMetadata({
       news.content?.substring(0, 160) ||
       news.headline ||
       "Read the latest news from Plateau State Government";
-    const imageUrl = news.image || "/images/default.svg";
+
+    // Ensure image URL is absolute
+    const baseUrl =
+      process.env.NEXT_PUBLIC_FRONTEND_URL || "https://plateaustate.gov.ng";
+    let imageUrl = news.image || "/images/default.svg";
+
+    // Convert relative URL to absolute URL
+    if (imageUrl.startsWith("/")) {
+      imageUrl = `${baseUrl}${imageUrl}`;
+    }
 
     return {
       title,
@@ -37,7 +46,7 @@ export async function generateMetadata({
         title,
         description,
         type: "article",
-        url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/news/${params.id}`,
+        url: `${baseUrl}/news/${params.id}`,
         siteName: "Plateau State Government",
         images: [
           {

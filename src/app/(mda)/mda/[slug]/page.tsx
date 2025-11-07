@@ -10,7 +10,7 @@ export async function generateMetadata({
   params: { slug: string };
 }): Promise<Metadata> {
   try {
-    const mdaData = await getMda({ queryKey: ["getMda", params.slug] });
+    const mdaData: any = await getMda({ queryKey: ["getMda", params.slug] });
     const mda = mdaData?.data?.data?.mda;
 
     if (!mda) {
@@ -24,7 +24,16 @@ export async function generateMetadata({
     const description =
       mda.description ||
       `Official page for ${mda.name} in Plateau State Government`;
-    const imageUrl = mda.hero || mda.logo || "/images/default.svg";
+
+    // Ensure image URL is absolute
+    const baseUrl =
+      process.env.NEXT_PUBLIC_FRONTEND_URL || "https://plateaustate.gov.ng";
+    let imageUrl = mda.hero || mda.logo || "/images/default.svg";
+
+    // Convert relative URL to absolute URL
+    if (imageUrl.startsWith("/")) {
+      imageUrl = `${baseUrl}${imageUrl}`;
+    }
 
     return {
       title,
@@ -33,7 +42,7 @@ export async function generateMetadata({
         title,
         description,
         type: "website",
-        url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/mda/${params.slug}`,
+        url: `${baseUrl}/mda/${params.slug}`,
         siteName: "Plateau State Government",
         images: [
           {
