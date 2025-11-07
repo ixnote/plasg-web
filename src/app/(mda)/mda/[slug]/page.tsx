@@ -22,13 +22,15 @@ export async function generateMetadata({
 
     const title = `${mda.name} - Plateau State Government`;
     const description =
+      mda.hero?.description ||
       mda.description ||
       `Official page for ${mda.name} in Plateau State Government`;
 
     // Ensure image URL is absolute
     const baseUrl =
       process.env.NEXT_PUBLIC_FRONTEND_URL || "https://plateaustate.gov.ng";
-    let imageUrl = mda.hero || mda.logo || "/images/default.svg";
+    let imageUrl =
+      mda.hero?.logo || mda.hero || mda.logo || "/images/default.svg";
 
     // Convert relative URL to absolute URL
     if (imageUrl.startsWith("/")) {
@@ -74,15 +76,18 @@ export async function generateMetadata({
 
 export async function generateStaticParams() {
   try {
-    const res = await axios.get(`${CORE_APP.plsg.mda}`);
+    // Fetch all MDAs by using a large pageSize to get all at once
+    const res = await axios.get(`${CORE_APP.plsg.mda}?pageSize=1000`);
     const data = res.data.data.mdas;
+
+    console.log(`Generating static params for ${data.length} MDAs`);
 
     return data.map((item: any) => ({
       slug: item.slug.toString(),
     }));
   } catch (error) {
     console.error("Failed to fetch MDA list for static params:", error);
-    return [{ slug: "1" }];
+    return [];
   }
 }
 
