@@ -74,10 +74,13 @@ export async function generateMetadata({
   }
 }
 
+// Enable dynamic params for newly created MDAs
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
   try {
     // Fetch all MDAs by using a large pageSize to get all at once
-    const res = await axios.get(`${CORE_APP.plsg.mda}?pageSize=1000`);
+    const res = await axios.get(`${CORE_APP.plsg.mda}?pageSize=10000`);
     const data = res.data.data.mdas;
 
     console.log(`Generating static params for ${data.length} MDAs`);

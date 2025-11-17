@@ -78,17 +78,23 @@ export async function generateMetadata({
   }
 }
 
+// Enable dynamic params for newly created news articles
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
   try {
-    const res = await axios.get(CORE_APP.plsg.news);
+    // Fetch all news items by using a large pageSize to get all at once
+    const res = await axios.get(`${CORE_APP.plsg.news}?pageSize=10000`);
     const data = res.data.data.news;
+
+    console.log(`Generating static params for ${data.length} news articles`);
 
     return data.map((item: any) => ({
       id: item.id.toString(),
     }));
   } catch (error) {
     console.error("Failed to fetch News list for static params:", error);
-    return [{ id: "1" }];
+    return [];
   }
 }
 
