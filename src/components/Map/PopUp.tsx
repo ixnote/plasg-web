@@ -1,5 +1,6 @@
 import React from "react";
 import { MapData } from "./MapData";
+import Link from "next/link";
 
 const PopUp = ({
   showPopUp,
@@ -107,7 +108,7 @@ const PopUp = ({
               : "Description goes here."}
           </div>
         </div>
-        <div className="self-stretch h-[136px] px-10 pb-10 flex-col justify-start items-start gap-2 flex">
+        <div className="self-stretch h-[156px] px-10 pb-10 flex-col justify-start items-start gap-2 flex">
           <div className="justify-start items-center gap-4 inline-flex">
             <svg
               width="44"
@@ -169,6 +170,33 @@ const PopUp = ({
               </div>
             </div>
           </div>
+          {MapData[selectedID]?.link && (
+            <div className="px-10">
+              <Link
+                href={MapData[selectedID].link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-brand-main text-white rounded-lg hover:bg-brand-lightYellow hover:text-brand-dark transition-fx font-geistsans text-sm font-medium"
+              >
+                <span>Visit {MapData[selectedID]?.lga} Website</span>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 4L4 12M4 4H12V12"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
       {/* </div>

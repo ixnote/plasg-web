@@ -142,6 +142,7 @@ export const MapData: any = {
       "Jos North is a Local Government Area in Plateau State, Nigeria. Its headquarters are in the city center of Jos. The postal code of the area is 930. Languages Spoken in Jos-North are Anaguta, Afizere & Berom.",
     area: "291",
     population: "429,300",
+    link: "https://josnorthlga.pl.gov.ng/",
   },
   bassa: {
     name: "bassa",
