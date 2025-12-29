@@ -46,12 +46,18 @@ const MobileNav = () => {
 
     if (isOpen) {
       document.addEventListener("mousedown", handleDocumentClick);
+      // Prevent body scroll when mobile nav is open
+      document.body.style.overflow = "hidden";
     } else {
       document.removeEventListener("mousedown", handleDocumentClick);
+      // Restore body scroll when mobile nav is closed
+      document.body.style.overflow = "";
     }
 
     return () => {
       document.removeEventListener("mousedown", handleDocumentClick);
+      // Cleanup: restore body scroll on unmount
+      document.body.style.overflow = "";
     };
   }, [isOpen]);
 
@@ -119,8 +125,10 @@ const MobileNav = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`transition-all duration-300 ease-in-out absolute top-full left-0 w-full bg-brand-main shadow-lg z-10 overflow-hidden rounded-b-lg ${
-          isOpen ? "opacity-100 p-4 pt-px" : "max-h-0 opacity-0 p-0"
+        className={`transition-all duration-300 ease-in-out absolute top-full left-0 w-full bg-brand-main shadow-lg z-10 rounded-b-lg ${
+          isOpen
+            ? "opacity-100 p-4 pt-px max-h-[calc(100vh-76px)] overflow-y-auto"
+            : "max-h-0 opacity-0 p-0 overflow-hidden"
         }`}
       >
         {/* Divider */}
