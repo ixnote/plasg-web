@@ -143,4 +143,9 @@ export const GRMData = [
     name: "GRM for Trade export",
     path: "https://docs.google.com/forms/d/e/1FAIpQLSc6JeAj2mIBrFOmXEIJeBPQtTgmzduU4nIEWUpJpAvMSB8NaA/viewform?embedded=true",
   },
+  {
+    _id: 0o2,
+    name: "GRM for SMEs/MDAs",
+    path: "https://docs.google.com/forms/d/e/1FAIpQLSfXeN1qHdl5RP8AzUdEoSJrYgsWsvD6r-1GpheroMwBdSPf8A/viewform?embedded=true",
+  },
 ];
