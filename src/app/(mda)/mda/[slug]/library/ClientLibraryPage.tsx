@@ -1,7 +1,7 @@
 "use client";
 
 import SectionHeader from "@/components/SectionHeader";
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import { useGeneralContext } from "../../../../../../context/GenralContext";
 import ResourceFilter from "@/components/Resources/ResourceFilter";
 
@@ -16,9 +16,28 @@ import { useQuery } from "react-query";
 import { getMda } from "@/api/mda/getMda";
 import { useParams } from "next/navigation";
 
+type Props = {
+    slug: string;
+    initialData: any;
+};
 
-export default function ClientLibraryPage() {
-    const { resources, oneTopicTag }: any = useGeneralContext();
+export default function ClientLibraryPage({ slug, initialData }: Props) {
+    const { resources, oneTopicTag, setOneMda, setMdaSlug, allResources }: any = useGeneralContext();
+    
+    const mda = initialData;
+
+    useEffect(() => {
+        if (slug) {
+            setMdaSlug(slug);
+        }
+    }, [slug, setMdaSlug]);
+
+    useEffect(() => {
+        if (mda?.mda) {
+            setOneMda(mda.mda);
+            allResources();
+        }
+    }, [mda, setOneMda, allResources]);
 
     return (
         <>
