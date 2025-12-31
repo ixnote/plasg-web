@@ -33,11 +33,15 @@ export default function ClientLibraryPage({ slug, initialData }: Props) {
     }, [slug, setMdaSlug]);
 
     useEffect(() => {
-        if (mda?.mda) {
-            setOneMda(mda.mda);
-            allResources();
-        }
-    }, [mda, setOneMda, allResources]);
+        if (!mda?.mda) return;
+
+        setOneMda((prev: any) => {
+            if (prev?.id !== mda.mda.id) {
+                return mda.mda;
+            }
+            return prev;
+        });
+    }, [mda, setOneMda]);
 
     return (
         <>
