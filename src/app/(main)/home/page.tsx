@@ -32,7 +32,8 @@ const Landing = () => {
             }
           >
             <video
-              src="https://res.cloudinary.com/devplsgcloud/video/upload/v1722542304/BG_o3q1tw.mp4"
+              // src="https://res.cloudinary.com/devplsgcloud/video/upload/v1722542304/BG_o3q1tw.mp4"
+              src="https://plateaustate.gov.ng/site_files/landing_video.MP4"
               className="absolute top-0 left-0 w-full h-full object-cover"
               autoPlay
               muted

@@ -1,10 +1,14 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { MdOutlineArrowOutward } from "react-icons/md";
 
 function PlaceCard({ data, onclick }: any) {
   return (
-    <span
+    <Link
+      href={data.link}
+      target="_blank"
+      rel="noopener noreferrer"
       className="col-span-1 flex flex-col gap-6 cursor-pointer main-container group relative"
       onClick={onclick}
     >
@@ -33,7 +37,7 @@ function PlaceCard({ data, onclick }: any) {
       <button className="rounded-full bg-brand-lightYellow text-brand-main w-14 h-14  group-hover:flex hidden absolute top-6 right-6 justify-center items-center hidden-element">
         <MdOutlineArrowOutward size={28} />
       </button>
-    </span>
+    </Link>
   );
 }
 

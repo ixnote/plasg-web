@@ -13,11 +13,12 @@ import ArticleImage from "@/assets/imgs/article1png.png";
 import ArticleCardTwo from "@/components/ArticleCardTwo";
 import { useQuery } from "react-query";
 import { getResource } from "@/api/mda/getResource";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useParams } from "next/navigation";
 import { formatDate } from "@/utils/formatDate";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Preview from "@/components/Preview/Preview";
+import { FaSpinner } from "react-icons/fa6";
 
 const QuillEditor = dynamic(() => import("react-quill"), { ssr: false });
 
@@ -27,9 +28,9 @@ function SearchResult() {
   const pathSegments = pathname.split("/").filter((segment) => segment);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const searchParams = useSearchParams();
-  const id = searchParams.get("id");
-  console.log("🚀 ~ GovernmentPage ~ id:", id);
+  const params = useParams();
+  const id = params?.id as string;
+  // console.log("🚀 ~ GovernmentPage ~ id:", id);
 
   // const id = pathSegments[pathSegments.length - 1];
 
@@ -50,6 +51,14 @@ function SearchResult() {
     enabled: !!id,
   });
   // console.log("🚀 ~ SearchResult ~ resource:", resource?.data.data);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <FaSpinner className="animate-spin text-brand-main mx-auto text-4xl" />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -87,7 +96,8 @@ function SearchResult() {
               </p>
               <span className="text-[#00000080] opacity-80 font-medium flex items-center gap-4 text-[14px] flex-wrap">
                 <p>{resource?.data?.data?.name}</p>/
-                <p>{formatDate(resource?.data?.data?.updatedAt)}</p>
+                {/* <p>{formatDate(resource?.data?.data?.updatedAt)}</p> */}
+                <p>{formatDate(resource?.data?.data?.date)}</p>
                 {/* <p>/ {data?.min}</p> */}
               </span>
             </span>
@@ -139,9 +149,15 @@ function SearchResult() {
                   <div className="flex justify-center items-center h-10 w-10  border rounded-sm">
                     <IoDocumentOutline size={40} />
                   </div>
-                  {resource?.data?.data?.document.url}
+                  {resource?.data?.data?.document?.url
+                    ? resource?.data?.data?.document?.url
+                    : resource?.data?.data?.link}
                   <Link
-                    href={resource?.data?.data?.document.url}
+                    href={
+                      resource?.data?.data?.document?.url
+                        ? resource?.data?.data?.document?.url
+                        : resource?.data?.data?.link
+                    }
                     target="_blank"
                     className=" py-2 px-6 bg-slate-400 cursor-pointer rounded-md text-white"
                   >

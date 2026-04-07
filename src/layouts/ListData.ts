@@ -123,3 +123,29 @@ export const libraryData = [
     forwardArrow: false,
   },
 ];
+
+export const applicationData = [
+  {
+    _id: 0o1,
+    name: "Citizens Engagement Portal",
+    path: "https://egov.plateaustate.gov.ng/",
+  },
+  {
+    _id: 0o2,
+    name: "Plateau State Bureau of Public Procurement",
+    path: "https://bpp.plateaustate.gov.ng/",
+  },
+];
+
+export const GRMData = [
+  {
+    _id: 0o1,
+    name: "GRM for Trade export",
+    path: "https://docs.google.com/forms/d/e/1FAIpQLSc6JeAj2mIBrFOmXEIJeBPQtTgmzduU4nIEWUpJpAvMSB8NaA/viewform?embedded=true",
+  },
+  {
+    _id: 0o2,
+    name: "GRM for SMEs/MDAs",
+    path: "https://docs.google.com/forms/d/e/1FAIpQLSfXeN1qHdl5RP8AzUdEoSJrYgsWsvD6r-1GpheroMwBdSPf8A/viewform?embedded=true",
+  },
+];

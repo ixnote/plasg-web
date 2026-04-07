@@ -43,7 +43,7 @@ const MdaDirector = ({ slug, director }: any) => {
             </span> */}
           </div>
           {/* <ButtonLight text={'Library'} url={`mda/${slug}/library`} /> */}
-          <ButtonLight text={"Library"} url={`mda/one/library?slug=${slug}`} />
+          <ButtonLight text={"Library"} url={`mda/${slug}/library`} />
         </div>
         {/* right */}
         <div className="w-full lg:w-[50%]">
@@ -73,3 +73,4 @@ const MdaDirector = ({ slug, director }: any) => {
 };
 
 export default MdaDirector;
+

@@ -10,7 +10,7 @@ import ArticleImage from "@/assets/imgs/article1png.png";
 import ArticleCardTwo from "@/components/ArticleCardTwo";
 import { useQuery } from "react-query";
 import { getResource } from "@/api/mda/getResource";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useParams } from "next/navigation";
 import { formatDate } from "@/utils/formatDate";
 import Link from "next/link";
 import { getSingleNews } from "@/api/mda/getSingleNews";
@@ -18,9 +18,8 @@ import { getSingleNews } from "@/api/mda/getSingleNews";
 function NewsResult() {
   const pathname = usePathname();
   const pathSegments = pathname.split("/").filter((segment) => segment);
-
-  const searchParams = useSearchParams();
-  const id = searchParams.get("id");
+  const params = useParams();
+  const id = params?.id as string;
 
   // const id = pathSegments[pathSegments.length - 1];
 
@@ -49,7 +48,7 @@ function NewsResult() {
     return match ? match[1] : null;
   };
 
-  // console.log("resource :>> ", resource);
+  console.log("resource :>> ", resource);
   return (
     <div className="pt-[200px] p-5">
       <span className="max-w-[1200px] mx-auto flex flex-col">
@@ -92,7 +91,7 @@ function NewsResult() {
             </p>
           </span>
         </span>
-        <span className="grid lg:grid-cols-5 grid-cols-2 gap-5 items-start mb-10">
+        <span className="grid lg:grid-cols-5 grid-cols-1 gap-5 items-start mb-10">
           <span className="text-[#00000080] opacity-80 font-light flex items-center gap-4 text-[16px] uppercase col-span-1">
             <p>Details</p>
           </span>
@@ -158,6 +157,14 @@ function NewsResult() {
                     {data?.value}
                   </p>
                 )}
+                {data?.type === "link" && (
+                  <Link
+                    href={data?.value}
+                    className="transition-fx text-[18px] font-normal text-brand-secondary m-0 no-underline w-full break-words whitespace-normal hover:text-brand-main hover:underline"
+                  >
+                    {data?.value}
+                  </Link>
+                )}
                 {data?.type === "bullet" && (
                   <ol className="flex flex-col gap-3 py-2">
                     {data.value.map((i: any, index: number) => (
@@ -173,7 +180,7 @@ function NewsResult() {
         </span>
         <span className="grid lg:grid-cols-5 grid-cols-1 gap-5 mb-12">
           <span className="col-span-1"></span>
-          <span className="flex gap-3 flex-wrap lg:col-span-4 col-span-1 ">
+          <span className="flex gap-3 flex-wrap lg:col-span-4 col-span-1">
             {resource?.data?.data.tags?.map((item: any, index: any) => (
               <button
                 key={index}

@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import miango from "@/assets/imgs//miango.jpg";
+import miango from "@/assets/imgs/miango.jpg";
+import teest from "@/assets/imgs/teest.jpg";
 import PlaceCard from "@/components/PlaceCard";
 import { cn } from "@/utils";
 import { Divider } from "@mantine/core";
@@ -11,35 +12,47 @@ function Essentials() {
       image:
         "https://images.trvl-media.com/lodging/35000000/34540000/34536000/34535926/f89651e3.jpg?impolicy=resizecrop&rw=1200&ra=fit",
       name: "Valada Hotel",
+      link: "#",
     },
     {
       image:
         "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/a6/43/d0/our-suites-rooms-are.jpg?w=1200&h=-1&s=1",
       name: "Shartell Hotels",
+      link: "#",
     },
     {
       image:
         "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1d/52/e8/73/my-room-was-always-tidy.jpg?w=1200&h=-1&s=1",
       name: "Novel Suites Resort LTD",
+      link: "#",
     },
     {
       image:
         "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/26/db/b8/c5/caption.jpg?w=1200&h=-1&s=1",
       name: "Crispan Suites & Event Centre",
+      link: "#",
     },
     {
       image:
         "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/12/9e/62/00/silk-suites.jpg?w=1200&h=-1&s=1",
       name: "Silk Suites",
+      link: "#",
     },
     {
       image:
         "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/35/b4/fc/hbc-resort.jpg?w=1100&h=-1&s=1",
       name: "Healthy Body Clinic and Resort",
+      link: "#",
     },
     {
       image: miango,
       name: "Miango Rest Home",
+      link: "#",
+    },
+    {
+      image: teest,
+      name: "Teest Hotel and Suites",
+      link: "https://www.instagram.com/teest_hotel?igsh=MW05Ynk2bGtxZzc0dQ==",
     },
   ];
   console.log("🚀 ~ Essentials ~ hotels:", hotels);
@@ -92,7 +105,7 @@ function Essentials() {
           {/* {hotels.map(({ hotel, i }: any) => (
             <PlaceCard data={hotel} key={i} />
           ))} */}
-          {[1, 2, 3, 4, 5, 6, 7].map((item, index) => (
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((item, index) => (
             <PlaceCard data={hotels[index]} key={index} />
           ))}
         </span>

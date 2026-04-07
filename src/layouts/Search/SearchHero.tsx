@@ -77,18 +77,18 @@ function SearchHero() {
       value?.main_type_tag?.name === "service" ||
       value?.main_type_tag?.name === "resource"
     ) {
-      router.push(`/search/one?id=${value?.id}`);
+      router.push(`/search/${value?.id}`);
     } else if (value?.abbreviation) {
       // router.push(`/mda/one?id=${value?.slug}`);
-      router.push(`/mda/one?slug=${value?.slug}`);
+      router.push(`/mda/${value?.slug}`);
     } else if (value?.mda?.name === "News") {
-      router.push(`/news/one?id=${value?.id}`);
+      router.push(`/news/${value?.id}`);
     } else if (value?.type === "landmark") {
       router.push(`/tourism`);
     }
   };
 
-  console.log("data :>> ", data);
+  // console.log("data :>> ", data);
 
   const createMarkup = (html: string) => {
     return { __html: html };

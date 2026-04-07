@@ -1,20 +1,50 @@
 import React from "react";
 import Image from "next/image";
 import SubsectionHeader from "@/components/SubsectionHeader";
+import dynamic from "next/dynamic";
+import "react-quill/dist/quill.bubble.css";
+const QuillEditor = dynamic(() => import("react-quill"), { ssr: false });
+import { useQuery } from "react-query";
+import { getActiveGovernment } from "@/api/government/government.api";
+import { FaSpinner } from "react-icons/fa6";
 
-import signature from "@/assets/imgs/government/signature.png";
 const DeputyBiography = () => {
+  const { data: activeGovernment, isLoading } = useQuery({
+    queryKey: ["getActiveGovernment"],
+    queryFn: getActiveGovernment,
+  });
+
+  console.log({ activeGovernment: activeGovernment });
+
+  if (isLoading) {
+    return (
+      <FaSpinner className="animate-spin text-brand-main mx-auto text-4xl" />
+    );
+  }
+
   return (
     <>
       <div className="flex flex-col gap-12 pb-12 lg:gap-20">
         <SubsectionHeader
           left={"BIOGRAPHY"}
-          right={
-            "CITATION OF HON. NGO JOSEPHINE PIYO; DEPUTY GOVERNOR-PLATEAU STATE, 2023."
-          }
+          // right={
+          //   "CITATION OF HON. NGO JOSEPHINE PIYO; DEPUTY GOVERNOR-PLATEAU STATE, 2023."
+          // }
+          right={activeGovernment.deputyGovernor.biography.title}
         />
         <div className="flex flex-col gap-4 lg:gap-8">
           <SubsectionHeader
+            left={""}
+            right={
+              <QuillEditor
+                value={activeGovernment.deputyGovernor.biography.description}
+                theme="bubble"
+                readOnly
+              />
+            }
+            body
+          />
+          {/* <SubsectionHeader
             left={""}
             right={
               "Hon. Mrs. Josephine Piyo, the Deputy Governor Plateau State can be described as a virtuous woman, dedicated and true mother, who is willing and determined to face each task and trial confronting her head-on. Her diligence, and commitment to solving societal challenges and adding value to human lives was parts of the divine providence that brought her to limelight."
@@ -90,7 +120,7 @@ const DeputyBiography = () => {
               "Hon. Mrs. Josephine Chundung Piyo is a devoted, committed and dedicated Christian who love God and her family. Her watch words is unity, peace and Justice."
             }
             body
-          />
+          /> */}
           {/* <div className="flex flex-col items-start justify-start gap-4 lg:flex-row lg:gap-0">
             <div className="w-full font-geistmono flex items-start lg:w-[20%]"></div>
             <Image

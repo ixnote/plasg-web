@@ -119,3 +119,4 @@ const MdaHero = ({ slug, hero }: any) => {
 };
 
 export default MdaHero;
+

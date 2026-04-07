@@ -34,6 +34,16 @@ const GeneralProvider = (props: any) => {
   const [mdaSlug, setMdaSlug] = useState("");
   const [oneMda, setOneMda] = useState() as any;
   const [mdaNews, setMdaNews] = useState() as any;
+  const [mdaMailDetails, setMdaMailDetails] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+    mdaId: "",
+  });
+  const [mdaLoading, setMdaLoading] = useState(false);
+  const [activeNewsPage, setActiveNewsPage] = useState(1);
+  const [totalNewsPages, setTotalNewsPages] = useState(1);
 
   //*******/
   //************/
@@ -209,7 +219,7 @@ const GeneralProvider = (props: any) => {
   };
 
   const getResourceByTagTopicName = async (name: any) => {
-    console.log("🚀 ~ getResourceByTagTopicName ~ name:", name);
+    // console.log("🚀 ~ getResourceByTagTopicName ~ name:", name);
     // Governance, Business, Health, Welfare, Tourism
     try {
       setLoadingResource(true);
@@ -241,6 +251,7 @@ const GeneralProvider = (props: any) => {
   //*******/
   const getMdaNews = async (page = 1) => {
     try {
+      // console.log("🚀 ~ MDA ID:", oneMda?.id);
       const response = await axios.get(
         `${process.env.NEXT_PUBLIC_BASE_URL}/news/articles/${oneMda?.id}/?page=${page}&pageSize=10`,
         {
@@ -251,14 +262,42 @@ const GeneralProvider = (props: any) => {
         }
       );
       // console.log("🚀 ~ getMdaNews ~ response:", response.data.data);
+      // console.log(
+      //   "🚀 ~ getMdaNews ~ pagination:",
+      //   response.data.data.pagination
+      // );
       // console.log("🚀 ~ getHomeResources ~ response:", response.data.data);
       // const firstFourResources = response.data.data.resources.slice(0, 4);
       // return setHomeResources(firstFourResources);
       setMdaNews(response.data.data.news);
-      setTotalPages(response.data.data.pagination.totalPages);
+      setTotalNewsPages(response.data.data.pagination.totalPages);
+      // setTotalPages(response.data.data.pagination.totalPages);
     } catch (error: any) {
       setLoadingResource(false);
       console.log("🚀 ~ getHomeResources ~ error:", error.message);
+    }
+  };
+
+  const sendMdaMail = async (e: any) => {
+    setMdaLoading(true);
+    // console.log("signupDetails", signupDetails);
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/mda/contact-us`,
+        mdaMailDetails,
+        {
+          headers: { "content-type": "application/json" },
+        }
+      );
+      // console.log("🚀 ~ sendMdaMail ~ response:", response);
+      setMdaLoading(false);
+      if (response.status === 201) {
+        return true;
+      }
+    } catch (err: any) {
+      console.log("🚀 ~ sendMdaMail ~ err:", err);
+      setMdaLoading(false);
     }
   };
 
@@ -366,9 +405,18 @@ const GeneralProvider = (props: any) => {
         mdaNews,
         mdaSlug,
         setOneMda,
-        getMdaNews,
         setMdaNews,
+        mdaLoading,
+        activeNewsPage,
+        totalNewsPages,
+        mdaMailDetails,
         setMdaSlug,
+        getMdaNews,
+        sendMdaMail,
+        setMdaLoading,
+        setTotalNewsPages,
+        setActiveNewsPage,
+        setMdaMailDetails,
         opened,
         open,
         close,

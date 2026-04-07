@@ -10,7 +10,7 @@ const SubsectionHeader = ({ left, right, body }: any) => {
         <div
           className={
             body
-              ? "w-full text-brand-dark/70 font-normal text-lg flex items-start font-geistsans lg:w-[800px]"
+              ? "w-full text-brand-dark/70 font-normal text-lg flex items-start font-geistsans lg:w-[70%]"
               : "w-full text-brand-main font-medium text-[40px] flex items-start font-geistsans leading-[48px] mt-[-5px] lg:w-[80%]"
           }
         >

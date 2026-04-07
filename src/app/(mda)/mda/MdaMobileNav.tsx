@@ -37,12 +37,18 @@ const MdaMobileNav = () => {
 
     if (isOpen) {
       document.addEventListener("mousedown", handleDocumentClick);
+      // Prevent body scroll when mobile nav is open
+      document.body.style.overflow = "hidden";
     } else {
       document.removeEventListener("mousedown", handleDocumentClick);
+      // Restore body scroll when mobile nav is closed
+      document.body.style.overflow = "";
     }
 
     return () => {
       document.removeEventListener("mousedown", handleDocumentClick);
+      // Cleanup: restore body scroll on unmount
+      document.body.style.overflow = "";
     };
   }, [isOpen]);
 
@@ -57,7 +63,7 @@ const MdaMobileNav = () => {
     >
       <div className="flex items-center justify-between w-full">
         <Link
-          href={`/mda/one?slug=${mdaSlug}`}
+          href={`/mda/${mdaSlug}`}
           className="flex items-end justify-center gap-2 text-xl text-brand-white font-geistsans"
         >
           <Image
@@ -98,8 +104,10 @@ const MdaMobileNav = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`transition-all duration-300 ease-in-out absolute top-full left-0 w-full bg-brand-main shadow-lg z-10 overflow-hidden rounded-b-lg ${
-          isOpen ? "opacity-100 p-4 pt-px" : "max-h-0 opacity-0 p-0"
+        className={`transition-all duration-300 ease-in-out absolute top-full left-0 w-full bg-brand-main shadow-lg z-10 rounded-b-lg ${
+          isOpen 
+            ? "opacity-100 p-4 pt-px max-h-[calc(100vh-76px)] overflow-y-auto" 
+            : "max-h-0 opacity-0 p-0 overflow-hidden"
         }`}
       >
         {/* Divider */}
@@ -110,21 +118,21 @@ const MdaMobileNav = () => {
         {/* List items */}
         <nav className="flex flex-col items-start">
           <Link
-            href={`/mda/one/about?slug=${mdaSlug}`}
+            href={`/mda/${mdaSlug}/about`}
             onClick={() => setIsOpen(!isOpen)}
             className="transition-fx cursor-pointer py-4 w-full font-geistsans font-medium text-2xl text-brand-white border-b-[0.1px] border-b-brand-grayish/10 hover:bg-brand-lightYellow hover:px-4 hover:rounded-lg hover:text-brand-dark"
           >
             About
           </Link>
           <Link
-            href={`/mda/one/library?slug=${mdaSlug}`}
+            href={`/mda/${mdaSlug}/library`}
             onClick={() => setIsOpen(!isOpen)}
             className="transition-fx cursor-pointer py-4 w-full font-geistsans font-medium text-2xl text-brand-white border-b-[0.1px] border-b-brand-grayish/10 hover:bg-brand-lightYellow hover:px-4 hover:rounded-lg hover:text-brand-dark"
           >
             Library
           </Link>
           <Link
-            href={`/mda/one/contact?slug=${mdaSlug}`}
+            href={`/mda/${mdaSlug}/contact`}
             onClick={() => setIsOpen(!isOpen)}
             className="transition-fx cursor-pointer py-4 w-full font-geistsans font-medium text-2xl text-brand-white border-b-[0.1px] border-b-brand-grayish/10 hover:bg-brand-lightYellow hover:px-4 hover:rounded-lg hover:text-brand-dark"
           >

@@ -11,6 +11,9 @@ const CORE_APP = {
     legislatives: `${BASE_URL}/statics/legislatives`,
     destinations: `${BASE_URL}/statics/destinations`,
     news_tags: `${BASE_URL}/tag/news`,
+
+    // government links
+    active_government: `${BASE_URL}/statics/government/active`,
   },
 };
 export default CORE_APP;
