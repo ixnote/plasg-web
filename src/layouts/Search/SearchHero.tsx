@@ -12,6 +12,8 @@ import { cn } from "@/utils";
 import { formatDate } from "@/utils/formatDate";
 import { Group, Loader, ScrollArea } from "@mantine/core";
 import PaginationComponent from "@/components/Pagination";
+import { getResourceDetailPath } from "@/utils/resourceRoute";
+import SearchResult from "@/layouts/SearchResult/SearchResult";
 
 function SearchHero() {
   const { name, setName }: any = useGeneralContext();
@@ -30,6 +32,7 @@ function SearchHero() {
   const [sort, setSort] = useState("newest");
 
   const searchParams = useSearchParams();
+  const resourceId = searchParams.get("id");
   const searchKey = searchParams.get("name");
   const page = searchParams.get("page");
   const [currentPage, setCurrentPage] = useState<any>(1);
@@ -51,6 +54,7 @@ function SearchHero() {
   const { data, isLoading } = useQuery({
     queryKey: ["searchResources", name, currentPage, 20, ""],
     queryFn: searchResources,
+    enabled: !resourceId,
   });
 
   const [totalPages, setTotalPages] = useState(1);
@@ -77,7 +81,7 @@ function SearchHero() {
       value?.main_type_tag?.name === "service" ||
       value?.main_type_tag?.name === "resource"
     ) {
-      router.push(`/search/${value?.id}`);
+      router.push(getResourceDetailPath(value?.id));
     } else if (value?.abbreviation) {
       // router.push(`/mda/one?id=${value?.slug}`);
       router.push(`/mda/${value?.slug}`);
@@ -93,6 +97,10 @@ function SearchHero() {
   const createMarkup = (html: string) => {
     return { __html: html };
   };
+
+  if (resourceId) {
+    return <SearchResult resourceId={resourceId} />;
+  }
 
   return (
     // <div className="pt-[200px] bg-brand-main p-5">

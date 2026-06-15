@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { formatDate } from "@/utils/formatDate";
+import { getResourceDetailPath } from "@/utils/resourceRoute";
 
 const AssetCardLight = ({
   logo,
@@ -22,6 +23,7 @@ const AssetCardLight = ({
 }: any) => {
   const [hovered, setHovered] = useState(false);
   const router = useRouter();
+  const descriptionText = typeof description === "string" ? description : "";
 
   // const handleClick = () => {
   //   id && router.push(`/search/one?id=${id}`);
@@ -31,8 +33,9 @@ const AssetCardLight = ({
   const handleClick = () => {
     if (url) {
       window.open(url, "_blank");
+      return;
     }
-    id && router.push(`/search/${id}`);
+    id && router.push(getResourceDetailPath(id));
     return;
   };
 
@@ -85,9 +88,9 @@ const AssetCardLight = ({
             )}
           </div>
           <div className="font-geistsans font-normal text-base text-brand-main md:text-lg lg:max-h-[170px] lg:overflow-y-hidden">
-            {description.length > 400
-              ? description.substring(0, 400) + ". . ."
-              : description}
+            {descriptionText.length > 400
+              ? descriptionText.substring(0, 400) + ". . ."
+              : descriptionText}
             {/* {description} */}
           </div>
         </div>

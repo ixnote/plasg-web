@@ -14,6 +14,7 @@ import ArticleCardTwo from "@/components/ArticleCardTwo";
 import { useQuery } from "react-query";
 import { getResource } from "@/api/mda/getResource";
 import { usePathname, useParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { formatDate } from "@/utils/formatDate";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -22,14 +23,19 @@ import { FaSpinner } from "react-icons/fa6";
 
 const QuillEditor = dynamic(() => import("react-quill"), { ssr: false });
 
-function SearchResult() {
+type SearchResultProps = {
+  resourceId?: string;
+};
+
+function SearchResult({ resourceId }: SearchResultProps) {
   const router = useRouter();
   const pathname = usePathname();
   const pathSegments = pathname.split("/").filter((segment) => segment);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const params = useParams();
-  const id = params?.id as string;
+  const searchParams = useSearchParams();
+  const id = resourceId || searchParams.get("id") || (params?.id as string);
   // console.log("🚀 ~ GovernmentPage ~ id:", id);
 
   // const id = pathSegments[pathSegments.length - 1];
@@ -52,10 +58,36 @@ function SearchResult() {
   });
   // console.log("🚀 ~ SearchResult ~ resource:", resource?.data.data);
 
+  const resourceData = resource?.data?.data;
+  const descriptionText =
+    typeof resourceData?.description === "string" ? resourceData.description : "";
+  const body = typeof resourceData?.body === "string" ? resourceData.body : "";
+  const resourceType = resourceData?.main_type_tag?.name?.toLowerCase();
+
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <FaSpinner className="animate-spin text-brand-main mx-auto text-4xl" />
+      </div>
+    );
+  }
+
+  if (error || !resourceData) {
+    return (
+      <div className="min-h-screen flex flex-col gap-4 items-center justify-center px-6 text-center">
+        <p className="text-3xl font-medium text-brand-main">
+          Resource not found
+        </p>
+        <p className="max-w-[520px] text-brand-dark/70">
+          This resource could not be loaded. It may have been removed or is
+          temporarily unavailable.
+        </p>
+        <button
+          className="py-3 px-6 rounded-lg bg-brand-main text-white"
+          onClick={() => router.push("/search")}
+        >
+          Back to search
+        </button>
       </div>
     );
   }
@@ -87,23 +119,23 @@ function SearchResult() {
                   SEARCH RESULTS
                 </p>
               </span>
-              <div>{resource?.data?.data?.mda.name}</div>
+              <div>{resourceData?.mda?.name}</div>
               <button className="py-2 px-4 capitalize rounded-full bg-gray-200 border w-fit border-gray-400">
-                {resource?.data?.data?.main_topic_tag?.name}
+                {resourceData?.main_topic_tag?.name}
               </button>
               <p className="text-[52px] text-brand-main font-medium max-w-[800px] leading-[56px]">
-                {resource?.data?.data?.name}
+                {resourceData?.name}
               </p>
               <span className="text-[#00000080] opacity-80 font-medium flex items-center gap-4 text-[14px] flex-wrap">
-                <p>{resource?.data?.data?.name}</p>/
+                <p>{resourceData?.name}</p>/
                 {/* <p>{formatDate(resource?.data?.data?.updatedAt)}</p> */}
-                <p>{formatDate(resource?.data?.data?.date)}</p>
+                <p>{formatDate(resourceData?.date)}</p>
                 {/* <p>/ {data?.min}</p> */}
               </span>
             </span>
           </div>
           <span className="flex flex-col gap-16">
-            {resource?.data?.data?.image && (
+            {resourceData?.image && (
               <>
                 {/* <Image
                   src={resource?.data?.data?.image}
@@ -113,7 +145,7 @@ function SearchResult() {
                   className="w-full h-[720px] rounded-2xl object-contain object-center "
                 /> */}
                 <Image
-                  src={resource?.data?.data?.image}
+                  src={resourceData.image}
                   width={1360}
                   height={420}
                   alt="mda_hero_image"
@@ -127,36 +159,30 @@ function SearchResult() {
                 <p>INTRODUCTION</p>
               </span>
               <p className="text-[18px] font-normal text-[#00000099] m-0 lg:col-span-4 col-span-1">
-                {resource?.data?.data?.description}
+                {descriptionText}
               </p>
             </span>
             <span className="grid lg:grid-cols-5 grid-cols-1 gap-5 items-start">
               <span className="text-[#00000080] opacity-80 font-light flex items-center gap-4 text-[16px] uppercase col-span-1">
                 <p>CONTENT</p>
               </span>
-              {resource?.data?.data?.main_type_tag?.name !== "document" ? (
+              {resourceType !== "document" ? (
                 <p className="text-[18px] font-normal text-[#00000099] m-0 lg:col-span-4 col-span-1">
-                  {resource?.data?.data?.body && (
-                    <QuillEditor
-                      value={resource?.data?.data?.body}
-                      theme="bubble"
-                      readOnly
-                    />
-                  )}
+                  {body && <QuillEditor value={body} theme="bubble" readOnly />}
                 </p>
               ) : (
                 <div className="flex items-center justify-between gap-3  text-black w-full border lg:col-span-4 p-2 rounded-md">
                   <div className="flex justify-center items-center h-10 w-10  border rounded-sm">
                     <IoDocumentOutline size={40} />
                   </div>
-                  {resource?.data?.data?.document?.url
-                    ? resource?.data?.data?.document?.url
-                    : resource?.data?.data?.link}
+                  {resourceData?.document?.url
+                    ? resourceData.document.url
+                    : resourceData?.link}
                   <Link
                     href={
-                      resource?.data?.data?.document?.url
-                        ? resource?.data?.data?.document?.url
-                        : resource?.data?.data?.link
+                      resourceData?.document?.url
+                        ? resourceData.document.url
+                        : resourceData?.link
                     }
                     target="_blank"
                     className=" py-2 px-6 bg-slate-400 cursor-pointer rounded-md text-white"
@@ -169,7 +195,7 @@ function SearchResult() {
             <span className="grid lg:grid-cols-5 grid-cols-1 gap-5">
               <span className="col-span-1"></span>
               <span className="flex gap-3 flex-wrap lg:col-span-4 col-span-1 ">
-                {resource?.data?.data?.all_topic_tags?.map(
+                {resourceData?.all_topic_tags?.map(
                   (item: any, index: any) => (
                     <button
                       key={index}

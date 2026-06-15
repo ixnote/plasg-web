@@ -1,6 +1,7 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import { formatDate } from "@/utils/formatDate";
+import { getResourceDetailPath } from "@/utils/resourceRoute";
 
 const ResourceCard = ({
   id,
@@ -14,12 +15,14 @@ const ResourceCard = ({
   date,
 }: any) => {
   const router = useRouter();
+  const descriptionText = typeof description === "string" ? description : "";
+
   const handleClick = () => {
     if (url) {
       window.open(url, "_blank");
       return;
     } else {
-      id && router.push(`/search/${id}`);
+      id && router.push(getResourceDetailPath(id));
       return;
     }
   };
@@ -47,9 +50,9 @@ const ResourceCard = ({
             <span>{mda}</span>
           </div>
           <span className="font-normal text-lg text-brand-dark/70 max-h-[135px] overflow-y-hidden lg:max-h-[90px]">
-            {description.length > 400
-              ? description.substring(0, 400) + ". . ."
-              : description}
+            {descriptionText.length > 400
+              ? descriptionText.substring(0, 400) + ". . ."
+              : descriptionText}
           </span>
         </div>
         <div className="transition-fx absolute top-12 right-2 hidden group-hover:block group-hover:right-8">

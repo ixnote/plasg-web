@@ -6,6 +6,7 @@ import ButtonComponent from "../Button";
 import Link from "next/link";
 import { MdOutlineArrowOutward } from "react-icons/md";
 import { formatDate } from "@/utils/formatDate";
+import { getResourceDetailPath } from "@/utils/resourceRoute";
 
 function ArticleCard({ onclick, data }: any) {
   return (
@@ -51,7 +52,7 @@ function ArticleCard({ onclick, data }: any) {
           </ButtonComponent> */}
         </span>
         {data?.main_type_tag?.name !== "resource" && (
-          <Link href={`/search/${data?.id}`}>
+          <Link href={getResourceDetailPath(data?.id)}>
             <button className="text-brand-main border-none hover:bg-none px-0 group-hover:block hidden">
               <MdOutlineArrowOutward size={28} onClick={onclick} />
             </button>

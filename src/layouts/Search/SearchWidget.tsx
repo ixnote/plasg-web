@@ -3,6 +3,7 @@ import ArticleCard from "@/components/ArticleCard";
 import PaginationComponent from "@/components/Pagination";
 import { useRouter } from "next/navigation";
 import React from "react";
+import { getResourceDetailPath } from "@/utils/resourceRoute";
 
 function SearchWidget({
   pagination,
@@ -23,7 +24,7 @@ function SearchWidget({
                 <ArticleCard
                   key={item?.id}
                   data={item}
-                  onclick={() => router.push(`search/${item?.id}`)}
+                  onclick={() => router.push(getResourceDetailPath(item?.id))}
                 />
               ))}
             </span>
