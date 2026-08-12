@@ -17,8 +17,8 @@ import NewsSection from "./NewsSection";
 function News() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const tag = searchParams.get("tag");
-  const current_page = searchParams.get("page");
+  const tag = searchParams?.get("tag");
+  const current_page = searchParams?.get("page");
 
   const matches = useMediaQuery("(max-width: 768px)");
 
@@ -30,7 +30,7 @@ function News() {
       setActive(tag);
     }
     if (current_page) {
-      setPage(page);
+      setPage(Number(current_page));
     }
   }, [tag, current_page]);
 

@@ -29,8 +29,12 @@ export async function generateMetadata({
     // Ensure image URL is absolute
     const baseUrl =
       process.env.NEXT_PUBLIC_FRONTEND_URL || "https://plateaustate.gov.ng";
+    const imageCandidate =
+      mda.hero?.logo || (typeof mda.hero === "string" ? mda.hero : mda.logo);
     let imageUrl =
-      mda.hero?.logo || mda.hero || mda.logo || "/images/default.svg";
+      typeof imageCandidate === "string" && imageCandidate
+        ? imageCandidate
+        : "/images/default.svg";
 
     // Convert relative URL to absolute URL
     if (imageUrl.startsWith("/")) {

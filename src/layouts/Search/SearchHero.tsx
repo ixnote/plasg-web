@@ -32,9 +32,9 @@ function SearchHero() {
   const [sort, setSort] = useState("newest");
 
   const searchParams = useSearchParams();
-  const resourceId = searchParams.get("id");
-  const searchKey = searchParams.get("name");
-  const page = searchParams.get("page");
+  const resourceId = searchParams?.get("id");
+  const searchKey = searchParams?.get("name");
+  const page = searchParams?.get("page");
   const [currentPage, setCurrentPage] = useState<any>(1);
 
   const handlePageChange = (page: any) => {

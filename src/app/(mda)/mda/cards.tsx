@@ -2,27 +2,28 @@
 import { StaticImageData } from "next/image";
 import React, { useState } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 // Define the interface for an individual news item
 interface NewsItem {
   newsDate: string;
-  image: StaticImageData; // Adjust type according to your needs
+  image: StaticImageData | string;
   topic: string;
   text: string;
   id?: string;
 }
 
 const Cards: React.FC<NewsItem> = ({ newsDate, image, topic, text, id }) => {
-  const [hovered, setHovered] = useState(false);
-  const router = useRouter();
+  const [imageSrc, setImageSrc] = useState<StaticImageData | string>(
+    image || "/images/default.svg"
+  );
+  const href = id ? `/news/${id}` : "#";
 
   return (
-    <div
-      className="w-full p-8 gap-8 transition-fx cursor-pointer border-b-[1px] border-b-[#D4D4D4] hover:bg-brand-lightYellow"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onClick={() => router.push(`/news/${id}`)}
+    <Link
+      href={href}
+      className="block w-full p-8 gap-8 transition-fx cursor-pointer border-b-[1px] border-b-[#D4D4D4] no-underline hover:bg-brand-lightYellow"
+      aria-disabled={!id}
     >
       <div>
         {/* <div className="lg:w-[1052px] lg:flex-row"> */}
@@ -32,7 +33,13 @@ const Cards: React.FC<NewsItem> = ({ newsDate, image, topic, text, id }) => {
           </div>
           <div className="flex flex-col items-start justify-start gap-4 lg:flex-row lg:justify-between">
             <div className="pb-[19px]">
-              <Image src={image} alt={topic} width={320} height={200} />
+              <Image
+                src={imageSrc}
+                alt={topic}
+                width={320}
+                height={200}
+                onError={() => setImageSrc("/images/default.svg")}
+              />
             </div>
             <div className="w-full h-auto">
               <div className="font-[Geist] leading-8 text-2xl text-[#0e3e40] text-left pb-[16px]">
@@ -55,7 +62,7 @@ const Cards: React.FC<NewsItem> = ({ newsDate, image, topic, text, id }) => {
         >
         </div> */}
       </div>
-    </div>
+    </Link>
   );
 };
 

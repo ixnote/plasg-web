@@ -83,14 +83,42 @@ export const dynamicParams = true;
 
 export async function generateStaticParams() {
   try {
-    // Fetch all news items by using a large pageSize to get all at once
+    const ids = new Set<string>();
+
+    // Fetch all public news items by using a large pageSize to get all at once.
     const res = await axios.get(`${CORE_APP.plsg.news}?pageSize=10000`);
-    const data = res.data.data.news;
+    const data = res.data.data.news || [];
+    data.forEach((item: any) => {
+      if (item?.id) {
+        ids.add(item.id.toString());
+      }
+    });
 
-    console.log(`Generating static params for ${data.length} news articles`);
+    // MDA pages source their news from a separate endpoint. Include those IDs
+    // too so static export creates /news/[id] pages for MDA-only articles.
+    const mdaRes = await axios.get(`${CORE_APP.plsg.mda}?pageSize=10000`);
+    const mdas = mdaRes.data.data.mdas || [];
+    const mdaNewsResults = await Promise.allSettled(
+      mdas.map((mda: any) =>
+        axios.get(`${CORE_APP.plsg.news}/articles/${mda.id}/?page=1&pageSize=10000`)
+      )
+    );
 
-    return data.map((item: any) => ({
-      id: item.id.toString(),
+    mdaNewsResults.forEach((result) => {
+      if (result.status !== "fulfilled") return;
+
+      const mdaNews = result.value.data.data.news || [];
+      mdaNews.forEach((item: any) => {
+        if (item?.id) {
+          ids.add(item.id.toString());
+        }
+      });
+    });
+
+    console.log(`Generating static params for ${ids.size} news articles`);
+
+    return Array.from(ids).map((id) => ({
+      id,
     }));
   } catch (error) {
     console.error("Failed to fetch News list for static params:", error);

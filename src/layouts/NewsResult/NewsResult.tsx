@@ -1,44 +1,29 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { GoHome } from "react-icons/go";
 import Image from "next/image";
 import { AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
 import { IoShareOutline } from "react-icons/io5";
-import { articleData } from "@/utils/mockArticle";
-import { Divider } from "@mantine/core";
-import ArticleImage from "@/assets/imgs/article1png.png";
-import ArticleCardTwo from "@/components/ArticleCardTwo";
 import { useQuery } from "react-query";
-import { getResource } from "@/api/mda/getResource";
-import { usePathname, useParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import { formatDate } from "@/utils/formatDate";
 import Link from "next/link";
 import { getSingleNews } from "@/api/mda/getSingleNews";
 
 function NewsResult() {
-  const pathname = usePathname();
-  const pathSegments = pathname.split("/").filter((segment) => segment);
   const params = useParams();
   const id = params?.id as string;
+  const [heroImageSrc, setHeroImageSrc] = useState("/images/default.svg");
 
-  // const id = pathSegments[pathSegments.length - 1];
-
-  const data = articleData;
-  const article = {
-    image: ArticleImage,
-    title: "Guide to Renewing Your Vehicle Registration",
-    text: "Learn the steps, required documents, fees, and timelines renewing your vehicle registration in Plateau State. Simplify he process with our comprehensive guide.",
-  };
-
-  const {
-    data: resource,
-    isLoading,
-    error,
-  } = useQuery({
+  const { data: resource } = useQuery({
     queryKey: ["getSingleNews", id],
     queryFn: getSingleNews,
     enabled: !!id,
   });
+
+  useEffect(() => {
+    setHeroImageSrc(resource?.data?.data?.image || "/images/default.svg");
+  }, [resource?.data?.data?.image]);
 
   // Function to get YouTube video ID from the URL
   const getYouTubeVideoId = (url: string) => {
@@ -48,7 +33,6 @@ function NewsResult() {
     return match ? match[1] : null;
   };
 
-  console.log("resource :>> ", resource);
   return (
     <div className="pt-[200px] p-5">
       <span className="max-w-[1200px] mx-auto flex flex-col">
@@ -74,11 +58,12 @@ function NewsResult() {
         <span className="my-8 flex flex-col gap-16">
           <span className="flex w-full h-[500px] relative">
             <Image
-              src={resource?.data?.data?.image}
+              src={heroImageSrc}
               alt=""
               width={1200}
               height={100}
               className="w-full h-auto rounded-2xl object-cover"
+              onError={() => setHeroImageSrc("/images/default.svg")}
             />
           </span>
 
@@ -96,7 +81,7 @@ function NewsResult() {
             <p>Details</p>
           </span>
           <span className=" m-0 lg:col-span-4 col-span-1">
-            {resource?.data?.data?.newsSections.map((data: any, index: any) => (
+            {resource?.data?.data?.newsSections?.map((data: any, index: any) => (
               // <RenderNewsSection data={item} key={index} />
               <div key={index} className="flex py-2 mb-2">
                 {data?.type === "image" && (
@@ -106,6 +91,9 @@ function NewsResult() {
                     width={1200}
                     height={1200}
                     className="w-full h-auto rounded-2xl object-cover py-2"
+                    onError={(event) => {
+                      event.currentTarget.src = "/images/default.svg";
+                    }}
                   />
                 )}
                 {data?.type === "video" && (

@@ -13,7 +13,7 @@ import ArticleImage from "@/assets/imgs/article1png.png";
 import ArticleCardTwo from "@/components/ArticleCardTwo";
 import { useQuery } from "react-query";
 import { getResource } from "@/api/mda/getResource";
-import { usePathname, useParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import { useSearchParams } from "next/navigation";
 import { formatDate } from "@/utils/formatDate";
 import Link from "next/link";
@@ -29,13 +29,11 @@ type SearchResultProps = {
 
 function SearchResult({ resourceId }: SearchResultProps) {
   const router = useRouter();
-  const pathname = usePathname();
-  const pathSegments = pathname.split("/").filter((segment) => segment);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const params = useParams();
   const searchParams = useSearchParams();
-  const id = resourceId || searchParams.get("id") || (params?.id as string);
+  const id = resourceId || searchParams?.get("id") || (params?.id as string);
   // console.log("🚀 ~ GovernmentPage ~ id:", id);
 
   // const id = pathSegments[pathSegments.length - 1];
